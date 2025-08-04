@@ -1,6 +1,6 @@
 {
   "name": "super-ui-plus",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "A modern Vue 3 UI component library",
   "keywords": [
@@ -34,7 +34,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:style": "stylelint \"**/*.{css,scss,vue}\" --fix",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs"
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
     "vue": "^3.5.0"

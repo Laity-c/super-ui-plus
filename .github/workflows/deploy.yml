@@ -1,0 +1,68 @@
+# .github/workflows/deploy.yml
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 当推送到 main 分支时触发
+
+  # 允许手动从 Actions 选项卡运行此工作流
+  workflow_dispatch:
+
+# 设置权限，允许 GitHub Pages 发布
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一个并发部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # 使用最新的 Ubuntu 虚拟机
+
+    steps:
+      - name: Checkout # 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 确保获取所有历史，用于一些构建工具
+
+      - name: Setup Node.js # 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 使用 Node.js 20 LTS 版本，根据你项目实际需要调整
+
+      - name: Setup pnpm # 如果你使用 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # 指定 pnpm 版本
+
+      - name: Get pnpm store directory # 配置 pnpm 缓存
+        shell: bash
+        run: |
+          echo "PNPM_CACHE_DIR=$(pnpm store path)" >> $GITHUB_ENV
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PNPM_CACHE_DIR }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies # 安装依赖
+        run: pnpm install --no-frozen-lockfile # 或 npm install 或 yarn install
+
+      - name: Build VitePress documentation # 构建文档
+        run: pnpm run docs:build # 或 npm run docs:build 或 yarn docs:build
+
+      - name: Upload artifact # 上传构建好的静态文件
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist # 构建产物所在的目录
+
+      - name: Deploy to GitHub Pages # 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

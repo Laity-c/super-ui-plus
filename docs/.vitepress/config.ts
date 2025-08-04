@@ -25,7 +25,7 @@ const content = [
 ].toString()
 
 export default defineConfig({
-  title: "TuiPlus基础组件文档",
+  title: "SuperUiPlus基础组件文档",
   description: content,
   lang: "cn-ZH",
   base: "/super-ui-plus/",
@@ -66,7 +66,7 @@ export default defineConfig({
       prev: "上一页",
       next: "下一页"
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/wocwin/t-ui-plus" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/Laity-c/super-ui-plus" }],
     nav: [
       {
         text: "安装指南",
@@ -75,7 +75,7 @@ export default defineConfig({
       { text: "基础组件", link: "/components/header/index.md" },
       {
         text: "GitHub地址",
-        link: "https://github.com/wocwin/t-ui-plus"
+        link: "https://github.com/Laity-c/super-ui-plus"
       },
       {
         text: "Gitee码云地址",
@@ -83,7 +83,7 @@ export default defineConfig({
       },
       {
         text: `v${pkg.version}`,
-        link: "https://github.com/wocwin/t-ui-plus/releases"
+        link: "https://github.com/Laity-c/super-ui-plus/releases"
       },
       {
         text: "演练场",
