@@ -1,0 +1,11 @@
+@use "sass:math";
+@use "sass:map";
+
+:root {
+  // select-table
+  --gm-select-table-popper-padding: 10px;
+  --gm-select-table-pagination-padding-top: 10px;
+  --gm-select-table-selected-item-background-color: var(
+    --el-color-primary-light-9
+  );
+}

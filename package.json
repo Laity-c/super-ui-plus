@@ -1,0 +1,81 @@
+{
+  "name": "super-ui-plus",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A modern Vue 3 UI component library",
+  "keywords": [
+    "vue",
+    "vue3",
+    "ui",
+    "components",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite --mode dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "lint:style": "stylelint \"**/*.{css,scss,vue}\" --fix",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "element-plus": "^2.10.5",
+    "vitepress-demo-preview-fock-component": "^2.3.6",
+    "vitepress-demo-preview-fock-plugin": "^1.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.32.0",
+    "jsdom": "^26.1.0",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "stylelint": "^16.11.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-recess-order": "^4.6.0",
+    "stylelint-config-recommended": "^14.0.1",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-prettier": "^5.0.2",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vitepress": "^1.6.3",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.17",
+    "vue-tsc": "^2.2.12"
+  }
+}

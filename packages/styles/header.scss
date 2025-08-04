@@ -1,0 +1,74 @@
+
+@use "config.scss" as *;
+$header: "#{$namespace}-header";
+
+.#{$header} {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  &.border {
+    border-bottom: 1px solid var(--el-border-color);
+  }
+  &-text {
+    background-color: #fff;
+    padding: 0 10px;
+    font-weight: 500;
+    left: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--el-color-primary);
+    &.full {
+      flex: 1;
+    }
+  }
+
+  &-right {
+    margin-left: 15px;
+  }
+  &__block {
+    width: 4px;
+    height: 16px;
+    background: var(--el-color-primary);
+    z-index: 2;
+  }
+  &__divider {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    height: 1px;
+    &::before {
+      content: "";
+      background-color: var(--el-border-color);
+      height: 1px;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__medium {
+    padding: 11px 0;
+
+    .#{$header}-text {
+      font-size: 18px;
+    }
+
+    .#{$header}__block {
+      height: 18px;
+    }
+  }
+  &__small {
+    padding: 10px 0;
+
+    .#{$header}-text {
+      font-size: 16px;
+    }
+
+    .#{$header}__block {
+      height: 16px;
+    }
+  }
+}
