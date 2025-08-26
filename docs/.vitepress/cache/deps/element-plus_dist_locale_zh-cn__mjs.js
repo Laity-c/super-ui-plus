@@ -1,6 +1,6 @@
 import "./chunk-5WRI5ZAA.js";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
 var zhCn = {
   name: "zh-cn",
   el: {
@@ -185,6 +185,6 @@ export {
 /*! Bundled license information:
 
 element-plus/dist/locale/zh-cn.mjs:
-  (*! Element Plus v2.10.5 *)
+  (*! Element Plus v2.11.1 *)
 */
 //# sourceMappingURL=element-plus_dist_locale_zh-cn__mjs.js.map

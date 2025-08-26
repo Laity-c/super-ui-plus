@@ -3,7 +3,51 @@ import {
   withInstallDirective,
   withInstallFunction,
   withNoopInstall
-} from "./chunk-FEWJBA4V.js";
+} from "./chunk-LSARDTUI.js";
+import {
+  arrow_down_default,
+  arrow_left_default,
+  arrow_right_default,
+  arrow_up_default,
+  back_default,
+  calendar_default,
+  caret_right_default,
+  caret_top_default,
+  check_default,
+  circle_check_default,
+  circle_check_filled_default,
+  circle_close_default,
+  circle_close_filled_default,
+  clock_default,
+  close_default,
+  d_arrow_left_default,
+  d_arrow_right_default,
+  delete_default,
+  document_default,
+  full_screen_default,
+  hide_default,
+  info_filled_default,
+  loading_default,
+  minus_default,
+  more_default,
+  more_filled_default,
+  picture_filled_default,
+  plus_default,
+  question_filled_default,
+  refresh_left_default,
+  refresh_right_default,
+  scale_to_original_default,
+  search_default,
+  sort_down_default,
+  sort_up_default,
+  star_default,
+  star_filled_default,
+  success_filled_default,
+  view_default,
+  warning_filled_default,
+  zoom_in_default,
+  zoom_out_default
+} from "./chunk-4ZEK42JF.js";
 import {
   Comment,
   Fragment,
@@ -75,7 +119,7 @@ import {
   withDirectives,
   withKeys,
   withModifiers
-} from "./chunk-5O5CMFWG.js";
+} from "./chunk-ADOLTXDM.js";
 import {
   NOOP,
   camelize,
@@ -94,7 +138,7 @@ import {
   normalizeStyle,
   toDisplayString,
   toHandlerKey
-} from "./chunk-BOGUDTHB.js";
+} from "./chunk-SA74HL4V.js";
 import {
   __commonJS,
   __toESM
@@ -732,16 +776,16 @@ var require_isSameOrBefore = __commonJS({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/version.mjs
-var version = "2.10.5";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/version.mjs
+var version = "2.11.1";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/key.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/key.mjs
 var INSTALLED_KEY = Symbol("INSTALLED_KEY");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/constants.mjs
 var configProviderContextKey = Symbol();
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-namespace/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-namespace/index.mjs
 var defaultNamespace = "el";
 var statePrefix = "is-";
 var _bem = (namespace, block, blockSuffix, element, modifier) => {
@@ -8908,7 +8952,7 @@ if (symIterator2) {
   wrapperLodash_default.prototype[symIterator2] = seq_default_default.toIterator;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/types.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/types.mjs
 var isUndefined2 = (val) => val === void 0;
 var isBoolean2 = (val) => typeof val === "boolean";
 var isNumber2 = (val) => typeof val === "number";
@@ -8927,10 +8971,10 @@ var isStringNumber = (val) => {
 };
 var isWindow = (val) => val === window;
 
-// node_modules/.pnpm/vue-demi@0.14.10_vue@3.5.18_typescript@5.8.3_/node_modules/vue-demi/lib/index.mjs
+// node_modules/.pnpm/vue-demi@0.14.10_vue@3.5.20_typescript@5.8.3_/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false;
 
-// node_modules/.pnpm/@vueuse+shared@9.13.0_vue@3.5.18_typescript@5.8.3_/node_modules/@vueuse/shared/index.mjs
+// node_modules/.pnpm/@vueuse+shared@9.13.0_vue@3.5.20_typescript@5.8.3_/node_modules/@vueuse/shared/index.mjs
 var __defProp$9 = Object.defineProperty;
 var __defProps$6 = Object.defineProperties;
 var __getOwnPropDescs$6 = Object.getOwnPropertyDescriptors;
@@ -9109,6 +9153,41 @@ function tryOnScopeDispose(fn2) {
   }
   return false;
 }
+function toReactive(objectRef) {
+  if (!isRef(objectRef))
+    return reactive(objectRef);
+  const proxy = new Proxy({}, {
+    get(_2, p2, receiver) {
+      return unref(Reflect.get(objectRef.value, p2, receiver));
+    },
+    set(_2, p2, value) {
+      if (isRef(objectRef.value[p2]) && !isRef(value))
+        objectRef.value[p2].value = value;
+      else
+        objectRef.value[p2] = value;
+      return true;
+    },
+    deleteProperty(_2, p2) {
+      return Reflect.deleteProperty(objectRef.value, p2);
+    },
+    has(_2, p2) {
+      return Reflect.has(objectRef.value, p2);
+    },
+    ownKeys() {
+      return Object.keys(objectRef.value);
+    },
+    getOwnPropertyDescriptor() {
+      return {
+        enumerable: true,
+        configurable: true
+      };
+    }
+  });
+  return reactive(proxy);
+}
+function reactiveComputed(fn2) {
+  return toReactive(computed(fn2));
+}
 function useDebounceFn(fn2, ms = 200, options = {}) {
   return createFilterWrapper(debounceFilter(ms, options), fn2);
 }
@@ -9169,7 +9248,7 @@ function useTimeoutFn(cb, interval, options = {}) {
   };
 }
 
-// node_modules/.pnpm/@vueuse+core@9.13.0_vue@3.5.18_typescript@5.8.3_/node_modules/@vueuse/core/index.mjs
+// node_modules/.pnpm/@vueuse+core@9.13.0_vue@3.5.20_typescript@5.8.3_/node_modules/@vueuse/core/index.mjs
 function unrefElement(elRef) {
   var _a2;
   const plain = resolveUnref(elRef);
@@ -9468,6 +9547,43 @@ function useElementSize(target2, initialSize = { width: 0, height: 0 }, options 
     height
   };
 }
+function useIntersectionObserver(target2, callback, options = {}) {
+  const {
+    root: root2,
+    rootMargin = "0px",
+    threshold = 0.1,
+    window: window2 = defaultWindow
+  } = options;
+  const isSupported = useSupported(() => window2 && "IntersectionObserver" in window2);
+  let cleanup = noop2;
+  const stopWatch = isSupported.value ? watch(() => ({
+    el: unrefElement(target2),
+    root: unrefElement(root2)
+  }), ({ el, root: root22 }) => {
+    cleanup();
+    if (!el)
+      return;
+    const observer = new IntersectionObserver(callback, {
+      root: root22,
+      rootMargin,
+      threshold
+    });
+    observer.observe(el);
+    cleanup = () => {
+      observer.disconnect();
+      cleanup = noop2;
+    };
+  }, { immediate: true, flush: "post" }) : noop2;
+  const stop = () => {
+    cleanup();
+    stopWatch();
+  };
+  tryOnScopeDispose(stop);
+  return {
+    isSupported,
+    stop
+  };
+}
 var __getOwnPropSymbols$8 = Object.getOwnPropertySymbols;
 var __hasOwnProp$8 = Object.prototype.hasOwnProperty;
 var __propIsEnum$8 = Object.prototype.propertyIsEnumerable;
@@ -9662,7 +9778,7 @@ function useWindowSize(options = {}) {
   return { width, height };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-z-index/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-z-index/index.mjs
 var initial2 = {
   current: 0
 };
@@ -9691,7 +9807,7 @@ var useZIndex = (zIndexOverrides) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/locale/lang/en.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/locale/lang/en.mjs
 var English = {
   name: "en",
   el: {
@@ -9872,7 +9988,7 @@ var English = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-locale/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-locale/index.mjs
 var buildTranslator = (locale) => (path, option) => translate(path, option, unref(locale));
 var translate = (path, option, locale) => get_default(locale, path, path).replace(/\{(\w+)\}/g, (_2, key) => {
   var _a2;
@@ -9893,7 +10009,7 @@ var useLocale = (localeOverrides) => {
   return buildLocaleContext(computed(() => locale.value || English));
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/props/runtime.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/props/runtime.mjs
 var epPropKey = "__epPropKey";
 var definePropType = (val) => val;
 var isEpProp = (val) => isObject(val) && !!val[epPropKey];
@@ -9934,7 +10050,7 @@ var buildProps = (props2) => fromPairs_default(Object.entries(props2).map(([key,
   buildProp(option, key)
 ]));
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/size.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/size.mjs
 var componentSizes = ["", "default", "small", "large"];
 var componentSizeMap = {
   large: 40,
@@ -9942,7 +10058,7 @@ var componentSizeMap = {
   small: 24
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-size/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-size/index.mjs
 var useSizeProp = buildProp({
   type: String,
   values: componentSizes,
@@ -9959,7 +10075,7 @@ var useGlobalSize = () => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-empty-values/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-empty-values/index.mjs
 var emptyValuesContextKey = Symbol("emptyValuesContextKey");
 var SCOPE = "use-empty-values";
 var DEFAULT_EMPTY_VALUES = ["", void 0, null];
@@ -10003,7 +10119,7 @@ var useEmptyValues = (props2, defaultValue) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/objects.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/objects.mjs
 var keysOf = (arr) => Object.keys(arr);
 var entriesOf = (arr) => Object.entries(arr);
 var getProp = (obj, path, defaultValue) => {
@@ -10017,7 +10133,7 @@ var getProp = (obj, path, defaultValue) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/hooks/use-global-config.mjs
 var globalConfig = ref();
 function useGlobalConfig(key, defaultValue = void 0) {
   const config = getCurrentInstance() ? inject(configProviderContextKey, globalConfig) : globalConfig;
@@ -10095,7 +10211,7 @@ var mergeConfig = (a2, b2) => {
   return obj;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/make-installer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/make-installer.mjs
 var makeInstaller = (components = []) => {
   const install2 = (app, options) => {
     if (app[INSTALLED_KEY])
@@ -10111,12 +10227,12 @@ var makeInstaller = (components = []) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/event.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/event.mjs
 var UPDATE_MODEL_EVENT = "update:modelValue";
 var CHANGE_EVENT = "change";
 var INPUT_EVENT = "input";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/affix/src/affix.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/affix/src/affix.mjs
 var affixProps = buildProps({
   zIndex: {
     type: definePropType([Number, String]),
@@ -10141,7 +10257,7 @@ var affixEmits = {
   [CHANGE_EVENT]: (fixed) => isBoolean2(fixed)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/_virtual/plugin-vue_export-helper.mjs
 var _export_sfc = (sfc, props2) => {
   const target2 = sfc.__vccOpts || sfc;
   for (const [key, val] of props2) {
@@ -10150,7 +10266,7 @@ var _export_sfc = (sfc, props2) => {
   return target2;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/easings.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/easings.mjs
 function easeInOutCubic(t, b2, c2, d2) {
   const cc = c2 - b2;
   t /= d2 / 2;
@@ -10160,11 +10276,11 @@ function easeInOutCubic(t, b2, c2, d2) {
   return cc / 2 * ((t -= 2) * t * t + 2) + b2;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/raf.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/raf.mjs
 var rAF = (fn2) => isClient ? window.requestAnimationFrame(fn2) : setTimeout(fn2, 16);
 var cAF = (handle) => isClient ? window.cancelAnimationFrame(handle) : clearTimeout(handle);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/style.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/style.mjs
 var classNameToArray = (cls = "") => cls.split(" ").filter((item) => !!item.trim());
 var hasClass = (el, cls) => {
   if (!el || !cls)
@@ -10220,7 +10336,7 @@ function addUnit(value, defaultUnit = "px") {
   }
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/scroll.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/scroll.mjs
 var isScroll = (el, isVertical) => {
   if (!isClient)
     return false;
@@ -10328,7 +10444,7 @@ var getScrollTop = (container) => {
   return container.scrollTop;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/error.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/error.mjs
 var ElementPlusError = class extends Error {
   constructor(m2) {
     super(m2);
@@ -10341,7 +10457,7 @@ function throwError(scope, m2) {
 function debugWarn(scope, message2) {
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/affix/src/affix2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/affix/src/affix2.mjs
 var COMPONENT_NAME = "ElAffix";
 var __default__ = defineComponent({
   name: COMPONENT_NAME
@@ -10465,10 +10581,10 @@ var _sfc_main = defineComponent({
 });
 var Affix = _export_sfc(_sfc_main, [["__file", "affix.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/affix/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/affix/index.mjs
 var ElAffix = withInstall(Affix);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/icon/src/icon.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/icon/src/icon.mjs
 var iconProps = buildProps({
   size: {
     type: definePropType([Number, String])
@@ -10478,7 +10594,7 @@ var iconProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/icon/src/icon2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/icon/src/icon2.mjs
 var __default__2 = defineComponent({
   name: "ElIcon",
   inheritAttrs: false
@@ -10510,10 +10626,10 @@ var _sfc_main2 = defineComponent({
 });
 var Icon = _export_sfc(_sfc_main2, [["__file", "icon.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/icon/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/icon/index.mjs
 var ElIcon = withInstall(Icon);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-timeout/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-timeout/index.mjs
 function useTimeout() {
   let timeoutHandle;
   const registerTimeout = (fn2, delay2) => {
@@ -10528,7 +10644,7 @@ function useTimeout() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-delayed-toggle/index.mjs
 var useDelayedToggleProps = buildProps({
   showAfter: {
     type: Number,
@@ -10578,4930 +10694,7 @@ var useDelayedToggle = ({
   };
 };
 
-// node_modules/.pnpm/@element-plus+icons-vue@2.3.1_vue@3.5.18_typescript@5.8.3_/node_modules/@element-plus/icons-vue/dist/index.js
-var add_location_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "AddLocation",
-  __name: "add-location",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 896h448q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416M512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 384h96a32 32 0 1 1 0 64h-96v96a32 32 0 0 1-64 0v-96h-96a32 32 0 0 1 0-64h96v-96a32 32 0 0 1 64 0z"
-      })
-    ]));
-  }
-});
-var aim_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Aim",
-  __name: "aim",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 96a32 32 0 0 1 32 32v192a32 32 0 0 1-64 0V128a32 32 0 0 1 32-32m0 576a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V704a32 32 0 0 1 32-32M96 512a32 32 0 0 1 32-32h192a32 32 0 0 1 0 64H128a32 32 0 0 1-32-32m576 0a32 32 0 0 1 32-32h192a32 32 0 1 1 0 64H704a32 32 0 0 1-32-32"
-      })
-    ]));
-  }
-});
-var alarm_clock_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "AlarmClock",
-  __name: "alarm-clock",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 832a320 320 0 1 0 0-640 320 320 0 0 0 0 640m0 64a384 384 0 1 1 0-768 384 384 0 0 1 0 768"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m292.288 824.576 55.424 32-48 83.136a32 32 0 1 1-55.424-32zm439.424 0-55.424 32 48 83.136a32 32 0 1 0 55.424-32zM512 512h160a32 32 0 1 1 0 64H480a32 32 0 0 1-32-32V320a32 32 0 0 1 64 0zM90.496 312.256A160 160 0 0 1 312.32 90.496l-46.848 46.848a96 96 0 0 0-128 128L90.56 312.256zm835.264 0A160 160 0 0 0 704 90.496l46.848 46.848a96 96 0 0 1 128 128z"
-      })
-    ]));
-  }
-});
-var apple_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Apple",
-  __name: "apple",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M599.872 203.776a189.44 189.44 0 0 1 64.384-4.672l2.624.128c31.168 1.024 51.2 4.096 79.488 16.32 37.632 16.128 74.496 45.056 111.488 89.344 96.384 115.264 82.752 372.8-34.752 521.728-7.68 9.728-32 41.6-30.72 39.936a426.624 426.624 0 0 1-30.08 35.776c-31.232 32.576-65.28 49.216-110.08 50.048-31.36.64-53.568-5.312-84.288-18.752l-6.528-2.88c-20.992-9.216-30.592-11.904-47.296-11.904-18.112 0-28.608 2.88-51.136 12.672l-6.464 2.816c-28.416 12.224-48.32 18.048-76.16 19.2-74.112 2.752-116.928-38.08-180.672-132.16-96.64-142.08-132.608-349.312-55.04-486.4 46.272-81.92 129.92-133.632 220.672-135.04 32.832-.576 60.288 6.848 99.648 22.72 27.136 10.88 34.752 13.76 37.376 14.272 16.256-20.16 27.776-36.992 34.56-50.24 13.568-26.304 27.2-59.968 40.704-100.8a32 32 0 1 1 60.8 20.224c-12.608 37.888-25.408 70.4-38.528 97.664zm-51.52 78.08c-14.528 17.792-31.808 37.376-51.904 58.816a32 32 0 1 1-46.72-43.776l12.288-13.248c-28.032-11.2-61.248-26.688-95.68-26.112-70.4 1.088-135.296 41.6-171.648 105.792C121.6 492.608 176 684.16 247.296 788.992c34.816 51.328 76.352 108.992 130.944 106.944 52.48-2.112 72.32-34.688 135.872-34.688 63.552 0 81.28 34.688 136.96 33.536 56.448-1.088 75.776-39.04 126.848-103.872 107.904-136.768 107.904-362.752 35.776-449.088-72.192-86.272-124.672-84.096-151.68-85.12-41.472-4.288-81.6 12.544-113.664 25.152z"
-      })
-    ]));
-  }
-});
-var arrow_down_bold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowDownBold",
-  __name: "arrow-down-bold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8 316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496z"
-      })
-    ]));
-  }
-});
-var arrow_down_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowDown",
-  __name: "arrow-down",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"
-      })
-    ]));
-  }
-});
-var arrow_down_default = arrow_down_vue_vue_type_script_setup_true_lang_default;
-var arrow_left_bold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowLeftBold",
-  __name: "arrow-left-bold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M685.248 104.704a64 64 0 0 1 0 90.496L368.448 512l316.8 316.8a64 64 0 0 1-90.496 90.496L232.704 557.248a64 64 0 0 1 0-90.496l362.048-362.048a64 64 0 0 1 90.496 0z"
-      })
-    ]));
-  }
-});
-var arrow_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowLeft",
-  __name: "arrow-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z"
-      })
-    ]));
-  }
-});
-var arrow_left_default = arrow_left_vue_vue_type_script_setup_true_lang_default;
-var arrow_right_bold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowRightBold",
-  __name: "arrow-right-bold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0z"
-      })
-    ]));
-  }
-});
-var arrow_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowRight",
-  __name: "arrow-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"
-      })
-    ]));
-  }
-});
-var arrow_right_default = arrow_right_vue_vue_type_script_setup_true_lang_default;
-var arrow_up_bold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowUpBold",
-  __name: "arrow-up-bold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M104.704 685.248a64 64 0 0 0 90.496 0l316.8-316.8 316.8 316.8a64 64 0 0 0 90.496-90.496L557.248 232.704a64 64 0 0 0-90.496 0L104.704 594.752a64 64 0 0 0 0 90.496z"
-      })
-    ]));
-  }
-});
-var arrow_up_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ArrowUp",
-  __name: "arrow-up",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m488.832 344.32-339.84 356.672a32 32 0 0 0 0 44.16l.384.384a29.44 29.44 0 0 0 42.688 0l320-335.872 319.872 335.872a29.44 29.44 0 0 0 42.688 0l.384-.384a32 32 0 0 0 0-44.16L535.168 344.32a32 32 0 0 0-46.336 0"
-      })
-    ]));
-  }
-});
-var arrow_up_default = arrow_up_vue_vue_type_script_setup_true_lang_default;
-var avatar_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Avatar",
-  __name: "avatar",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M628.736 528.896A416 416 0 0 1 928 928H96a415.872 415.872 0 0 1 299.264-399.104L512 704zM720 304a208 208 0 1 1-416 0 208 208 0 0 1 416 0"
-      })
-    ]));
-  }
-});
-var back_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Back",
-  __name: "back",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312z"
-      })
-    ]));
-  }
-});
-var back_default = back_vue_vue_type_script_setup_true_lang_default;
-var baseball_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Baseball",
-  __name: "baseball",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M195.2 828.8a448 448 0 1 1 633.6-633.6 448 448 0 0 1-633.6 633.6zm45.248-45.248a384 384 0 1 0 543.104-543.104 384 384 0 0 0-543.104 543.104"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M497.472 96.896c22.784 4.672 44.416 9.472 64.896 14.528a256.128 256.128 0 0 0 350.208 350.208c5.056 20.48 9.856 42.112 14.528 64.896A320.128 320.128 0 0 1 497.472 96.896zM108.48 491.904a320.128 320.128 0 0 1 423.616 423.68c-23.04-3.648-44.992-7.424-65.728-11.52a256.128 256.128 0 0 0-346.496-346.432 1736.64 1736.64 0 0 1-11.392-65.728z"
-      })
-    ]));
-  }
-});
-var basketball_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Basketball",
-  __name: "basketball",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M778.752 788.224a382.464 382.464 0 0 0 116.032-245.632 256.512 256.512 0 0 0-241.728-13.952 762.88 762.88 0 0 1 125.696 259.584zm-55.04 44.224a699.648 699.648 0 0 0-125.056-269.632 256.128 256.128 0 0 0-56.064 331.968 382.72 382.72 0 0 0 181.12-62.336m-254.08 61.248A320.128 320.128 0 0 1 557.76 513.6a715.84 715.84 0 0 0-48.192-48.128 320.128 320.128 0 0 1-379.264 88.384 382.4 382.4 0 0 0 110.144 229.696 382.4 382.4 0 0 0 229.184 110.08zM129.28 481.088a256.128 256.128 0 0 0 331.072-56.448 699.648 699.648 0 0 0-268.8-124.352 382.656 382.656 0 0 0-62.272 180.8m106.56-235.84a762.88 762.88 0 0 1 258.688 125.056 256.512 256.512 0 0 0-13.44-241.088A382.464 382.464 0 0 0 235.84 245.248zm318.08-114.944c40.576 89.536 37.76 193.92-8.448 281.344a779.84 779.84 0 0 1 66.176 66.112 320.832 320.832 0 0 1 282.112-8.128 382.4 382.4 0 0 0-110.144-229.12 382.4 382.4 0 0 0-229.632-110.208zM828.8 828.8a448 448 0 1 1-633.6-633.6 448 448 0 0 1 633.6 633.6"
-      })
-    ]));
-  }
-});
-var bell_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "BellFilled",
-  __name: "bell-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 832a128 128 0 0 1-256 0zm192-64H134.4a38.4 38.4 0 0 1 0-76.8H192V448c0-154.88 110.08-284.16 256.32-313.6a64 64 0 1 1 127.36 0A320.128 320.128 0 0 1 832 448v243.2h57.6a38.4 38.4 0 0 1 0 76.8z"
-      })
-    ]));
-  }
-});
-var bell_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Bell",
-  __name: "bell",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a64 64 0 0 1 64 64v64H448v-64a64 64 0 0 1 64-64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 768h512V448a256 256 0 1 0-512 0zm256-640a320 320 0 0 1 320 320v384H192V448a320 320 0 0 1 320-320"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M96 768h832q32 0 32 32t-32 32H96q-32 0-32-32t32-32m352 128h128a64 64 0 0 1-128 0"
-      })
-    ]));
-  }
-});
-var bicycle_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Bicycle",
-  __name: "bicycle",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 832a128 128 0 1 0 0-256 128 128 0 0 0 0 256m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 672h320q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 832a128 128 0 1 0 0-256 128 128 0 0 0 0 256m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 192a32 32 0 0 1 0-64h160a32 32 0 0 1 31.04 24.256l96 384a32 32 0 0 1-62.08 15.488L615.04 192zM96 384a32 32 0 0 1 0-64h128a32 32 0 0 1 30.336 21.888l64 192a32 32 0 1 1-60.672 20.224L200.96 384z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m373.376 599.808-42.752-47.616 320-288 42.752 47.616z"
-      })
-    ]));
-  }
-});
-var bottom_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "BottomLeft",
-  __name: "bottom-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 768h416a32 32 0 1 1 0 64H224a32 32 0 0 1-32-32V352a32 32 0 0 1 64 0z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M246.656 822.656a32 32 0 0 1-45.312-45.312l544-544a32 32 0 0 1 45.312 45.312l-544 544z"
-      })
-    ]));
-  }
-});
-var bottom_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "BottomRight",
-  __name: "bottom-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 768a32 32 0 1 0 0 64h448a32 32 0 0 0 32-32V352a32 32 0 0 0-64 0v416z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M777.344 822.656a32 32 0 0 0 45.312-45.312l-544-544a32 32 0 0 0-45.312 45.312z"
-      })
-    ]));
-  }
-});
-var bottom_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Bottom",
-  __name: "bottom",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 805.888V168a32 32 0 1 0-64 0v637.888L246.656 557.952a30.72 30.72 0 0 0-45.312 0 35.52 35.52 0 0 0 0 48.064l288 306.048a30.72 30.72 0 0 0 45.312 0l288-306.048a35.52 35.52 0 0 0 0-48 30.72 30.72 0 0 0-45.312 0L544 805.824z"
-      })
-    ]));
-  }
-});
-var bowl_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Bowl",
-  __name: "bowl",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M714.432 704a351.744 351.744 0 0 0 148.16-256H161.408a351.744 351.744 0 0 0 148.16 256zM288 766.592A415.68 415.68 0 0 1 96 416a32 32 0 0 1 32-32h768a32 32 0 0 1 32 32 415.68 415.68 0 0 1-192 350.592V832a64 64 0 0 1-64 64H352a64 64 0 0 1-64-64zM493.248 320h-90.496l254.4-254.4a32 32 0 1 1 45.248 45.248zm187.328 0h-128l269.696-155.712a32 32 0 0 1 32 55.424zM352 768v64h320v-64z"
-      })
-    ]));
-  }
-});
-var box_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Box",
-  __name: "box",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M317.056 128 128 344.064V896h768V344.064L706.944 128zm-14.528-64h418.944a32 32 0 0 1 24.064 10.88l206.528 236.096A32 32 0 0 1 960 332.032V928a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V332.032a32 32 0 0 1 7.936-21.12L278.4 75.008A32 32 0 0 1 302.528 64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M64 320h896v64H64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 327.872V640h128V327.872L526.08 128h-28.16zM448 64h128l64 256v352a32 32 0 0 1-32 32H416a32 32 0 0 1-32-32V320z"
-      })
-    ]));
-  }
-});
-var briefcase_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Briefcase",
-  __name: "briefcase",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M320 320V128h384v192h192v192H128V320zM128 576h768v320H128zm256-256h256.064V192H384z"
-      })
-    ]));
-  }
-});
-var brush_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "BrushFilled",
-  __name: "brush-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M608 704v160a96 96 0 0 1-192 0V704h-96a128 128 0 0 1-128-128h640a128 128 0 0 1-128 128zM192 512V128.064h640V512z"
-      })
-    ]));
-  }
-});
-var brush_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Brush",
-  __name: "brush",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M896 448H128v192a64 64 0 0 0 64 64h192v192h256V704h192a64 64 0 0 0 64-64zm-770.752-64c0-47.552 5.248-90.24 15.552-128 14.72-54.016 42.496-107.392 83.2-160h417.28l-15.36 70.336L736 96h211.2c-24.832 42.88-41.92 96.256-51.2 160a663.872 663.872 0 0 0-6.144 128H960v256a128 128 0 0 1-128 128H704v160a32 32 0 0 1-32 32H352a32 32 0 0 1-32-32V768H192A128 128 0 0 1 64 640V384h61.248zm64 0h636.544c-2.048-45.824.256-91.584 6.848-137.216 4.48-30.848 10.688-59.776 18.688-86.784h-96.64l-221.12 141.248L561.92 160H256.512c-25.856 37.888-43.776 75.456-53.952 112.832-8.768 32.064-13.248 69.12-13.312 111.168z"
-      })
-    ]));
-  }
-});
-var burger_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Burger",
-  __name: "burger",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 512a32 32 0 0 0-32 32v64a32 32 0 0 0 30.08 32H864a32 32 0 0 0 32-32v-64a32 32 0 0 0-32-32zm736-58.56A96 96 0 0 1 960 544v64a96 96 0 0 1-51.968 85.312L855.36 833.6a96 96 0 0 1-89.856 62.272H258.496A96 96 0 0 1 168.64 833.6l-52.608-140.224A96 96 0 0 1 64 608v-64a96 96 0 0 1 64-90.56V448a384 384 0 1 1 768 5.44M832 448a320 320 0 0 0-640 0zM512 704H188.352l40.192 107.136a32 32 0 0 0 29.952 20.736h507.008a32 32 0 0 0 29.952-20.736L835.648 704z"
-      })
-    ]));
-  }
-});
-var calendar_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Calendar",
-  __name: "calendar",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64"
-      })
-    ]));
-  }
-});
-var calendar_default = calendar_vue_vue_type_script_setup_true_lang_default;
-var camera_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CameraFilled",
-  __name: "camera-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 224a64 64 0 0 0-64 64v512a64 64 0 0 0 64 64h704a64 64 0 0 0 64-64V288a64 64 0 0 0-64-64H748.416l-46.464-92.672A64 64 0 0 0 644.736 96H379.328a64 64 0 0 0-57.216 35.392L275.776 224zm352 435.2a115.2 115.2 0 1 0 0-230.4 115.2 115.2 0 0 0 0 230.4m0 140.8a256 256 0 1 1 0-512 256 256 0 0 1 0 512"
-      })
-    ]));
-  }
-});
-var camera_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Camera",
-  __name: "camera",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M896 256H128v576h768zm-199.424-64-32.064-64h-304.96l-32 64zM96 192h160l46.336-92.608A64 64 0 0 1 359.552 64h304.96a64 64 0 0 1 57.216 35.328L768.192 192H928a32 32 0 0 1 32 32v640a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32m416 512a160 160 0 1 0 0-320 160 160 0 0 0 0 320m0 64a224 224 0 1 1 0-448 224 224 0 0 1 0 448"
-      })
-    ]));
-  }
-});
-var caret_bottom_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CaretBottom",
-  __name: "caret-bottom",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m192 384 320 384 320-384z"
-      })
-    ]));
-  }
-});
-var caret_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CaretLeft",
-  __name: "caret-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M672 192 288 511.936 672 832z"
-      })
-    ]));
-  }
-});
-var caret_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CaretRight",
-  __name: "caret-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 192v640l384-320.064z"
-      })
-    ]));
-  }
-});
-var caret_right_default = caret_right_vue_vue_type_script_setup_true_lang_default;
-var caret_top_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CaretTop",
-  __name: "caret-top",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 320 192 704h639.936z"
-      })
-    ]));
-  }
-});
-var caret_top_default = caret_top_vue_vue_type_script_setup_true_lang_default;
-var cellphone_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Cellphone",
-  __name: "cellphone",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 128a64 64 0 0 0-64 64v640a64 64 0 0 0 64 64h512a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64zm0-64h512a128 128 0 0 1 128 128v640a128 128 0 0 1-128 128H256a128 128 0 0 1-128-128V192A128 128 0 0 1 256 64m128 128h256a32 32 0 1 1 0 64H384a32 32 0 0 1 0-64m128 640a64 64 0 1 1 0-128 64 64 0 0 1 0 128"
-      })
-    ]));
-  }
-});
-var chat_dot_round_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatDotRound",
-  __name: "chat-dot-round",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m174.72 855.68 135.296-45.12 23.68 11.84C388.096 849.536 448.576 864 512 864c211.84 0 384-166.784 384-352S723.84 160 512 160 128 326.784 128 512c0 69.12 24.96 139.264 70.848 199.232l22.08 28.8-46.272 115.584zm-45.248 82.56A32 32 0 0 1 89.6 896l58.368-145.92C94.72 680.32 64 596.864 64 512 64 299.904 256 96 512 96s448 203.904 448 416-192 416-448 416a461.056 461.056 0 0 1-206.912-48.384l-175.616 58.56z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 563.2a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4m192 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4m-384 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4"
-      })
-    ]));
-  }
-});
-var chat_dot_square_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatDotSquare",
-  __name: "chat-dot-square",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64v570.88zM296 800 147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 499.2a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4zm192 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4zm-384 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4z"
-      })
-    ]));
-  }
-});
-var chat_line_round_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatLineRound",
-  __name: "chat-line-round",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m174.72 855.68 135.296-45.12 23.68 11.84C388.096 849.536 448.576 864 512 864c211.84 0 384-166.784 384-352S723.84 160 512 160 128 326.784 128 512c0 69.12 24.96 139.264 70.848 199.232l22.08 28.8-46.272 115.584zm-45.248 82.56A32 32 0 0 1 89.6 896l58.368-145.92C94.72 680.32 64 596.864 64 512 64 299.904 256 96 512 96s448 203.904 448 416-192 416-448 416a461.056 461.056 0 0 1-206.912-48.384l-175.616 58.56z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 576h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32m32-192h256q32 0 32 32t-32 32H384q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var chat_line_square_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatLineSquare",
-  __name: "chat-line-square",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 826.88 273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64zM296 800 147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 512h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32m0-192h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var chat_round_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatRound",
-  __name: "chat-round",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m174.72 855.68 130.048-43.392 23.424 11.392C382.4 849.984 444.352 864 512 864c223.744 0 384-159.872 384-352 0-192.832-159.104-352-384-352S128 319.168 128 512a341.12 341.12 0 0 0 69.248 204.288l21.632 28.8-44.16 110.528zm-45.248 82.56A32 32 0 0 1 89.6 896l56.512-141.248A405.12 405.12 0 0 1 64 512C64 299.904 235.648 96 512 96s448 203.904 448 416-173.44 416-448 416c-79.68 0-150.848-17.152-211.712-46.72l-170.88 56.96z"
-      })
-    ]));
-  }
-});
-var chat_square_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChatSquare",
-  __name: "chat-square",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64v570.88zM296 800 147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128z"
-      })
-    ]));
-  }
-});
-var check_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Check",
-  __name: "check",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M406.656 706.944 195.84 496.256a32 32 0 1 0-45.248 45.248l256 256 512-512a32 32 0 0 0-45.248-45.248L406.592 706.944z"
-      })
-    ]));
-  }
-});
-var check_default = check_vue_vue_type_script_setup_true_lang_default;
-var checked_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Checked",
-  __name: "checked",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 192h160v736H160V192h160.064v64H704zM311.616 537.28l-45.312 45.248L447.36 763.52l316.8-316.8-45.312-45.184L447.36 673.024zM384 192V96h256v96z"
-      })
-    ]));
-  }
-});
-var cherry_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Cherry",
-  __name: "cherry",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M261.056 449.6c13.824-69.696 34.88-128.96 63.36-177.728 23.744-40.832 61.12-88.64 112.256-143.872H320a32 32 0 0 1 0-64h384a32 32 0 1 1 0 64H554.752c14.912 39.168 41.344 86.592 79.552 141.76 47.36 68.48 84.8 106.752 106.304 114.304a224 224 0 1 1-84.992 14.784c-22.656-22.912-47.04-53.76-73.92-92.608-38.848-56.128-67.008-105.792-84.352-149.312-55.296 58.24-94.528 107.52-117.76 147.2-23.168 39.744-41.088 88.768-53.568 147.072a224.064 224.064 0 1 1-64.96-1.6zM288 832a160 160 0 1 0 0-320 160 160 0 0 0 0 320m448-64a160 160 0 1 0 0-320 160 160 0 0 0 0 320"
-      })
-    ]));
-  }
-});
-var chicken_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Chicken",
-  __name: "chicken",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M349.952 716.992 478.72 588.16a106.688 106.688 0 0 1-26.176-19.072 106.688 106.688 0 0 1-19.072-26.176L304.704 671.744c.768 3.072 1.472 6.144 2.048 9.216l2.048 31.936 31.872 1.984c3.136.64 6.208 1.28 9.28 2.112zm57.344 33.152a128 128 0 1 1-216.32 114.432l-1.92-32-32-1.92a128 128 0 1 1 114.432-216.32L416.64 469.248c-2.432-101.44 58.112-239.104 149.056-330.048 107.328-107.328 231.296-85.504 316.8 0 85.44 85.44 107.328 209.408 0 316.8-91.008 90.88-228.672 151.424-330.112 149.056L407.296 750.08zm90.496-226.304c49.536 49.536 233.344-7.04 339.392-113.088 78.208-78.208 63.232-163.072 0-226.304-63.168-63.232-148.032-78.208-226.24 0C504.896 290.496 448.32 474.368 497.792 523.84M244.864 708.928a64 64 0 1 0-59.84 59.84l56.32-3.52zm8.064 127.68a64 64 0 1 0 59.84-59.84l-56.32 3.52-3.52 56.32z"
-      })
-    ]));
-  }
-});
-var chrome_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ChromeFilled",
-  __name: "chrome-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M938.67 512.01c0-44.59-6.82-87.6-19.54-128H682.67a212.372 212.372 0 0 1 42.67 128c.06 38.71-10.45 76.7-30.42 109.87l-182.91 316.8c235.65-.01 426.66-191.02 426.66-426.67z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M576.79 401.63a127.92 127.92 0 0 0-63.56-17.6c-22.36-.22-44.39 5.43-63.89 16.38s-35.79 26.82-47.25 46.02a128.005 128.005 0 0 0-2.16 127.44l1.24 2.13a127.906 127.906 0 0 0 46.36 46.61 127.907 127.907 0 0 0 63.38 17.44c22.29.2 44.24-5.43 63.68-16.33a127.94 127.94 0 0 0 47.16-45.79v-.01l1.11-1.92a127.984 127.984 0 0 0 .29-127.46 127.957 127.957 0 0 0-46.36-46.91"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M394.45 333.96A213.336 213.336 0 0 1 512 298.67h369.58A426.503 426.503 0 0 0 512 85.34a425.598 425.598 0 0 0-171.74 35.98 425.644 425.644 0 0 0-142.62 102.22l118.14 204.63a213.397 213.397 0 0 1 78.67-94.21m117.56 604.72H512zm-97.25-236.73a213.284 213.284 0 0 1-89.54-86.81L142.48 298.6c-36.35 62.81-57.13 135.68-57.13 213.42 0 203.81 142.93 374.22 333.95 416.55h.04l118.19-204.71a213.315 213.315 0 0 1-122.77-21.91z"
-      })
-    ]));
-  }
-});
-var circle_check_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CircleCheckFilled",
-  __name: "circle-check-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"
-      })
-    ]));
-  }
-});
-var circle_check_filled_default = circle_check_filled_vue_vue_type_script_setup_true_lang_default;
-var circle_check_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CircleCheck",
-  __name: "circle-check",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M745.344 361.344a32 32 0 0 1 45.312 45.312l-288 288a32 32 0 0 1-45.312 0l-160-160a32 32 0 1 1 45.312-45.312L480 626.752l265.344-265.408z"
-      })
-    ]));
-  }
-});
-var circle_check_default = circle_check_vue_vue_type_script_setup_true_lang_default;
-var circle_close_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CircleCloseFilled",
-  __name: "circle-close-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 393.664L407.936 353.6a38.4 38.4 0 1 0-54.336 54.336L457.664 512 353.6 616.064a38.4 38.4 0 1 0 54.336 54.336L512 566.336 616.064 670.4a38.4 38.4 0 1 0 54.336-54.336L566.336 512 670.4 407.936a38.4 38.4 0 1 0-54.336-54.336z"
-      })
-    ]));
-  }
-});
-var circle_close_filled_default = circle_close_filled_vue_vue_type_script_setup_true_lang_default;
-var circle_close_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CircleClose",
-  __name: "circle-close",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m466.752 512-90.496-90.496a32 32 0 0 1 45.248-45.248L512 466.752l90.496-90.496a32 32 0 1 1 45.248 45.248L557.248 512l90.496 90.496a32 32 0 1 1-45.248 45.248L512 557.248l-90.496 90.496a32 32 0 0 1-45.248-45.248z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      })
-    ]));
-  }
-});
-var circle_close_default = circle_close_vue_vue_type_script_setup_true_lang_default;
-var circle_plus_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CirclePlusFilled",
-  __name: "circle-plus-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m-38.4 409.6H326.4a38.4 38.4 0 1 0 0 76.8h147.2v147.2a38.4 38.4 0 0 0 76.8 0V550.4h147.2a38.4 38.4 0 0 0 0-76.8H550.4V326.4a38.4 38.4 0 1 0-76.8 0v147.2z"
-      })
-    ]));
-  }
-});
-var circle_plus_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CirclePlus",
-  __name: "circle-plus",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 480h320a32 32 0 1 1 0 64H352a32 32 0 0 1 0-64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 672V352a32 32 0 1 1 64 0v320a32 32 0 0 1-64 0"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      })
-    ]));
-  }
-});
-var clock_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Clock",
-  __name: "clock",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 256a32 32 0 0 1 32 32v256a32 32 0 0 1-64 0V288a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 512h256q32 0 32 32t-32 32H480q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var clock_default = clock_vue_vue_type_script_setup_true_lang_default;
-var close_bold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CloseBold",
-  __name: "close-bold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"
-      })
-    ]));
-  }
-});
-var close_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Close",
-  __name: "close",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"
-      })
-    ]));
-  }
-});
-var close_default = close_vue_vue_type_script_setup_true_lang_default;
-var cloudy_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Cloudy",
-  __name: "cloudy",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M598.4 831.872H328.192a256 256 0 0 1-34.496-510.528A352 352 0 1 1 598.4 831.872m-271.36-64h272.256a288 288 0 1 0-248.512-417.664L335.04 381.44l-34.816 3.584a192 192 0 0 0 26.88 382.848z"
-      })
-    ]));
-  }
-});
-var coffee_cup_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CoffeeCup",
-  __name: "coffee-cup",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 192a192 192 0 1 1-8 383.808A256.128 256.128 0 0 1 512 768H320A256 256 0 0 1 64 512V160a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32zm0 64v256a128 128 0 1 0 0-256M96 832h640a32 32 0 1 1 0 64H96a32 32 0 1 1 0-64m32-640v320a192 192 0 0 0 192 192h192a192 192 0 0 0 192-192V192z"
-      })
-    ]));
-  }
-});
-var coffee_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Coffee",
-  __name: "coffee",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M822.592 192h14.272a32 32 0 0 1 31.616 26.752l21.312 128A32 32 0 0 1 858.24 384h-49.344l-39.04 546.304A32 32 0 0 1 737.92 960H285.824a32 32 0 0 1-32-29.696L214.912 384H165.76a32 32 0 0 1-31.552-37.248l21.312-128A32 32 0 0 1 187.136 192h14.016l-6.72-93.696A32 32 0 0 1 226.368 64h571.008a32 32 0 0 1 31.936 34.304zm-64.128 0 4.544-64H260.736l4.544 64h493.184m-548.16 128H820.48l-10.688-64H214.208l-10.688 64h6.784m68.736 64 36.544 512H708.16l36.544-512z"
-      })
-    ]));
-  }
-});
-var coin_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Coin",
-  __name: "coin",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m161.92 580.736 29.888 58.88C171.328 659.776 160 681.728 160 704c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 615.808 928 657.664 928 704c0 129.728-188.544 224-416 224S96 833.728 96 704c0-46.592 24.32-88.576 65.92-123.264z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m161.92 388.736 29.888 58.88C171.328 467.84 160 489.792 160 512c0 82.304 155.328 160 352 160s352-77.696 352-160c0-22.272-11.392-44.16-31.808-64.32l30.464-58.432C903.936 423.808 928 465.664 928 512c0 129.728-188.544 224-416 224S96 641.728 96 512c0-46.592 24.32-88.576 65.92-123.264z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 544c-227.456 0-416-94.272-416-224S284.544 96 512 96s416 94.272 416 224-188.544 224-416 224m0-64c196.672 0 352-77.696 352-160S708.672 160 512 160s-352 77.696-352 160 155.328 160 352 160"
-      })
-    ]));
-  }
-});
-var cold_drink_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ColdDrink",
-  __name: "cold-drink",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 64a192 192 0 1 1-69.952 370.88L480 725.376V896h96a32 32 0 1 1 0 64H320a32 32 0 1 1 0-64h96V725.376L76.8 273.536a64 64 0 0 1-12.8-38.4v-10.688a32 32 0 0 1 32-32h71.808l-65.536-83.84a32 32 0 0 1 50.432-39.424l96.256 123.264h337.728A192.064 192.064 0 0 1 768 64M656.896 192.448H800a32 32 0 0 1 32 32v10.624a64 64 0 0 1-12.8 38.4l-80.448 107.2a128 128 0 1 0-81.92-188.16v-.064zm-357.888 64 129.472 165.76a32 32 0 0 1-50.432 39.36l-160.256-205.12H144l304 404.928 304-404.928z"
-      })
-    ]));
-  }
-});
-var collection_tag_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CollectionTag",
-  __name: "collection-tag",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 128v698.88l196.032-156.864a96 96 0 0 1 119.936 0L768 826.816V128zm-32-64h576a32 32 0 0 1 32 32v797.44a32 32 0 0 1-51.968 24.96L531.968 720a32 32 0 0 0-39.936 0L243.968 918.4A32 32 0 0 1 192 893.44V96a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var collection_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Collection",
-  __name: "collection",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 736h640V128H256a64 64 0 0 0-64 64zm64-672h608a32 32 0 0 1 32 32v672a32 32 0 0 1-32 32H160l-32 57.536V192A128 128 0 0 1 256 64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M240 800a48 48 0 1 0 0 96h592v-96zm0-64h656v160a64 64 0 0 1-64 64H240a112 112 0 0 1 0-224m144-608v250.88l96-76.8 96 76.8V128zm-64-64h320v381.44a32 32 0 0 1-51.968 24.96L480 384l-108.032 86.4A32 32 0 0 1 320 445.44z"
-      })
-    ]));
-  }
-});
-var comment_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Comment",
-  __name: "comment",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M736 504a56 56 0 1 1 0-112 56 56 0 0 1 0 112m-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112m-224 0a56 56 0 1 1 0-112 56 56 0 0 1 0 112M128 128v640h192v160l224-160h352V128z"
-      })
-    ]));
-  }
-});
-var compass_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Compass",
-  __name: "compass",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M725.888 315.008C676.48 428.672 624 513.28 568.576 568.64c-55.424 55.424-139.968 107.904-253.568 157.312a12.8 12.8 0 0 1-16.896-16.832c49.536-113.728 102.016-198.272 157.312-253.632 55.36-55.296 139.904-107.776 253.632-157.312a12.8 12.8 0 0 1 16.832 16.832"
-      })
-    ]));
-  }
-});
-var connection_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Connection",
-  __name: "connection",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 384v64H448a128 128 0 0 0-128 128v128a128 128 0 0 0 128 128h320a128 128 0 0 0 128-128V576a128 128 0 0 0-64-110.848V394.88c74.56 26.368 128 97.472 128 181.056v128a192 192 0 0 1-192 192H448a192 192 0 0 1-192-192V576a192 192 0 0 1 192-192z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 640v-64h192a128 128 0 0 0 128-128V320a128 128 0 0 0-128-128H256a128 128 0 0 0-128 128v128a128 128 0 0 0 64 110.848v70.272A192.064 192.064 0 0 1 64 448V320a192 192 0 0 1 192-192h320a192 192 0 0 1 192 192v128a192 192 0 0 1-192 192z"
-      })
-    ]));
-  }
-});
-var coordinate_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Coordinate",
-  __name: "coordinate",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 512h64v320h-64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 896h640a64 64 0 0 0-64-64H256a64 64 0 0 0-64 64m64-128h512a128 128 0 0 1 128 128v64H128v-64a128 128 0 0 1 128-128m256-256a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512"
-      })
-    ]));
-  }
-});
-var copy_document_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CopyDocument",
-  __name: "copy-document",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 832a128 128 0 0 1-128 128H192A128 128 0 0 1 64 832V384a128 128 0 0 1 128-128v64a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 128a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V192a64 64 0 0 0-64-64zm0-64h448a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H384a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64"
-      })
-    ]));
-  }
-});
-var cpu_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Cpu",
-  __name: "cpu",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M320 256a64 64 0 0 0-64 64v384a64 64 0 0 0 64 64h384a64 64 0 0 0 64-64V320a64 64 0 0 0-64-64zm0-64h384a128 128 0 0 1 128 128v384a128 128 0 0 1-128 128H320a128 128 0 0 1-128-128V320a128 128 0 0 1 128-128"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a32 32 0 0 1 32 32v128h-64V96a32 32 0 0 1 32-32m160 0a32 32 0 0 1 32 32v128h-64V96a32 32 0 0 1 32-32m-320 0a32 32 0 0 1 32 32v128h-64V96a32 32 0 0 1 32-32m160 896a32 32 0 0 1-32-32V800h64v128a32 32 0 0 1-32 32m160 0a32 32 0 0 1-32-32V800h64v128a32 32 0 0 1-32 32m-320 0a32 32 0 0 1-32-32V800h64v128a32 32 0 0 1-32 32M64 512a32 32 0 0 1 32-32h128v64H96a32 32 0 0 1-32-32m0-160a32 32 0 0 1 32-32h128v64H96a32 32 0 0 1-32-32m0 320a32 32 0 0 1 32-32h128v64H96a32 32 0 0 1-32-32m896-160a32 32 0 0 1-32 32H800v-64h128a32 32 0 0 1 32 32m0-160a32 32 0 0 1-32 32H800v-64h128a32 32 0 0 1 32 32m0 320a32 32 0 0 1-32 32H800v-64h128a32 32 0 0 1 32 32"
-      })
-    ]));
-  }
-});
-var credit_card_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "CreditCard",
-  __name: "credit-card",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M896 324.096c0-42.368-2.496-55.296-9.536-68.48a52.352 52.352 0 0 0-22.144-22.08c-13.12-7.04-26.048-9.536-68.416-9.536H228.096c-42.368 0-55.296 2.496-68.48 9.536a52.352 52.352 0 0 0-22.08 22.144c-7.04 13.12-9.536 26.048-9.536 68.416v375.808c0 42.368 2.496 55.296 9.536 68.48a52.352 52.352 0 0 0 22.144 22.08c13.12 7.04 26.048 9.536 68.416 9.536h567.808c42.368 0 55.296-2.496 68.48-9.536a52.352 52.352 0 0 0 22.08-22.144c7.04-13.12 9.536-26.048 9.536-68.416zm64 0v375.808c0 57.088-5.952 77.76-17.088 98.56-11.136 20.928-27.52 37.312-48.384 48.448-20.864 11.136-41.6 17.088-98.56 17.088H228.032c-57.088 0-77.76-5.952-98.56-17.088a116.288 116.288 0 0 1-48.448-48.384c-11.136-20.864-17.088-41.6-17.088-98.56V324.032c0-57.088 5.952-77.76 17.088-98.56 11.136-20.928 27.52-37.312 48.384-48.448 20.864-11.136 41.6-17.088 98.56-17.088H795.84c57.088 0 77.76 5.952 98.56 17.088 20.928 11.136 37.312 27.52 48.448 48.384 11.136 20.864 17.088 41.6 17.088 98.56z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M64 320h896v64H64zm0 128h896v64H64zm128 192h256v64H192z"
-      })
-    ]));
-  }
-});
-var crop_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Crop",
-  __name: "crop",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 768h672a32 32 0 1 1 0 64H224a32 32 0 0 1-32-32V96a32 32 0 0 1 64 0z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 224v704a32 32 0 1 1-64 0V256H96a32 32 0 0 1 0-64h704a32 32 0 0 1 32 32"
-      })
-    ]));
-  }
-});
-var d_arrow_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DArrowLeft",
-  __name: "d-arrow-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M529.408 149.376a29.12 29.12 0 0 1 41.728 0 30.592 30.592 0 0 1 0 42.688L259.264 511.936l311.872 319.936a30.592 30.592 0 0 1-.512 43.264 29.12 29.12 0 0 1-41.216-.512L197.76 534.272a32 32 0 0 1 0-44.672l331.648-340.224zm256 0a29.12 29.12 0 0 1 41.728 0 30.592 30.592 0 0 1 0 42.688L515.264 511.936l311.872 319.936a30.592 30.592 0 0 1-.512 43.264 29.12 29.12 0 0 1-41.216-.512L453.76 534.272a32 32 0 0 1 0-44.672l331.648-340.224z"
-      })
-    ]));
-  }
-});
-var d_arrow_left_default = d_arrow_left_vue_vue_type_script_setup_true_lang_default;
-var d_arrow_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DArrowRight",
-  __name: "d-arrow-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M452.864 149.312a29.12 29.12 0 0 1 41.728.064L826.24 489.664a32 32 0 0 1 0 44.672L494.592 874.624a29.12 29.12 0 0 1-41.728 0 30.592 30.592 0 0 1 0-42.752L764.736 512 452.864 192a30.592 30.592 0 0 1 0-42.688m-256 0a29.12 29.12 0 0 1 41.728.064L570.24 489.664a32 32 0 0 1 0 44.672L238.592 874.624a29.12 29.12 0 0 1-41.728 0 30.592 30.592 0 0 1 0-42.752L508.736 512 196.864 192a30.592 30.592 0 0 1 0-42.688z"
-      })
-    ]));
-  }
-});
-var d_arrow_right_default = d_arrow_right_vue_vue_type_script_setup_true_lang_default;
-var d_caret_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DCaret",
-  __name: "d-caret",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m512 128 288 320H224zM224 576h576L512 896z"
-      })
-    ]));
-  }
-});
-var data_analysis_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DataAnalysis",
-  __name: "data-analysis",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m665.216 768 110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32l110.848-192H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32zM832 192H192v512h640zM352 448a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0v-64a32 32 0 0 1 32-32m160-64a32 32 0 0 1 32 32v128a32 32 0 0 1-64 0V416a32 32 0 0 1 32-32m160-64a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V352a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var data_board_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DataBoard",
-  __name: "data-board",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M32 128h960v64H32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 192v512h640V192zm-64-64h768v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M322.176 960H248.32l144.64-250.56 55.424 32zm453.888 0h-73.856L576 741.44l55.424-32z"
-      })
-    ]));
-  }
-});
-var data_line_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DataLine",
-  __name: "data-line",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M359.168 768H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32H665.216l110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32zM832 192H192v512h640zM342.656 534.656a32 32 0 1 1-45.312-45.312L444.992 341.76l125.44 94.08L679.04 300.032a32 32 0 1 1 49.92 39.936L581.632 524.224 451.008 426.24 342.656 534.592z"
-      })
-    ]));
-  }
-});
-var delete_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DeleteFilled",
-  __name: "delete-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 192V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64H96a32 32 0 0 1 0-64zm64 0h192v-64H416zM192 960a32 32 0 0 1-32-32V256h704v672a32 32 0 0 1-32 32zm224-192a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32m192 0a32 32 0 0 0 32-32V416a32 32 0 0 0-64 0v320a32 32 0 0 0 32 32"
-      })
-    ]));
-  }
-});
-var delete_location_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DeleteLocation",
-  __name: "delete-location",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 896h448q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416M512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 384h256q32 0 32 32t-32 32H384q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var delete_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Delete",
-  __name: "delete",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32zm448-64v-64H416v64zM224 896h576V256H224zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32m192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32"
-      })
-    ]));
-  }
-});
-var delete_default = delete_vue_vue_type_script_setup_true_lang_default;
-var dessert_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Dessert",
-  __name: "dessert",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 416v-48a144 144 0 0 1 168.64-141.888 224.128 224.128 0 0 1 430.72 0A144 144 0 0 1 896 368v48a384 384 0 0 1-352 382.72V896h-64v-97.28A384 384 0 0 1 128 416m287.104-32.064h193.792a143.808 143.808 0 0 1 58.88-132.736 160.064 160.064 0 0 0-311.552 0 143.808 143.808 0 0 1 58.88 132.8zm-72.896 0a72 72 0 1 0-140.48 0h140.48m339.584 0h140.416a72 72 0 1 0-140.48 0zM512 736a320 320 0 0 0 318.4-288.064H193.6A320 320 0 0 0 512 736M384 896.064h256a32 32 0 1 1 0 64H384a32 32 0 1 1 0-64"
-      })
-    ]));
-  }
-});
-var discount_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Discount",
-  __name: "discount",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 704h576V318.336L552.512 115.84a64 64 0 0 0-81.024 0L224 318.336zm0 64v128h576V768zM593.024 66.304l259.2 212.096A32 32 0 0 1 864 303.168V928a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V303.168a32 32 0 0 1 11.712-24.768l259.2-212.096a128 128 0 0 1 162.112 0"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 448a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      })
-    ]));
-  }
-});
-var dish_dot_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DishDot",
-  __name: "dish-dot",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m384.064 274.56.064-50.688A128 128 0 0 1 512.128 96c70.528 0 127.68 57.152 127.68 127.68v50.752A448.192 448.192 0 0 1 955.392 768H68.544A448.192 448.192 0 0 1 384 274.56zM96 832h832a32 32 0 1 1 0 64H96a32 32 0 1 1 0-64m32-128h768a384 384 0 1 0-768 0m447.808-448v-32.32a63.68 63.68 0 0 0-63.68-63.68 64 64 0 0 0-64 63.936V256z"
-      })
-    ]));
-  }
-});
-var dish_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Dish",
-  __name: "dish",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 257.152V192h-96a32 32 0 0 1 0-64h256a32 32 0 1 1 0 64h-96v65.152A448 448 0 0 1 955.52 768H68.48A448 448 0 0 1 480 257.152M128 704h768a384 384 0 1 0-768 0M96 832h832a32 32 0 1 1 0 64H96a32 32 0 1 1 0-64"
-      })
-    ]));
-  }
-});
-var document_add_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DocumentAdd",
-  __name: "document-add",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 384H576V128H192v768h640zm-26.496-64L640 154.496V320zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m320 512V448h64v128h128v64H544v128h-64V640H352v-64z"
-      })
-    ]));
-  }
-});
-var document_checked_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DocumentChecked",
-  __name: "document-checked",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M805.504 320 640 154.496V320zM832 384H576V128H192v768h640zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m318.4 582.144 180.992-180.992L704.64 510.4 478.4 736.64 320 578.304l45.248-45.312z"
-      })
-    ]));
-  }
-});
-var document_copy_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DocumentCopy",
-  __name: "document-copy",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 320v576h576V320zm-32-64h640a32 32 0 0 1 32 32v640a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V288a32 32 0 0 1 32-32M960 96v704a32 32 0 0 1-32 32h-96v-64h64V128H384v64h-64V96a32 32 0 0 1 32-32h576a32 32 0 0 1 32 32M256 672h320v64H256zm0-192h320v64H256z"
-      })
-    ]));
-  }
-});
-var document_delete_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DocumentDelete",
-  __name: "document-delete",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M805.504 320 640 154.496V320zM832 384H576V128H192v768h640zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m308.992 546.304-90.496-90.624 45.248-45.248 90.56 90.496 90.496-90.432 45.248 45.248-90.496 90.56 90.496 90.496-45.248 45.248-90.496-90.496-90.56 90.496-45.248-45.248 90.496-90.496z"
-      })
-    ]));
-  }
-});
-var document_remove_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "DocumentRemove",
-  __name: "document-remove",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M805.504 320 640 154.496V320zM832 384H576V128H192v768h640zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m192 512h320v64H352z"
-      })
-    ]));
-  }
-});
-var document_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Document",
-  __name: "document",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 384H576V128H192v768h640zm-26.496-64L640 154.496V320zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m160 448h384v64H320zm0-192h160v64H320zm0 384h384v64H320z"
-      })
-    ]));
-  }
-});
-var document_default = document_vue_vue_type_script_setup_true_lang_default;
-var download_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Download",
-  __name: "download",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 832h704a32 32 0 1 1 0 64H160a32 32 0 1 1 0-64m384-253.696 236.288-236.352 45.248 45.248L508.8 704 192 387.2l45.248-45.248L480 584.704V128h64z"
-      })
-    ]));
-  }
-});
-var drizzling_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Drizzling",
-  __name: "drizzling",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m739.328 291.328-35.2-6.592-12.8-33.408a192.064 192.064 0 0 0-365.952 23.232l-9.92 40.896-41.472 7.04a176.32 176.32 0 0 0-146.24 173.568c0 97.28 78.72 175.936 175.808 175.936h400a192 192 0 0 0 35.776-380.672zM959.552 480a256 256 0 0 1-256 256h-400A239.808 239.808 0 0 1 63.744 496.192a240.32 240.32 0 0 1 199.488-236.8 256.128 256.128 0 0 1 487.872-30.976A256.064 256.064 0 0 1 959.552 480M288 800h64v64h-64zm192 0h64v64h-64zm-96 96h64v64h-64zm192 0h64v64h-64zm96-96h64v64h-64z"
-      })
-    ]));
-  }
-});
-var edit_pen_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "EditPen",
-  __name: "edit-pen",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m199.04 672.64 193.984 112 224-387.968-193.92-112-224 388.032zm-23.872 60.16 32.896 148.288 144.896-45.696zM455.04 229.248l193.92 112 56.704-98.112-193.984-112-56.64 98.112zM104.32 708.8l384-665.024 304.768 175.936L409.152 884.8h.064l-248.448 78.336zm384 254.272v-64h448v64h-448z"
-      })
-    ]));
-  }
-});
-var edit_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Edit",
-  __name: "edit",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 512a32 32 0 1 1 64 0v352a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h352a32 32 0 0 1 0 64H192v640h640z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m469.952 554.24 52.8-7.552L847.104 222.4a32 32 0 1 0-45.248-45.248L477.44 501.44l-7.552 52.8zm422.4-422.4a96 96 0 0 1 0 135.808l-331.84 331.84a32 32 0 0 1-18.112 9.088L436.8 623.68a32 32 0 0 1-36.224-36.224l15.104-105.6a32 32 0 0 1 9.024-18.112l331.904-331.84a96 96 0 0 1 135.744 0z"
-      })
-    ]));
-  }
-});
-var eleme_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ElemeFilled",
-  __name: "eleme-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M176 64h672c61.824 0 112 50.176 112 112v672a112 112 0 0 1-112 112H176A112 112 0 0 1 64 848V176c0-61.824 50.176-112 112-112m150.528 173.568c-152.896 99.968-196.544 304.064-97.408 456.96a330.688 330.688 0 0 0 456.96 96.64c9.216-5.888 17.6-11.776 25.152-18.56a18.24 18.24 0 0 0 4.224-24.32L700.352 724.8a47.552 47.552 0 0 0-65.536-14.272A234.56 234.56 0 0 1 310.592 641.6C240 533.248 271.104 387.968 379.456 316.48a234.304 234.304 0 0 1 276.352 15.168c1.664.832 2.56 2.56 3.392 4.224 5.888 8.384 3.328 19.328-5.12 25.216L456.832 489.6a47.552 47.552 0 0 0-14.336 65.472l16 24.384c5.888 8.384 16.768 10.88 25.216 5.056l308.224-199.936a19.584 19.584 0 0 0 6.72-23.488v-.896c-4.992-9.216-10.048-17.6-15.104-26.88-99.968-151.168-304.064-194.88-456.96-95.744zM786.88 504.704l-62.208 40.32c-8.32 5.888-10.88 16.768-4.992 25.216L760 632.32c5.888 8.448 16.768 11.008 25.152 5.12l31.104-20.16a55.36 55.36 0 0 0 16-76.48l-20.224-31.04a19.52 19.52 0 0 0-25.152-5.12z"
-      })
-    ]));
-  }
-});
-var eleme_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Eleme",
-  __name: "eleme",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M300.032 188.8c174.72-113.28 408-63.36 522.24 109.44 5.76 10.56 11.52 20.16 17.28 30.72v.96a22.4 22.4 0 0 1-7.68 26.88l-352.32 228.48c-9.6 6.72-22.08 3.84-28.8-5.76l-18.24-27.84a54.336 54.336 0 0 1 16.32-74.88l225.6-146.88c9.6-6.72 12.48-19.2 5.76-28.8-.96-1.92-1.92-3.84-3.84-4.8a267.84 267.84 0 0 0-315.84-17.28c-123.84 81.6-159.36 247.68-78.72 371.52a268.096 268.096 0 0 0 370.56 78.72 54.336 54.336 0 0 1 74.88 16.32l17.28 26.88c5.76 9.6 3.84 21.12-4.8 27.84-8.64 7.68-18.24 14.4-28.8 21.12a377.92 377.92 0 0 1-522.24-110.4c-113.28-174.72-63.36-408 111.36-522.24zm526.08 305.28a22.336 22.336 0 0 1 28.8 5.76l23.04 35.52a63.232 63.232 0 0 1-18.24 87.36l-35.52 23.04c-9.6 6.72-22.08 3.84-28.8-5.76l-46.08-71.04c-6.72-9.6-3.84-22.08 5.76-28.8l71.04-46.08z"
-      })
-    ]));
-  }
-});
-var element_plus_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ElementPlus",
-  __name: "element-plus",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M839.7 734.7c0 33.3-17.9 41-17.9 41S519.7 949.8 499.2 960c-10.2 5.1-20.5 5.1-30.7 0 0 0-314.9-184.3-325.1-192-5.1-5.1-10.2-12.8-12.8-20.5V368.6c0-17.9 20.5-28.2 20.5-28.2L466 158.6c12.8-5.1 25.6-5.1 38.4 0 0 0 279 161.3 309.8 179.2 17.9 7.7 28.2 25.6 25.6 46.1-.1-5-.1 317.5-.1 350.8M714.2 371.2c-64-35.8-217.6-125.4-217.6-125.4-7.7-5.1-20.5-5.1-30.7 0L217.6 389.1s-17.9 10.2-17.9 23v297c0 5.1 5.1 12.8 7.7 17.9 7.7 5.1 256 148.5 256 148.5 7.7 5.1 17.9 5.1 25.6 0 15.4-7.7 250.9-145.9 250.9-145.9s12.8-5.1 12.8-30.7v-74.2l-276.5 169v-64c0-17.9 7.7-30.7 20.5-46.1L745 535c5.1-7.7 10.2-20.5 10.2-30.7v-66.6l-279 169v-69.1c0-15.4 5.1-30.7 17.9-38.4l220.1-128zM919 135.7c0-5.1-5.1-7.7-7.7-7.7h-58.9V66.6c0-5.1-5.1-5.1-10.2-5.1l-30.7 5.1c-5.1 0-5.1 2.6-5.1 5.1V128h-56.3c-5.1 0-5.1 5.1-7.7 5.1v38.4h69.1v64c0 5.1 5.1 5.1 10.2 5.1l30.7-5.1c5.1 0 5.1-2.6 5.1-5.1v-56.3h64l-2.5-38.4z"
-      })
-    ]));
-  }
-});
-var expand_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Expand",
-  __name: "expand",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192h768v128H128zm0 256h512v128H128zm0 256h768v128H128zm576-352 192 160-192 128z"
-      })
-    ]));
-  }
-});
-var failed_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Failed",
-  __name: "failed",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m557.248 608 135.744-135.744-45.248-45.248-135.68 135.744-135.808-135.68-45.248 45.184L466.752 608l-135.68 135.68 45.184 45.312L512 653.248l135.744 135.744 45.248-45.248L557.312 608zM704 192h160v736H160V192h160v64h384zm-320 0V96h256v96z"
-      })
-    ]));
-  }
-});
-var female_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Female",
-  __name: "female",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 640a256 256 0 1 0 0-512 256 256 0 0 0 0 512m0 64a320 320 0 1 1 0-640 320 320 0 0 1 0 640"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 640q32 0 32 32v256q0 32-32 32t-32-32V672q0-32 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 800h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var files_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Files",
-  __name: "files",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 384v448h768V384zm-32-64h832a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32m64-128h704v64H160zm96-128h512v64H256z"
-      })
-    ]));
-  }
-});
-var film_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Film",
-  __name: "film",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 160v704h704V160zm-32-64h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M320 288V128h64v352h256V128h64v160h160v64H704v128h160v64H704v128h160v64H704v160h-64V544H384v352h-64V736H128v-64h192V544H128v-64h192V352H128v-64z"
-      })
-    ]));
-  }
-});
-var filter_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Filter",
-  __name: "filter",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 523.392V928a32 32 0 0 0 46.336 28.608l192-96A32 32 0 0 0 640 832V523.392l280.768-343.104a32 32 0 1 0-49.536-40.576l-288 352A32 32 0 0 0 576 512v300.224l-128 64V512a32 32 0 0 0-7.232-20.288L195.52 192H704a32 32 0 1 0 0-64H128a32 32 0 0 0-24.768 52.288z"
-      })
-    ]));
-  }
-});
-var finished_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Finished",
-  __name: "finished",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M280.768 753.728 691.456 167.04a32 32 0 1 1 52.416 36.672L314.24 817.472a32 32 0 0 1-45.44 7.296l-230.4-172.8a32 32 0 0 1 38.4-51.2l203.968 152.96zM736 448a32 32 0 1 1 0-64h192a32 32 0 1 1 0 64zM608 640a32 32 0 0 1 0-64h319.936a32 32 0 1 1 0 64zM480 832a32 32 0 1 1 0-64h447.936a32 32 0 1 1 0 64z"
-      })
-    ]));
-  }
-});
-var first_aid_kit_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FirstAidKit",
-  __name: "first-aid-kit",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 256a64 64 0 0 0-64 64v448a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V320a64 64 0 0 0-64-64zm0-64h640a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H192A128 128 0 0 1 64 768V320a128 128 0 0 1 128-128"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 512h96a32 32 0 0 1 0 64h-96v96a32 32 0 0 1-64 0v-96h-96a32 32 0 0 1 0-64h96v-96a32 32 0 0 1 64 0zM352 128v64h320v-64zm-32-64h384a32 32 0 0 1 32 32v128a32 32 0 0 1-32 32H320a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var flag_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Flag",
-  __name: "flag",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 128h608L736 384l160 256H288v320h-96V64h96z"
-      })
-    ]));
-  }
-});
-var fold_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Fold",
-  __name: "fold",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M896 192H128v128h768zm0 256H384v128h512zm0 256H128v128h768zM320 384 128 512l192 128z"
-      })
-    ]));
-  }
-});
-var folder_add_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FolderAdd",
-  __name: "folder-add",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192v640h768V320H485.76L357.504 192zm-32-64h287.872l128.384 128H928a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32m384 416V416h64v128h128v64H544v128h-64V608H352v-64z"
-      })
-    ]));
-  }
-});
-var folder_checked_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FolderChecked",
-  __name: "folder-checked",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192v640h768V320H485.76L357.504 192zm-32-64h287.872l128.384 128H928a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32m414.08 502.144 180.992-180.992L736.32 494.4 510.08 720.64l-158.4-158.336 45.248-45.312z"
-      })
-    ]));
-  }
-});
-var folder_delete_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FolderDelete",
-  __name: "folder-delete",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192v640h768V320H485.76L357.504 192zm-32-64h287.872l128.384 128H928a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32m370.752 448-90.496-90.496 45.248-45.248L512 530.752l90.496-90.496 45.248 45.248L557.248 576l90.496 90.496-45.248 45.248L512 621.248l-90.496 90.496-45.248-45.248z"
-      })
-    ]));
-  }
-});
-var folder_opened_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FolderOpened",
-  __name: "folder-opened",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M878.08 448H241.92l-96 384h636.16l96-384zM832 384v-64H485.76L357.504 192H128v448l57.92-231.744A32 32 0 0 1 216.96 384zm-24.96 512H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h287.872l128.384 128H864a32 32 0 0 1 32 32v96h23.04a32 32 0 0 1 31.04 39.744l-112 448A32 32 0 0 1 807.04 896"
-      })
-    ]));
-  }
-});
-var folder_remove_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FolderRemove",
-  __name: "folder-remove",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192v640h768V320H485.76L357.504 192zm-32-64h287.872l128.384 128H928a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32m256 416h320v64H352z"
-      })
-    ]));
-  }
-});
-var folder_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Folder",
-  __name: "folder",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 192v640h768V320H485.76L357.504 192zm-32-64h287.872l128.384 128H928a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var food_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Food",
-  __name: "food",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 352.576V352a288 288 0 0 1 491.072-204.224 192 192 0 0 1 274.24 204.48 64 64 0 0 1 57.216 74.24C921.6 600.512 850.048 710.656 736 756.992V800a96 96 0 0 1-96 96H384a96 96 0 0 1-96-96v-43.008c-114.048-46.336-185.6-156.48-214.528-330.496A64 64 0 0 1 128 352.64zm64-.576h64a160 160 0 0 1 320 0h64a224 224 0 0 0-448 0m128 0h192a96 96 0 0 0-192 0m439.424 0h68.544A128.256 128.256 0 0 0 704 192c-15.36 0-29.952 2.688-43.52 7.616 11.328 18.176 20.672 37.76 27.84 58.304A64.128 64.128 0 0 1 759.424 352M672 768H352v32a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32zm-342.528-64h365.056c101.504-32.64 165.76-124.928 192.896-288H136.576c27.136 163.072 91.392 255.36 192.896 288"
-      })
-    ]));
-  }
-});
-var football_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Football",
-  __name: "football",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 960a448 448 0 1 1 0-896 448 448 0 0 1 0 896m0-64a384 384 0 1 0 0-768 384 384 0 0 0 0 768"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M186.816 268.288c16-16.384 31.616-31.744 46.976-46.08 17.472 30.656 39.808 58.112 65.984 81.28l-32.512 56.448a385.984 385.984 0 0 1-80.448-91.648zm653.696-5.312a385.92 385.92 0 0 1-83.776 96.96l-32.512-56.384a322.923 322.923 0 0 0 68.48-85.76c15.552 14.08 31.488 29.12 47.808 45.184zM465.984 445.248l11.136-63.104a323.584 323.584 0 0 0 69.76 0l11.136 63.104a387.968 387.968 0 0 1-92.032 0m-62.72-12.8A381.824 381.824 0 0 1 320 396.544l32-55.424a319.885 319.885 0 0 0 62.464 27.712l-11.2 63.488zm300.8-35.84a381.824 381.824 0 0 1-83.328 35.84l-11.2-63.552A319.885 319.885 0 0 0 672 341.184l32 55.424zm-520.768 364.8a385.92 385.92 0 0 1 83.968-97.28l32.512 56.32c-26.88 23.936-49.856 52.352-67.52 84.032-16-13.44-32.32-27.712-48.96-43.072zm657.536.128a1442.759 1442.759 0 0 1-49.024 43.072 321.408 321.408 0 0 0-67.584-84.16l32.512-56.32c33.216 27.456 61.696 60.352 84.096 97.408zM465.92 578.752a387.968 387.968 0 0 1 92.032 0l-11.136 63.104a323.584 323.584 0 0 0-69.76 0zm-62.72 12.8 11.2 63.552a319.885 319.885 0 0 0-62.464 27.712L320 627.392a381.824 381.824 0 0 1 83.264-35.84zm300.8 35.84-32 55.424a318.272 318.272 0 0 0-62.528-27.712l11.2-63.488c29.44 8.64 57.28 20.736 83.264 35.776z"
-      })
-    ]));
-  }
-});
-var fork_spoon_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ForkSpoon",
-  __name: "fork-spoon",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 410.304V96a32 32 0 0 1 64 0v314.304a96 96 0 0 0 64-90.56V96a32 32 0 0 1 64 0v223.744a160 160 0 0 1-128 156.8V928a32 32 0 1 1-64 0V476.544a160 160 0 0 1-128-156.8V96a32 32 0 0 1 64 0v223.744a96 96 0 0 0 64 90.56zM672 572.48C581.184 552.128 512 446.848 512 320c0-141.44 85.952-256 192-256s192 114.56 192 256c0 126.848-69.184 232.128-160 252.48V928a32 32 0 1 1-64 0zM704 512c66.048 0 128-82.56 128-192s-61.952-192-128-192-128 82.56-128 192 61.952 192 128 192"
-      })
-    ]));
-  }
-});
-var fries_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Fries",
-  __name: "fries",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M608 224v-64a32 32 0 0 0-64 0v336h26.88A64 64 0 0 0 608 484.096zm101.12 160A64 64 0 0 0 672 395.904V384h64V224a32 32 0 1 0-64 0v160zm74.88 0a92.928 92.928 0 0 1 91.328 110.08l-60.672 323.584A96 96 0 0 1 720.32 896H303.68a96 96 0 0 1-94.336-78.336L148.672 494.08A92.928 92.928 0 0 1 240 384h-16V224a96 96 0 0 1 188.608-25.28A95.744 95.744 0 0 1 480 197.44V160a96 96 0 0 1 188.608-25.28A96 96 0 0 1 800 224v160zM670.784 512a128 128 0 0 1-99.904 48H453.12a128 128 0 0 1-99.84-48H352v-1.536a128.128 128.128 0 0 1-9.984-14.976L314.88 448H240a28.928 28.928 0 0 0-28.48 34.304L241.088 640h541.824l29.568-157.696A28.928 28.928 0 0 0 784 448h-74.88l-27.136 47.488A132.405 132.405 0 0 1 672 510.464V512zM480 288a32 32 0 0 0-64 0v196.096A64 64 0 0 0 453.12 496H480zm-128 96V224a32 32 0 0 0-64 0v160zh-37.12A64 64 0 0 1 352 395.904zm-98.88 320 19.072 101.888A32 32 0 0 0 303.68 832h416.64a32 32 0 0 0 31.488-26.112L770.88 704z"
-      })
-    ]));
-  }
-});
-var full_screen_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "FullScreen",
-  __name: "full-screen",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m160 96.064 192 .192a32 32 0 0 1 0 64l-192-.192V352a32 32 0 0 1-64 0V96h64zm0 831.872V928H96V672a32 32 0 1 1 64 0v191.936l192-.192a32 32 0 1 1 0 64zM864 96.064V96h64v256a32 32 0 1 1-64 0V160.064l-192 .192a32 32 0 1 1 0-64l192-.192zm0 831.872-192-.192a32 32 0 0 1 0-64l192 .192V672a32 32 0 1 1 64 0v256h-64z"
-      })
-    ]));
-  }
-});
-var full_screen_default = full_screen_vue_vue_type_script_setup_true_lang_default;
-var goblet_full_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "GobletFull",
-  __name: "goblet-full",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 320h512c0-78.592-12.608-142.4-36.928-192h-434.24C269.504 192.384 256 256.256 256 320m503.936 64H264.064a256.128 256.128 0 0 0 495.872 0zM544 638.4V896h96a32 32 0 1 1 0 64H384a32 32 0 1 1 0-64h96V638.4A320 320 0 0 1 192 320c0-85.632 21.312-170.944 64-256h512c42.688 64.32 64 149.632 64 256a320 320 0 0 1-288 318.4"
-      })
-    ]));
-  }
-});
-var goblet_square_full_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "GobletSquareFull",
-  __name: "goblet-square-full",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 270.912c10.048 6.72 22.464 14.912 28.992 18.624a220.16 220.16 0 0 0 114.752 30.72c30.592 0 49.408-9.472 91.072-41.152l.64-.448c52.928-40.32 82.368-55.04 132.288-54.656 55.552.448 99.584 20.8 142.72 57.408l1.536 1.28V128H256v142.912zm.96 76.288C266.368 482.176 346.88 575.872 512 576c157.44.064 237.952-85.056 253.248-209.984a952.32 952.32 0 0 1-40.192-35.712c-32.704-27.776-63.36-41.92-101.888-42.24-31.552-.256-50.624 9.28-93.12 41.6l-.576.448c-52.096 39.616-81.024 54.208-129.792 54.208-54.784 0-100.48-13.376-142.784-37.056zM480 638.848C250.624 623.424 192 442.496 192 319.68V96a32 32 0 0 1 32-32h576a32 32 0 0 1 32 32v224c0 122.816-58.624 303.68-288 318.912V896h96a32 32 0 1 1 0 64H384a32 32 0 1 1 0-64h96z"
-      })
-    ]));
-  }
-});
-var goblet_square_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "GobletSquare",
-  __name: "goblet-square",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 638.912V896h96a32 32 0 1 1 0 64H384a32 32 0 1 1 0-64h96V638.848C250.624 623.424 192 442.496 192 319.68V96a32 32 0 0 1 32-32h576a32 32 0 0 1 32 32v224c0 122.816-58.624 303.68-288 318.912M256 319.68c0 149.568 80 256.192 256 256.256C688.128 576 768 469.568 768 320V128H256z"
-      })
-    ]));
-  }
-});
-var goblet_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Goblet",
-  __name: "goblet",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 638.4V896h96a32 32 0 1 1 0 64H384a32 32 0 1 1 0-64h96V638.4A320 320 0 0 1 192 320c0-85.632 21.312-170.944 64-256h512c42.688 64.32 64 149.632 64 256a320 320 0 0 1-288 318.4M256 320a256 256 0 1 0 512 0c0-78.592-12.608-142.4-36.928-192h-434.24C269.504 192.384 256 256.256 256 320"
-      })
-    ]));
-  }
-});
-var gold_medal_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "GoldMedal",
-  __name: "gold-medal",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m772.13 452.84 53.86-351.81c1.32-10.01-1.17-18.68-7.49-26.02S804.35 64 795.01 64H228.99v-.01h-.06c-9.33 0-17.15 3.67-23.49 11.01s-8.83 16.01-7.49 26.02l53.87 351.89C213.54 505.73 193.59 568.09 192 640c2 90.67 33.17 166.17 93.5 226.5S421.33 957.99 512 960c90.67-2 166.17-33.17 226.5-93.5 60.33-60.34 91.49-135.83 93.5-226.5-1.59-71.94-21.56-134.32-59.87-187.16zM640.01 128h117.02l-39.01 254.02c-20.75-10.64-40.74-19.73-59.94-27.28-5.92-3-11.95-5.8-18.08-8.41V128h.01zM576 128v198.76c-13.18-2.58-26.74-4.43-40.67-5.55-8.07-.8-15.85-1.2-23.33-1.2-10.54 0-21.09.66-31.64 1.96a359.844 359.844 0 0 0-32.36 4.79V128zm-192 0h.04v218.3c-6.22 2.66-12.34 5.5-18.36 8.56-19.13 7.54-39.02 16.6-59.66 27.16L267.01 128zm308.99 692.99c-48 48-108.33 73-180.99 75.01-72.66-2.01-132.99-27.01-180.99-75.01S258.01 712.66 256 640c2.01-72.66 27.01-132.99 75.01-180.99 19.67-19.67 41.41-35.47 65.22-47.41 38.33-15.04 71.15-23.92 98.44-26.65 5.07-.41 10.2-.7 15.39-.88.63-.01 1.28-.03 1.91-.03.66 0 1.35.03 2.02.04 5.11.17 10.15.46 15.13.86 27.4 2.71 60.37 11.65 98.91 26.79 23.71 11.93 45.36 27.69 64.96 47.29 48 48 73 108.33 75.01 180.99-2.01 72.65-27.01 132.98-75.01 180.98z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 480H416v64h64v192h-64v64h192v-64h-64z"
-      })
-    ]));
-  }
-});
-var goods_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "GoodsFilled",
-  __name: "goods-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 352h640l64 544H128zm128 224h64V448h-64zm320 0h64V448h-64zM384 288h-64a192 192 0 1 1 384 0h-64a128 128 0 1 0-256 0"
-      })
-    ]));
-  }
-});
-var goods_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Goods",
-  __name: "goods",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M320 288v-22.336C320 154.688 405.504 64 512 64s192 90.688 192 201.664v22.4h131.072a32 32 0 0 1 31.808 28.8l57.6 576a32 32 0 0 1-31.808 35.2H131.328a32 32 0 0 1-31.808-35.2l57.6-576a32 32 0 0 1 31.808-28.8H320zm64 0h256v-22.336C640 189.248 582.272 128 512 128c-70.272 0-128 61.248-128 137.664v22.4zm-64 64H217.92l-51.2 512h690.56l-51.264-512H704v96a32 32 0 1 1-64 0v-96H384v96a32 32 0 0 1-64 0z"
-      })
-    ]));
-  }
-});
-var grape_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Grape",
-  __name: "grape",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 195.2a160 160 0 0 1 96 60.8 160 160 0 1 1 146.24 254.976 160 160 0 0 1-128 224 160 160 0 1 1-292.48 0 160 160 0 0 1-128-224A160 160 0 1 1 384 256a160 160 0 0 1 96-60.8V128h-64a32 32 0 0 1 0-64h192a32 32 0 0 1 0 64h-64zM512 448a96 96 0 1 0 0-192 96 96 0 0 0 0 192m-256 0a96 96 0 1 0 0-192 96 96 0 0 0 0 192m128 224a96 96 0 1 0 0-192 96 96 0 0 0 0 192m128 224a96 96 0 1 0 0-192 96 96 0 0 0 0 192m128-224a96 96 0 1 0 0-192 96 96 0 0 0 0 192m128-224a96 96 0 1 0 0-192 96 96 0 0 0 0 192"
-      })
-    ]));
-  }
-});
-var grid_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Grid",
-  __name: "grid",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 384v256H384V384zm64 0h192v256H704zm-64 512H384V704h256zm64 0V704h192v192zm-64-768v192H384V128zm64 0h192v192H704zM320 384v256H128V384zm0 512H128V704h192zm0-768v192H128V128z"
-      })
-    ]));
-  }
-});
-var guide_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Guide",
-  __name: "guide",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 608h-64V416h64zm0 160v160a32 32 0 0 1-32 32H416a32 32 0 0 1-32-32V768h64v128h128V768zM384 608V416h64v192zm256-352h-64V128H448v128h-64V96a32 32 0 0 1 32-32h192a32 32 0 0 1 32 32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m220.8 256-71.232 80 71.168 80H768V256H220.8zm-14.4-64H800a32 32 0 0 1 32 32v224a32 32 0 0 1-32 32H206.4a32 32 0 0 1-23.936-10.752l-99.584-112a32 32 0 0 1 0-42.496l99.584-112A32 32 0 0 1 206.4 192m678.784 496-71.104 80H266.816V608h547.2l71.168 80zm-56.768-144H234.88a32 32 0 0 0-32 32v224a32 32 0 0 0 32 32h593.6a32 32 0 0 0 23.936-10.752l99.584-112a32 32 0 0 0 0-42.496l-99.584-112A32 32 0 0 0 828.48 544z"
-      })
-    ]));
-  }
-});
-var handbag_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Handbag",
-  __name: "handbag",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M887.01 264.99c-6-5.99-13.67-8.99-23.01-8.99H704c-1.34-54.68-20.01-100.01-56-136s-81.32-54.66-136-56c-54.68 1.34-100.01 20.01-136 56s-54.66 81.32-56 136H160c-9.35 0-17.02 3-23.01 8.99-5.99 6-8.99 13.67-8.99 23.01v640c0 9.35 2.99 17.02 8.99 23.01S150.66 960 160 960h704c9.35 0 17.02-2.99 23.01-8.99S896 937.34 896 928V288c0-9.35-2.99-17.02-8.99-23.01M421.5 165.5c24.32-24.34 54.49-36.84 90.5-37.5 35.99.68 66.16 13.18 90.5 37.5s36.84 54.49 37.5 90.5H384c.68-35.99 13.18-66.16 37.5-90.5M832 896H192V320h128v128h64V320h256v128h64V320h128z"
-      })
-    ]));
-  }
-});
-var headset_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Headset",
-  __name: "headset",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M896 529.152V512a384 384 0 1 0-768 0v17.152A128 128 0 0 1 320 640v128a128 128 0 1 1-256 0V512a448 448 0 1 1 896 0v256a128 128 0 1 1-256 0V640a128 128 0 0 1 192-110.848M896 640a64 64 0 0 0-128 0v128a64 64 0 0 0 128 0zm-768 0v128a64 64 0 0 0 128 0V640a64 64 0 1 0-128 0"
-      })
-    ]));
-  }
-});
-var help_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "HelpFilled",
-  __name: "help-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M926.784 480H701.312A192.512 192.512 0 0 0 544 322.688V97.216A416.064 416.064 0 0 1 926.784 480m0 64A416.064 416.064 0 0 1 544 926.784V701.312A192.512 192.512 0 0 0 701.312 544zM97.28 544h225.472A192.512 192.512 0 0 0 480 701.312v225.472A416.064 416.064 0 0 1 97.216 544zm0-64A416.064 416.064 0 0 1 480 97.216v225.472A192.512 192.512 0 0 0 322.688 480H97.216z"
-      })
-    ]));
-  }
-});
-var help_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Help",
-  __name: "help",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m759.936 805.248-90.944-91.008A254.912 254.912 0 0 1 512 768a254.912 254.912 0 0 1-156.992-53.76l-90.944 91.008A382.464 382.464 0 0 0 512 896c94.528 0 181.12-34.176 247.936-90.752m45.312-45.312A382.464 382.464 0 0 0 896 512c0-94.528-34.176-181.12-90.752-247.936l-91.008 90.944C747.904 398.4 768 452.864 768 512c0 59.136-20.096 113.6-53.76 156.992l91.008 90.944zm-45.312-541.184A382.464 382.464 0 0 0 512 128c-94.528 0-181.12 34.176-247.936 90.752l90.944 91.008A254.912 254.912 0 0 1 512 256c59.136 0 113.6 20.096 156.992 53.76l90.944-91.008zm-541.184 45.312A382.464 382.464 0 0 0 128 512c0 94.528 34.176 181.12 90.752 247.936l91.008-90.944A254.912 254.912 0 0 1 256 512c0-59.136 20.096-113.6 53.76-156.992zm417.28 394.496a194.56 194.56 0 0 0 22.528-22.528C686.912 602.56 704 559.232 704 512a191.232 191.232 0 0 0-67.968-146.56A191.296 191.296 0 0 0 512 320a191.232 191.232 0 0 0-146.56 67.968C337.088 421.44 320 464.768 320 512a191.232 191.232 0 0 0 67.968 146.56C421.44 686.912 464.768 704 512 704c47.296 0 90.56-17.088 124.032-45.44zM512 960a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      })
-    ]));
-  }
-});
-var hide_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Hide",
-  __name: "hide",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M876.8 156.8c0-9.6-3.2-16-9.6-22.4-6.4-6.4-12.8-9.6-22.4-9.6-9.6 0-16 3.2-22.4 9.6L736 220.8c-64-32-137.6-51.2-224-60.8-160 16-288 73.6-377.6 176C44.8 438.4 0 496 0 512s48 73.6 134.4 176c22.4 25.6 44.8 48 73.6 67.2l-86.4 89.6c-6.4 6.4-9.6 12.8-9.6 22.4 0 9.6 3.2 16 9.6 22.4 6.4 6.4 12.8 9.6 22.4 9.6 9.6 0 16-3.2 22.4-9.6l704-710.4c3.2-6.4 6.4-12.8 6.4-22.4Zm-646.4 528c-76.8-70.4-128-128-153.6-172.8 28.8-48 80-105.6 153.6-172.8C304 272 400 230.4 512 224c64 3.2 124.8 19.2 176 44.8l-54.4 54.4C598.4 300.8 560 288 512 288c-64 0-115.2 22.4-160 64s-64 96-64 160c0 48 12.8 89.6 35.2 124.8L256 707.2c-9.6-6.4-19.2-16-25.6-22.4Zm140.8-96c-12.8-22.4-19.2-48-19.2-76.8 0-44.8 16-83.2 48-112 32-28.8 67.2-48 112-48 28.8 0 54.4 6.4 73.6 19.2zM889.599 336c-12.8-16-28.8-28.8-41.6-41.6l-48 48c73.6 67.2 124.8 124.8 150.4 169.6-28.8 48-80 105.6-153.6 172.8-73.6 67.2-172.8 108.8-284.8 115.2-51.2-3.2-99.2-12.8-140.8-28.8l-48 48c57.6 22.4 118.4 38.4 188.8 44.8 160-16 288-73.6 377.6-176C979.199 585.6 1024 528 1024 512s-48.001-73.6-134.401-176Z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M511.998 672c-12.8 0-25.6-3.2-38.4-6.4l-51.2 51.2c28.8 12.8 57.6 19.2 89.6 19.2 64 0 115.2-22.4 160-64 41.6-41.6 64-96 64-160 0-32-6.4-64-19.2-89.6l-51.2 51.2c3.2 12.8 6.4 25.6 6.4 38.4 0 44.8-16 83.2-48 112-32 28.8-67.2 48-112 48Z"
-      })
-    ]));
-  }
-});
-var hide_default = hide_vue_vue_type_script_setup_true_lang_default;
-var histogram_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Histogram",
-  __name: "histogram",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M416 896V128h192v768zm-288 0V448h192v448zm576 0V320h192v576z"
-      })
-    ]));
-  }
-});
-var home_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "HomeFilled",
-  __name: "home-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 128 128 447.936V896h255.936V640H640v256h255.936V447.936z"
-      })
-    ]));
-  }
-});
-var hot_water_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "HotWater",
-  __name: "hot-water",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M273.067 477.867h477.866V409.6H273.067zm0 68.266v51.2A187.733 187.733 0 0 0 460.8 785.067h102.4a187.733 187.733 0 0 0 187.733-187.734v-51.2H273.067zm-34.134-204.8h546.134a34.133 34.133 0 0 1 34.133 34.134v221.866a256 256 0 0 1-256 256H460.8a256 256 0 0 1-256-256V375.467a34.133 34.133 0 0 1 34.133-34.134zM512 34.133a34.133 34.133 0 0 1 34.133 34.134v170.666a34.133 34.133 0 0 1-68.266 0V68.267A34.133 34.133 0 0 1 512 34.133zM375.467 102.4a34.133 34.133 0 0 1 34.133 34.133v102.4a34.133 34.133 0 0 1-68.267 0v-102.4a34.133 34.133 0 0 1 34.134-34.133m273.066 0a34.133 34.133 0 0 1 34.134 34.133v102.4a34.133 34.133 0 1 1-68.267 0v-102.4a34.133 34.133 0 0 1 34.133-34.133M170.667 921.668h682.666a34.133 34.133 0 1 1 0 68.267H170.667a34.133 34.133 0 1 1 0-68.267z"
-      })
-    ]));
-  }
-});
-var house_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "House",
-  __name: "house",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 413.952V896h640V413.952L512 147.328zM139.52 374.4l352-293.312a32 32 0 0 1 40.96 0l352 293.312A32 32 0 0 1 896 398.976V928a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V398.976a32 32 0 0 1 11.52-24.576"
-      })
-    ]));
-  }
-});
-var ice_cream_round_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "IceCreamRound",
-  __name: "ice-cream-round",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m308.352 489.344 226.304 226.304a32 32 0 0 0 45.248 0L783.552 512A192 192 0 1 0 512 240.448L308.352 444.16a32 32 0 0 0 0 45.248zm135.744 226.304L308.352 851.392a96 96 0 0 1-135.744-135.744l135.744-135.744-45.248-45.248a96 96 0 0 1 0-135.808L466.752 195.2A256 256 0 0 1 828.8 557.248L625.152 760.96a96 96 0 0 1-135.808 0l-45.248-45.248zM398.848 670.4 353.6 625.152 217.856 760.896a32 32 0 0 0 45.248 45.248zm248.96-384.64a32 32 0 0 1 0 45.248L466.624 512a32 32 0 1 1-45.184-45.248l180.992-181.056a32 32 0 0 1 45.248 0zm90.496 90.496a32 32 0 0 1 0 45.248L557.248 602.496A32 32 0 1 1 512 557.248l180.992-180.992a32 32 0 0 1 45.312 0z"
-      })
-    ]));
-  }
-});
-var ice_cream_square_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "IceCreamSquare",
-  __name: "ice-cream-square",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M416 640h256a32 32 0 0 0 32-32V160a32 32 0 0 0-32-32H352a32 32 0 0 0-32 32v448a32 32 0 0 0 32 32zm192 64v160a96 96 0 0 1-192 0V704h-64a96 96 0 0 1-96-96V160a96 96 0 0 1 96-96h320a96 96 0 0 1 96 96v448a96 96 0 0 1-96 96zm-64 0h-64v160a32 32 0 1 0 64 0z"
-      })
-    ]));
-  }
-});
-var ice_cream_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "IceCream",
-  __name: "ice-cream",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128.64 448a208 208 0 0 1 193.536-191.552 224 224 0 0 1 445.248 15.488A208.128 208.128 0 0 1 894.784 448H896L548.8 983.68a32 32 0 0 1-53.248.704L128 448zm64.256 0h286.208a144 144 0 0 0-286.208 0zm351.36 0h286.272a144 144 0 0 0-286.272 0zm-294.848 64 271.808 396.608L778.24 512H249.408zM511.68 352.64a207.872 207.872 0 0 1 189.184-96.192 160 160 0 0 0-314.752 5.632c52.608 12.992 97.28 46.08 125.568 90.56"
-      })
-    ]));
-  }
-});
-var ice_drink_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "IceDrink",
-  __name: "ice-drink",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 448v128h239.68l16.064-128zm-64 0H256.256l16.064 128H448zm64-255.36V384h247.744A256.128 256.128 0 0 0 512 192.64m-64 8.064A256.448 256.448 0 0 0 264.256 384H448zm64-72.064A320.128 320.128 0 0 1 825.472 384H896a32 32 0 1 1 0 64h-64v1.92l-56.96 454.016A64 64 0 0 1 711.552 960H312.448a64 64 0 0 1-63.488-56.064L192 449.92V448h-64a32 32 0 0 1 0-64h70.528A320.384 320.384 0 0 1 448 135.04V96a96 96 0 0 1 96-96h128a32 32 0 1 1 0 64H544a32 32 0 0 0-32 32zM743.68 640H280.32l32.128 256h399.104z"
-      })
-    ]));
-  }
-});
-var ice_tea_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "IceTea",
-  __name: "ice-tea",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M197.696 259.648a320.128 320.128 0 0 1 628.608 0A96 96 0 0 1 896 352v64a96 96 0 0 1-71.616 92.864l-49.408 395.072A64 64 0 0 1 711.488 960H312.512a64 64 0 0 1-63.488-56.064l-49.408-395.072A96 96 0 0 1 128 416v-64a96 96 0 0 1 69.696-92.352M264.064 256h495.872a256.128 256.128 0 0 0-495.872 0m495.424 256H264.512l48 384h398.976zM224 448h576a32 32 0 0 0 32-32v-64a32 32 0 0 0-32-32H224a32 32 0 0 0-32 32v64a32 32 0 0 0 32 32m160 192h64v64h-64zm192 64h64v64h-64zm-128 64h64v64h-64zm64-192h64v64h-64z"
-      })
-    ]));
-  }
-});
-var info_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "InfoFilled",
-  __name: "info-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896.064A448 448 0 0 1 512 64m67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344M590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 0 1-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 0 1 7.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
-      })
-    ]));
-  }
-});
-var info_filled_default = info_filled_vue_vue_type_script_setup_true_lang_default;
-var iphone_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Iphone",
-  __name: "iphone",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 768v96.064a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64V768zm0-64h576V160a64 64 0 0 0-64-64H288a64 64 0 0 0-64 64zm32 288a96 96 0 0 1-96-96V128a96 96 0 0 1 96-96h512a96 96 0 0 1 96 96v768a96 96 0 0 1-96 96zm304-144a48 48 0 1 1-96 0 48 48 0 0 1 96 0"
-      })
-    ]));
-  }
-});
-var key_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Key",
-  __name: "key",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 456.064V96a32 32 0 0 1 32-32.064L672 64a32 32 0 0 1 0 64H512v128h160a32 32 0 0 1 0 64H512v128a256 256 0 1 1-64 8.064M512 896a192 192 0 1 0 0-384 192 192 0 0 0 0 384"
-      })
-    ]));
-  }
-});
-var knife_fork_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "KnifeFork",
-  __name: "knife-fork",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 410.56V96a32 32 0 0 1 64 0v314.56A96 96 0 0 0 384 320V96a32 32 0 0 1 64 0v224a160 160 0 0 1-128 156.8V928a32 32 0 1 1-64 0V476.8A160 160 0 0 1 128 320V96a32 32 0 0 1 64 0v224a96 96 0 0 0 64 90.56m384-250.24V544h126.72c-3.328-78.72-12.928-147.968-28.608-207.744-14.336-54.528-46.848-113.344-98.112-175.872zM640 608v320a32 32 0 1 1-64 0V64h64c85.312 89.472 138.688 174.848 160 256 21.312 81.152 32 177.152 32 288z"
-      })
-    ]));
-  }
-});
-var lightning_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Lightning",
-  __name: "lightning",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 671.36v64.128A239.808 239.808 0 0 1 63.744 496.192a240.32 240.32 0 0 1 199.488-236.8 256.128 256.128 0 0 1 487.872-30.976A256.064 256.064 0 0 1 736 734.016v-64.768a192 192 0 0 0 3.328-377.92l-35.2-6.592-12.8-33.408a192.064 192.064 0 0 0-365.952 23.232l-9.92 40.896-41.472 7.04a176.32 176.32 0 0 0-146.24 173.568c0 91.968 70.464 167.36 160.256 175.232z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M416 736a32 32 0 0 1-27.776-47.872l128-224a32 32 0 1 1 55.552 31.744L471.168 672H608a32 32 0 0 1 27.776 47.872l-128 224a32 32 0 1 1-55.68-31.744L552.96 736z"
-      })
-    ]));
-  }
-});
-var link_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Link",
-  __name: "link",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M715.648 625.152 670.4 579.904l90.496-90.56c75.008-74.944 85.12-186.368 22.656-248.896-62.528-62.464-173.952-52.352-248.96 22.656L444.16 353.6l-45.248-45.248 90.496-90.496c100.032-99.968 251.968-110.08 339.456-22.656 87.488 87.488 77.312 239.424-22.656 339.456l-90.496 90.496zm-90.496 90.496-90.496 90.496C434.624 906.112 282.688 916.224 195.2 828.8c-87.488-87.488-77.312-239.424 22.656-339.456l90.496-90.496 45.248 45.248-90.496 90.56c-75.008 74.944-85.12 186.368-22.656 248.896 62.528 62.464 173.952 52.352 248.96-22.656l90.496-90.496zm0-362.048 45.248 45.248L398.848 670.4 353.6 625.152z"
-      })
-    ]));
-  }
-});
-var list_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "List",
-  __name: "list",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 192h160v736H160V192h160v64h384zM288 512h448v-64H288zm0 256h448v-64H288zm96-576V96h256v96z"
-      })
-    ]));
-  }
-});
-var loading_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Loading",
-  __name: "loading",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a32 32 0 0 1 32 32v192a32 32 0 0 1-64 0V96a32 32 0 0 1 32-32m0 640a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V736a32 32 0 0 1 32-32m448-192a32 32 0 0 1-32 32H736a32 32 0 1 1 0-64h192a32 32 0 0 1 32 32m-640 0a32 32 0 0 1-32 32H96a32 32 0 0 1 0-64h192a32 32 0 0 1 32 32M195.2 195.2a32 32 0 0 1 45.248 0L376.32 331.008a32 32 0 0 1-45.248 45.248L195.2 240.448a32 32 0 0 1 0-45.248zm452.544 452.544a32 32 0 0 1 45.248 0L828.8 783.552a32 32 0 0 1-45.248 45.248L647.744 692.992a32 32 0 0 1 0-45.248zM828.8 195.264a32 32 0 0 1 0 45.184L692.992 376.32a32 32 0 0 1-45.248-45.248l135.808-135.808a32 32 0 0 1 45.248 0m-452.544 452.48a32 32 0 0 1 0 45.248L240.448 828.8a32 32 0 0 1-45.248-45.248l135.808-135.808a32 32 0 0 1 45.248 0z"
-      })
-    ]));
-  }
-});
-var loading_default = loading_vue_vue_type_script_setup_true_lang_default;
-var location_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "LocationFilled",
-  __name: "location-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 928c23.936 0 117.504-68.352 192.064-153.152C803.456 661.888 864 535.808 864 416c0-189.632-155.84-320-352-320S160 226.368 160 416c0 120.32 60.544 246.4 159.936 359.232C394.432 859.84 488 928 512 928m0-435.2a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 140.8a204.8 204.8 0 1 1 0-409.6 204.8 204.8 0 0 1 0 409.6"
-      })
-    ]));
-  }
-});
-var location_information_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "LocationInformation",
-  __name: "location-information",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 896h448q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416M512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 512a96 96 0 1 0 0-192 96 96 0 0 0 0 192m0 64a160 160 0 1 1 0-320 160 160 0 0 1 0 320"
-      })
-    ]));
-  }
-});
-var location_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Location",
-  __name: "location",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416M512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 512a96 96 0 1 0 0-192 96 96 0 0 0 0 192m0 64a160 160 0 1 1 0-320 160 160 0 0 1 0 320"
-      })
-    ]));
-  }
-});
-var lock_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Lock",
-  __name: "lock",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 448a32 32 0 0 0-32 32v384a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32V480a32 32 0 0 0-32-32zm0-64h576a96 96 0 0 1 96 96v384a96 96 0 0 1-96 96H224a96 96 0 0 1-96-96V480a96 96 0 0 1 96-96"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 544a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V576a32 32 0 0 1 32-32m192-160v-64a192 192 0 1 0-384 0v64zM512 64a256 256 0 0 1 256 256v128H256V320A256 256 0 0 1 512 64"
-      })
-    ]));
-  }
-});
-var lollipop_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Lollipop",
-  __name: "lollipop",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M513.28 448a64 64 0 1 1 76.544 49.728A96 96 0 0 0 768 448h64a160 160 0 0 1-320 0zm-126.976-29.696a256 256 0 1 0 43.52-180.48A256 256 0 0 1 832 448h-64a192 192 0 0 0-381.696-29.696m105.664 249.472L285.696 874.048a96 96 0 0 1-135.68-135.744l206.208-206.272a320 320 0 1 1 135.744 135.744zm-54.464-36.032a321.92 321.92 0 0 1-45.248-45.248L195.2 783.552a32 32 0 1 0 45.248 45.248l197.056-197.12z"
-      })
-    ]));
-  }
-});
-var magic_stick_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MagicStick",
-  __name: "magic-stick",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64h64v192h-64zm0 576h64v192h-64zM160 480v-64h192v64zm576 0v-64h192v64zM249.856 199.04l45.248-45.184L430.848 289.6 385.6 334.848 249.856 199.104zM657.152 606.4l45.248-45.248 135.744 135.744-45.248 45.248zM114.048 923.2 68.8 877.952l316.8-316.8 45.248 45.248zM702.4 334.848 657.152 289.6l135.744-135.744 45.248 45.248z"
-      })
-    ]));
-  }
-});
-var magnet_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Magnet",
-  __name: "magnet",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 320V192H704v320a192 192 0 1 1-384 0V192H192v128h128v64H192v128a320 320 0 0 0 640 0V384H704v-64zM640 512V128h256v384a384 384 0 1 1-768 0V128h256v384a128 128 0 1 0 256 0"
-      })
-    ]));
-  }
-});
-var male_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Male",
-  __name: "male",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M399.5 849.5a225 225 0 1 0 0-450 225 225 0 0 0 0 450m0 56.25a281.25 281.25 0 1 1 0-562.5 281.25 281.25 0 0 1 0 562.5m253.125-787.5h225q28.125 0 28.125 28.125T877.625 174.5h-225q-28.125 0-28.125-28.125t28.125-28.125"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M877.625 118.25q28.125 0 28.125 28.125v225q0 28.125-28.125 28.125T849.5 371.375v-225q0-28.125 28.125-28.125"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M604.813 458.9 565.1 419.131l292.613-292.668 39.825 39.824z"
-      })
-    ]));
-  }
-});
-var management_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Management",
-  __name: "management",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M576 128v288l96-96 96 96V128h128v768H320V128zm-448 0h128v768H128z"
-      })
-    ]));
-  }
-});
-var map_location_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MapLocation",
-  __name: "map-location",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M800 416a288 288 0 1 0-576 0c0 118.144 94.528 272.128 288 456.576C705.472 688.128 800 534.144 800 416M512 960C277.312 746.688 160 565.312 160 416a352 352 0 0 1 704 0c0 149.312-117.312 330.688-352 544"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 448a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256m345.6 192L960 960H672v-64H352v64H64l102.4-256zm-68.928 0H235.328l-76.8 192h706.944z"
-      })
-    ]));
-  }
-});
-var medal_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Medal",
-  __name: "medal",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a256 256 0 1 0 0-512 256 256 0 0 0 0 512m0 64a320 320 0 1 1 0-640 320 320 0 0 1 0 640"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M576 128H448v200a286.72 286.72 0 0 1 64-8c19.52 0 40.832 2.688 64 8zm64 0v219.648c24.448 9.088 50.56 20.416 78.4 33.92L757.44 128zm-256 0H266.624l39.04 253.568c27.84-13.504 53.888-24.832 78.336-33.92V128zM229.312 64h565.376a32 32 0 0 1 31.616 36.864L768 480c-113.792-64-199.104-96-256-96-56.896 0-142.208 32-256 96l-58.304-379.136A32 32 0 0 1 229.312 64"
-      })
-    ]));
-  }
-});
-var memo_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Memo",
-  __name: "memo",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 320h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M887.01 72.99C881.01 67 873.34 64 864 64H160c-9.35 0-17.02 3-23.01 8.99C131 78.99 128 86.66 128 96v832c0 9.35 2.99 17.02 8.99 23.01S150.66 960 160 960h704c9.35 0 17.02-2.99 23.01-8.99S896 937.34 896 928V96c0-9.35-3-17.02-8.99-23.01M192 896V128h96v768zm640 0H352V128h480z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 512h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32m0 192h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32"
-      })
-    ]));
-  }
-});
-var menu_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Menu",
-  __name: "menu",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 448a32 32 0 0 1-32-32V160.064a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V416a32 32 0 0 1-32 32zm448 0a32 32 0 0 1-32-32V160.064a32 32 0 0 1 32-32h255.936a32 32 0 0 1 32 32V416a32 32 0 0 1-32 32zM160 896a32 32 0 0 1-32-32V608a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32v256a32 32 0 0 1-32 32zm448 0a32 32 0 0 1-32-32V608a32 32 0 0 1 32-32h255.936a32 32 0 0 1 32 32v256a32 32 0 0 1-32 32z"
-      })
-    ]));
-  }
-});
-var message_box_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MessageBox",
-  __name: "message-box",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 384h448v64H288zm96-128h256v64H384zM131.456 512H384v128h256V512h252.544L721.856 192H302.144zM896 576H704v128H320V576H128v256h768zM275.776 128h472.448a32 32 0 0 1 28.608 17.664l179.84 359.552A32 32 0 0 1 960 519.552V864a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V519.552a32 32 0 0 1 3.392-14.336l179.776-359.552A32 32 0 0 1 275.776 128z"
-      })
-    ]));
-  }
-});
-var message_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Message",
-  __name: "message",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M904 224 656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0 210.56 240.704a128 128 0 0 0 192.704 0L818.944 224H205.056"
-      })
-    ]));
-  }
-});
-var mic_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Mic",
-  __name: "mic",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 704h160a64 64 0 0 0 64-64v-32h-96a32 32 0 0 1 0-64h96v-96h-96a32 32 0 0 1 0-64h96v-96h-96a32 32 0 0 1 0-64h96v-32a64 64 0 0 0-64-64H384a64 64 0 0 0-64 64v32h96a32 32 0 0 1 0 64h-96v96h96a32 32 0 0 1 0 64h-96v96h96a32 32 0 0 1 0 64h-96v32a64 64 0 0 0 64 64zm64 64v128h192a32 32 0 1 1 0 64H288a32 32 0 1 1 0-64h192V768h-96a128 128 0 0 1-128-128V192A128 128 0 0 1 384 64h256a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128z"
-      })
-    ]));
-  }
-});
-var microphone_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Microphone",
-  __name: "microphone",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 128a128 128 0 0 0-128 128v256a128 128 0 1 0 256 0V256a128 128 0 0 0-128-128m0-64a192 192 0 0 1 192 192v256a192 192 0 1 1-384 0V256A192 192 0 0 1 512 64m-32 832v-64a288 288 0 0 1-288-288v-32a32 32 0 0 1 64 0v32a224 224 0 0 0 224 224h64a224 224 0 0 0 224-224v-32a32 32 0 1 1 64 0v32a288 288 0 0 1-288 288v64h64a32 32 0 1 1 0 64H416a32 32 0 1 1 0-64z"
-      })
-    ]));
-  }
-});
-var milk_tea_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MilkTea",
-  __name: "milk-tea",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M416 128V96a96 96 0 0 1 96-96h128a32 32 0 1 1 0 64H512a32 32 0 0 0-32 32v32h320a96 96 0 0 1 11.712 191.296l-39.68 581.056A64 64 0 0 1 708.224 960H315.776a64 64 0 0 1-63.872-59.648l-39.616-581.056A96 96 0 0 1 224 128zM276.48 320l39.296 576h392.448l4.8-70.784a224.064 224.064 0 0 1 30.016-439.808L747.52 320zM224 256h576a32 32 0 1 0 0-64H224a32 32 0 0 0 0 64m493.44 503.872 21.12-309.12a160 160 0 0 0-21.12 309.12"
-      })
-    ]));
-  }
-});
-var minus_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Minus",
-  __name: "minus",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 544h768a32 32 0 1 0 0-64H128a32 32 0 0 0 0 64"
-      })
-    ]));
-  }
-});
-var minus_default = minus_vue_vue_type_script_setup_true_lang_default;
-var money_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Money",
-  __name: "money",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 640v192h640V384H768v-64h150.976c14.272 0 19.456 1.472 24.64 4.288a29.056 29.056 0 0 1 12.16 12.096c2.752 5.184 4.224 10.368 4.224 24.64v493.952c0 14.272-1.472 19.456-4.288 24.64a29.056 29.056 0 0 1-12.096 12.16c-5.184 2.752-10.368 4.224-24.64 4.224H233.024c-14.272 0-19.456-1.472-24.64-4.288a29.056 29.056 0 0 1-12.16-12.096c-2.688-5.184-4.224-10.368-4.224-24.576V640z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 192H128v448h640zm64-22.976v493.952c0 14.272-1.472 19.456-4.288 24.64a29.056 29.056 0 0 1-12.096 12.16c-5.184 2.752-10.368 4.224-24.64 4.224H105.024c-14.272 0-19.456-1.472-24.64-4.288a29.056 29.056 0 0 1-12.16-12.096C65.536 682.432 64 677.248 64 663.04V169.024c0-14.272 1.472-19.456 4.288-24.64a29.056 29.056 0 0 1 12.096-12.16C85.568 129.536 90.752 128 104.96 128h685.952c14.272 0 19.456 1.472 24.64 4.288a29.056 29.056 0 0 1 12.16 12.096c2.752 5.184 4.224 10.368 4.224 24.64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 576a160 160 0 1 1 0-320 160 160 0 0 1 0 320m0-64a96 96 0 1 0 0-192 96 96 0 0 0 0 192"
-      })
-    ]));
-  }
-});
-var monitor_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Monitor",
-  __name: "monitor",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 768v128h192a32 32 0 1 1 0 64H288a32 32 0 1 1 0-64h192V768H192A128 128 0 0 1 64 640V256a128 128 0 0 1 128-128h640a128 128 0 0 1 128 128v384a128 128 0 0 1-128 128zM192 192a64 64 0 0 0-64 64v384a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64z"
-      })
-    ]));
-  }
-});
-var moon_night_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MoonNight",
-  __name: "moon-night",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 512a448 448 0 0 1 215.872-383.296A384 384 0 0 0 213.76 640h188.8A448.256 448.256 0 0 1 384 512M171.136 704a448 448 0 0 1 636.992-575.296A384 384 0 0 0 499.328 704h-328.32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M32 640h960q32 0 32 32t-32 32H32q-32 0-32-32t32-32m128 128h384a32 32 0 1 1 0 64H160a32 32 0 1 1 0-64m160 127.68 224 .256a32 32 0 0 1 32 32V928a32 32 0 0 1-32 32l-224-.384a32 32 0 0 1-32-32v-.064a32 32 0 0 1 32-32z"
-      })
-    ]));
-  }
-});
-var moon_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Moon",
-  __name: "moon",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M240.448 240.448a384 384 0 1 0 559.424 525.696 448 448 0 0 1-542.016-542.08 390.592 390.592 0 0 0-17.408 16.384zm181.056 362.048a384 384 0 0 0 525.632 16.384A448 448 0 1 1 405.056 76.8a384 384 0 0 0 16.448 525.696"
-      })
-    ]));
-  }
-});
-var more_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MoreFilled",
-  __name: "more-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M176 416a112 112 0 1 1 0 224 112 112 0 0 1 0-224m336 0a112 112 0 1 1 0 224 112 112 0 0 1 0-224m336 0a112 112 0 1 1 0 224 112 112 0 0 1 0-224"
-      })
-    ]));
-  }
-});
-var more_filled_default = more_filled_vue_vue_type_script_setup_true_lang_default;
-var more_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "More",
-  __name: "more",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M176 416a112 112 0 1 0 0 224 112 112 0 0 0 0-224m0 64a48 48 0 1 1 0 96 48 48 0 0 1 0-96m336-64a112 112 0 1 1 0 224 112 112 0 0 1 0-224m0 64a48 48 0 1 0 0 96 48 48 0 0 0 0-96m336-64a112 112 0 1 1 0 224 112 112 0 0 1 0-224m0 64a48 48 0 1 0 0 96 48 48 0 0 0 0-96"
-      })
-    ]));
-  }
-});
-var more_default = more_vue_vue_type_script_setup_true_lang_default;
-var mostly_cloudy_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MostlyCloudy",
-  __name: "mostly-cloudy",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M737.216 357.952 704 349.824l-11.776-32a192.064 192.064 0 0 0-367.424 23.04l-8.96 39.04-39.04 8.96A192.064 192.064 0 0 0 320 768h368a207.808 207.808 0 0 0 207.808-208 208.32 208.32 0 0 0-158.592-202.048m15.168-62.208A272.32 272.32 0 0 1 959.744 560a271.808 271.808 0 0 1-271.552 272H320a256 256 0 0 1-57.536-505.536 256.128 256.128 0 0 1 489.92-30.72"
-      })
-    ]));
-  }
-});
-var mouse_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Mouse",
-  __name: "mouse",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M438.144 256c-68.352 0-92.736 4.672-117.76 18.112-20.096 10.752-35.52 26.176-46.272 46.272C260.672 345.408 256 369.792 256 438.144v275.712c0 68.352 4.672 92.736 18.112 117.76 10.752 20.096 26.176 35.52 46.272 46.272C345.408 891.328 369.792 896 438.144 896h147.712c68.352 0 92.736-4.672 117.76-18.112 20.096-10.752 35.52-26.176 46.272-46.272C763.328 806.592 768 782.208 768 713.856V438.144c0-68.352-4.672-92.736-18.112-117.76a110.464 110.464 0 0 0-46.272-46.272C678.592 260.672 654.208 256 585.856 256zm0-64h147.712c85.568 0 116.608 8.96 147.904 25.6 31.36 16.768 55.872 41.344 72.576 72.64C823.104 321.536 832 352.576 832 438.08v275.84c0 85.504-8.96 116.544-25.6 147.84a174.464 174.464 0 0 1-72.64 72.576C702.464 951.104 671.424 960 585.92 960H438.08c-85.504 0-116.544-8.96-147.84-25.6a174.464 174.464 0 0 1-72.64-72.704c-16.768-31.296-25.664-62.336-25.664-147.84v-275.84c0-85.504 8.96-116.544 25.6-147.84a174.464 174.464 0 0 1 72.768-72.576c31.232-16.704 62.272-25.6 147.776-25.6z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 320q32 0 32 32v128q0 32-32 32t-32-32V352q0-32 32-32m32-96a32 32 0 0 1-64 0v-64a32 32 0 0 0-32-32h-96a32 32 0 0 1 0-64h96a96 96 0 0 1 96 96z"
-      })
-    ]));
-  }
-});
-var mug_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Mug",
-  __name: "mug",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M736 800V160H160v640a64 64 0 0 0 64 64h448a64 64 0 0 0 64-64m64-544h63.552a96 96 0 0 1 96 96v224a96 96 0 0 1-96 96H800v128a128 128 0 0 1-128 128H224A128 128 0 0 1 96 800V128a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32zm0 64v288h63.552a32 32 0 0 0 32-32V352a32 32 0 0 0-32-32z"
-      })
-    ]));
-  }
-});
-var mute_notification_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "MuteNotification",
-  __name: "mute-notification",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m241.216 832 63.616-64H768V448c0-42.368-10.24-82.304-28.48-117.504l46.912-47.232C815.36 331.392 832 387.84 832 448v320h96a32 32 0 1 1 0 64zm-90.24 0H96a32 32 0 1 1 0-64h96V448a320.128 320.128 0 0 1 256-313.6V128a64 64 0 1 1 128 0v6.4a319.552 319.552 0 0 1 171.648 97.088l-45.184 45.44A256 256 0 0 0 256 448v278.336L151.04 832zM448 896h128a64 64 0 0 1-128 0"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M150.72 859.072a32 32 0 0 1-45.44-45.056l704-708.544a32 32 0 0 1 45.44 45.056l-704 708.544z"
-      })
-    ]));
-  }
-});
-var mute_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Mute",
-  __name: "mute",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m412.16 592.128-45.44 45.44A191.232 191.232 0 0 1 320 512V256a192 192 0 1 1 384 0v44.352l-64 64V256a128 128 0 1 0-256 0v256c0 30.336 10.56 58.24 28.16 80.128m51.968 38.592A128 128 0 0 0 640 512v-57.152l64-64V512a192 192 0 0 1-287.68 166.528zM314.88 779.968l46.144-46.08A222.976 222.976 0 0 0 480 768h64a224 224 0 0 0 224-224v-32a32 32 0 1 1 64 0v32a288 288 0 0 1-288 288v64h64a32 32 0 1 1 0 64H416a32 32 0 1 1 0-64h64v-64c-61.44 0-118.4-19.2-165.12-52.032M266.752 737.6A286.976 286.976 0 0 1 192 544v-32a32 32 0 0 1 64 0v32c0 56.832 21.184 108.8 56.064 148.288z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M150.72 859.072a32 32 0 0 1-45.44-45.056l704-708.544a32 32 0 0 1 45.44 45.056l-704 708.544z"
-      })
-    ]));
-  }
-});
-var no_smoking_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "NoSmoking",
-  __name: "no-smoking",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M440.256 576H256v128h56.256l-64 64H224a32 32 0 0 1-32-32V544a32 32 0 0 1 32-32h280.256zm143.488 128H704V583.744L775.744 512H928a32 32 0 0 1 32 32v192a32 32 0 0 1-32 32H519.744zM768 576v128h128V576zm-29.696-207.552 45.248 45.248-497.856 497.856-45.248-45.248zM256 64h64v320h-64zM128 192h64v192h-64zM64 512h64v256H64z"
-      })
-    ]));
-  }
-});
-var notebook_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Notebook",
-  __name: "notebook",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 128v768h640V128zm-32-64h704a32 32 0 0 1 32 32v832a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M672 128h64v768h-64zM96 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var notification_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Notification",
-  __name: "notification",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 128v64H256a64 64 0 0 0-64 64v512a64 64 0 0 0 64 64h512a64 64 0 0 0 64-64V512h64v256a128 128 0 0 1-128 128H256a128 128 0 0 1-128-128V256a128 128 0 0 1 128-128z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 384a128 128 0 1 0 0-256 128 128 0 0 0 0 256m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384"
-      })
-    ]));
-  }
-});
-var odometer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Odometer",
-  __name: "odometer",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 512a320 320 0 1 1 640 0 32 32 0 1 1-64 0 256 256 0 1 0-512 0 32 32 0 0 1-64 0"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M570.432 627.84A96 96 0 1 1 509.568 608l60.992-187.776A32 32 0 1 1 631.424 440l-60.992 187.776zM502.08 734.464a32 32 0 1 0 19.84-60.928 32 32 0 0 0-19.84 60.928"
-      })
-    ]));
-  }
-});
-var office_building_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "OfficeBuilding",
-  __name: "office-building",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 128v704h384V128zm-32-64h448a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 256h256v64H256zm0 192h256v64H256zm0 192h256v64H256zm384-128h128v64H640zm0 128h128v64H640zM64 832h896v64H64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 384v448h192V384zm-32-64h256a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H608a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var open_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Open",
-  __name: "open",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M329.956 257.138a254.862 254.862 0 0 0 0 509.724h364.088a254.862 254.862 0 0 0 0-509.724zm0-72.818h364.088a327.68 327.68 0 1 1 0 655.36H329.956a327.68 327.68 0 1 1 0-655.36z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M694.044 621.227a109.227 109.227 0 1 0 0-218.454 109.227 109.227 0 0 0 0 218.454m0 72.817a182.044 182.044 0 1 1 0-364.088 182.044 182.044 0 0 1 0 364.088"
-      })
-    ]));
-  }
-});
-var operation_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Operation",
-  __name: "operation",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M389.44 768a96.064 96.064 0 0 1 181.12 0H896v64H570.56a96.064 96.064 0 0 1-181.12 0H128v-64zm192-288a96.064 96.064 0 0 1 181.12 0H896v64H762.56a96.064 96.064 0 0 1-181.12 0H128v-64zm-320-288a96.064 96.064 0 0 1 181.12 0H896v64H442.56a96.064 96.064 0 0 1-181.12 0H128v-64z"
-      })
-    ]));
-  }
-});
-var opportunity_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Opportunity",
-  __name: "opportunity",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 960v-64h192.064v64zm448-544a350.656 350.656 0 0 1-128.32 271.424C665.344 719.04 640 763.776 640 813.504V832H320v-14.336c0-48-19.392-95.36-57.216-124.992a351.552 351.552 0 0 1-128.448-344.256c25.344-136.448 133.888-248.128 269.76-276.48A352.384 352.384 0 0 1 832 416m-544 32c0-132.288 75.904-224 192-224v-64c-154.432 0-256 122.752-256 288z"
-      })
-    ]));
-  }
-});
-var orange_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Orange",
-  __name: "orange",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 894.72a382.336 382.336 0 0 0 215.936-89.472L577.024 622.272c-10.24 6.016-21.248 10.688-33.024 13.696v258.688zm261.248-134.784A382.336 382.336 0 0 0 894.656 544H635.968c-3.008 11.776-7.68 22.848-13.696 33.024l182.976 182.912zM894.656 480a382.336 382.336 0 0 0-89.408-215.936L622.272 446.976c6.016 10.24 10.688 21.248 13.696 33.024h258.688zm-134.72-261.248A382.336 382.336 0 0 0 544 129.344v258.688c11.776 3.008 22.848 7.68 33.024 13.696zM480 129.344a382.336 382.336 0 0 0-215.936 89.408l182.912 182.976c10.24-6.016 21.248-10.688 33.024-13.696zm-261.248 134.72A382.336 382.336 0 0 0 129.344 480h258.688c3.008-11.776 7.68-22.848 13.696-33.024zM129.344 544a382.336 382.336 0 0 0 89.408 215.936l182.976-182.912A127.232 127.232 0 0 1 388.032 544zm134.72 261.248A382.336 382.336 0 0 0 480 894.656V635.968a127.232 127.232 0 0 1-33.024-13.696zM512 960a448 448 0 1 1 0-896 448 448 0 0 1 0 896m0-384a64 64 0 1 0 0-128 64 64 0 0 0 0 128"
-      })
-    ]));
-  }
-});
-var paperclip_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Paperclip",
-  __name: "paperclip",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M602.496 240.448A192 192 0 1 1 874.048 512l-316.8 316.8A256 256 0 0 1 195.2 466.752L602.496 59.456l45.248 45.248L240.448 512A192 192 0 0 0 512 783.552l316.8-316.8a128 128 0 1 0-181.056-181.056L353.6 579.904a32 32 0 1 0 45.248 45.248l294.144-294.144 45.312 45.248L444.096 670.4a96 96 0 1 1-135.744-135.744l294.144-294.208z"
-      })
-    ]));
-  }
-});
-var partly_cloudy_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PartlyCloudy",
-  __name: "partly-cloudy",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M598.4 895.872H328.192a256 256 0 0 1-34.496-510.528A352 352 0 1 1 598.4 895.872m-271.36-64h272.256a288 288 0 1 0-248.512-417.664L335.04 445.44l-34.816 3.584a192 192 0 0 0 26.88 382.848z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M139.84 501.888a256 256 0 1 1 417.856-277.12c-17.728 2.176-38.208 8.448-61.504 18.816A192 192 0 1 0 189.12 460.48a6003.84 6003.84 0 0 0-49.28 41.408z"
-      })
-    ]));
-  }
-});
-var pear_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Pear",
-  __name: "pear",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M542.336 258.816a443.255 443.255 0 0 0-9.024 25.088 32 32 0 1 1-60.8-20.032l1.088-3.328a162.688 162.688 0 0 0-122.048 131.392l-17.088 102.72-20.736 15.36C256.192 552.704 224 610.88 224 672c0 120.576 126.4 224 288 224s288-103.424 288-224c0-61.12-32.192-119.296-89.728-161.92l-20.736-15.424-17.088-102.72a162.688 162.688 0 0 0-130.112-133.12zm-40.128-66.56c7.936-15.552 16.576-30.08 25.92-43.776 23.296-33.92 49.408-59.776 78.528-77.12a32 32 0 1 1 32.704 55.04c-20.544 12.224-40.064 31.552-58.432 58.304a316.608 316.608 0 0 0-9.792 15.104 226.688 226.688 0 0 1 164.48 181.568l12.8 77.248C819.456 511.36 864 587.392 864 672c0 159.04-157.568 288-352 288S160 831.04 160 672c0-84.608 44.608-160.64 115.584-213.376l12.8-77.248a226.624 226.624 0 0 1 213.76-189.184z"
-      })
-    ]));
-  }
-});
-var phone_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PhoneFilled",
-  __name: "phone-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M199.232 125.568 90.624 379.008a32 32 0 0 0 6.784 35.2l512.384 512.384a32 32 0 0 0 35.2 6.784l253.44-108.608a32 32 0 0 0 10.048-52.032L769.6 633.92a32 32 0 0 0-36.928-5.952l-130.176 65.088-271.488-271.552 65.024-130.176a32 32 0 0 0-5.952-36.928L251.2 115.52a32 32 0 0 0-51.968 10.048z"
-      })
-    ]));
-  }
-});
-var phone_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Phone",
-  __name: "phone",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M79.36 432.256 591.744 944.64a32 32 0 0 0 35.2 6.784l253.44-108.544a32 32 0 0 0 9.984-52.032l-153.856-153.92a32 32 0 0 0-36.928-6.016l-69.888 34.944L358.08 394.24l35.008-69.888a32 32 0 0 0-5.952-36.928L233.152 133.568a32 32 0 0 0-52.032 10.048L72.512 397.056a32 32 0 0 0 6.784 35.2zm60.48-29.952 81.536-190.08L325.568 316.48l-24.64 49.216-20.608 41.216 32.576 32.64 271.552 271.552 32.64 32.64 41.216-20.672 49.28-24.576 104.192 104.128-190.08 81.472L139.84 402.304zM512 320v-64a256 256 0 0 1 256 256h-64a192 192 0 0 0-192-192m0-192V64a448 448 0 0 1 448 448h-64a384 384 0 0 0-384-384"
-      })
-    ]));
-  }
-});
-var picture_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PictureFilled",
-  __name: "picture-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M96 896a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h832a32 32 0 0 1 32 32v704a32 32 0 0 1-32 32zm315.52-228.48-68.928-68.928a32 32 0 0 0-45.248 0L128 768.064h778.688l-242.112-290.56a32 32 0 0 0-49.216 0L458.752 665.408a32 32 0 0 1-47.232 2.112M256 384a96 96 0 1 0 192.064-.064A96 96 0 0 0 256 384"
-      })
-    ]));
-  }
-});
-var picture_filled_default = picture_filled_vue_vue_type_script_setup_true_lang_default;
-var picture_rounded_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PictureRounded",
-  __name: "picture-rounded",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 128a384 384 0 1 0 0 768 384 384 0 0 0 0-768m0-64a448 448 0 1 1 0 896 448 448 0 0 1 0-896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 288q64 0 64 64t-64 64q-64 0-64-64t64-64M214.656 790.656l-45.312-45.312 185.664-185.6a96 96 0 0 1 123.712-10.24l138.24 98.688a32 32 0 0 0 39.872-2.176L906.688 422.4l42.624 47.744L699.52 693.696a96 96 0 0 1-119.808 6.592l-138.24-98.752a32 32 0 0 0-41.152 3.456l-185.664 185.6z"
-      })
-    ]));
-  }
-});
-var picture_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Picture",
-  __name: "picture",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 160v704h704V160zm-32-64h768a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H128a32 32 0 0 1-32-32V128a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 288q64 0 64 64t-64 64q-64 0-64-64t64-64M185.408 876.992l-50.816-38.912L350.72 556.032a96 96 0 0 1 134.592-17.856l1.856 1.472 122.88 99.136a32 32 0 0 0 44.992-4.864l216-269.888 49.92 39.936-215.808 269.824-.256.32a96 96 0 0 1-135.04 14.464l-122.88-99.072-.64-.512a32 32 0 0 0-44.8 5.952z"
-      })
-    ]));
-  }
-});
-var pie_chart_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PieChart",
-  __name: "pie-chart",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 68.48v64.832A384.128 384.128 0 0 0 512 896a384.128 384.128 0 0 0 378.688-320h64.768A448.128 448.128 0 0 1 64 512 448.128 448.128 0 0 1 448 68.48z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M576 97.28V448h350.72A384.064 384.064 0 0 0 576 97.28zM512 64V33.152A448 448 0 0 1 990.848 512H512z"
-      })
-    ]));
-  }
-});
-var place_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Place",
-  __name: "place",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 512a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 512a32 32 0 0 1 32 32v256a32 32 0 1 1-64 0V544a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 649.088v64.96C269.76 732.352 192 771.904 192 800c0 37.696 139.904 96 320 96s320-58.304 320-96c0-28.16-77.76-67.648-192-85.952v-64.96C789.12 671.04 896 730.368 896 800c0 88.32-171.904 160-384 160s-384-71.68-384-160c0-69.696 106.88-128.96 256-150.912"
-      })
-    ]));
-  }
-});
-var platform_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Platform",
-  __name: "platform",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 832v-64h128v64h192v64H256v-64zM128 704V128h768v576z"
-      })
-    ]));
-  }
-});
-var plus_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Plus",
-  __name: "plus",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 480V128a32 32 0 0 1 64 0v352h352a32 32 0 1 1 0 64H544v352a32 32 0 1 1-64 0V544H128a32 32 0 0 1 0-64z"
-      })
-    ]));
-  }
-});
-var plus_default = plus_vue_vue_type_script_setup_true_lang_default;
-var pointer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Pointer",
-  __name: "pointer",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M511.552 128c-35.584 0-64.384 28.8-64.384 64.448v516.48L274.048 570.88a94.272 94.272 0 0 0-112.896-3.456 44.416 44.416 0 0 0-8.96 62.208L332.8 870.4A64 64 0 0 0 384 896h512V575.232a64 64 0 0 0-45.632-61.312l-205.952-61.76A96 96 0 0 1 576 360.192V192.448C576 156.8 547.2 128 511.552 128M359.04 556.8l24.128 19.2V192.448a128.448 128.448 0 1 1 256.832 0v167.744a32 32 0 0 0 22.784 30.656l206.016 61.76A128 128 0 0 1 960 575.232V896a64 64 0 0 1-64 64H384a128 128 0 0 1-102.4-51.2L101.056 668.032A108.416 108.416 0 0 1 128 512.512a158.272 158.272 0 0 1 185.984 8.32z"
-      })
-    ]));
-  }
-});
-var position_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Position",
-  __name: "position",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m249.6 417.088 319.744 43.072 39.168 310.272L845.12 178.88 249.6 417.088zm-129.024 47.168a32 32 0 0 1-7.68-61.44l777.792-311.04a32 32 0 0 1 41.6 41.6l-310.336 775.68a32 32 0 0 1-61.44-7.808L512 516.992l-391.424-52.736z"
-      })
-    ]));
-  }
-});
-var postcard_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Postcard",
-  __name: "postcard",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 224a32 32 0 0 0-32 32v512a32 32 0 0 0 32 32h704a32 32 0 0 0 32-32V256a32 32 0 0 0-32-32zm0-64h704a96 96 0 0 1 96 96v512a96 96 0 0 1-96 96H160a96 96 0 0 1-96-96V256a96 96 0 0 1 96-96"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 320a64 64 0 1 1 0 128 64 64 0 0 1 0-128M288 448h256q32 0 32 32t-32 32H288q-32 0-32-32t32-32m0 128h256q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var pouring_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Pouring",
-  __name: "pouring",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m739.328 291.328-35.2-6.592-12.8-33.408a192.064 192.064 0 0 0-365.952 23.232l-9.92 40.896-41.472 7.04a176.32 176.32 0 0 0-146.24 173.568c0 97.28 78.72 175.936 175.808 175.936h400a192 192 0 0 0 35.776-380.672zM959.552 480a256 256 0 0 1-256 256h-400A239.808 239.808 0 0 1 63.744 496.192a240.32 240.32 0 0 1 199.488-236.8 256.128 256.128 0 0 1 487.872-30.976A256.064 256.064 0 0 1 959.552 480M224 800a32 32 0 0 1 32 32v96a32 32 0 1 1-64 0v-96a32 32 0 0 1 32-32m192 0a32 32 0 0 1 32 32v96a32 32 0 1 1-64 0v-96a32 32 0 0 1 32-32m192 0a32 32 0 0 1 32 32v96a32 32 0 1 1-64 0v-96a32 32 0 0 1 32-32m192 0a32 32 0 0 1 32 32v96a32 32 0 1 1-64 0v-96a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var present_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Present",
-  __name: "present",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 896V640H192v-64h288V320H192v576zm64 0h288V320H544v256h288v64H544zM128 256h768v672a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M96 256h832q32 0 32 32t-32 32H96q-32 0-32-32t32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M416 256a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M608 256a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      })
-    ]));
-  }
-});
-var price_tag_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "PriceTag",
-  __name: "price-tag",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 318.336V896h576V318.336L552.512 115.84a64 64 0 0 0-81.024 0zM593.024 66.304l259.2 212.096A32 32 0 0 1 864 303.168V928a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V303.168a32 32 0 0 1 11.712-24.768l259.2-212.096a128 128 0 0 1 162.112 0z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 448a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      })
-    ]));
-  }
-});
-var printer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Printer",
-  __name: "printer",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 768H105.024c-14.272 0-19.456-1.472-24.64-4.288a29.056 29.056 0 0 1-12.16-12.096C65.536 746.432 64 741.248 64 727.04V379.072c0-42.816 4.48-58.304 12.8-73.984 8.384-15.616 20.672-27.904 36.288-36.288 15.68-8.32 31.168-12.8 73.984-12.8H256V64h512v192h68.928c42.816 0 58.304 4.48 73.984 12.8 15.616 8.384 27.904 20.672 36.288 36.288 8.32 15.68 12.8 31.168 12.8 73.984v347.904c0 14.272-1.472 19.456-4.288 24.64a29.056 29.056 0 0 1-12.096 12.16c-5.184 2.752-10.368 4.224-24.64 4.224H768v192H256zm64-192v320h384V576zm-64 128V512h512v192h128V379.072c0-29.376-1.408-36.48-5.248-43.776a23.296 23.296 0 0 0-10.048-10.048c-7.232-3.84-14.4-5.248-43.776-5.248H187.072c-29.376 0-36.48 1.408-43.776 5.248a23.296 23.296 0 0 0-10.048 10.048c-3.84 7.232-5.248 14.4-5.248 43.776V704zm64-448h384V128H320zm-64 128h64v64h-64zm128 0h64v64h-64z"
-      })
-    ]));
-  }
-});
-var promotion_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Promotion",
-  __name: "promotion",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m64 448 832-320-128 704-446.08-243.328L832 192 242.816 545.472zm256 512V657.024L512 768z"
-      })
-    ]));
-  }
-});
-var quartz_watch_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "QuartzWatch",
-  __name: "quartz-watch",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M422.02 602.01v-.03c-6.68-5.99-14.35-8.83-23.01-8.51-8.67.32-16.17 3.66-22.5 10.02-6.33 6.36-9.5 13.7-9.5 22.02s3 15.82 8.99 22.5c8.68 8.68 19.02 11.35 31.01 8s19.49-10.85 22.5-22.5c3.01-11.65.51-22.15-7.49-31.49zM384 512c0-9.35-3-17.02-8.99-23.01-6-5.99-13.66-8.99-23.01-8.99-9.35 0-17.02 3-23.01 8.99-5.99 6-8.99 13.66-8.99 23.01s3 17.02 8.99 23.01c6 5.99 13.66 8.99 23.01 8.99 9.35 0 17.02-3 23.01-8.99 5.99-6 8.99-13.67 8.99-23.01m6.53-82.49c11.65 3.01 22.15.51 31.49-7.49h.04c5.99-6.68 8.83-14.34 8.51-23.01-.32-8.67-3.66-16.16-10.02-22.5-6.36-6.33-13.7-9.5-22.02-9.5s-15.82 3-22.5 8.99c-8.68 8.69-11.35 19.02-8 31.01 3.35 11.99 10.85 19.49 22.5 22.5zm242.94 0c11.67-3.03 19.01-10.37 22.02-22.02 3.01-11.65.51-22.15-7.49-31.49h.01c-6.68-5.99-14.18-8.99-22.5-8.99s-15.66 3.16-22.02 9.5c-6.36 6.34-9.7 13.84-10.02 22.5-.32 8.66 2.52 16.33 8.51 23.01 9.32 8.02 19.82 10.52 31.49 7.49M512 640c-9.35 0-17.02 3-23.01 8.99-5.99 6-8.99 13.66-8.99 23.01s3 17.02 8.99 23.01c6 5.99 13.67 8.99 23.01 8.99 9.35 0 17.02-3 23.01-8.99 5.99-6 8.99-13.66 8.99-23.01s-3-17.02-8.99-23.01c-6-5.99-13.66-8.99-23.01-8.99m183.01-151.01c-6-5.99-13.66-8.99-23.01-8.99s-17.02 3-23.01 8.99c-5.99 6-8.99 13.66-8.99 23.01s3 17.02 8.99 23.01c6 5.99 13.66 8.99 23.01 8.99s17.02-3 23.01-8.99c5.99-6 8.99-13.67 8.99-23.01 0-9.35-3-17.02-8.99-23.01"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 512c-2-90.67-33.17-166.17-93.5-226.5-20.43-20.42-42.6-37.49-66.5-51.23V64H352v170.26c-23.9 13.74-46.07 30.81-66.5 51.24-60.33 60.33-91.49 135.83-93.5 226.5 2 90.67 33.17 166.17 93.5 226.5 20.43 20.43 42.6 37.5 66.5 51.24V960h320V789.74c23.9-13.74 46.07-30.81 66.5-51.24 60.33-60.34 91.49-135.83 93.5-226.5M416 128h192v78.69c-29.85-9.03-61.85-13.93-96-14.69-34.15.75-66.15 5.65-96 14.68zm192 768H416v-78.68c29.85 9.03 61.85 13.93 96 14.68 34.15-.75 66.15-5.65 96-14.68zm-96-128c-72.66-2.01-132.99-27.01-180.99-75.01S258.01 584.66 256 512c2.01-72.66 27.01-132.99 75.01-180.99S439.34 258.01 512 256c72.66 2.01 132.99 27.01 180.99 75.01S765.99 439.34 768 512c-2.01 72.66-27.01 132.99-75.01 180.99S584.66 765.99 512 768"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 320c-9.35 0-17.02 3-23.01 8.99-5.99 6-8.99 13.66-8.99 23.01 0 9.35 3 17.02 8.99 23.01 6 5.99 13.67 8.99 23.01 8.99 9.35 0 17.02-3 23.01-8.99 5.99-6 8.99-13.66 8.99-23.01 0-9.35-3-17.02-8.99-23.01-6-5.99-13.66-8.99-23.01-8.99m112.99 273.5c-8.66-.32-16.33 2.52-23.01 8.51-7.98 9.32-10.48 19.82-7.49 31.49s10.49 19.17 22.5 22.5 22.35.66 31.01-8v.04c5.99-6.68 8.99-14.18 8.99-22.5s-3.16-15.66-9.5-22.02-13.84-9.7-22.5-10.02"
-      })
-    ]));
-  }
-});
-var question_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "QuestionFilled",
-  __name: "question-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m23.744 191.488c-52.096 0-92.928 14.784-123.2 44.352-30.976 29.568-45.76 70.4-45.76 122.496h80.256c0-29.568 5.632-52.8 17.6-68.992 13.376-19.712 35.2-28.864 66.176-28.864 23.936 0 42.944 6.336 56.32 19.712 12.672 13.376 19.712 31.68 19.712 54.912 0 17.6-6.336 34.496-19.008 49.984l-8.448 9.856c-45.76 40.832-73.216 70.4-82.368 89.408-9.856 19.008-14.08 42.24-14.08 68.992v9.856h80.96v-9.856c0-16.896 3.52-31.68 10.56-45.76 6.336-12.672 15.488-24.64 28.16-35.2 33.792-29.568 54.208-48.576 60.544-55.616 16.896-22.528 26.048-51.392 26.048-86.592 0-42.944-14.08-76.736-42.24-101.376-28.16-25.344-65.472-37.312-111.232-37.312zm-12.672 406.208a54.272 54.272 0 0 0-38.72 14.784 49.408 49.408 0 0 0-15.488 38.016c0 15.488 4.928 28.16 15.488 38.016A54.848 54.848 0 0 0 523.072 768c15.488 0 28.16-4.928 38.72-14.784a51.52 51.52 0 0 0 16.192-38.72 51.968 51.968 0 0 0-15.488-38.016 55.936 55.936 0 0 0-39.424-14.784z"
-      })
-    ]));
-  }
-});
-var question_filled_default = question_filled_vue_vue_type_script_setup_true_lang_default;
-var rank_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Rank",
-  __name: "rank",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m186.496 544 41.408 41.344a32 32 0 1 1-45.248 45.312l-96-96a32 32 0 0 1 0-45.312l96-96a32 32 0 1 1 45.248 45.312L186.496 480h290.816V186.432l-41.472 41.472a32 32 0 1 1-45.248-45.184l96-96.128a32 32 0 0 1 45.312 0l96 96.064a32 32 0 0 1-45.248 45.184l-41.344-41.28V480H832l-41.344-41.344a32 32 0 0 1 45.248-45.312l96 96a32 32 0 0 1 0 45.312l-96 96a32 32 0 0 1-45.248-45.312L832 544H541.312v293.44l41.344-41.28a32 32 0 1 1 45.248 45.248l-96 96a32 32 0 0 1-45.312 0l-96-96a32 32 0 1 1 45.312-45.248l41.408 41.408V544H186.496z"
-      })
-    ]));
-  }
-});
-var reading_lamp_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ReadingLamp",
-  __name: "reading-lamp",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 896h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32m-44.672-768-99.52 448h608.384l-99.52-448zm-25.6-64h460.608a32 32 0 0 1 31.232 25.088l113.792 512A32 32 0 0 1 856.128 640H167.872a32 32 0 0 1-31.232-38.912l113.792-512A32 32 0 0 1 281.664 64z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M672 576q32 0 32 32v128q0 32-32 32t-32-32V608q0-32 32-32m-192-.064h64V960h-64z"
-      })
-    ]));
-  }
-});
-var reading_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Reading",
-  __name: "reading",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m512 863.36 384-54.848v-638.72L525.568 222.72a96 96 0 0 1-27.136 0L128 169.792v638.72zM137.024 106.432l370.432 52.928a32 32 0 0 0 9.088 0l370.432-52.928A64 64 0 0 1 960 169.792v638.72a64 64 0 0 1-54.976 63.36l-388.48 55.488a32 32 0 0 1-9.088 0l-388.48-55.488A64 64 0 0 1 64 808.512v-638.72a64 64 0 0 1 73.024-63.36z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 192h64v704h-64z"
-      })
-    ]));
-  }
-});
-var refresh_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "RefreshLeft",
-  __name: "refresh-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M289.088 296.704h92.992a32 32 0 0 1 0 64H232.96a32 32 0 0 1-32-32V179.712a32 32 0 0 1 64 0v50.56a384 384 0 0 1 643.84 282.88 384 384 0 0 1-383.936 384 384 384 0 0 1-384-384h64a320 320 0 1 0 640 0 320 320 0 0 0-555.712-216.448z"
-      })
-    ]));
-  }
-});
-var refresh_left_default = refresh_left_vue_vue_type_script_setup_true_lang_default;
-var refresh_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "RefreshRight",
-  __name: "refresh-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M784.512 230.272v-50.56a32 32 0 1 1 64 0v149.056a32 32 0 0 1-32 32H667.52a32 32 0 1 1 0-64h92.992A320 320 0 1 0 524.8 833.152a320 320 0 0 0 320-320h64a384 384 0 0 1-384 384 384 384 0 0 1-384-384 384 384 0 0 1 643.712-282.88z"
-      })
-    ]));
-  }
-});
-var refresh_right_default = refresh_right_vue_vue_type_script_setup_true_lang_default;
-var refresh_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Refresh",
-  __name: "refresh",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M771.776 794.88A384 384 0 0 1 128 512h64a320 320 0 0 0 555.712 216.448H654.72a32 32 0 1 1 0-64h149.056a32 32 0 0 1 32 32v148.928a32 32 0 1 1-64 0v-50.56zM276.288 295.616h92.992a32 32 0 0 1 0 64H220.16a32 32 0 0 1-32-32V178.56a32 32 0 0 1 64 0v50.56A384 384 0 0 1 896.128 512h-64a320 320 0 0 0-555.776-216.384z"
-      })
-    ]));
-  }
-});
-var refrigerator_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Refrigerator",
-  __name: "refrigerator",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 448h512V160a32 32 0 0 0-32-32H288a32 32 0 0 0-32 32zm0 64v352a32 32 0 0 0 32 32h448a32 32 0 0 0 32-32V512zm32-448h448a96 96 0 0 1 96 96v704a96 96 0 0 1-96 96H288a96 96 0 0 1-96-96V160a96 96 0 0 1 96-96m32 224h64v96h-64zm0 288h64v96h-64z"
-      })
-    ]));
-  }
-});
-var remove_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "RemoveFilled",
-  __name: "remove-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896M288 512a38.4 38.4 0 0 0 38.4 38.4h371.2a38.4 38.4 0 0 0 0-76.8H326.4A38.4 38.4 0 0 0 288 512"
-      })
-    ]));
-  }
-});
-var remove_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Remove",
-  __name: "remove",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 480h320a32 32 0 1 1 0 64H352a32 32 0 0 1 0-64"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      })
-    ]));
-  }
-});
-var right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Right",
-  __name: "right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M754.752 480H160a32 32 0 1 0 0 64h594.752L521.344 777.344a32 32 0 0 0 45.312 45.312l288-288a32 32 0 0 0 0-45.312l-288-288a32 32 0 1 0-45.312 45.312z"
-      })
-    ]));
-  }
-});
-var scale_to_original_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ScaleToOriginal",
-  __name: "scale-to-original",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M813.176 180.706a60.235 60.235 0 0 1 60.236 60.235v481.883a60.235 60.235 0 0 1-60.236 60.235H210.824a60.235 60.235 0 0 1-60.236-60.235V240.94a60.235 60.235 0 0 1 60.236-60.235h602.352zm0-60.235H210.824A120.47 120.47 0 0 0 90.353 240.94v481.883a120.47 120.47 0 0 0 120.47 120.47h602.353a120.47 120.47 0 0 0 120.471-120.47V240.94a120.47 120.47 0 0 0-120.47-120.47zm-120.47 180.705a30.118 30.118 0 0 0-30.118 30.118v301.177a30.118 30.118 0 0 0 60.236 0V331.294a30.118 30.118 0 0 0-30.118-30.118zm-361.412 0a30.118 30.118 0 0 0-30.118 30.118v301.177a30.118 30.118 0 1 0 60.236 0V331.294a30.118 30.118 0 0 0-30.118-30.118M512 361.412a30.118 30.118 0 0 0-30.118 30.117v30.118a30.118 30.118 0 0 0 60.236 0V391.53A30.118 30.118 0 0 0 512 361.412M512 512a30.118 30.118 0 0 0-30.118 30.118v30.117a30.118 30.118 0 0 0 60.236 0v-30.117A30.118 30.118 0 0 0 512 512"
-      })
-    ]));
-  }
-});
-var scale_to_original_default = scale_to_original_vue_vue_type_script_setup_true_lang_default;
-var school_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "School",
-  __name: "school",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 128v704h576V128zm-32-64h640a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M64 832h896v64H64zm256-640h128v96H320z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 832h256v-64a128 128 0 1 0-256 0zm128-256a192 192 0 0 1 192 192v128H320V768a192 192 0 0 1 192-192M320 384h128v96H320zm256-192h128v96H576zm0 192h128v96H576z"
-      })
-    ]));
-  }
-});
-var scissor_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Scissor",
-  __name: "scissor",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m512.064 578.368-106.88 152.768a160 160 0 1 1-23.36-78.208L472.96 522.56 196.864 128.256a32 32 0 1 1 52.48-36.736l393.024 561.344a160 160 0 1 1-23.36 78.208l-106.88-152.704zm54.4-189.248 208.384-297.6a32 32 0 0 1 52.48 36.736l-221.76 316.672-39.04-55.808zm-376.32 425.856a96 96 0 1 0 110.144-157.248 96 96 0 0 0-110.08 157.248zm643.84 0a96 96 0 1 0-110.08-157.248 96 96 0 0 0 110.08 157.248"
-      })
-    ]));
-  }
-});
-var search_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Search",
-  __name: "search",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704"
-      })
-    ]));
-  }
-});
-var search_default = search_vue_vue_type_script_setup_true_lang_default;
-var select_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Select",
-  __name: "select",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M77.248 415.04a64 64 0 0 1 90.496 0l226.304 226.304L846.528 188.8a64 64 0 1 1 90.56 90.496l-543.04 543.04-316.8-316.8a64 64 0 0 1 0-90.496z"
-      })
-    ]));
-  }
-});
-var sell_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sell",
-  __name: "sell",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 288h131.072a32 32 0 0 1 31.808 28.8L886.4 512h-64.384l-16-160H704v96a32 32 0 1 1-64 0v-96H384v96a32 32 0 0 1-64 0v-96H217.92l-51.2 512H512v64H131.328a32 32 0 0 1-31.808-35.2l57.6-576a32 32 0 0 1 31.808-28.8H320v-22.336C320 154.688 405.504 64 512 64s192 90.688 192 201.664v22.4zm-64 0v-22.336C640 189.248 582.272 128 512 128c-70.272 0-128 61.248-128 137.664v22.4h256zm201.408 483.84L768 698.496V928a32 32 0 1 1-64 0V698.496l-73.344 73.344a32 32 0 1 1-45.248-45.248l128-128a32 32 0 0 1 45.248 0l128 128a32 32 0 1 1-45.248 45.248z"
-      })
-    ]));
-  }
-});
-var semi_select_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SemiSelect",
-  __name: "semi-select",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 448h768q64 0 64 64t-64 64H128q-64 0-64-64t64-64"
-      })
-    ]));
-  }
-});
-var service_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Service",
-  __name: "service",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M864 409.6a192 192 0 0 1-37.888 349.44A256.064 256.064 0 0 1 576 960h-96a32 32 0 1 1 0-64h96a192.064 192.064 0 0 0 181.12-128H736a32 32 0 0 1-32-32V416a32 32 0 0 1 32-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 0 0-573.056 0A193.235 193.235 0 0 1 256 384h32a32 32 0 0 1 32 32v320a32 32 0 0 1-32 32h-32a192 192 0 0 1-96-358.4 352 352 0 0 1 704 0M256 448a128 128 0 1 0 0 256zm640 128a128 128 0 0 0-128-128v256a128 128 0 0 0 128-128"
-      })
-    ]));
-  }
-});
-var set_up_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SetUp",
-  __name: "set-up",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 160a64 64 0 0 0-64 64v576a64 64 0 0 0 64 64h576a64 64 0 0 0 64-64V224a64 64 0 0 0-64-64zm0-64h576a128 128 0 0 1 128 128v576a128 128 0 0 1-128 128H224A128 128 0 0 1 96 800V224A128 128 0 0 1 224 96"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 416a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 320h256q32 0 32 32t-32 32H480q-32 0-32-32t32-32m160 416a64 64 0 1 0 0-128 64 64 0 0 0 0 128m0 64a128 128 0 1 1 0-256 128 128 0 0 1 0 256"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 640h256q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var setting_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Setting",
-  __name: "setting",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M600.704 64a32 32 0 0 1 30.464 22.208l35.2 109.376c14.784 7.232 28.928 15.36 42.432 24.512l112.384-24.192a32 32 0 0 1 34.432 15.36L944.32 364.8a32 32 0 0 1-4.032 37.504l-77.12 85.12a357.12 357.12 0 0 1 0 49.024l77.12 85.248a32 32 0 0 1 4.032 37.504l-88.704 153.6a32 32 0 0 1-34.432 15.296L708.8 803.904c-13.44 9.088-27.648 17.28-42.368 24.512l-35.264 109.376A32 32 0 0 1 600.704 960H423.296a32 32 0 0 1-30.464-22.208L357.696 828.48a351.616 351.616 0 0 1-42.56-24.64l-112.32 24.256a32 32 0 0 1-34.432-15.36L79.68 659.2a32 32 0 0 1 4.032-37.504l77.12-85.248a357.12 357.12 0 0 1 0-48.896l-77.12-85.248A32 32 0 0 1 79.68 364.8l88.704-153.6a32 32 0 0 1 34.432-15.296l112.32 24.256c13.568-9.152 27.776-17.408 42.56-24.64l35.2-109.312A32 32 0 0 1 423.232 64H600.64zm-23.424 64H446.72l-36.352 113.088-24.512 11.968a294.113 294.113 0 0 0-34.816 20.096l-22.656 15.36-116.224-25.088-65.28 113.152 79.68 88.192-1.92 27.136a293.12 293.12 0 0 0 0 40.192l1.92 27.136-79.808 88.192 65.344 113.152 116.224-25.024 22.656 15.296a294.113 294.113 0 0 0 34.816 20.096l24.512 11.968L446.72 896h130.688l36.48-113.152 24.448-11.904a288.282 288.282 0 0 0 34.752-20.096l22.592-15.296 116.288 25.024 65.28-113.152-79.744-88.192 1.92-27.136a293.12 293.12 0 0 0 0-40.256l-1.92-27.136 79.808-88.128-65.344-113.152-116.288 24.96-22.592-15.232a287.616 287.616 0 0 0-34.752-20.096l-24.448-11.904L577.344 128zM512 320a192 192 0 1 1 0 384 192 192 0 0 1 0-384m0 64a128 128 0 1 0 0 256 128 128 0 0 0 0-256"
-      })
-    ]));
-  }
-});
-var share_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Share",
-  __name: "share",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m679.872 348.8-301.76 188.608a127.808 127.808 0 0 1 5.12 52.16l279.936 104.96a128 128 0 1 1-22.464 59.904l-279.872-104.96a128 128 0 1 1-16.64-166.272l301.696-188.608a128 128 0 1 1 33.92 54.272z"
-      })
-    ]));
-  }
-});
-var ship_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Ship",
-  __name: "ship",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 386.88V448h405.568a32 32 0 0 1 30.72 40.768l-76.48 267.968A192 192 0 0 1 687.168 896H336.832a192 192 0 0 1-184.64-139.264L75.648 488.768A32 32 0 0 1 106.368 448H448V117.888a32 32 0 0 1 47.36-28.096l13.888 7.616L512 96v2.88l231.68 126.4a32 32 0 0 1-2.048 57.216zm0-70.272 144.768-65.792L512 171.84zM512 512H148.864l18.24 64H856.96l18.24-64zM185.408 640l28.352 99.2A128 128 0 0 0 336.832 832h350.336a128 128 0 0 0 123.072-92.8l28.352-99.2H185.408"
-      })
-    ]));
-  }
-});
-var shop_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Shop",
-  __name: "shop",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 704h64v192H256V704h64v64h384zm188.544-152.192C894.528 559.616 896 567.616 896 576a96 96 0 1 1-192 0 96 96 0 1 1-192 0 96 96 0 1 1-192 0 96 96 0 1 1-192 0c0-8.384 1.408-16.384 3.392-24.192L192 128h640z"
-      })
-    ]));
-  }
-});
-var shopping_bag_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ShoppingBag",
-  __name: "shopping-bag",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 320v96a32 32 0 0 1-32 32h-32V320H384v128h-32a32 32 0 0 1-32-32v-96H192v576h640V320zm-384-64a192 192 0 1 1 384 0h160a32 32 0 0 1 32 32v640a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V288a32 32 0 0 1 32-32zm64 0h256a128 128 0 1 0-256 0"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 704h640v64H192z"
-      })
-    ]));
-  }
-});
-var shopping_cart_full_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ShoppingCartFull",
-  __name: "shopping-cart-full",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M432 928a48 48 0 1 1 0-96 48 48 0 0 1 0 96m320 0a48 48 0 1 1 0-96 48 48 0 0 1 0 96M96 128a32 32 0 0 1 0-64h160a32 32 0 0 1 31.36 25.728L320.64 256H928a32 32 0 0 1 31.296 38.72l-96 448A32 32 0 0 1 832 768H384a32 32 0 0 1-31.36-25.728L229.76 128zm314.24 576h395.904l82.304-384H333.44l76.8 384z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M699.648 256 608 145.984 516.352 256h183.296zm-140.8-151.04a64 64 0 0 1 98.304 0L836.352 320H379.648l179.2-215.04"
-      })
-    ]));
-  }
-});
-var shopping_cart_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ShoppingCart",
-  __name: "shopping-cart",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M432 928a48 48 0 1 1 0-96 48 48 0 0 1 0 96m320 0a48 48 0 1 1 0-96 48 48 0 0 1 0 96M96 128a32 32 0 0 1 0-64h160a32 32 0 0 1 31.36 25.728L320.64 256H928a32 32 0 0 1 31.296 38.72l-96 448A32 32 0 0 1 832 768H384a32 32 0 0 1-31.36-25.728L229.76 128zm314.24 576h395.904l82.304-384H333.44l76.8 384z"
-      })
-    ]));
-  }
-});
-var shopping_trolley_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ShoppingTrolley",
-  __name: "shopping-trolley",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M368 833c-13.3 0-24.5 4.5-33.5 13.5S321 866.7 321 880s4.5 24.5 13.5 33.5 20.2 13.8 33.5 14.5c13.3-.7 24.5-5.5 33.5-14.5S415 893.3 415 880s-4.5-24.5-13.5-33.5S381.3 833 368 833m439-193c7.4 0 13.8-2.2 19.5-6.5S836 623.3 838 616l112-448c2-10-.2-19.2-6.5-27.5S929 128 919 128H96c-9.3 0-17 3-23 9s-9 13.7-9 23 3 17 9 23 13.7 9 23 9h96v576h672c9.3 0 17-3 23-9s9-13.7 9-23-3-17-9-23-13.7-9-23-9H256v-64zM256 192h622l-96 384H256zm432 641c-13.3 0-24.5 4.5-33.5 13.5S641 866.7 641 880s4.5 24.5 13.5 33.5 20.2 13.8 33.5 14.5c13.3-.7 24.5-5.5 33.5-14.5S735 893.3 735 880s-4.5-24.5-13.5-33.5S701.3 833 688 833"
-      })
-    ]));
-  }
-});
-var smoking_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Smoking",
-  __name: "smoking",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 576v128h640V576zm-32-64h704a32 32 0 0 1 32 32v192a32 32 0 0 1-32 32H224a32 32 0 0 1-32-32V544a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 576h64v128h-64zM256 64h64v320h-64zM128 192h64v192h-64zM64 512h64v256H64z"
-      })
-    ]));
-  }
-});
-var soccer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Soccer",
-  __name: "soccer",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M418.496 871.04 152.256 604.8c-16.512 94.016-2.368 178.624 42.944 224 44.928 44.928 129.344 58.752 223.296 42.24m72.32-18.176a573.056 573.056 0 0 0 224.832-137.216 573.12 573.12 0 0 0 137.216-224.832L533.888 171.84a578.56 578.56 0 0 0-227.52 138.496A567.68 567.68 0 0 0 170.432 532.48l320.384 320.384zM871.04 418.496c16.512-93.952 2.688-178.368-42.24-223.296-44.544-44.544-128.704-58.048-222.592-41.536zM149.952 874.048c-112.96-112.96-88.832-408.96 111.168-608.96C461.056 65.152 760.96 36.928 874.048 149.952c113.024 113.024 86.784 411.008-113.152 610.944-199.936 199.936-497.92 226.112-610.944 113.152m452.544-497.792 22.656-22.656a32 32 0 0 1 45.248 45.248l-22.656 22.656 45.248 45.248A32 32 0 1 1 647.744 512l-45.248-45.248L557.248 512l45.248 45.248a32 32 0 1 1-45.248 45.248L512 557.248l-45.248 45.248L512 647.744a32 32 0 1 1-45.248 45.248l-45.248-45.248-22.656 22.656a32 32 0 1 1-45.248-45.248l22.656-22.656-45.248-45.248A32 32 0 1 1 376.256 512l45.248 45.248L466.752 512l-45.248-45.248a32 32 0 1 1 45.248-45.248L512 466.752l45.248-45.248L512 376.256a32 32 0 0 1 45.248-45.248l45.248 45.248z"
-      })
-    ]));
-  }
-});
-var sold_out_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SoldOut",
-  __name: "sold-out",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 288h131.072a32 32 0 0 1 31.808 28.8L886.4 512h-64.384l-16-160H704v96a32 32 0 1 1-64 0v-96H384v96a32 32 0 0 1-64 0v-96H217.92l-51.2 512H512v64H131.328a32 32 0 0 1-31.808-35.2l57.6-576a32 32 0 0 1 31.808-28.8H320v-22.336C320 154.688 405.504 64 512 64s192 90.688 192 201.664v22.4zm-64 0v-22.336C640 189.248 582.272 128 512 128c-70.272 0-128 61.248-128 137.664v22.4h256zm201.408 476.16a32 32 0 1 1 45.248 45.184l-128 128a32 32 0 0 1-45.248 0l-128-128a32 32 0 1 1 45.248-45.248L704 837.504V608a32 32 0 1 1 64 0v229.504l73.408-73.408z"
-      })
-    ]));
-  }
-});
-var sort_down_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SortDown",
-  __name: "sort-down",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M576 96v709.568L333.312 562.816A32 32 0 1 0 288 608l297.408 297.344A32 32 0 0 0 640 882.688V96a32 32 0 0 0-64 0"
-      })
-    ]));
-  }
-});
-var sort_down_default = sort_down_vue_vue_type_script_setup_true_lang_default;
-var sort_up_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SortUp",
-  __name: "sort-up",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 141.248V928a32 32 0 1 0 64 0V218.56l242.688 242.688A32 32 0 1 0 736 416L438.592 118.656A32 32 0 0 0 384 141.248"
-      })
-    ]));
-  }
-});
-var sort_up_default = sort_up_vue_vue_type_script_setup_true_lang_default;
-var sort_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sort",
-  __name: "sort",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 96a32 32 0 0 1 64 0v786.752a32 32 0 0 1-54.592 22.656L95.936 608a32 32 0 0 1 0-45.312h.128a32 32 0 0 1 45.184 0L384 805.632zm192 45.248a32 32 0 0 1 54.592-22.592L928.064 416a32 32 0 0 1 0 45.312h-.128a32 32 0 0 1-45.184 0L640 218.496V928a32 32 0 1 1-64 0V141.248z"
-      })
-    ]));
-  }
-});
-var stamp_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Stamp",
-  __name: "stamp",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M624 475.968V640h144a128 128 0 0 1 128 128H128a128 128 0 0 1 128-128h144V475.968a192 192 0 1 1 224 0M128 896v-64h768v64z"
-      })
-    ]));
-  }
-});
-var star_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "StarFilled",
-  __name: "star-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M283.84 867.84 512 747.776l228.16 119.936a6.4 6.4 0 0 0 9.28-6.72l-43.52-254.08 184.512-179.904a6.4 6.4 0 0 0-3.52-10.88l-255.104-37.12L517.76 147.904a6.4 6.4 0 0 0-11.52 0L392.192 379.072l-255.104 37.12a6.4 6.4 0 0 0-3.52 10.88L318.08 606.976l-43.584 254.08a6.4 6.4 0 0 0 9.28 6.72z"
-      })
-    ]));
-  }
-});
-var star_filled_default = star_filled_vue_vue_type_script_setup_true_lang_default;
-var star_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Star",
-  __name: "star",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m512 747.84 228.16 119.936a6.4 6.4 0 0 0 9.28-6.72l-43.52-254.08 184.512-179.904a6.4 6.4 0 0 0-3.52-10.88l-255.104-37.12L517.76 147.904a6.4 6.4 0 0 0-11.52 0L392.192 379.072l-255.104 37.12a6.4 6.4 0 0 0-3.52 10.88L318.08 606.976l-43.584 254.08a6.4 6.4 0 0 0 9.28 6.72zM313.6 924.48a70.4 70.4 0 0 1-102.144-74.24l37.888-220.928L88.96 472.96A70.4 70.4 0 0 1 128 352.896l221.76-32.256 99.2-200.96a70.4 70.4 0 0 1 126.208 0l99.2 200.96 221.824 32.256a70.4 70.4 0 0 1 39.04 120.064L774.72 629.376l37.888 220.928a70.4 70.4 0 0 1-102.144 74.24L512 820.096l-198.4 104.32z"
-      })
-    ]));
-  }
-});
-var star_default = star_vue_vue_type_script_setup_true_lang_default;
-var stopwatch_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Stopwatch",
-  __name: "stopwatch",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M672 234.88c-39.168 174.464-80 298.624-122.688 372.48-64 110.848-202.624 30.848-138.624-80C453.376 453.44 540.48 355.968 672 234.816z"
-      })
-    ]));
-  }
-});
-var success_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SuccessFilled",
-  __name: "success-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"
-      })
-    ]));
-  }
-});
-var success_filled_default = success_filled_vue_vue_type_script_setup_true_lang_default;
-var sugar_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sugar",
-  __name: "sugar",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m801.728 349.184 4.48 4.48a128 128 0 0 1 0 180.992L534.656 806.144a128 128 0 0 1-181.056 0l-4.48-4.48-19.392 109.696a64 64 0 0 1-108.288 34.176L78.464 802.56a64 64 0 0 1 34.176-108.288l109.76-19.328-4.544-4.544a128 128 0 0 1 0-181.056l271.488-271.488a128 128 0 0 1 181.056 0l4.48 4.48 19.392-109.504a64 64 0 0 1 108.352-34.048l142.592 143.04a64 64 0 0 1-34.24 108.16l-109.248 19.2zm-548.8 198.72h447.168v2.24l60.8-60.8a63.808 63.808 0 0 0 18.752-44.416h-426.88l-89.664 89.728a64.064 64.064 0 0 0-10.24 13.248zm0 64c2.752 4.736 6.144 9.152 10.176 13.248l135.744 135.744a64 64 0 0 0 90.496 0L638.4 611.904zm490.048-230.976L625.152 263.104a64 64 0 0 0-90.496 0L416.768 380.928zM123.712 757.312l142.976 142.976 24.32-137.6a25.6 25.6 0 0 0-29.696-29.632l-137.6 24.256zm633.6-633.344-24.32 137.472a25.6 25.6 0 0 0 29.632 29.632l137.28-24.064-142.656-143.04z"
-      })
-    ]));
-  }
-});
-var suitcase_line_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SuitcaseLine",
-  __name: "suitcase-line",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M922.5 229.5c-24.32-24.34-54.49-36.84-90.5-37.5H704v-64c-.68-17.98-7.02-32.98-19.01-44.99S658.01 64.66 640 64H384c-17.98.68-32.98 7.02-44.99 19.01S320.66 110 320 128v64H192c-35.99.68-66.16 13.18-90.5 37.5C77.16 253.82 64.66 283.99 64 320v448c.68 35.99 13.18 66.16 37.5 90.5s54.49 36.84 90.5 37.5h640c35.99-.68 66.16-13.18 90.5-37.5s36.84-54.49 37.5-90.5V320c-.68-35.99-13.18-66.16-37.5-90.5M384 128h256v64H384zM256 832h-64c-17.98-.68-32.98-7.02-44.99-19.01S128.66 786.01 128 768V448h128zm448 0H320V448h384zm192-64c-.68 17.98-7.02 32.98-19.01 44.99S850.01 831.34 832 832h-64V448h128zm0-384H128v-64c.69-17.98 7.02-32.98 19.01-44.99S173.99 256.66 192 256h640c17.98.69 32.98 7.02 44.99 19.01S895.34 301.99 896 320z"
-      })
-    ]));
-  }
-});
-var suitcase_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Suitcase",
-  __name: "suitcase",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 384h768v-64a64 64 0 0 0-64-64H192a64 64 0 0 0-64 64zm0 64v320a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V448zm64-256h640a128 128 0 0 1 128 128v448a128 128 0 0 1-128 128H192A128 128 0 0 1 64 768V320a128 128 0 0 1 128-128"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M384 128v64h256v-64zm0-64h256a64 64 0 0 1 64 64v64a64 64 0 0 1-64 64H384a64 64 0 0 1-64-64v-64a64 64 0 0 1 64-64"
-      })
-    ]));
-  }
-});
-var sunny_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sunny",
-  __name: "sunny",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 704a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512m0-704a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0V96a32 32 0 0 1 32-32m0 768a32 32 0 0 1 32 32v64a32 32 0 1 1-64 0v-64a32 32 0 0 1 32-32M195.2 195.2a32 32 0 0 1 45.248 0l45.248 45.248a32 32 0 1 1-45.248 45.248L195.2 240.448a32 32 0 0 1 0-45.248zm543.104 543.104a32 32 0 0 1 45.248 0l45.248 45.248a32 32 0 0 1-45.248 45.248l-45.248-45.248a32 32 0 0 1 0-45.248M64 512a32 32 0 0 1 32-32h64a32 32 0 0 1 0 64H96a32 32 0 0 1-32-32m768 0a32 32 0 0 1 32-32h64a32 32 0 1 1 0 64h-64a32 32 0 0 1-32-32M195.2 828.8a32 32 0 0 1 0-45.248l45.248-45.248a32 32 0 0 1 45.248 45.248L240.448 828.8a32 32 0 0 1-45.248 0zm543.104-543.104a32 32 0 0 1 0-45.248l45.248-45.248a32 32 0 0 1 45.248 45.248l-45.248 45.248a32 32 0 0 1-45.248 0"
-      })
-    ]));
-  }
-});
-var sunrise_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sunrise",
-  __name: "sunrise",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M32 768h960a32 32 0 1 1 0 64H32a32 32 0 1 1 0-64m129.408-96a352 352 0 0 1 701.184 0h-64.32a288 288 0 0 0-572.544 0h-64.32zM512 128a32 32 0 0 1 32 32v96a32 32 0 0 1-64 0v-96a32 32 0 0 1 32-32m407.296 168.704a32 32 0 0 1 0 45.248l-67.84 67.84a32 32 0 1 1-45.248-45.248l67.84-67.84a32 32 0 0 1 45.248 0zm-814.592 0a32 32 0 0 1 45.248 0l67.84 67.84a32 32 0 1 1-45.248 45.248l-67.84-67.84a32 32 0 0 1 0-45.248"
-      })
-    ]));
-  }
-});
-var sunset_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Sunset",
-  __name: "sunset",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M82.56 640a448 448 0 1 1 858.88 0h-67.2a384 384 0 1 0-724.288 0zM32 704h960q32 0 32 32t-32 32H32q-32 0-32-32t32-32m256 128h448q32 0 32 32t-32 32H288q-32 0-32-32t32-32"
-      })
-    ]));
-  }
-});
-var switch_button_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SwitchButton",
-  __name: "switch-button",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M352 159.872V230.4a352 352 0 1 0 320 0v-70.528A416.128 416.128 0 0 1 512 960a416 416 0 0 1-160-800.128z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64q32 0 32 32v320q0 32-32 32t-32-32V96q0-32 32-32"
-      })
-    ]));
-  }
-});
-var switch_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "SwitchFilled",
-  __name: "switch-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M247.47 358.4v.04c.07 19.17 7.72 37.53 21.27 51.09s31.92 21.2 51.09 21.27c39.86 0 72.41-32.6 72.41-72.4s-32.6-72.36-72.41-72.36-72.36 32.55-72.36 72.36z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M492.38 128H324.7c-52.16 0-102.19 20.73-139.08 57.61a196.655 196.655 0 0 0-57.61 139.08V698.7c-.01 25.84 5.08 51.42 14.96 75.29s24.36 45.56 42.63 63.83 39.95 32.76 63.82 42.65a196.67 196.67 0 0 0 75.28 14.98h167.68c3.03 0 5.46-2.43 5.46-5.42V133.42c.6-2.99-1.83-5.42-5.46-5.42zm-56.11 705.88H324.7c-17.76.13-35.36-3.33-51.75-10.18s-31.22-16.94-43.61-29.67c-25.3-25.35-39.81-59.1-39.81-95.32V324.69c-.13-17.75 3.33-35.35 10.17-51.74a131.695 131.695 0 0 1 29.64-43.62c25.39-25.3 59.14-39.81 95.36-39.81h111.57zm402.12-647.67a196.655 196.655 0 0 0-139.08-57.61H580.48c-3.03 0-4.82 2.43-4.82 4.82v757.16c-.6 2.99 1.79 5.42 5.42 5.42h118.23a196.69 196.69 0 0 0 139.08-57.61A196.655 196.655 0 0 0 896 699.31V325.29a196.69 196.69 0 0 0-57.61-139.08zm-111.3 441.92c-42.83 0-77.82-34.99-77.82-77.82s34.98-77.82 77.82-77.82c42.83 0 77.82 34.99 77.82 77.82s-34.99 77.82-77.82 77.82z"
-      })
-    ]));
-  }
-});
-var switch_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Switch",
-  __name: "switch",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M118.656 438.656a32 32 0 0 1 0-45.248L416 96l4.48-3.776A32 32 0 0 1 461.248 96l3.712 4.48a32.064 32.064 0 0 1-3.712 40.832L218.56 384H928a32 32 0 1 1 0 64H141.248a32 32 0 0 1-22.592-9.344zM64 608a32 32 0 0 1 32-32h786.752a32 32 0 0 1 22.656 54.592L608 928l-4.48 3.776a32.064 32.064 0 0 1-40.832-49.024L805.632 640H96a32 32 0 0 1-32-32"
-      })
-    ]));
-  }
-});
-var takeaway_box_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TakeawayBox",
-  __name: "takeaway-box",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M832 384H192v448h640zM96 320h832V128H96zm800 64v480a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V384H64a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32h896a32 32 0 0 1 32 32v256a32 32 0 0 1-32 32zM416 512h192a32 32 0 0 1 0 64H416a32 32 0 0 1 0-64"
-      })
-    ]));
-  }
-});
-var ticket_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Ticket",
-  __name: "ticket",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 832H64V640a128 128 0 1 0 0-256V192h576v160h64V192h256v192a128 128 0 1 0 0 256v192H704V672h-64zm0-416v192h64V416z"
-      })
-    ]));
-  }
-});
-var tickets_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Tickets",
-  __name: "tickets",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M192 128v768h640V128zm-32-64h704a32 32 0 0 1 32 32v832a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m160 448h384v64H320zm0-192h192v64H320zm0 384h384v64H320z"
-      })
-    ]));
-  }
-});
-var timer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Timer",
-  __name: "timer",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 896a320 320 0 1 0 0-640 320 320 0 0 0 0 640m0 64a384 384 0 1 1 0-768 384 384 0 0 1 0 768"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 320a32 32 0 0 1 32 32l-.512 224a32 32 0 1 1-64 0L480 352a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M448 576a64 64 0 1 0 128 0 64 64 0 1 0-128 0m96-448v128h-64V128h-96a32 32 0 0 1 0-64h256a32 32 0 1 1 0 64z"
-      })
-    ]));
-  }
-});
-var toilet_paper_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ToiletPaper",
-  __name: "toilet-paper",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M595.2 128H320a192 192 0 0 0-192 192v576h384V352c0-90.496 32.448-171.2 83.2-224M736 64c123.712 0 224 128.96 224 288S859.712 640 736 640H576v320H64V320A256 256 0 0 1 320 64zM576 352v224h160c84.352 0 160-97.28 160-224s-75.648-224-160-224-160 97.28-160 224"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M736 448c-35.328 0-64-43.008-64-96s28.672-96 64-96 64 43.008 64 96-28.672 96-64 96"
-      })
-    ]));
-  }
-});
-var tools_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Tools",
-  __name: "tools",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M764.416 254.72a351.68 351.68 0 0 1 86.336 149.184H960v192.064H850.752a351.68 351.68 0 0 1-86.336 149.312l54.72 94.72-166.272 96-54.592-94.72a352.64 352.64 0 0 1-172.48 0L371.136 936l-166.272-96 54.72-94.72a351.68 351.68 0 0 1-86.336-149.312H64v-192h109.248a351.68 351.68 0 0 1 86.336-149.312L204.8 160l166.208-96h.192l54.656 94.592a352.64 352.64 0 0 1 172.48 0L652.8 64h.128L819.2 160l-54.72 94.72zM704 499.968a192 192 0 1 0-384 0 192 192 0 0 0 384 0"
-      })
-    ]));
-  }
-});
-var top_left_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TopLeft",
-  __name: "top-left",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M256 256h416a32 32 0 1 0 0-64H224a32 32 0 0 0-32 32v448a32 32 0 0 0 64 0z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M246.656 201.344a32 32 0 0 0-45.312 45.312l544 544a32 32 0 0 0 45.312-45.312l-544-544z"
-      })
-    ]));
-  }
-});
-var top_right_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TopRight",
-  __name: "top-right",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M768 256H353.6a32 32 0 1 1 0-64H800a32 32 0 0 1 32 32v448a32 32 0 0 1-64 0z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M777.344 201.344a32 32 0 0 1 45.312 45.312l-544 544a32 32 0 0 1-45.312-45.312l544-544z"
-      })
-    ]));
-  }
-});
-var top_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Top",
-  __name: "top",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M572.235 205.282v600.365a30.118 30.118 0 1 1-60.235 0V205.282L292.382 438.633a28.913 28.913 0 0 1-42.646 0 33.43 33.43 0 0 1 0-45.236l271.058-288.045a28.913 28.913 0 0 1 42.647 0L834.5 393.397a33.43 33.43 0 0 1 0 45.176 28.913 28.913 0 0 1-42.647 0l-219.618-233.23z"
-      })
-    ]));
-  }
-});
-var trend_charts_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TrendCharts",
-  __name: "trend-charts",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 896V128h768v768zm291.712-327.296 128 102.4 180.16-201.792-47.744-42.624-139.84 156.608-128-102.4-180.16 201.792 47.744 42.624 139.84-156.608zM816 352a48 48 0 1 0-96 0 48 48 0 0 0 96 0"
-      })
-    ]));
-  }
-});
-var trophy_base_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TrophyBase",
-  __name: "trophy-base",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M918.4 201.6c-6.4-6.4-12.8-9.6-22.4-9.6H768V96c0-9.6-3.2-16-9.6-22.4C752 67.2 745.6 64 736 64H288c-9.6 0-16 3.2-22.4 9.6C259.2 80 256 86.4 256 96v96H128c-9.6 0-16 3.2-22.4 9.6-6.4 6.4-9.6 16-9.6 22.4 3.2 108.8 25.6 185.6 64 224 34.4 34.4 77.56 55.65 127.65 61.99 10.91 20.44 24.78 39.25 41.95 56.41 40.86 40.86 91 65.47 150.4 71.9V768h-96c-9.6 0-16 3.2-22.4 9.6-6.4 6.4-9.6 12.8-9.6 22.4s3.2 16 9.6 22.4c6.4 6.4 12.8 9.6 22.4 9.6h256c9.6 0 16-3.2 22.4-9.6 6.4-6.4 9.6-12.8 9.6-22.4s-3.2-16-9.6-22.4c-6.4-6.4-12.8-9.6-22.4-9.6h-96V637.26c59.4-7.71 109.54-30.01 150.4-70.86 17.2-17.2 31.51-36.06 42.81-56.55 48.93-6.51 90.02-27.7 126.79-61.85 38.4-38.4 60.8-112 64-224 0-6.4-3.2-16-9.6-22.4zM256 438.4c-19.2-6.4-35.2-19.2-51.2-35.2-22.4-22.4-35.2-70.4-41.6-147.2H256zm390.4 80C608 553.6 566.4 576 512 576s-99.2-19.2-134.4-57.6C342.4 480 320 438.4 320 384V128h384v256c0 54.4-19.2 99.2-57.6 134.4m172.8-115.2c-16 16-32 25.6-51.2 35.2V256h92.8c-6.4 76.8-19.2 124.8-41.6 147.2zM768 896H256c-9.6 0-16 3.2-22.4 9.6-6.4 6.4-9.6 12.8-9.6 22.4s3.2 16 9.6 22.4c6.4 6.4 12.8 9.6 22.4 9.6h512c9.6 0 16-3.2 22.4-9.6 6.4-6.4 9.6-12.8 9.6-22.4s-3.2-16-9.6-22.4c-6.4-6.4-12.8-9.6-22.4-9.6"
-      })
-    ]));
-  }
-});
-var trophy_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Trophy",
-  __name: "trophy",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 896V702.08A256.256 256.256 0 0 1 264.064 512h-32.64a96 96 0 0 1-91.968-68.416L93.632 290.88a76.8 76.8 0 0 1 73.6-98.88H256V96a32 32 0 0 1 32-32h448a32 32 0 0 1 32 32v96h88.768a76.8 76.8 0 0 1 73.6 98.88L884.48 443.52A96 96 0 0 1 792.576 512h-32.64A256.256 256.256 0 0 1 544 702.08V896h128a32 32 0 1 1 0 64H352a32 32 0 1 1 0-64zm224-448V128H320v320a192 192 0 1 0 384 0m64 0h24.576a32 32 0 0 0 30.656-22.784l45.824-152.768A12.8 12.8 0 0 0 856.768 256H768zm-512 0V256h-88.768a12.8 12.8 0 0 0-12.288 16.448l45.824 152.768A32 32 0 0 0 231.424 448z"
-      })
-    ]));
-  }
-});
-var turn_off_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "TurnOff",
-  __name: "turn-off",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M329.956 257.138a254.862 254.862 0 0 0 0 509.724h364.088a254.862 254.862 0 0 0 0-509.724zm0-72.818h364.088a327.68 327.68 0 1 1 0 655.36H329.956a327.68 327.68 0 1 1 0-655.36z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M329.956 621.227a109.227 109.227 0 1 0 0-218.454 109.227 109.227 0 0 0 0 218.454m0 72.817a182.044 182.044 0 1 1 0-364.088 182.044 182.044 0 0 1 0 364.088"
-      })
-    ]));
-  }
-});
-var umbrella_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Umbrella",
-  __name: "umbrella",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M320 768a32 32 0 1 1 64 0 64 64 0 0 0 128 0V512H64a448 448 0 1 1 896 0H576v256a128 128 0 1 1-256 0m570.688-320a384.128 384.128 0 0 0-757.376 0z"
-      })
-    ]));
-  }
-});
-var unlock_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Unlock",
-  __name: "unlock",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M224 448a32 32 0 0 0-32 32v384a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32V480a32 32 0 0 0-32-32zm0-64h576a96 96 0 0 1 96 96v384a96 96 0 0 1-96 96H224a96 96 0 0 1-96-96V480a96 96 0 0 1 96-96"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 544a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V576a32 32 0 0 1 32-32m178.304-295.296A192.064 192.064 0 0 0 320 320v64h352l96 38.4V448H256V320a256 256 0 0 1 493.76-95.104z"
-      })
-    ]));
-  }
-});
-var upload_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "UploadFilled",
-  __name: "upload-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M544 864V672h128L512 480 352 672h128v192H320v-1.6c-5.376.32-10.496 1.6-16 1.6A240 240 0 0 1 64 624c0-123.136 93.12-223.488 212.608-237.248A239.808 239.808 0 0 1 512 192a239.872 239.872 0 0 1 235.456 194.752c119.488 13.76 212.48 114.112 212.48 237.248a240 240 0 0 1-240 240c-5.376 0-10.56-1.28-16-1.6v1.6z"
-      })
-    ]));
-  }
-});
-var upload_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Upload",
-  __name: "upload",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 832h704a32 32 0 1 1 0 64H160a32 32 0 1 1 0-64m384-578.304V704h-64V247.296L237.248 490.048 192 444.8 508.8 128l316.8 316.8-45.312 45.248z"
-      })
-    ]));
-  }
-});
-var user_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "UserFilled",
-  __name: "user-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M288 320a224 224 0 1 0 448 0 224 224 0 1 0-448 0m544 608H160a32 32 0 0 1-32-32v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 0 1-32 32z"
-      })
-    ]));
-  }
-});
-var user_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "User",
-  __name: "user",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 512a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512m320 320v-96a96 96 0 0 0-96-96H288a96 96 0 0 0-96 96v96a32 32 0 1 1-64 0v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 1 1-64 0"
-      })
-    ]));
-  }
-});
-var van_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Van",
-  __name: "van",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128.896 736H96a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32h576a32 32 0 0 1 32 32v96h164.544a32 32 0 0 1 31.616 27.136l54.144 352A32 32 0 0 1 922.688 736h-91.52a144 144 0 1 1-286.272 0H415.104a144 144 0 1 1-286.272 0zm23.36-64a143.872 143.872 0 0 1 239.488 0H568.32c17.088-25.6 42.24-45.376 71.744-55.808V256H128v416zm655.488 0h77.632l-19.648-128H704v64.896A144 144 0 0 1 807.744 672m48.128-192-14.72-96H704v96h151.872M688 832a80 80 0 1 0 0-160 80 80 0 0 0 0 160m-416 0a80 80 0 1 0 0-160 80 80 0 0 0 0 160"
-      })
-    ]));
-  }
-});
-var video_camera_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "VideoCameraFilled",
-  __name: "video-camera-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m768 576 192-64v320l-192-64v96a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V480a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32zM192 768v64h384v-64zm192-480a160 160 0 0 1 320 0 160 160 0 0 1-320 0m64 0a96 96 0 1 0 192.064-.064A96 96 0 0 0 448 288m-320 32a128 128 0 1 1 256.064.064A128 128 0 0 1 128 320m64 0a64 64 0 1 0 128 0 64 64 0 0 0-128 0"
-      })
-    ]));
-  }
-});
-var video_camera_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "VideoCamera",
-  __name: "video-camera",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 768V256H128v512zm64-416 192-96v512l-192-96v128a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V224a32 32 0 0 1 32-32h640a32 32 0 0 1 32 32zm0 71.552v176.896l128 64V359.552zM192 320h192v64H192z"
-      })
-    ]));
-  }
-});
-var video_pause_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "VideoPause",
-  __name: "video-pause",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 832a384 384 0 0 0 0-768 384 384 0 0 0 0 768m-96-544q32 0 32 32v256q0 32-32 32t-32-32V384q0-32 32-32m192 0q32 0 32 32v256q0 32-32 32t-32-32V384q0-32 32-32"
-      })
-    ]));
-  }
-});
-var video_play_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "VideoPlay",
-  __name: "video-play",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 832a384 384 0 0 0 0-768 384 384 0 0 0 0 768m-48-247.616L668.608 512 464 375.616zm10.624-342.656 249.472 166.336a48 48 0 0 1 0 79.872L474.624 718.272A48 48 0 0 1 400 678.336V345.6a48 48 0 0 1 74.624-39.936z"
-      })
-    ]));
-  }
-});
-var view_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "View",
-  __name: "view",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352m0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448m0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160"
-      })
-    ]));
-  }
-});
-var view_default = view_vue_vue_type_script_setup_true_lang_default;
-var wallet_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "WalletFilled",
-  __name: "wallet-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M688 512a112 112 0 1 0 0 224h208v160H128V352h768v160zm32 160h-32a48 48 0 0 1 0-96h32a48 48 0 0 1 0 96m-80-544 128 160H384z"
-      })
-    ]));
-  }
-});
-var wallet_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Wallet",
-  __name: "wallet",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M640 288h-64V128H128v704h384v32a32 32 0 0 0 32 32H96a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32h512a32 32 0 0 1 32 32z"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M128 320v512h768V320zm-32-64h832a32 32 0 0 1 32 32v576a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V288a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M704 640a64 64 0 1 1 0-128 64 64 0 0 1 0 128"
-      })
-    ]));
-  }
-});
-var warn_triangle_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "WarnTriangleFilled",
-  __name: "warn-triangle-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "xml:space": "preserve",
-      style: { "enable-background": "new 0 0 1024 1024" },
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M928.99 755.83 574.6 203.25c-12.89-20.16-36.76-32.58-62.6-32.58s-49.71 12.43-62.6 32.58L95.01 755.83c-12.91 20.12-12.9 44.91.01 65.03 12.92 20.12 36.78 32.51 62.59 32.49h708.78c25.82.01 49.68-12.37 62.59-32.49 12.91-20.12 12.92-44.91.01-65.03M554.67 768h-85.33v-85.33h85.33zm0-426.67v298.66h-85.33V341.32z"
-      })
-    ]));
-  }
-});
-var warning_filled_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "WarningFilled",
-  __name: "warning-filled",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 192a58.432 58.432 0 0 0-58.24 63.744l23.36 256.384a35.072 35.072 0 0 0 69.76 0l23.296-256.384A58.432 58.432 0 0 0 512 256m0 512a51.2 51.2 0 1 0 0-102.4 51.2 51.2 0 0 0 0 102.4"
-      })
-    ]));
-  }
-});
-var warning_filled_default = warning_filled_vue_vue_type_script_setup_true_lang_default;
-var warning_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Warning",
-  __name: "warning",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 832a384 384 0 0 0 0-768 384 384 0 0 0 0 768m48-176a48 48 0 1 1-96 0 48 48 0 0 1 96 0m-48-464a32 32 0 0 1 32 32v288a32 32 0 0 1-64 0V288a32 32 0 0 1 32-32"
-      })
-    ]));
-  }
-});
-var watch_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Watch",
-  __name: "watch",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M512 768a256 256 0 1 0 0-512 256 256 0 0 0 0 512m0 64a320 320 0 1 1 0-640 320 320 0 0 1 0 640"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 352a32 32 0 0 1 32 32v160a32 32 0 0 1-64 0V384a32 32 0 0 1 32-32"
-      }),
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M480 512h128q32 0 32 32t-32 32H480q-32 0-32-32t32-32m128-256V128H416v128h-64V64h320v192zM416 768v128h192V768h64v192H352V768z"
-      })
-    ]));
-  }
-});
-var watermelon_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "Watermelon",
-  __name: "watermelon",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m683.072 600.32-43.648 162.816-61.824-16.512 53.248-198.528L576 493.248l-158.4 158.4-45.248-45.248 158.4-158.4-55.616-55.616-198.528 53.248-16.512-61.824 162.816-43.648L282.752 200A384 384 0 0 0 824 741.248zm231.552 141.056a448 448 0 1 1-632-632l632 632"
-      })
-    ]));
-  }
-});
-var wind_power_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "WindPower",
-  __name: "wind-power",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "M160 64q32 0 32 32v832q0 32-32 32t-32-32V96q0-32 32-32m416 354.624 128-11.584V168.96l-128-11.52v261.12zm-64 5.824V151.552L320 134.08V160h-64V64l616.704 56.064A96 96 0 0 1 960 215.68v144.64a96 96 0 0 1-87.296 95.616L256 512V224h64v217.92zm256-23.232 98.88-8.96A32 32 0 0 0 896 360.32V215.68a32 32 0 0 0-29.12-31.872l-98.88-8.96z"
-      })
-    ]));
-  }
-});
-var zoom_in_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ZoomIn",
-  __name: "zoom-in",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704m-32-384v-96a32 32 0 0 1 64 0v96h96a32 32 0 0 1 0 64h-96v96a32 32 0 0 1-64 0v-96h-96a32 32 0 0 1 0-64z"
-      })
-    ]));
-  }
-});
-var zoom_in_default = zoom_in_vue_vue_type_script_setup_true_lang_default;
-var zoom_out_vue_vue_type_script_setup_true_lang_default = defineComponent({
-  name: "ZoomOut",
-  __name: "zoom-out",
-  setup(__props) {
-    return (_ctx, _cache) => (openBlock(), createElementBlock("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 1024 1024"
-    }, [
-      createBaseVNode("path", {
-        fill: "currentColor",
-        d: "m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704M352 448h256a32 32 0 0 1 0 64H352a32 32 0 0 1 0-64"
-      })
-    ]));
-  }
-});
-var zoom_out_default = zoom_out_vue_vue_type_script_setup_true_lang_default;
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/icon.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/icon.mjs
 var iconPropType = definePropType([
   String,
   Object,
@@ -15530,7 +10723,7 @@ var ValidateComponentsMap = {
   error: circle_close_default
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/alert/src/alert.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/alert/src/alert.mjs
 var alertEffects = ["light", "dark"];
 var alertProps = buildProps({
   title: {
@@ -15568,7 +10761,7 @@ var alertEmits = {
   close: (evt) => isUndefined2(evt) || evt instanceof Event
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/alert/src/alert2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/alert/src/alert2.mjs
 var __default__3 = defineComponent({
   name: "ElAlert"
 });
@@ -15670,13 +10863,13 @@ var _sfc_main3 = defineComponent({
 });
 var Alert = _export_sfc(_sfc_main3, [["__file", "alert.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/alert/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/alert/index.mjs
 var ElAlert = withInstall(Alert);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/browser.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/browser.mjs
 var isFirefox = () => isClient && /firefox/i.test(window.navigator.userAgent);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/utils.mjs
 var hiddenTextarea = void 0;
 var HIDDEN_STYLE = {
   height: "0",
@@ -15702,7 +10895,8 @@ var CONTEXT_STYLE = [
   "padding-left",
   "padding-right",
   "border-width",
-  "box-sizing"
+  "box-sizing",
+  "word-break"
 ];
 function calculateNodeStyling(targetElement) {
   const style = window.getComputedStyle(targetElement);
@@ -15716,10 +10910,10 @@ function calculateNodeStyling(targetElement) {
   return { contextStyle, paddingSize, borderSize, boxSizing };
 }
 function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
-  var _a2;
+  var _a2, _b;
   if (!hiddenTextarea) {
     hiddenTextarea = document.createElement("textarea");
-    document.body.appendChild(hiddenTextarea);
+    ((_a2 = targetElement.parentNode) != null ? _a2 : document.body).appendChild(hiddenTextarea);
   }
   const { paddingSize, borderSize, boxSizing, contextStyle } = calculateNodeStyling(targetElement);
   contextStyle.forEach(([key, value]) => hiddenTextarea == null ? void 0 : hiddenTextarea.style.setProperty(key, value));
@@ -15750,15 +10944,15 @@ function calcTextareaHeight(targetElement, minRows = 1, maxRows) {
     height = Math.min(maxHeight, height);
   }
   result2.height = `${height}px`;
-  (_a2 = hiddenTextarea.parentNode) == null ? void 0 : _a2.removeChild(hiddenTextarea);
+  (_b = hiddenTextarea.parentNode) == null ? void 0 : _b.removeChild(hiddenTextarea);
   hiddenTextarea = void 0;
   return result2;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/typescript.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/typescript.mjs
 var mutable = (val) => val;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-aria/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-aria/index.mjs
 var ariaProps = buildProps({
   ariaLabel: String,
   ariaOrientation: {
@@ -15771,7 +10965,7 @@ var useAriaProps = (arias) => {
   return pick_default(ariaProps, arias);
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/input.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/input2.mjs
 var inputProps = buildProps({
   id: {
     type: String,
@@ -15823,6 +11017,10 @@ var inputProps = buildProps({
   },
   readonly: Boolean,
   clearable: Boolean,
+  clearIcon: {
+    type: iconPropType,
+    default: circle_close_default
+  },
   showPassword: Boolean,
   showWordLimit: Boolean,
   suffixIcon: {
@@ -15874,7 +11072,7 @@ var inputEmits = {
   compositionend: (evt) => evt instanceof CompositionEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-attrs/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-attrs/index.mjs
 var DEFAULT_EXCLUDE_KEYS = ["class", "style"];
 var LISTENER_PREFIX = /^on[A-Z]/;
 var useAttrs2 = (params = {}) => {
@@ -15892,7 +11090,7 @@ var useAttrs2 = (params = {}) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-id/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-id/index.mjs
 var defaultIdInjection = {
   prefix: Math.floor(Math.random() * 1e4),
   current: 0
@@ -15908,11 +11106,11 @@ var useId = (deterministicId) => {
   return idRef;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/constants.mjs
 var formContextKey = Symbol("formContextKey");
 var formItemContextKey = Symbol("formItemContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/hooks/use-form-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/hooks/use-form-item.mjs
 var useFormItem = () => {
   const form = inject(formContextKey, void 0);
   const formItem = inject(formItemContextKey, void 0);
@@ -15978,7 +11176,7 @@ var useFormItemInputId = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-prop/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-prop/index.mjs
 var useProp = (name) => {
   const vm = getCurrentInstance();
   return computed(() => {
@@ -15987,7 +11185,7 @@ var useProp = (name) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/hooks/use-form-common-props.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/hooks/use-form-common-props.mjs
 var useFormSize = (fallback, ignore = {}) => {
   const emptyRef = ref(void 0);
   const size3 = ignore.prop ? emptyRef : useProp("size");
@@ -16004,7 +11202,7 @@ var useFormDisabled = (fallback) => {
 var useSize = useFormSize;
 var useDisabled = useFormDisabled;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/aria.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/aria.mjs
 var FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 var isVisible = (element) => {
   const computed2 = getComputedStyle(element);
@@ -16067,7 +11265,7 @@ var focusNode = (el) => {
   !isLeaf(el) && el.click();
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-focus-controller/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-focus-controller/index.mjs
 function useFocusController(target2, {
   disabled,
   beforeFocus,
@@ -16122,10 +11320,10 @@ function useFocusController(target2, {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/i18n.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/i18n.mjs
 var isKorean = (text) => /([\uAC00-\uD7AF\u3130-\u318F])+/gi.test(text);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-composition/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-composition/index.mjs
 function useComposition({
   afterComposition,
   emit
@@ -16161,7 +11359,7 @@ function useComposition({
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-cursor/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-cursor/index.mjs
 function useCursor(input) {
   let selectionInfo;
   function recordCursor() {
@@ -16204,7 +11402,7 @@ function useCursor(input) {
   return [recordCursor, setCursor];
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/input2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input/src/input.mjs
 var COMPONENT_NAME2 = "ElInput";
 var __default__4 = defineComponent({
   name: COMPONENT_NAME2,
@@ -16535,7 +11733,7 @@ var _sfc_main4 = defineComponent({
                   onClick: clear
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(circle_close_default))
+                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
                   ]),
                   _: 1
                 }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true),
@@ -16622,10 +11820,10 @@ var _sfc_main4 = defineComponent({
 });
 var Input = _export_sfc(_sfc_main4, [["__file", "input.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input/index.mjs
 var ElInput = withInstall(Input);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/util.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/util.mjs
 var GAP = 4;
 var BAR_MAP = {
   vertical: {
@@ -16658,10 +11856,10 @@ var renderThumbStyle = ({
   transform: `translate${bar.axis}(${move}%)`
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/constants.mjs
 var scrollbarContextKey = Symbol("scrollbarContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/thumb.mjs
 var thumbProps = buildProps({
   vertical: Boolean,
   size: String,
@@ -16673,7 +11871,7 @@ var thumbProps = buildProps({
   always: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/thumb2.mjs
 var COMPONENT_NAME3 = "Thumb";
 var _sfc_main5 = defineComponent({
   __name: "thumb",
@@ -16806,7 +12004,7 @@ var _sfc_main5 = defineComponent({
 });
 var Thumb = _export_sfc(_sfc_main5, [["__file", "thumb.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/bar.mjs
 var barProps = buildProps({
   always: {
     type: Boolean,
@@ -16818,7 +12016,7 @@ var barProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/bar2.mjs
 var _sfc_main6 = defineComponent({
   __name: "bar",
   props: barProps,
@@ -16879,7 +12077,7 @@ var _sfc_main6 = defineComponent({
 });
 var Bar = _export_sfc(_sfc_main6, [["__file", "bar.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/scrollbar.mjs
 var scrollbarProps = buildProps({
   distance: {
     type: Number,
@@ -16936,7 +12134,7 @@ var scrollbarEmits = {
   }) => [scrollTop, scrollLeft].every(isNumber2)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/src/scrollbar2.mjs
 var COMPONENT_NAME4 = "ElScrollbar";
 var __default__5 = defineComponent({
   name: COMPONENT_NAME4
@@ -16949,6 +12147,7 @@ var _sfc_main7 = defineComponent({
     const props2 = __props;
     const ns = useNamespace("scrollbar");
     let stopResizeObserver = void 0;
+    let stopWrapResizeObserver = void 0;
     let stopResizeListener = void 0;
     let wrapScrollTop = 0;
     let wrapScrollLeft = 0;
@@ -17065,9 +12264,11 @@ var _sfc_main7 = defineComponent({
     watch(() => props2.noresize, (noresize) => {
       if (noresize) {
         stopResizeObserver == null ? void 0 : stopResizeObserver();
+        stopWrapResizeObserver == null ? void 0 : stopWrapResizeObserver();
         stopResizeListener == null ? void 0 : stopResizeListener();
       } else {
         ({ stop: stopResizeObserver } = useResizeObserver(resizeRef, update2));
+        ({ stop: stopWrapResizeObserver } = useResizeObserver(wrapRef, update2));
         stopResizeListener = useEventListener("resize", update2);
       }
     }, { immediate: true });
@@ -17149,14 +12350,14 @@ var _sfc_main7 = defineComponent({
 });
 var Scrollbar = _export_sfc(_sfc_main7, [["__file", "scrollbar.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/scrollbar/index.mjs
 var ElScrollbar = withInstall(Scrollbar);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/constants.mjs
 var POPPER_INJECTION_KEY = Symbol("popper");
 var POPPER_CONTENT_INJECTION_KEY = Symbol("popperContent");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/popper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/popper.mjs
 var Effect = {
   LIGHT: "light",
   DARK: "dark"
@@ -17180,7 +12381,7 @@ var popperProps = buildProps({
 });
 var usePopperProps = popperProps;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/popper2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/popper2.mjs
 var __default__6 = defineComponent({
   name: "ElPopper",
   inheritAttrs: false
@@ -17211,7 +12412,7 @@ var _sfc_main8 = defineComponent({
 });
 var Popper = _export_sfc(_sfc_main8, [["__file", "popper.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/arrow.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/arrow2.mjs
 var __default__7 = defineComponent({
   name: "ElPopperArrow",
   inheritAttrs: false
@@ -17240,7 +12441,7 @@ var _sfc_main9 = defineComponent({
 });
 var ElPopperArrow = _export_sfc(_sfc_main9, [["__file", "arrow.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/trigger.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/trigger.mjs
 var popperTriggerProps = buildProps({
   virtualRef: {
     type: definePropType(Object)
@@ -17272,7 +12473,7 @@ var popperTriggerProps = buildProps({
 });
 var usePopperTriggerProps = popperTriggerProps;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-forward-ref/index.mjs
 var FORWARD_REF_INJECTION_KEY = Symbol("elForwardRef");
 var useForwardRef = (forwardRef) => {
   const setForwardRef = (el) => {
@@ -17296,7 +12497,7 @@ var useForwardRefDirective = (setForwardRef) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slot/src/only-child.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slot/src/only-child.mjs
 var NAME = "ElOnlyChild";
 var OnlyChild = defineComponent({
   name: NAME,
@@ -17352,7 +12553,7 @@ function wrapTextContent(s2) {
   }, [s2]);
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/trigger2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/trigger2.mjs
 var __default__8 = defineComponent({
   name: "ElPopperTrigger",
   inheritAttrs: false
@@ -17471,7 +12672,7 @@ var _sfc_main10 = defineComponent({
 });
 var ElPopperTrigger = _export_sfc(_sfc_main10, [["__file", "trigger.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/tokens.mjs
 var FOCUS_AFTER_TRAPPED = "focus-trap.focus-after-trapped";
 var FOCUS_AFTER_RELEASED = "focus-trap.focus-after-released";
 var FOCUSOUT_PREVENTED = "focus-trap.focusout-prevented";
@@ -17487,7 +12688,7 @@ var ON_TRAP_FOCUS_EVT = "focusAfterTrapped";
 var ON_RELEASE_FOCUS_EVT = "focusAfterReleased";
 var FOCUS_TRAP_INJECTION_KEY = Symbol("elFocusTrap");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/utils.mjs
 var focusReason = ref();
 var lastUserFocusTimestamp = ref(0);
 var lastAutomatedFocusTimestamp = ref(0);
@@ -17629,7 +12830,7 @@ var createFocusOutPreventedEvent = (detail) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/aria.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/aria.mjs
 var EVENT_CODE = {
   tab: "Tab",
   enter: "Enter",
@@ -17648,7 +12849,7 @@ var EVENT_CODE = {
   end: "End"
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-escape-keydown/index.mjs
 var registeredEscapeHandlers = [];
 var cachedHandler = (event) => {
   if (event.code === EVENT_CODE.esc) {
@@ -17672,7 +12873,7 @@ var useEscapeKeydown = (handler) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/focus-trap/src/focus-trap.mjs
 var _sfc_main11 = defineComponent({
   name: "ElFocusTrap",
   inheritAttrs: false,
@@ -18486,7 +13687,7 @@ var vn = we({ defaultModifiers: mn });
 var gn = [Re, He, Me, Ae, wt, vt, xt, pt, bt];
 var yn = we({ defaultModifiers: gn });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/arrow2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/arrow.mjs
 var popperArrowProps = buildProps({
   arrowOffset: {
     type: Number,
@@ -18495,7 +13696,7 @@ var popperArrowProps = buildProps({
 });
 var usePopperArrowProps = popperArrowProps;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/content.mjs
 var POSITIONING_STRATEGIES = ["fixed", "absolute"];
 var popperCoreConfigProps = buildProps({
   boundariesPadding: {
@@ -18582,7 +13783,7 @@ var usePopperCoreConfigProps = popperCoreConfigProps;
 var usePopperContentProps = popperContentProps;
 var usePopperContentEmits = popperContentEmits;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-focus-trap.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-focus-trap.mjs
 var usePopperContentFocusTrap = (props2, emit) => {
   const trapped = ref(false);
   const focusStartRef = ref();
@@ -18627,7 +13828,7 @@ var usePopperContentFocusTrap = (props2, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/utils.mjs
 var buildPopperOptions = (props2, modifiers = []) => {
   const { placement, strategy, popperOptions } = props2;
   const options = {
@@ -18685,7 +13886,7 @@ function deriveExtraModifiers(options, modifiers) {
   }
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-popper/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-popper/index.mjs
 var usePopper = (referenceElementRef, popperElementRef, opts = {}) => {
   const stateUpdater = {
     name: "updateState",
@@ -18775,7 +13976,7 @@ function deriveState(state) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-content.mjs
 var DEFAULT_ARROW_OFFSET = 0;
 var usePopperContent = (props2) => {
   const { popperInstanceRef, contentRef, triggerRef: triggerRef2, role } = inject(POPPER_INJECTION_KEY, void 0);
@@ -18837,7 +14038,7 @@ var usePopperContent = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-content-dom.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/composables/use-content-dom.mjs
 var usePopperContentDOM = (props2, {
   attributes: attributes2,
   styles,
@@ -18876,7 +14077,7 @@ var usePopperContentDOM = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/content2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/src/content2.mjs
 var __default__9 = defineComponent({
   name: "ElPopperContent"
 });
@@ -18997,13 +14198,13 @@ var _sfc_main12 = defineComponent({
 });
 var ElPopperContent = _export_sfc(_sfc_main12, [["__file", "content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popper/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popper/index.mjs
 var ElPopper = withInstall(Popper);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/constants.mjs
 var TOOLTIP_INJECTION_KEY = Symbol("elTooltip");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/src/teleport.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/src/teleport.mjs
 var teleportProps = buildProps({
   to: {
     type: definePropType([String, Object]),
@@ -19012,7 +14213,7 @@ var teleportProps = buildProps({
   disabled: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/content.mjs
 var useTooltipContentProps = buildProps({
   ...useDelayedToggleProps,
   ...popperContentProps,
@@ -19038,7 +14239,7 @@ var useTooltipContentProps = buildProps({
   ...useAriaProps(["ariaLabel"])
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/trigger.mjs
 var useTooltipTriggerProps = buildProps({
   ...popperTriggerProps,
   disabled: Boolean,
@@ -19052,7 +14253,7 @@ var useTooltipTriggerProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-model-toggle/index.mjs
 var _prop = buildProp({
   type: definePropType(Boolean),
   default: null
@@ -19177,7 +14378,7 @@ var createModelToggleComposable = (name) => {
 };
 var { useModelToggle, useModelToggleProps, useModelToggleEmits } = createModelToggleComposable("modelValue");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/tooltip.mjs
 var {
   useModelToggleProps: useTooltipModelToggleProps,
   useModelToggleEmits: useTooltipModelToggleEmits,
@@ -19204,7 +14405,7 @@ var tooltipEmits = [
   "close"
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/utils.mjs
 var isTriggerType = (trigger, type4) => {
   if (isArray(trigger)) {
     return trigger.includes(type4);
@@ -19217,7 +14418,7 @@ var whenTrigger = (trigger, type4, handler) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/event.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/event.mjs
 var composeEventHandlers = (theirsHandler, oursHandler, { checkForDefaultPrevented = true } = {}) => {
   const handleEvent = (event) => {
     const shouldPrevent = theirsHandler == null ? void 0 : theirsHandler(event);
@@ -19231,7 +14432,7 @@ var whenMouse = (handler) => {
   return (e) => e.pointerType === "mouse" ? handler(e) : void 0;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/trigger2.mjs
 var __default__10 = defineComponent({
   name: "ElTooltipTrigger"
 });
@@ -19297,7 +14498,7 @@ var _sfc_main13 = defineComponent({
 });
 var ElTooltipTrigger = _export_sfc(_sfc_main13, [["__file", "trigger.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/src/teleport2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/src/teleport2.mjs
 var _sfc_main14 = defineComponent({
   __name: "teleport",
   props: teleportProps,
@@ -19314,10 +14515,10 @@ var _sfc_main14 = defineComponent({
 });
 var Teleport2 = _export_sfc(_sfc_main14, [["__file", "teleport.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/teleport/index.mjs
 var ElTeleport = withInstall(Teleport2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-popper-container/index.mjs
 var usePopperContainerId = () => {
   const namespace = useGetDerivedNamespace();
   const idInjection = useIdInjection();
@@ -19351,7 +14552,7 @@ var usePopperContainer = () => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/content2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/content2.mjs
 var __default__11 = defineComponent({
   name: "ElTooltipContent",
   inheritAttrs: false
@@ -19534,7 +14735,7 @@ var _sfc_main15 = defineComponent({
 });
 var ElTooltipContent = _export_sfc(_sfc_main15, [["__file", "content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/src/tooltip2.mjs
 var __default__12 = defineComponent({
   name: "ElTooltip"
 });
@@ -19689,10 +14890,10 @@ var _sfc_main16 = defineComponent({
 });
 var Tooltip = _export_sfc(_sfc_main16, [["__file", "tooltip.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip/index.mjs
 var ElTooltip = withInstall(Tooltip);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/src/autocomplete.mjs
 var autocompleteProps = buildProps({
   ...inputProps,
   valueKey: {
@@ -19748,7 +14949,7 @@ var autocompleteEmits = {
   select: (item) => isObject(item)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/src/autocomplete2.mjs
 var COMPONENT_NAME5 = "ElAutocomplete";
 var __default__13 = defineComponent({
   name: COMPONENT_NAME5,
@@ -19995,6 +15196,14 @@ var _sfc_main17 = defineComponent({
             }),
             role: "region"
           }, [
+            _ctx.$slots.header ? (openBlock(), createElementBlock("div", {
+              key: 0,
+              class: normalizeClass(unref(ns).be("suggestion", "header")),
+              onClick: withModifiers(() => {
+              }, ["stop"])
+            }, [
+              renderSlot(_ctx.$slots, "header")
+            ], 10, ["onClick"])) : createCommentVNode("v-if", true),
             createVNode(unref(ElScrollbar), {
               id: unref(listboxId),
               tag: "ul",
@@ -20030,7 +15239,15 @@ var _sfc_main17 = defineComponent({
                 }), 128))
               ]),
               _: 3
-            }, 8, ["id", "wrap-class", "view-class"])
+            }, 8, ["id", "wrap-class", "view-class"]),
+            _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+              key: 1,
+              class: normalizeClass(unref(ns).be("suggestion", "footer")),
+              onClick: withModifiers(() => {
+              }, ["stop"])
+            }, [
+              renderSlot(_ctx.$slots, "footer")
+            ], 10, ["onClick"])) : createCommentVNode("v-if", true)
           ], 6)
         ]),
         default: withCtx(() => [
@@ -20100,10 +15317,10 @@ var _sfc_main17 = defineComponent({
 });
 var Autocomplete = _export_sfc(_sfc_main17, [["__file", "autocomplete.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/autocomplete/index.mjs
 var ElAutocomplete = withInstall(Autocomplete);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/src/avatar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/src/avatar.mjs
 var avatarProps = buildProps({
   size: {
     type: [Number, String],
@@ -20134,7 +15351,7 @@ var avatarEmits = {
   error: (evt) => evt instanceof Event
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/src/avatar2.mjs
 var __default__14 = defineComponent({
   name: "ElAvatar"
 });
@@ -20195,10 +15412,10 @@ var _sfc_main18 = defineComponent({
 });
 var Avatar = _export_sfc(_sfc_main18, [["__file", "avatar.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/avatar/index.mjs
 var ElAvatar = withInstall(Avatar);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/backtop.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/backtop.mjs
 var backtopProps = {
   visibilityHeight: {
     type: Number,
@@ -20221,7 +15438,7 @@ var backtopEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/use-backtop.mjs
 var useBackTop = (props2, emit, componentName2) => {
   const el = shallowRef();
   const container = shallowRef();
@@ -20256,7 +15473,7 @@ var useBackTop = (props2, emit, componentName2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/src/backtop2.mjs
 var COMPONENT_NAME6 = "ElBacktop";
 var __default__15 = defineComponent({
   name: COMPONENT_NAME6
@@ -20303,10 +15520,10 @@ var _sfc_main19 = defineComponent({
 });
 var Backtop = _export_sfc(_sfc_main19, [["__file", "backtop.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/backtop/index.mjs
 var ElBacktop = withInstall(Backtop);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/badge/src/badge.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/badge/src/badge.mjs
 var badgeProps = buildProps({
   value: {
     type: [String, Number],
@@ -20340,7 +15557,7 @@ var badgeProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/badge/src/badge2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/badge/src/badge2.mjs
 var __default__16 = defineComponent({
   name: "ElBadge"
 });
@@ -20408,13 +15625,13 @@ var _sfc_main20 = defineComponent({
 });
 var Badge = _export_sfc(_sfc_main20, [["__file", "badge.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/badge/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/badge/index.mjs
 var ElBadge = withInstall(Badge);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/constants.mjs
 var breadcrumbKey = Symbol("breadcrumbKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb.mjs
 var breadcrumbProps = buildProps({
   separator: {
     type: String,
@@ -20425,7 +15642,7 @@ var breadcrumbProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb2.mjs
 var __default__17 = defineComponent({
   name: "ElBreadcrumb"
 });
@@ -20459,7 +15676,7 @@ var _sfc_main21 = defineComponent({
 });
 var Breadcrumb = _export_sfc(_sfc_main21, [["__file", "breadcrumb.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item.mjs
 var breadcrumbItemProps = buildProps({
   to: {
     type: definePropType([String, Object]),
@@ -20468,7 +15685,7 @@ var breadcrumbItemProps = buildProps({
   replace: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/src/breadcrumb-item2.mjs
 var __default__18 = defineComponent({
   name: "ElBreadcrumbItem"
 });
@@ -20520,16 +15737,16 @@ var _sfc_main22 = defineComponent({
 });
 var BreadcrumbItem = _export_sfc(_sfc_main22, [["__file", "breadcrumb-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/breadcrumb/index.mjs
 var ElBreadcrumb = withInstall(Breadcrumb, {
   BreadcrumbItem
 });
 var ElBreadcrumbItem = withNoopInstall(BreadcrumbItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/constants.mjs
 var buttonGroupContextKey = Symbol("buttonGroupContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-deprecated/index.mjs
 var useDeprecated = ({ from, replacement, scope, version: version4, ref: ref2, type: type4 = "API" }, condition) => {
   watch(() => unref(condition), (val) => {
   }, {
@@ -20537,7 +15754,7 @@ var useDeprecated = ({ from, replacement, scope, version: version4, ref: ref2, t
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/use-button.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/use-button.mjs
 var useButton = (props2, emit) => {
   useDeprecated({
     from: "type.text",
@@ -20568,6 +15785,10 @@ var useButton = (props2, emit) => {
   const _round = computed(() => {
     var _a2, _b, _c;
     return (_c = (_b = props2.round) != null ? _b : (_a2 = globalConfig2.value) == null ? void 0 : _a2.round) != null ? _c : false;
+  });
+  const _text = computed(() => {
+    var _a2, _b, _c;
+    return (_c = (_b = props2.text) != null ? _b : (_a2 = globalConfig2.value) == null ? void 0 : _a2.text) != null ? _c : false;
   });
   const _props = computed(() => {
     if (props2.tag === "button") {
@@ -20610,12 +15831,13 @@ var useButton = (props2, emit) => {
     _props,
     _plain,
     _round,
+    _text,
     shouldAddSpace,
     handleClick
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button.mjs
 var buttonTypes = [
   "default",
   "primary",
@@ -20652,7 +15874,10 @@ var buttonProps = buildProps({
     type: Boolean,
     default: void 0
   },
-  text: Boolean,
+  text: {
+    type: Boolean,
+    default: void 0
+  },
   link: Boolean,
   bg: Boolean,
   autofocus: Boolean,
@@ -21573,7 +16798,7 @@ var TinyColor = (
   }()
 );
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-custom.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-custom.mjs
 function darken(color, amount = 20) {
   return color.mix("#141414", amount).toString();
 }
@@ -21632,7 +16857,7 @@ function useButtonCustomStyle(props2) {
   });
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button2.mjs
 var __default__19 = defineComponent({
   name: "ElButton"
 });
@@ -21652,6 +16877,7 @@ var _sfc_main23 = defineComponent({
       _props,
       _plain,
       _round,
+      _text,
       shouldAddSpace,
       handleClick
     } = useButton(props2, emit);
@@ -21664,7 +16890,7 @@ var _sfc_main23 = defineComponent({
       ns.is("plain", _plain.value),
       ns.is("round", _round.value),
       ns.is("circle", props2.circle),
-      ns.is("text", props2.text),
+      ns.is("text", _text.value),
       ns.is("link", props2.link),
       ns.is("has-bg", props2.bg)
     ]);
@@ -21715,13 +16941,13 @@ var _sfc_main23 = defineComponent({
 });
 var Button = _export_sfc(_sfc_main23, [["__file", "button.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-group.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-group.mjs
 var buttonGroupProps = {
   size: buttonProps.size,
   type: buttonProps.type
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-group2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/src/button-group2.mjs
 var __default__20 = defineComponent({
   name: "ElButtonGroup"
 });
@@ -21746,13 +16972,13 @@ var _sfc_main24 = defineComponent({
 });
 var ButtonGroup = _export_sfc(_sfc_main24, [["__file", "button-group.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/button/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/button/index.mjs
 var ElButton = withInstall(Button, {
   ButtonGroup
 });
 var ElButtonGroup = withNoopInstall(ButtonGroup);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/utils.mjs
 var import_dayjs = __toESM(require_dayjs_min(), 1);
 var buildTimeList = (value, bound) => {
   return [
@@ -21817,7 +17043,7 @@ var dayOrDaysToDate = (dayOrDays) => {
   return isArray(dayOrDays) ? dayOrDays.map((d2) => d2.toDate()) : dayOrDays.toDate();
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/date-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/date-table.mjs
 var getPrevMonthLastDays = (date4, count) => {
   const lastDay = date4.subtract(1, "month").endOf("month").date();
   return rangeArr(count).map((_2, index) => lastDay - (count - index - 1));
@@ -21849,11 +17075,11 @@ var dateTableEmits = {
   pick: (value) => isObject(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
 var import_dayjs2 = __toESM(require_dayjs_min(), 1);
 var import_localeData = __toESM(require_localeData(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/date.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/date.mjs
 var datePickTypes = [
   "year",
   "years",
@@ -21878,7 +17104,7 @@ var WEEK_DAYS = [
   "sat"
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-date-table.mjs
 var useDateTable = (props2, emit) => {
   import_dayjs2.default.extend(import_localeData.default);
   const firstDayOfWeek = import_dayjs2.default.localeData().firstDayOfWeek();
@@ -21962,7 +17188,7 @@ var useDateTable = (props2, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/date-table2.mjs
 var __default__21 = defineComponent({
   name: "DateTable"
 });
@@ -22050,7 +17276,7 @@ var _sfc_main25 = defineComponent({
 });
 var DateTable = _export_sfc(_sfc_main25, [["__file", "date-table.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/use-calendar.mjs
 var import_dayjs3 = __toESM(require_dayjs_min(), 1);
 var adjacentMonth = (start, end) => {
   const firstMonthLastDay = start.endOf("month");
@@ -22163,7 +17389,7 @@ var useCalendar = (props2, emit, componentName2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/calendar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/calendar.mjs
 var isValidRange = (range4) => isArray(range4) && range4.length === 2 && range4.every((item) => isDate(item));
 var calendarProps = buildProps({
   modelValue: {
@@ -22179,7 +17405,7 @@ var calendarEmits = {
   [INPUT_EVENT]: (value) => isDate(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/src/calendar2.mjs
 var COMPONENT_NAME7 = "ElCalendar";
 var __default__22 = defineComponent({
   name: COMPONENT_NAME7
@@ -22308,10 +17534,10 @@ var _sfc_main26 = defineComponent({
 });
 var Calendar = _export_sfc(_sfc_main26, [["__file", "calendar.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/calendar/index.mjs
 var ElCalendar = withInstall(Calendar);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/card/src/card.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/card/src/card.mjs
 var cardProps = buildProps({
   header: {
     type: String,
@@ -22336,7 +17562,7 @@ var cardProps = buildProps({
 });
 var cardContextKey = Symbol("cardContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/card/src/card2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/card/src/card2.mjs
 var __default__23 = defineComponent({
   name: "ElCard"
 });
@@ -22382,10 +17608,10 @@ var _sfc_main27 = defineComponent({
 });
 var Card = _export_sfc(_sfc_main27, [["__file", "card.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/card/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/card/index.mjs
 var ElCard = withInstall(Card);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel.mjs
 var carouselProps = buildProps({
   initialIndex: {
     type: Number,
@@ -22446,11 +17672,11 @@ var carouselEmits = {
   change: (current, prev) => [current, prev].every(isNumber2)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/constants.mjs
 var carouselContextKey = Symbol("carouselContextKey");
 var CAROUSEL_ITEM_NAME = "ElCarouselItem";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/vnode.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/vnode.mjs
 var PatchFlags = ((PatchFlags2) => {
   PatchFlags2[PatchFlags2["TEXT"] = 1] = "TEXT";
   PatchFlags2[PatchFlags2["CLASS"] = 2] = "CLASS";
@@ -22519,7 +17745,7 @@ var flattedChildren = (children) => {
   return result2;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-ordered-children/index.mjs
 var getOrderedChildren = (vm, childComponentName, children) => {
   const nodes = flattedChildren(vm.subTree).filter((n) => {
     var _a2;
@@ -22584,7 +17810,7 @@ var useOrderedChildren = (vm, childComponentName) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/use-carousel.mjs
 var THROTTLE_TIME = 300;
 var useCarousel = (props2, emit, componentName2) => {
   const {
@@ -22772,6 +17998,12 @@ var useCarousel = (props2, emit, componentName2) => {
       emit(CHANGE_EVENT, current, prev2);
     }
   });
+  const exposeActiveIndex = computed({
+    get: () => {
+      return isItemsTwoLength.value ? activeIndex.value % 2 : activeIndex.value;
+    },
+    set: (value) => activeIndex.value = value
+  });
   watch(() => props2.autoplay, (autoplay) => {
     autoplay ? startTimer() : pauseTimer();
   });
@@ -22814,6 +18046,7 @@ var useCarousel = (props2, emit, componentName2) => {
   return {
     root: root2,
     activeIndex,
+    exposeActiveIndex,
     arrowDisplay,
     hasLabel,
     hover,
@@ -22838,7 +18071,7 @@ var useCarousel = (props2, emit, componentName2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel2.mjs
 var COMPONENT_NAME8 = "ElCarousel";
 var __default__24 = defineComponent({
   name: COMPONENT_NAME8
@@ -22852,6 +18085,7 @@ var _sfc_main28 = defineComponent({
     const {
       root: root2,
       activeIndex,
+      exposeActiveIndex,
       arrowDisplay,
       hasLabel,
       hover,
@@ -22908,7 +18142,7 @@ var _sfc_main28 = defineComponent({
       e.currentTarget.classList.remove(kls);
     }
     expose({
-      activeIndex,
+      activeIndex: exposeActiveIndex,
       setActiveItem,
       prev,
       next
@@ -23046,7 +18280,7 @@ var _sfc_main28 = defineComponent({
 });
 var Carousel = _export_sfc(_sfc_main28, [["__file", "carousel.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel-item.mjs
 var carouselItemProps = buildProps({
   name: { type: String, default: "" },
   label: {
@@ -23055,7 +18289,7 @@ var carouselItemProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/use-carousel-item.mjs
 var useCarouselItem = (props2) => {
   const carouselContext = inject(carouselContextKey);
   const instance = getCurrentInstance();
@@ -23167,7 +18401,7 @@ var useCarouselItem = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/src/carousel-item2.mjs
 var __default__25 = defineComponent({
   name: CAROUSEL_ITEM_NAME
 });
@@ -23233,13 +18467,13 @@ var _sfc_main29 = defineComponent({
 });
 var CarouselItem = _export_sfc(_sfc_main29, [["__file", "carousel-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/carousel/index.mjs
 var ElCarousel = withInstall(Carousel, {
   CarouselItem
 });
 var ElCarouselItem = withNoopInstall(CarouselItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox.mjs
 var checkboxProps = {
   modelValue: {
     type: [Number, String, Boolean],
@@ -23294,10 +18528,10 @@ var checkboxEmits = {
   change: (val) => isString(val) || isNumber2(val) || isBoolean2(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/constants.mjs
 var checkboxGroupContextKey = Symbol("checkboxGroupContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-disabled.mjs
 var useCheckboxDisabled = ({
   model,
   isChecked
@@ -23316,7 +18550,7 @@ var useCheckboxDisabled = ({
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs
 var useCheckboxEvent = (props2, {
   model,
   isLimitExceeded,
@@ -23365,7 +18599,7 @@ var useCheckboxEvent = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-model.mjs
 var useCheckboxModel = (props2) => {
   const selfModel = ref(false);
   const { emit } = getCurrentInstance();
@@ -23395,7 +18629,7 @@ var useCheckboxModel = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-status.mjs
 var useCheckboxStatus = (props2, slots, { model }) => {
   const checkboxGroup = inject(checkboxGroupContextKey, void 0);
   const isFocused = ref(false);
@@ -23444,7 +18678,7 @@ var useCheckboxStatus = (props2, slots, { model }) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox.mjs
 var useCheckbox = (props2, slots) => {
   const { formItem: elFormItem } = useFormItem();
   const { model, isGroup, isLimitExceeded } = useCheckboxModel(props2);
@@ -23518,7 +18752,7 @@ var useCheckbox = (props2, slots) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox2.mjs
 var __default__26 = defineComponent({
   name: "ElCheckbox"
 });
@@ -23633,7 +18867,7 @@ var _sfc_main30 = defineComponent({
 });
 var Checkbox = _export_sfc(_sfc_main30, [["__file", "checkbox.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-button.mjs
 var __default__27 = defineComponent({
   name: "ElCheckboxButton"
 });
@@ -23728,7 +18962,7 @@ var _sfc_main31 = defineComponent({
 });
 var CheckboxButton = _export_sfc(_sfc_main31, [["__file", "checkbox-button.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-group.mjs
 var checkboxGroupProps = buildProps({
   modelValue: {
     type: definePropType(Array),
@@ -23755,7 +18989,7 @@ var checkboxGroupEmits = {
   change: (val) => isArray(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/src/checkbox-group2.mjs
 var __default__28 = defineComponent({
   name: "ElCheckboxGroup"
 });
@@ -23820,7 +19054,7 @@ var _sfc_main32 = defineComponent({
 });
 var CheckboxGroup = _export_sfc(_sfc_main32, [["__file", "checkbox-group.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/checkbox/index.mjs
 var ElCheckbox = withInstall(Checkbox, {
   CheckboxButton,
   CheckboxGroup
@@ -23828,7 +19062,7 @@ var ElCheckbox = withInstall(Checkbox, {
 var ElCheckboxButton = withNoopInstall(CheckboxButton);
 var ElCheckboxGroup = withNoopInstall(CheckboxGroup);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio.mjs
 var radioPropsBase = buildProps({
   modelValue: {
     type: [String, Number, Boolean],
@@ -23858,10 +19092,10 @@ var radioEmits = {
   [CHANGE_EVENT]: (val) => isString(val) || isNumber2(val) || isBoolean2(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/constants.mjs
 var radioGroupKey = Symbol("radioGroupKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/use-radio.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/use-radio.mjs
 var useRadio = (props2, emit) => {
   const radioRef = ref();
   const radioGroup = inject(radioGroupKey, void 0);
@@ -23911,7 +19145,7 @@ var useRadio = (props2, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio2.mjs
 var __default__29 = defineComponent({
   name: "ElRadio"
 });
@@ -23982,12 +19216,12 @@ var _sfc_main33 = defineComponent({
 });
 var Radio = _export_sfc(_sfc_main33, [["__file", "radio.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-button.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-button.mjs
 var radioButtonProps = buildProps({
   ...radioPropsBase
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-button2.mjs
 var __default__30 = defineComponent({
   name: "ElRadioButton"
 });
@@ -24049,7 +19283,7 @@ var _sfc_main34 = defineComponent({
 });
 var RadioButton = _export_sfc(_sfc_main34, [["__file", "radio-button.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-group.mjs
 var radioGroupProps = buildProps({
   id: {
     type: String,
@@ -24081,7 +19315,7 @@ var radioGroupProps = buildProps({
 });
 var radioGroupEmits = radioEmits;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-group.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/src/radio-group2.mjs
 var __default__31 = defineComponent({
   name: "ElRadioGroup"
 });
@@ -24117,8 +19351,8 @@ var _sfc_main35 = defineComponent({
       changeEvent,
       name
     }));
-    watch(() => props2.modelValue, () => {
-      if (props2.validateEvent) {
+    watch(() => props2.modelValue, (newVal, oldValue) => {
+      if (props2.validateEvent && !isEqual_default(newVal, oldValue)) {
         formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn());
       }
     });
@@ -24139,7 +19373,7 @@ var _sfc_main35 = defineComponent({
 });
 var RadioGroup = _export_sfc(_sfc_main35, [["__file", "radio-group.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/radio/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/radio/index.mjs
 var ElRadio = withInstall(Radio, {
   RadioButton,
   RadioGroup
@@ -24147,10 +19381,10 @@ var ElRadio = withInstall(Radio, {
 var ElRadioGroup = withNoopInstall(RadioGroup);
 var ElRadioButton = withNoopInstall(RadioButton);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/types.mjs
 var CASCADER_PANEL_INJECTION_KEY = Symbol();
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node-content.mjs
 function isVNodeEmpty(vnodes) {
   return !!(isArray(vnodes) ? vnodes.every(({
     type: type4
@@ -24162,24 +19396,15 @@ var NodeContent = defineComponent({
     node: {
       type: Object,
       required: true
-    },
-    disabled: Boolean
+    }
   },
-  setup(props2, {
-    emit
-  }) {
+  setup(props2) {
     const ns = useNamespace("cascader-node");
     const {
-      config,
       renderLabelFn
     } = inject(CASCADER_PANEL_INJECTION_KEY);
     const {
-      checkOnClickNode,
-      checkOnClickLeaf
-    } = config;
-    const {
-      node,
-      disabled
+      node
     } = props2;
     const {
       data,
@@ -24192,19 +19417,13 @@ var NodeContent = defineComponent({
       });
       return isVNodeEmpty(renderLabel) ? nodeLabel : renderLabel != null ? renderLabel : nodeLabel;
     };
-    function handleClick() {
-      if ((checkOnClickNode || node.isLeaf && checkOnClickLeaf) && !disabled) {
-        emit("handleSelectCheck", !node.checked);
-      }
-    }
     return () => createVNode("span", {
-      "class": ns.e("label"),
-      "onClick": handleClick
+      "class": ns.e("label")
     }, [label()]);
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node2.mjs
 var __default__32 = defineComponent({
   name: "ElCascaderNode"
 });
@@ -24270,10 +19489,12 @@ var _sfc_main36 = defineComponent({
       node.loaded ? doExpand() : doLoad();
     };
     const handleClick = () => {
-      if (isHoverMenu.value && !isLeaf2.value)
+      if (isHoverMenu.value)
         return;
       if (isLeaf2.value && !isDisabled.value && !checkStrictly.value && !multiple.value) {
         handleCheck(true);
+      } else if ((panel.config.checkOnClickNode || isLeaf2.value && panel.config.checkOnClickLeaf) && !isDisabled.value) {
+        handleSelectCheck(!props2.node.checked);
       } else {
         handleExpand();
       }
@@ -24349,11 +19570,7 @@ var _sfc_main36 = defineComponent({
           _: 1
         }, 8, ["class"])) : createCommentVNode("v-if", true),
         createCommentVNode(" content "),
-        createVNode(unref(NodeContent), {
-          node: __props.node,
-          disabled: unref(isDisabled),
-          onHandleSelectCheck: handleSelectCheck
-        }, null, 8, ["node", "disabled"]),
+        createVNode(unref(NodeContent), { node: __props.node }, null, 8, ["node"]),
         createCommentVNode(" postfix "),
         !unref(isLeaf2) ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
           __props.node.loading ? (openBlock(), createBlock(unref(ElIcon), {
@@ -24380,7 +19597,7 @@ var _sfc_main36 = defineComponent({
 });
 var ElCascaderNode = _export_sfc(_sfc_main36, [["__file", "node.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/menu.mjs
 var __default__33 = defineComponent({
   name: "ElCascaderMenu"
 });
@@ -24503,7 +19720,7 @@ var _sfc_main37 = defineComponent({
 });
 var ElCascaderMenu = _export_sfc(_sfc_main37, [["__file", "menu.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/node.mjs
 var uid = 0;
 var calculatePathNodes = (node) => {
   const nodes = [node];
@@ -24620,7 +19837,7 @@ var Node2 = class _Node {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/store.mjs
 var flatNodes = (nodes, leafOnly) => {
   return nodes.reduce((res, node) => {
     if (node.isLeaf) {
@@ -24653,7 +19870,11 @@ var Store = class {
     this.appendAllNodesAndLeafNodes(node);
   }
   appendNodes(nodeDataList, parentNode) {
-    nodeDataList.forEach((nodeData) => this.appendNode(nodeData, parentNode));
+    if (nodeDataList.length > 0) {
+      nodeDataList.forEach((nodeData) => this.appendNode(nodeData, parentNode));
+    } else {
+      parentNode && parentNode.isLeaf && this.leafNodes.push(parentNode);
+    }
   }
   appendAllNodesAndLeafNodes(node) {
     this.allNodes.push(node);
@@ -24678,7 +19899,7 @@ var Store = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/config.mjs
 var CommonProps = buildProps({
   modelValue: {
     type: definePropType([Number, String, Array])
@@ -24733,7 +19954,7 @@ var useCascaderConfig = (props2) => {
   }));
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/utils.mjs
 var getMenuIndex = (el) => {
   if (!el)
     return 0;
@@ -24766,7 +19987,7 @@ var sortByOriginalOrder = (oldNodes, newNodes) => {
   return res;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/arrays.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/arrays.mjs
 var unique = (arr) => [...new Set(arr)];
 var castArray2 = (arr) => {
   if (!arr && arr !== 0)
@@ -24774,7 +19995,7 @@ var castArray2 = (arr) => {
   return isArray(arr) ? arr : [arr];
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/src/index.mjs
 var __default__34 = defineComponent({
   name: "ElCascaderPanel",
   inheritAttrs: false
@@ -24825,10 +20046,10 @@ var _sfc_main38 = defineComponent({
       const resolve = (dataList) => {
         const _node = node;
         const parent2 = _node.root ? null : _node;
-        dataList && (store == null ? void 0 : store.appendNodes(dataList, parent2));
         _node.loading = false;
         _node.loaded = true;
         _node.childrenData = _node.childrenData || [];
+        dataList && (store == null ? void 0 : store.appendNodes(dataList, parent2));
         dataList && (cb == null ? void 0 : cb(dataList));
       };
       cfg.lazyLoad(node, resolve);
@@ -24880,13 +20101,14 @@ var _sfc_main38 = defineComponent({
       emit("expand-change", []);
     };
     const calculateCheckedValue = () => {
+      var _a2;
       const { checkStrictly, multiple } = config.value;
       const oldNodes = checkedNodes.value;
       const newNodes = getCheckedNodes(!checkStrictly);
       const nodes = sortByOriginalOrder(oldNodes, newNodes);
       const values2 = nodes.map((node) => node.valueByOption);
       checkedNodes.value = nodes;
-      checkedValue.value = multiple ? values2 : values2[0];
+      checkedValue.value = multiple ? values2 : (_a2 = values2[0]) != null ? _a2 : null;
     };
     const syncCheckedValue = (loaded = false, forced = false) => {
       const { modelValue } = props2;
@@ -25042,10 +20264,10 @@ var _sfc_main38 = defineComponent({
 });
 var CascaderPanel = _export_sfc(_sfc_main38, [["__file", "index.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader-panel/index.mjs
 var ElCascaderPanel = withInstall(CascaderPanel);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tag/src/tag2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tag/src/tag.mjs
 var tagProps = buildProps({
   type: {
     type: String,
@@ -25072,7 +20294,7 @@ var tagEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tag/src/tag.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tag/src/tag2.mjs
 var __default__35 = defineComponent({
   name: "ElTag"
 });
@@ -25166,16 +20388,20 @@ var _sfc_main39 = defineComponent({
 });
 var Tag = _export_sfc(_sfc_main39, [["__file", "tag.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tag/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tag/index.mjs
 var ElTag = withInstall(Tag);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/src/cascader.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/src/cascader.mjs
 var cascaderProps = buildProps({
   ...CommonProps,
   size: useSizeProp,
   placeholder: String,
   disabled: Boolean,
   clearable: Boolean,
+  clearIcon: {
+    type: iconPropType,
+    default: circle_close_default
+  },
   filterable: Boolean,
   filterMethod: {
     type: definePropType(Function),
@@ -25215,10 +20441,8 @@ var cascaderProps = buildProps({
     type: definePropType(Array),
     default: ["bottom-start", "bottom", "top-start", "top", "right", "left"]
   },
-  popperClass: {
-    type: String,
-    default: ""
-  },
+  popperClass: useTooltipContentProps.popperClass,
+  popperStyle: useTooltipContentProps.popperStyle,
   teleported: useTooltipContentProps.teleported,
   effect: {
     type: definePropType(String),
@@ -25258,7 +20482,7 @@ var cascaderEmits = {
   removeTag: (val) => !!val
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/directives/click-outside/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/directives/click-outside/index.mjs
 var nodeList = /* @__PURE__ */ new Map();
 if (isClient) {
   let startClick;
@@ -25328,7 +20552,7 @@ var ClickOutside = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/src/cascader2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/src/cascader2.mjs
 var COMPONENT_NAME9 = "ElCascader";
 var __default__36 = defineComponent({
   name: COMPONENT_NAME9
@@ -25363,7 +20587,8 @@ var _sfc_main40 = defineComponent({
     const nsCascader = useNamespace("cascader");
     const nsInput = useNamespace("input");
     const { t } = useLocale();
-    const { form, formItem } = useFormItem();
+    const { formItem } = useFormItem();
+    const isDisabled = useFormDisabled();
     const { valueOnClear } = useEmptyValues(props2);
     const { isComposing, handleComposition } = useComposition({
       afterComposition(event) {
@@ -25373,14 +20598,14 @@ var _sfc_main40 = defineComponent({
       }
     });
     const tooltipRef = ref(null);
-    const input = ref(null);
+    const tagTooltipRef = ref();
+    const inputRef = ref();
     const tagWrapper = ref(null);
     const cascaderPanelRef = ref(null);
     const suggestionPanel = ref(null);
     const popperVisible = ref(false);
     const inputHover = ref(false);
     const filtering = ref(false);
-    const filterFocus = ref(false);
     const inputValue = ref("");
     const searchInputValue = ref("");
     const presentTags = ref([]);
@@ -25389,7 +20614,6 @@ var _sfc_main40 = defineComponent({
     const cascaderStyle = computed(() => {
       return attrs.style;
     });
-    const isDisabled = computed(() => props2.disabled || (form == null ? void 0 : form.disabled));
     const inputPlaceholder = computed(() => {
       var _a2;
       return (_a2 = props2.placeholder) != null ? _a2 : t("el.cascader.placeholder");
@@ -25404,8 +20628,22 @@ var _sfc_main40 = defineComponent({
       var _a2;
       return ((_a2 = cascaderPanelRef.value) == null ? void 0 : _a2.checkedNodes) || [];
     });
+    const { wrapperRef, isFocused, handleBlur } = useFocusController(inputRef, {
+      disabled: isDisabled,
+      beforeBlur(event) {
+        var _a2, _b, _c;
+        return ((_a2 = tooltipRef.value) == null ? void 0 : _a2.isFocusInsideContent(event)) || ((_c = (_b = tagTooltipRef.value) == null ? void 0 : _b[0]) == null ? void 0 : _c.isFocusInsideContent(event));
+      },
+      afterBlur() {
+        var _a2;
+        popperVisible.value = false;
+        if (props2.validateEvent) {
+          (_a2 = formItem == null ? void 0 : formItem.validate) == null ? void 0 : _a2.call(formItem, "blur").catch((err) => debugWarn());
+        }
+      }
+    });
     const clearBtnVisible = computed(() => {
-      if (!props2.clearable || isDisabled.value || filtering.value || !inputHover.value)
+      if (!props2.clearable || isDisabled.value || filtering.value || !inputHover.value && !isFocused.value)
         return false;
       return !!checkedNodes.value.length;
     });
@@ -25443,13 +20681,18 @@ var _sfc_main40 = defineComponent({
         nsCascader.is("reverse", popperVisible.value)
       ];
     });
-    const inputClass = computed(() => {
-      return nsCascader.is("focus", popperVisible.value || filterFocus.value);
-    });
+    const inputClass = computed(() => nsCascader.is("focus", isFocused.value));
     const contentRef = computed(() => {
       var _a2, _b;
       return (_b = (_a2 = tooltipRef.value) == null ? void 0 : _a2.popperRef) == null ? void 0 : _b.contentRef;
     });
+    const handleClickOutside = (event) => {
+      if (isFocused.value) {
+        const _event2 = new FocusEvent("blur", event);
+        handleBlur(_event2);
+      }
+      togglePopperVisible(false);
+    };
     const togglePopperVisible = (visible) => {
       var _a2, _b, _c;
       if (isDisabled.value)
@@ -25457,7 +20700,7 @@ var _sfc_main40 = defineComponent({
       visible = visible != null ? visible : !popperVisible.value;
       if (visible !== popperVisible.value) {
         popperVisible.value = visible;
-        (_b = (_a2 = input.value) == null ? void 0 : _a2.input) == null ? void 0 : _b.setAttribute("aria-expanded", `${visible}`);
+        (_b = (_a2 = inputRef.value) == null ? void 0 : _a2.input) == null ? void 0 : _b.setAttribute("aria-expanded", `${visible}`);
         if (visible) {
           updatePopperPosition();
           nextTick((_c = cascaderPanelRef.value) == null ? void 0 : _c.scrollToExpandingNode);
@@ -25571,7 +20814,7 @@ var _sfc_main40 = defineComponent({
     };
     const updateStyle = () => {
       var _a2, _b;
-      const inputInner = (_a2 = input.value) == null ? void 0 : _a2.input;
+      const inputInner = (_a2 = inputRef.value) == null ? void 0 : _a2.input;
       const tagWrapperEl = tagWrapper.value;
       const suggestionPanelEl = (_b = suggestionPanel.value) == null ? void 0 : _b.$el;
       if (!isClient || !inputInner)
@@ -25673,18 +20916,6 @@ var _sfc_main40 = defineComponent({
         lastTag.hitState = true;
       }
     };
-    const handleFocus = (e) => {
-      const el = e.target;
-      const name = nsCascader.e("search-input");
-      if (el.className === name) {
-        filterFocus.value = true;
-      }
-      emit("focus", e);
-    };
-    const handleBlur = (e) => {
-      filterFocus.value = false;
-      emit("blur", e);
-    };
     const handleFilter = debounce_default(() => {
       const { value } = searchKeyword;
       if (!value)
@@ -25713,13 +20944,13 @@ var _sfc_main40 = defineComponent({
     });
     watch(realSize, async () => {
       await nextTick();
-      const inputInner = input.value.input;
+      const inputInner = inputRef.value.input;
       inputInitialHeight = getInputInnerHeight(inputInner) || inputInitialHeight;
       updateStyle();
     });
     watch(presentText, syncPresentTextValue, { immediate: true });
     onMounted(() => {
-      const inputInner = input.value.input;
+      const inputInner = inputRef.value.input;
       const inputInnerHeight = getInputInnerHeight(inputInner);
       inputInitialHeight = inputInner.offsetHeight || inputInnerHeight;
       useResizeObserver(inputInner, updateStyle);
@@ -25738,6 +20969,7 @@ var _sfc_main40 = defineComponent({
         visible: popperVisible.value,
         teleported: _ctx.teleported,
         "popper-class": [unref(nsCascader).e("dropdown"), _ctx.popperClass],
+        "popper-style": _ctx.popperStyle,
         "popper-options": popperOptions,
         "fallback-placements": _ctx.fallbackPlacements,
         "stop-popper-mouse-event": false,
@@ -25751,6 +20983,8 @@ var _sfc_main40 = defineComponent({
       }, {
         default: withCtx(() => [
           withDirectives((openBlock(), createElementBlock("div", {
+            ref_key: "wrapperRef",
+            ref: wrapperRef,
             class: normalizeClass(unref(cascaderKls)),
             style: normalizeStyle(unref(cascaderStyle)),
             onClick: () => togglePopperVisible(unref(readonly2) ? void 0 : true),
@@ -25759,8 +20993,8 @@ var _sfc_main40 = defineComponent({
             onMouseleave: ($event) => inputHover.value = false
           }, [
             createVNode(unref(ElInput), {
-              ref_key: "input",
-              ref: input,
+              ref_key: "inputRef",
+              ref: inputRef,
               modelValue: inputValue.value,
               "onUpdate:modelValue": ($event) => inputValue.value = $event,
               placeholder: unref(currentPlaceholder),
@@ -25773,8 +21007,6 @@ var _sfc_main40 = defineComponent({
               onCompositionstart: unref(handleComposition),
               onCompositionupdate: unref(handleComposition),
               onCompositionend: unref(handleComposition),
-              onFocus: handleFocus,
-              onBlur: handleBlur,
               onInput: handleInput
             }, createSlots({
               suffix: withCtx(() => [
@@ -25784,7 +21016,7 @@ var _sfc_main40 = defineComponent({
                   onClick: withModifiers(handleClear, ["stop"])
                 }, {
                   default: withCtx(() => [
-                    createVNode(unref(circle_close_default))
+                    (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
                   ]),
                   _: 1
                 }, 8, ["class", "onClick"])) : (openBlock(), createBlock(unref(ElIcon), {
@@ -25834,9 +21066,14 @@ var _sfc_main40 = defineComponent({
                     default: withCtx(() => [
                       tag.isCollapseTag === false ? (openBlock(), createElementBlock("span", { key: 0 }, toDisplayString(tag.text), 1)) : (openBlock(), createBlock(unref(ElTooltip), {
                         key: 1,
+                        ref_for: true,
+                        ref_key: "tagTooltipRef",
+                        ref: tagTooltipRef,
                         disabled: popperVisible.value || !_ctx.collapseTagsTooltip,
                         "fallback-placements": ["bottom", "top", "right", "left"],
                         placement: "bottom",
+                        "popper-class": _ctx.popperClass,
+                        "popper-style": _ctx.popperStyle,
                         effect: _ctx.effect
                       }, {
                         default: withCtx(() => [
@@ -25877,7 +21114,7 @@ var _sfc_main40 = defineComponent({
                           }, 8, ["max-height"])
                         ]),
                         _: 2
-                      }, 1032, ["disabled", "effect"]))
+                      }, 1032, ["disabled", "popper-class", "popper-style", "effect"]))
                     ]),
                     _: 2
                   }, 1032, ["type", "size", "effect", "hit", "closable", "onClose"]);
@@ -25894,15 +21131,13 @@ var _sfc_main40 = defineComponent({
                 onKeydown: withKeys(handleDelete, ["delete"]),
                 onCompositionstart: unref(handleComposition),
                 onCompositionupdate: unref(handleComposition),
-                onCompositionend: unref(handleComposition),
-                onFocus: handleFocus,
-                onBlur: handleBlur
+                onCompositionend: unref(handleComposition)
               }, null, 42, ["onUpdate:modelValue", "placeholder", "onInput", "onClick", "onKeydown", "onCompositionstart", "onCompositionupdate", "onCompositionend"])), [
                 [vModelText, searchInputValue.value]
               ]) : createCommentVNode("v-if", true)
             ], 2)) : createCommentVNode("v-if", true)
           ], 46, ["onClick", "onMouseenter", "onMouseleave"])), [
-            [unref(ClickOutside), () => togglePopperVisible(false), unref(contentRef)]
+            [unref(ClickOutside), handleClickOutside, unref(contentRef)]
           ])
         ]),
         content: withCtx(() => [
@@ -25983,16 +21218,16 @@ var _sfc_main40 = defineComponent({
           ], 10, ["onClick"])) : createCommentVNode("v-if", true)
         ]),
         _: 3
-      }, 8, ["visible", "teleported", "popper-class", "fallback-placements", "placement", "transition", "effect", "persistent"]);
+      }, 8, ["visible", "teleported", "popper-class", "popper-style", "fallback-placements", "placement", "transition", "effect", "persistent"]);
     };
   }
 });
 var Cascader = _export_sfc(_sfc_main40, [["__file", "cascader.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/cascader/index.mjs
 var ElCascader = withInstall(Cascader);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/src/check-tag.mjs
 var checkTagProps = buildProps({
   checked: Boolean,
   disabled: Boolean,
@@ -26007,7 +21242,7 @@ var checkTagEmits = {
   [CHANGE_EVENT]: (value) => isBoolean2(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/src/check-tag2.mjs
 var __default__37 = defineComponent({
   name: "ElCheckTag"
 });
@@ -26044,10 +21279,10 @@ var _sfc_main41 = defineComponent({
 });
 var CheckTag = _export_sfc(_sfc_main41, [["__file", "check-tag.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/check-tag/index.mjs
 var ElCheckTag = withInstall(CheckTag);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/col/src/col.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/col/src/col.mjs
 var colProps = buildProps({
   tag: {
     type: String,
@@ -26091,10 +21326,10 @@ var colProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/constants.mjs
 var rowContextKey = Symbol("rowContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/col/src/col2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/col/src/col2.mjs
 var __default__38 = defineComponent({
   name: "ElCol"
 });
@@ -26154,10 +21389,10 @@ var _sfc_main42 = defineComponent({
 });
 var Col = _export_sfc(_sfc_main42, [["__file", "col.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/col/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/col/index.mjs
 var ElCol = withInstall(Col);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse.mjs
 var emitChangeFn3 = (value) => isNumber2(value) || isString(value) || isArray(value);
 var collapseProps = buildProps({
   accordion: Boolean,
@@ -26178,10 +21413,10 @@ var collapseEmits = {
   [CHANGE_EVENT]: emitChangeFn3
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/constants.mjs
 var collapseContextKey = Symbol("collapseContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/use-collapse.mjs
 var SCOPE2 = "ElCollapse";
 var useCollapse = (props2, emit) => {
   const activeNames = ref(castArray_default(props2.modelValue));
@@ -26251,7 +21486,7 @@ var useCollapseDOM = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse2.mjs
 var __default__39 = defineComponent({
   name: "ElCollapse"
 });
@@ -26278,7 +21513,7 @@ var _sfc_main43 = defineComponent({
 });
 var Collapse = _export_sfc(_sfc_main43, [["__file", "collapse.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse-transition/src/collapse-transition.mjs
 var __default__40 = defineComponent({
   name: "ElCollapseTransition"
 });
@@ -26363,10 +21598,10 @@ var _sfc_main44 = defineComponent({
 });
 var CollapseTransition = _export_sfc(_sfc_main44, [["__file", "collapse-transition.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse-transition/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse-transition/index.mjs
 var ElCollapseTransition = withInstall(CollapseTransition);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse-item.mjs
 var collapseItemProps = buildProps({
   title: {
     type: String,
@@ -26383,7 +21618,7 @@ var collapseItemProps = buildProps({
   disabled: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/use-collapse-item.mjs
 var useCollapseItem = (props2) => {
   const collapse = inject(collapseContextKey);
   const { namespace } = useNamespace("collapse");
@@ -26464,7 +21699,7 @@ var useCollapseItemDOM = (props2, { focusing, isActive, id }) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/src/collapse-item2.mjs
 var __default__41 = defineComponent({
   name: "ElCollapseItem"
 });
@@ -26555,22 +21790,23 @@ var _sfc_main45 = defineComponent({
 });
 var CollapseItem = _export_sfc(_sfc_main45, [["__file", "collapse-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collapse/index.mjs
 var ElCollapse = withInstall(Collapse, {
   CollapseItem
 });
 var ElCollapseItem = withNoopInstall(CollapseItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/props/alpha-slider.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/props/alpha-slider.mjs
 var alphaSliderProps = buildProps({
   color: {
     type: definePropType(Object),
     required: true
   },
-  vertical: Boolean
+  vertical: Boolean,
+  disabled: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/utils/draggable.mjs
 var isDragging = false;
 function draggable(element, options) {
   if (!isClient)
@@ -26608,24 +21844,7 @@ function draggable(element, options) {
   element.addEventListener("touchstart", downFn, { passive: false });
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/position.mjs
-var isInContainer = (el, container) => {
-  if (!isClient || !el || !container)
-    return false;
-  const elRect = el.getBoundingClientRect();
-  let containerRect;
-  if (container instanceof Element) {
-    containerRect = container.getBoundingClientRect();
-  } else {
-    containerRect = {
-      top: 0,
-      right: window.innerWidth,
-      bottom: window.innerHeight,
-      left: 0
-    };
-  }
-  return elRect.top < containerRect.bottom && elRect.bottom > containerRect.top && elRect.right > containerRect.left && elRect.left < containerRect.right;
-};
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/position.mjs
 var getOffsetTop = (el) => {
   let offset3 = 0;
   let parent2 = el;
@@ -26657,7 +21876,7 @@ var getClientXY = (event) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/composables/use-alpha-slider.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/composables/use-alpha-slider.mjs
 var useAlphaSlider = (props2) => {
   const instance = getCurrentInstance();
   const { t } = useLocale();
@@ -26667,6 +21886,8 @@ var useAlphaSlider = (props2) => {
   const alphaLabel = computed(() => t("el.colorpicker.alphaLabel"));
   function handleClick(event) {
     var _a2;
+    if (props2.disabled)
+      return;
     const target2 = event.target;
     if (target2 !== thumb.value) {
       handleDrag(event);
@@ -26674,7 +21895,7 @@ var useAlphaSlider = (props2) => {
     (_a2 = thumb.value) == null ? void 0 : _a2.focus();
   }
   function handleDrag(event) {
-    if (!bar.value || !thumb.value)
+    if (!bar.value || !thumb.value || props2.disabled)
       return;
     const el = instance.vnode.el;
     const rect = el.getBoundingClientRect();
@@ -26692,6 +21913,8 @@ var useAlphaSlider = (props2) => {
     }
   }
   function handleKeydown(event) {
+    if (props2.disabled)
+      return;
     const { code, shiftKey } = event;
     const step2 = shiftKey ? 10 : 1;
     switch (code) {
@@ -26785,7 +22008,11 @@ var useAlphaSliderDOM = (props2, {
   });
   watch(() => props2.color.get("alpha"), () => update2());
   watch(() => props2.color.value, () => update2());
-  const rootKls = computed(() => [ns.b(), ns.is("vertical", props2.vertical)]);
+  const rootKls = computed(() => [
+    ns.b(),
+    ns.is("vertical", props2.vertical),
+    ns.is("disabled", props2.disabled)
+  ]);
   const barKls = computed(() => ns.e("bar"));
   const thumbKls = computed(() => ns.e("thumb"));
   const barStyle = computed(() => ({ background: background.value }));
@@ -26796,7 +22023,7 @@ var useAlphaSliderDOM = (props2, {
   return { rootKls, barKls, barStyle, thumbKls, thumbStyle, update: update2 };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/components/alpha-slider.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/components/alpha-slider.mjs
 var COMPONENT_NAME10 = "ElColorAlphaSlider";
 var __default__42 = defineComponent({
   name: COMPONENT_NAME10
@@ -26856,7 +22083,7 @@ var _sfc_main46 = defineComponent({
 });
 var AlphaSlider = _export_sfc(_sfc_main46, [["__file", "alpha-slider.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/components/hue-slider.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/components/hue-slider.mjs
 var _sfc_main47 = defineComponent({
   name: "ElColorHueSlider",
   props: {
@@ -26864,7 +22091,8 @@ var _sfc_main47 = defineComponent({
       type: Object,
       required: true
     },
-    vertical: Boolean
+    vertical: Boolean,
+    disabled: Boolean
   },
   setup(props2) {
     const ns = useNamespace("color-hue-slider");
@@ -26880,13 +22108,15 @@ var _sfc_main47 = defineComponent({
       update2();
     });
     function handleClick(event) {
+      if (props2.disabled)
+        return;
       const target2 = event.target;
       if (target2 !== thumb.value) {
         handleDrag(event);
       }
     }
     function handleDrag(event) {
-      if (!bar.value || !thumb.value)
+      if (!bar.value || !thumb.value || props2.disabled)
         return;
       const el = instance.vnode.el;
       const rect = el.getBoundingClientRect();
@@ -26932,7 +22162,7 @@ var _sfc_main47 = defineComponent({
       thumbTop.value = getThumbTop();
     }
     onMounted(() => {
-      if (!bar.value || !thumb.value)
+      if (!bar.value || !thumb.value || props2.disabled)
         return;
       const dragConfig = {
         drag: (event) => {
@@ -26979,51 +22209,30 @@ function _sfc_render2(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var HueSlider = _export_sfc(_sfc_main47, [["render", _sfc_render2], ["__file", "hue-slider.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
-var colorPickerProps = buildProps({
-  persistent: {
-    type: Boolean,
-    default: true
-  },
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/color-picker-panel.mjs
+var colorPickerPanelProps = buildProps({
   modelValue: {
     type: definePropType(String),
     default: void 0
   },
-  id: String,
-  showAlpha: Boolean,
-  colorFormat: String,
-  disabled: Boolean,
-  size: useSizeProp,
-  popperClass: {
-    type: String,
-    default: ""
-  },
-  tabindex: {
-    type: [String, Number],
-    default: 0
-  },
-  teleported: useTooltipContentProps.teleported,
-  appendTo: useTooltipContentProps.appendTo,
-  predefine: {
-    type: definePropType(Array)
-  },
-  validateEvent: {
+  border: {
     type: Boolean,
     default: true
   },
-  ...useEmptyValuesProps,
-  ...useAriaProps(["ariaLabel"])
+  showAlpha: Boolean,
+  colorFormat: String,
+  disabled: Boolean,
+  predefine: {
+    type: definePropType(Array)
+  }
 });
-var colorPickerEmits = {
-  [UPDATE_MODEL_EVENT]: (val) => isString(val) || isNil_default(val),
-  [CHANGE_EVENT]: (val) => isString(val) || isNil_default(val),
-  activeChange: (val) => isString(val) || isNil_default(val),
-  focus: (evt) => evt instanceof FocusEvent,
-  blur: (evt) => evt instanceof FocusEvent
+var colorPickerPanelEmits = {
+  [UPDATE_MODEL_EVENT]: (val) => isString(val) || isNil_default(val)
 };
-var colorPickerContextKey = Symbol("colorPickerContextKey");
+var ROOT_COMMON_COLOR_INJECTION_KEY = Symbol("colorCommonPickerKey");
+var colorPickerPanelContextKey = Symbol("colorPickerPanelContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/utils/color.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/utils/color.mjs
 var Color = class {
   constructor(options = {}) {
     this._hue = 0;
@@ -27110,7 +22319,7 @@ var Color = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/components/predefine.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/components/predefine.mjs
 var _sfc_main48 = defineComponent({
   props: {
     colors: {
@@ -27124,11 +22333,12 @@ var _sfc_main48 = defineComponent({
     enableAlpha: {
       type: Boolean,
       required: true
-    }
+    },
+    disabled: Boolean
   },
   setup(props2) {
     const ns = useNamespace("color-predefine");
-    const { currentColor } = inject(colorPickerContextKey);
+    const { currentColor } = inject(colorPickerPanelContextKey);
     const rgbaColors = ref(parseColors(props2.colors, props2.color));
     watch(() => currentColor.value, (val) => {
       const color = new Color({
@@ -27142,6 +22352,8 @@ var _sfc_main48 = defineComponent({
       rgbaColors.value = parseColors(props2.colors, props2.color);
     });
     function handleSelect(index) {
+      if (props2.disabled)
+        return;
       props2.color.fromString(props2.colors[index]);
     }
     function parseColors(colors, color) {
@@ -27187,14 +22399,15 @@ function _sfc_render3(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var Predefine = _export_sfc(_sfc_main48, [["render", _sfc_render3], ["__file", "predefine.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/components/sv-panel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/components/sv-panel.mjs
 var _sfc_main49 = defineComponent({
   name: "ElSlPanel",
   props: {
     color: {
       type: Object,
       required: true
-    }
+    },
+    disabled: Boolean
   },
   setup(props2) {
     const ns = useNamespace("color-svpanel");
@@ -27217,6 +22430,8 @@ var _sfc_main49 = defineComponent({
       background.value = `hsl(${props2.color.get("hue")}, 100%, 50%)`;
     }
     function handleDrag(event) {
+      if (props2.disabled)
+        return;
       const el = instance.vnode.el;
       const rect = el.getBoundingClientRect();
       const { clientX, clientY } = getClientXY(event);
@@ -27284,12 +22499,185 @@ function _sfc_render4(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var SvPanel = _export_sfc(_sfc_main49, [["render", _sfc_render4], ["__file", "sv-panel.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/composables/use-common-color.mjs
+var useCommonColor = (props2, emit) => {
+  const color = reactive(new Color({
+    enableAlpha: props2.showAlpha,
+    format: props2.colorFormat || "",
+    value: props2.modelValue
+  }));
+  watch(() => [props2.colorFormat, props2.showAlpha], () => {
+    color.enableAlpha = props2.showAlpha;
+    color.format = props2.colorFormat || color.format;
+    color.doOnChange();
+    emit(UPDATE_MODEL_EVENT, color.value);
+  });
+  return {
+    color
+  };
+};
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/src/color-picker-panel2.mjs
 var __default__43 = defineComponent({
-  name: "ElColorPicker"
+  name: "ElColorPickerPanel"
 });
 var _sfc_main50 = defineComponent({
   ...__default__43,
+  props: colorPickerPanelProps,
+  emits: colorPickerPanelEmits,
+  setup(__props, { expose, emit }) {
+    const props2 = __props;
+    const ns = useNamespace("color-picker-panel");
+    const disabled = useFormDisabled();
+    const hue = ref();
+    const sv = ref();
+    const alpha = ref();
+    const inputRef = ref();
+    const customInput = ref("");
+    const { color } = inject(ROOT_COMMON_COLOR_INJECTION_KEY, () => useCommonColor(props2, emit), true);
+    function handleConfirm() {
+      color.fromString(customInput.value);
+      if (color.value !== customInput.value) {
+        customInput.value = color.value;
+      }
+    }
+    onMounted(() => {
+      if (props2.modelValue) {
+        customInput.value = color.value;
+      }
+      nextTick(() => {
+        var _a2, _b, _c;
+        (_a2 = hue.value) == null ? void 0 : _a2.update();
+        (_b = sv.value) == null ? void 0 : _b.update();
+        (_c = alpha.value) == null ? void 0 : _c.update();
+      });
+    });
+    watch(() => props2.modelValue, (newVal) => {
+      if (newVal && newVal !== color.value) {
+        color.fromString(newVal);
+      }
+    });
+    watch(() => color.value, (val) => {
+      emit(UPDATE_MODEL_EVENT, val);
+      customInput.value = val;
+    });
+    provide(colorPickerPanelContextKey, {
+      currentColor: computed(() => color.value)
+    });
+    expose({
+      color,
+      inputRef
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([unref(ns).b(), unref(ns).is("disabled", unref(disabled)), unref(ns).is("border", _ctx.border)])
+      }, [
+        createBaseVNode("div", {
+          class: normalizeClass(unref(ns).e("wrapper"))
+        }, [
+          createVNode(HueSlider, {
+            ref_key: "hue",
+            ref: hue,
+            class: "hue-slider",
+            color: unref(color),
+            vertical: "",
+            disabled: unref(disabled)
+          }, null, 8, ["color", "disabled"]),
+          createVNode(SvPanel, {
+            ref_key: "sv",
+            ref: sv,
+            color: unref(color),
+            disabled: unref(disabled)
+          }, null, 8, ["color", "disabled"])
+        ], 2),
+        _ctx.showAlpha ? (openBlock(), createBlock(AlphaSlider, {
+          key: 0,
+          ref_key: "alpha",
+          ref: alpha,
+          color: unref(color),
+          disabled: unref(disabled)
+        }, null, 8, ["color", "disabled"])) : createCommentVNode("v-if", true),
+        _ctx.predefine ? (openBlock(), createBlock(Predefine, {
+          key: 1,
+          ref: "predefine",
+          "enable-alpha": _ctx.showAlpha,
+          color: unref(color),
+          colors: _ctx.predefine,
+          disabled: unref(disabled)
+        }, null, 8, ["enable-alpha", "color", "colors", "disabled"])) : createCommentVNode("v-if", true),
+        createBaseVNode("div", {
+          class: normalizeClass(unref(ns).e("footer"))
+        }, [
+          createVNode(unref(ElInput), {
+            ref_key: "inputRef",
+            ref: inputRef,
+            modelValue: customInput.value,
+            "onUpdate:modelValue": ($event) => customInput.value = $event,
+            "validate-event": false,
+            size: "small",
+            disabled: unref(disabled),
+            onChange: handleConfirm
+          }, null, 8, ["modelValue", "onUpdate:modelValue", "disabled"]),
+          renderSlot(_ctx.$slots, "footer")
+        ], 2)
+      ], 2);
+    };
+  }
+});
+var ColorPickerPanel = _export_sfc(_sfc_main50, [["__file", "color-picker-panel.vue"]]);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker-panel/index.mjs
+var ElColorPickerPanel = withInstall(ColorPickerPanel);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/color-picker.mjs
+var colorPickerProps = buildProps({
+  persistent: {
+    type: Boolean,
+    default: true
+  },
+  modelValue: {
+    type: definePropType(String),
+    default: void 0
+  },
+  id: String,
+  showAlpha: Boolean,
+  colorFormat: String,
+  disabled: Boolean,
+  size: useSizeProp,
+  popperClass: {
+    type: String,
+    default: ""
+  },
+  tabindex: {
+    type: [String, Number],
+    default: 0
+  },
+  teleported: useTooltipContentProps.teleported,
+  appendTo: useTooltipContentProps.appendTo,
+  predefine: {
+    type: definePropType(Array)
+  },
+  validateEvent: {
+    type: Boolean,
+    default: true
+  },
+  ...useEmptyValuesProps,
+  ...useAriaProps(["ariaLabel"])
+});
+var colorPickerEmits = {
+  [UPDATE_MODEL_EVENT]: (val) => isString(val) || isNil_default(val),
+  [CHANGE_EVENT]: (val) => isString(val) || isNil_default(val),
+  activeChange: (val) => isString(val) || isNil_default(val),
+  focus: (evt) => evt instanceof FocusEvent,
+  blur: (evt) => evt instanceof FocusEvent
+};
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/src/color-picker2.mjs
+var __default__44 = defineComponent({
+  name: "ElColorPicker"
+});
+var _sfc_main51 = defineComponent({
+  ...__default__44,
   props: colorPickerProps,
   emits: colorPickerEmits,
   setup(__props, { expose, emit }) {
@@ -27300,15 +22688,16 @@ var _sfc_main50 = defineComponent({
     const colorSize = useFormSize();
     const colorDisabled = useFormDisabled();
     const { valueOnClear, isEmptyValue: isEmptyValue2 } = useEmptyValues(props2, null);
+    const commonColor = useCommonColor(props2, emit);
     const { inputId: buttonId, isLabeledByFormItem } = useFormItemInputId(props2, {
       formItemContext: formItem
     });
-    const hue = ref();
-    const sv = ref();
-    const alpha = ref();
     const popper = ref();
     const triggerRef2 = ref();
-    const inputRef = ref();
+    const pickerPanelRef = ref();
+    const showPicker = ref(false);
+    const showPanelColor = ref(false);
+    let shouldActiveChange = true;
     const { isFocused, handleFocus, handleBlur } = useFocusController(triggerRef2, {
       disabled: colorDisabled,
       beforeBlur(event) {
@@ -27320,15 +22709,11 @@ var _sfc_main50 = defineComponent({
         resetColor();
       }
     });
-    let shouldActiveChange = true;
-    const color = reactive(new Color({
-      enableAlpha: props2.showAlpha,
-      format: props2.colorFormat || "",
-      value: props2.modelValue
-    }));
-    const showPicker = ref(false);
-    const showPanelColor = ref(false);
-    const customInput = ref("");
+    const color = reactiveComputed(() => {
+      var _a2, _b;
+      return (_b = (_a2 = pickerPanelRef.value) == null ? void 0 : _a2.color) != null ? _b : commonColor.color;
+    });
+    const panelProps = computed(() => pick_default(props2, Object.keys(colorPickerPanelProps)));
     const displayedColor = computed(() => {
       if (!props2.modelValue && !showPanelColor.value) {
         return "transparent";
@@ -27375,9 +22760,6 @@ var _sfc_main50 = defineComponent({
           color.fromString(props2.modelValue);
         } else {
           color.value = "";
-          if (!currentColor.value && customInput.value) {
-            customInput.value = "";
-          }
           nextTick(() => {
             showPanelColor.value = false;
           });
@@ -27391,12 +22773,6 @@ var _sfc_main50 = defineComponent({
         resetColor();
       }
       debounceSetShowPicker(!showPicker.value);
-    }
-    function handleConfirm() {
-      color.fromString(customInput.value);
-      if (color.value !== customInput.value) {
-        customInput.value = color.value;
-      }
     }
     function confirmValue() {
       const value = isEmptyValue2(color.value) ? valueOnClear.value : color.value;
@@ -27439,6 +22815,7 @@ var _sfc_main50 = defineComponent({
       resetColor();
     }
     function handleKeyDown(event) {
+      var _a2, _b;
       switch (event.code) {
         case EVENT_CODE.enter:
         case EVENT_CODE.numpadEnter:
@@ -27446,7 +22823,7 @@ var _sfc_main50 = defineComponent({
           event.preventDefault();
           event.stopPropagation();
           show();
-          inputRef.value.focus();
+          (_b = (_a2 = pickerPanelRef == null ? void 0 : pickerPanelRef.value) == null ? void 0 : _a2.inputRef) == null ? void 0 : _b.focus();
           break;
         case EVENT_CODE.esc:
           handleEsc(event);
@@ -27459,9 +22836,13 @@ var _sfc_main50 = defineComponent({
     function blur() {
       triggerRef2.value.blur();
     }
-    onMounted(() => {
-      if (props2.modelValue) {
-        customInput.value = currentColor.value;
+    watch(() => currentColor.value, (val) => {
+      shouldActiveChange && emit("activeChange", val);
+      shouldActiveChange = true;
+    });
+    watch(() => color.value, () => {
+      if (!props2.modelValue && !showPanelColor.value) {
+        showPanelColor.value = true;
       }
     });
     watch(() => props2.modelValue, (newVal) => {
@@ -27472,33 +22853,7 @@ var _sfc_main50 = defineComponent({
         color.fromString(newVal);
       }
     });
-    watch(() => [props2.colorFormat, props2.showAlpha], () => {
-      color.enableAlpha = props2.showAlpha;
-      color.format = props2.colorFormat || color.format;
-      color.doOnChange();
-      emit(UPDATE_MODEL_EVENT, color.value);
-    });
-    watch(() => currentColor.value, (val) => {
-      customInput.value = val;
-      shouldActiveChange && emit("activeChange", val);
-      shouldActiveChange = true;
-    });
-    watch(() => color.value, () => {
-      if (!props2.modelValue && !showPanelColor.value) {
-        showPanelColor.value = true;
-      }
-    });
-    watch(() => showPicker.value, () => {
-      nextTick(() => {
-        var _a2, _b, _c;
-        (_a2 = hue.value) == null ? void 0 : _a2.update();
-        (_b = sv.value) == null ? void 0 : _b.update();
-        (_c = alpha.value) == null ? void 0 : _c.update();
-      });
-    });
-    provide(colorPickerContextKey, {
-      currentColor
-    });
+    provide(ROOT_COMMON_COLOR_INJECTION_KEY, commonColor);
     expose({
       color,
       show,
@@ -27515,8 +22870,9 @@ var _sfc_main50 = defineComponent({
         "fallback-placements": ["bottom", "top", "right", "left"],
         offset: 0,
         "gpu-acceleration": false,
-        "popper-class": [unref(ns).be("picker", "panel"), unref(ns).b("dropdown"), _ctx.popperClass],
+        "popper-class": [unref(ns).be("picker", "panel"), _ctx.popperClass],
         "stop-popper-mouse-event": false,
+        pure: "",
         effect: "light",
         trigger: "click",
         teleported: _ctx.teleported,
@@ -27526,78 +22882,41 @@ var _sfc_main50 = defineComponent({
         onHide: ($event) => setShowPicker(false)
       }, {
         content: withCtx(() => [
-          withDirectives((openBlock(), createElementBlock("div", {
+          withDirectives((openBlock(), createBlock(unref(ElColorPickerPanel), mergeProps({
+            ref_key: "pickerPanelRef",
+            ref: pickerPanelRef
+          }, unref(panelProps), {
+            border: false,
             onKeydown: withKeys(handleEsc, ["esc"])
-          }, [
-            createBaseVNode("div", {
-              class: normalizeClass(unref(ns).be("dropdown", "main-wrapper"))
-            }, [
-              createVNode(HueSlider, {
-                ref_key: "hue",
-                ref: hue,
-                class: "hue-slider",
-                color: unref(color),
-                vertical: ""
-              }, null, 8, ["color"]),
-              createVNode(SvPanel, {
-                ref_key: "sv",
-                ref: sv,
-                color: unref(color)
-              }, null, 8, ["color"])
-            ], 2),
-            _ctx.showAlpha ? (openBlock(), createBlock(AlphaSlider, {
-              key: 0,
-              ref_key: "alpha",
-              ref: alpha,
-              color: unref(color)
-            }, null, 8, ["color"])) : createCommentVNode("v-if", true),
-            _ctx.predefine ? (openBlock(), createBlock(Predefine, {
-              key: 1,
-              ref: "predefine",
-              "enable-alpha": _ctx.showAlpha,
-              color: unref(color),
-              colors: _ctx.predefine
-            }, null, 8, ["enable-alpha", "color", "colors"])) : createCommentVNode("v-if", true),
-            createBaseVNode("div", {
-              class: normalizeClass(unref(ns).be("dropdown", "btns"))
-            }, [
-              createBaseVNode("span", {
-                class: normalizeClass(unref(ns).be("dropdown", "value"))
-              }, [
-                createVNode(unref(ElInput), {
-                  ref_key: "inputRef",
-                  ref: inputRef,
-                  modelValue: customInput.value,
-                  "onUpdate:modelValue": ($event) => customInput.value = $event,
-                  "validate-event": false,
+          }), {
+            footer: withCtx(() => [
+              createBaseVNode("div", null, [
+                createVNode(unref(ElButton), {
+                  class: normalizeClass(unref(ns).be("footer", "link-btn")),
+                  text: "",
                   size: "small",
-                  onChange: handleConfirm
-                }, null, 8, ["modelValue", "onUpdate:modelValue"])
-              ], 2),
-              createVNode(unref(ElButton), {
-                class: normalizeClass(unref(ns).be("dropdown", "link-btn")),
-                text: "",
-                size: "small",
-                onClick: clear
-              }, {
-                default: withCtx(() => [
-                  createTextVNode(toDisplayString(unref(t)("el.colorpicker.clear")), 1)
-                ]),
-                _: 1
-              }, 8, ["class"]),
-              createVNode(unref(ElButton), {
-                plain: "",
-                size: "small",
-                class: normalizeClass(unref(ns).be("dropdown", "btn")),
-                onClick: confirmValue
-              }, {
-                default: withCtx(() => [
-                  createTextVNode(toDisplayString(unref(t)("el.colorpicker.confirm")), 1)
-                ]),
-                _: 1
-              }, 8, ["class"])
-            ], 2)
-          ], 40, ["onKeydown"])), [
+                  onClick: clear
+                }, {
+                  default: withCtx(() => [
+                    createTextVNode(toDisplayString(unref(t)("el.colorpicker.clear")), 1)
+                  ]),
+                  _: 1
+                }, 8, ["class"]),
+                createVNode(unref(ElButton), {
+                  plain: "",
+                  size: "small",
+                  class: normalizeClass(unref(ns).be("footer", "btn")),
+                  onClick: confirmValue
+                }, {
+                  default: withCtx(() => [
+                    createTextVNode(toDisplayString(unref(t)("el.colorpicker.confirm")), 1)
+                  ]),
+                  _: 1
+                }, 8, ["class"])
+              ])
+            ]),
+            _: 1
+          }, 16, ["onKeydown"])), [
             [unref(ClickOutside), handleClickOutside, triggerRef2.value]
           ])
         ]),
@@ -27661,12 +22980,12 @@ var _sfc_main50 = defineComponent({
     };
   }
 });
-var ColorPicker = _export_sfc(_sfc_main50, [["__file", "color-picker.vue"]]);
+var ColorPicker = _export_sfc(_sfc_main51, [["__file", "color-picker.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/color-picker/index.mjs
 var ElColorPicker = withInstall(ColorPicker);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/config-provider-props.mjs
 var configProviderProps = buildProps({
   a11y: {
     type: Boolean,
@@ -27680,6 +22999,9 @@ var configProviderProps = buildProps({
     type: definePropType(Object)
   },
   card: {
+    type: definePropType(Object)
+  },
+  dialog: {
     type: definePropType(Object)
   },
   link: {
@@ -27703,8 +23025,10 @@ var configProviderProps = buildProps({
   ...useEmptyValuesProps
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
-var messageConfig = {};
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/src/config-provider.mjs
+var messageConfig = {
+  placement: "top"
+};
 var ConfigProvider = defineComponent({
   name: "ElConfigProvider",
   props: configProviderProps,
@@ -27718,15 +23042,15 @@ var ConfigProvider = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/config-provider/index.mjs
 var ElConfigProvider = withInstall(ConfigProvider);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/container.mjs
-var __default__44 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/container.mjs
+var __default__45 = defineComponent({
   name: "ElContainer"
 });
-var _sfc_main51 = defineComponent({
-  ...__default__44,
+var _sfc_main52 = defineComponent({
+  ...__default__45,
   props: {
     direction: {
       type: String
@@ -27761,14 +23085,14 @@ var _sfc_main51 = defineComponent({
     };
   }
 });
-var Container = _export_sfc(_sfc_main51, [["__file", "container.vue"]]);
+var Container = _export_sfc(_sfc_main52, [["__file", "container.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/aside.mjs
-var __default__45 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/aside.mjs
+var __default__46 = defineComponent({
   name: "ElAside"
 });
-var _sfc_main52 = defineComponent({
-  ...__default__45,
+var _sfc_main53 = defineComponent({
+  ...__default__46,
   props: {
     width: {
       type: String,
@@ -27789,14 +23113,14 @@ var _sfc_main52 = defineComponent({
     };
   }
 });
-var Aside = _export_sfc(_sfc_main52, [["__file", "aside.vue"]]);
+var Aside = _export_sfc(_sfc_main53, [["__file", "aside.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/footer.mjs
-var __default__46 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/footer.mjs
+var __default__47 = defineComponent({
   name: "ElFooter"
 });
-var _sfc_main53 = defineComponent({
-  ...__default__46,
+var _sfc_main54 = defineComponent({
+  ...__default__47,
   props: {
     height: {
       type: String,
@@ -27817,14 +23141,14 @@ var _sfc_main53 = defineComponent({
     };
   }
 });
-var Footer = _export_sfc(_sfc_main53, [["__file", "footer.vue"]]);
+var Footer = _export_sfc(_sfc_main54, [["__file", "footer.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/header.mjs
-var __default__47 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/header.mjs
+var __default__48 = defineComponent({
   name: "ElHeader"
 });
-var _sfc_main54 = defineComponent({
-  ...__default__47,
+var _sfc_main55 = defineComponent({
+  ...__default__48,
   props: {
     height: {
       type: String,
@@ -27849,14 +23173,14 @@ var _sfc_main54 = defineComponent({
     };
   }
 });
-var Header = _export_sfc(_sfc_main54, [["__file", "header.vue"]]);
+var Header = _export_sfc(_sfc_main55, [["__file", "header.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/main.mjs
-var __default__48 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/src/main.mjs
+var __default__49 = defineComponent({
   name: "ElMain"
 });
-var _sfc_main55 = defineComponent({
-  ...__default__48,
+var _sfc_main56 = defineComponent({
+  ...__default__49,
   setup(__props) {
     const ns = useNamespace("main");
     return (_ctx, _cache) => {
@@ -27868,9 +23192,9 @@ var _sfc_main55 = defineComponent({
     };
   }
 });
-var Main = _export_sfc(_sfc_main55, [["__file", "main.vue"]]);
+var Main = _export_sfc(_sfc_main56, [["__file", "main.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/container/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/container/index.mjs
 var ElContainer = withInstall(Container, {
   Aside,
   Footer,
@@ -27882,25 +23206,15 @@ var ElFooter = withNoopInstall(Footer);
 var ElHeader = withNoopInstall(Header);
 var ElMain = withNoopInstall(Main);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
-var import_dayjs17 = __toESM(require_dayjs_min(), 1);
-var import_customParseFormat2 = __toESM(require_customParseFormat(), 1);
-var import_advancedFormat = __toESM(require_advancedFormat(), 1);
-var import_localeData2 = __toESM(require_localeData(), 1);
-var import_weekOfYear = __toESM(require_weekOfYear(), 1);
-var import_weekYear = __toESM(require_weekYear(), 1);
-var import_dayOfYear = __toESM(require_dayOfYear(), 1);
-var import_isSameOrAfter = __toESM(require_isSameOrAfter(), 1);
-var import_isSameOrBefore = __toESM(require_isSameOrBefore(), 1);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 var import_dayjs6 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat = __toESM(require_customParseFormat(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/constants.mjs
 var timeUnits = ["hours", "minutes", "seconds"];
 var PICKER_BASE_INJECTION_KEY = "EP_PICKER_BASE";
 var PICKER_POPPER_OPTIONS_INJECTION_KEY = "ElPopperOptions";
+var ROOT_COMMON_PICKER_INJECTION_KEY = Symbol("commonPickerContextKey");
 var DEFAULT_FORMATS_TIME = "HH:mm:ss";
 var DEFAULT_FORMATS_DATE = "YYYY-MM-DD";
 var DEFAULT_FORMATS_DATEPICKER = {
@@ -27918,7 +23232,94 @@ var DEFAULT_FORMATS_DATEPICKER = {
   datetimerange: `${DEFAULT_FORMATS_DATE} ${DEFAULT_FORMATS_TIME}`
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/composables/use-common-picker.mjs
+var useCommonPicker = (props2, emit) => {
+  const { lang } = useLocale();
+  const pickerVisible = ref(false);
+  const pickerActualVisible = ref(false);
+  const userInput = ref(null);
+  const valueIsEmpty = computed(() => {
+    const { modelValue } = props2;
+    return !modelValue || isArray(modelValue) && !modelValue.filter(Boolean).length;
+  });
+  const emitInput = (input) => {
+    if (!valueEquals(props2.modelValue, input)) {
+      let formatted;
+      if (isArray(input)) {
+        formatted = input.map((item) => formatter(item, props2.valueFormat, lang.value));
+      } else if (input) {
+        formatted = formatter(input, props2.valueFormat, lang.value);
+      }
+      const emitVal = input ? formatted : input;
+      emit(UPDATE_MODEL_EVENT, emitVal, lang.value);
+    }
+  };
+  const parsedValue = computed(() => {
+    var _a2;
+    let dayOrDays;
+    if (valueIsEmpty.value) {
+      if (pickerOptions.value.getDefaultValue) {
+        dayOrDays = pickerOptions.value.getDefaultValue();
+      }
+    } else {
+      if (isArray(props2.modelValue)) {
+        dayOrDays = props2.modelValue.map((d2) => parseDate(d2, props2.valueFormat, lang.value));
+      } else {
+        dayOrDays = parseDate((_a2 = props2.modelValue) != null ? _a2 : "", props2.valueFormat, lang.value);
+      }
+    }
+    if (pickerOptions.value.getRangeAvailableTime) {
+      const availableResult = pickerOptions.value.getRangeAvailableTime(dayOrDays);
+      if (!isEqual_default(availableResult, dayOrDays)) {
+        dayOrDays = availableResult;
+        if (!valueIsEmpty.value) {
+          emitInput(dayOrDaysToDate(dayOrDays));
+        }
+      }
+    }
+    if (isArray(dayOrDays) && dayOrDays.some((day) => !day)) {
+      dayOrDays = [];
+    }
+    return dayOrDays;
+  });
+  const pickerOptions = ref({});
+  const onSetPickerOption = (e) => {
+    pickerOptions.value[e[0]] = e[1];
+    pickerOptions.value.panelReady = true;
+  };
+  const onCalendarChange = (e) => {
+    emit("calendar-change", e);
+  };
+  const onPanelChange = (value, mode, view) => {
+    emit("panel-change", value, mode, view);
+  };
+  const onPick = (date4 = "", visible = false) => {
+    pickerVisible.value = visible;
+    let result2;
+    if (isArray(date4)) {
+      result2 = date4.map((_2) => _2.toDate());
+    } else {
+      result2 = date4 ? date4.toDate() : date4;
+    }
+    userInput.value = null;
+    emitInput(result2);
+  };
+  return {
+    parsedValue,
+    pickerActualVisible,
+    pickerOptions,
+    pickerVisible,
+    userInput,
+    valueIsEmpty,
+    emitInput,
+    onCalendarChange,
+    onPanelChange,
+    onPick,
+    onSetPickerOption
+  };
+};
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/shared.mjs
 var disabledTimeListsProps = buildProps({
   disabledHours: {
     type: definePropType(Function)
@@ -27942,7 +23343,7 @@ var timePanelSharedProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/props.mjs
 var timePickerDefaultProps = buildProps({
   id: {
     type: definePropType([Array, String])
@@ -27950,10 +23351,8 @@ var timePickerDefaultProps = buildProps({
   name: {
     type: definePropType([Array, String])
   },
-  popperClass: {
-    type: String,
-    default: ""
-  },
+  popperClass: useTooltipContentProps.popperClass,
+  popperStyle: useTooltipContentProps.popperStyle,
   format: String,
   valueFormat: String,
   dateFormat: String,
@@ -28042,6 +23441,10 @@ var timePickerDefaultProps = buildProps({
     type: Boolean,
     default: true
   },
+  showConfirm: {
+    type: Boolean,
+    default: true
+  },
   showFooter: {
     type: Boolean,
     default: true
@@ -28064,13 +23467,13 @@ var timePickerRangeTriggerProps = buildProps({
 });
 var timePickerRngeTriggerProps = timePickerRangeTriggerProps;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/picker-range-trigger.mjs
-var __default__49 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/picker-range-trigger.mjs
+var __default__50 = defineComponent({
   name: "PickerRangeTrigger",
   inheritAttrs: false
 });
-var _sfc_main56 = defineComponent({
-  ...__default__49,
+var _sfc_main57 = defineComponent({
+  ...__default__50,
   props: timePickerRangeTriggerProps,
   emits: [
     "mouseenter",
@@ -28173,14 +23576,14 @@ var _sfc_main56 = defineComponent({
     };
   }
 });
-var PickerRangeTrigger = _export_sfc(_sfc_main56, [["__file", "picker-range-trigger.vue"]]);
+var PickerRangeTrigger = _export_sfc(_sfc_main57, [["__file", "picker-range-trigger.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
-var __default__50 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/common/picker.mjs
+var __default__51 = defineComponent({
   name: "Picker"
 });
-var _sfc_main57 = defineComponent({
-  ...__default__50,
+var _sfc_main58 = defineComponent({
+  ...__default__51,
   props: timePickerDefaultProps,
   emits: [
     UPDATE_MODEL_EVENT,
@@ -28196,22 +23599,31 @@ var _sfc_main57 = defineComponent({
   setup(__props, { expose, emit }) {
     const props2 = __props;
     const attrs = useAttrs();
-    const { lang } = useLocale();
     const nsDate = useNamespace("date");
     const nsInput = useNamespace("input");
     const nsRange = useNamespace("range");
-    const { form, formItem } = useFormItem();
+    const { formItem } = useFormItem();
     const elPopperOptions = inject(PICKER_POPPER_OPTIONS_INJECTION_KEY, {});
     const { valueOnClear } = useEmptyValues(props2, null);
     const refPopper = ref();
     const inputRef = ref();
-    const pickerVisible = ref(false);
-    const pickerActualVisible = ref(false);
     const valueOnOpen = ref(null);
     let hasJustTabExitedInput = false;
-    const pickerDisabled = computed(() => {
-      return props2.disabled || !!(form == null ? void 0 : form.disabled);
-    });
+    const pickerDisabled = useFormDisabled();
+    const commonPicker = useCommonPicker(props2, emit);
+    const {
+      parsedValue,
+      pickerActualVisible,
+      userInput,
+      pickerVisible,
+      pickerOptions,
+      valueIsEmpty,
+      emitInput,
+      onPick,
+      onSetPickerOption,
+      onCalendarChange,
+      onPanelChange
+    } = commonPicker;
     const { isFocused, handleFocus, handleBlur } = useFocusController(inputRef, {
       disabled: pickerDisabled,
       beforeFocus() {
@@ -28231,6 +23643,7 @@ var _sfc_main57 = defineComponent({
         props2.validateEvent && (formItem == null ? void 0 : formItem.validate("blur").catch((err) => debugWarn()));
       }
     });
+    const hovering = ref(false);
     const rangeInputKls = computed(() => [
       nsDate.b("editor"),
       nsDate.bm("editor", props2.type),
@@ -28244,7 +23657,7 @@ var _sfc_main57 = defineComponent({
     const clearIconKls = computed(() => [
       nsInput.e("icon"),
       nsRange.e("close-icon"),
-      !showClose.value ? nsRange.e("close-icon--hidden") : ""
+      !showClearBtn.value ? nsRange.e("close-icon--hidden") : ""
     ]);
     watch(pickerVisible, (val) => {
       if (!val) {
@@ -28265,17 +23678,6 @@ var _sfc_main57 = defineComponent({
         emit(CHANGE_EVENT, val);
         isClear && (valueOnOpen.value = val);
         props2.validateEvent && (formItem == null ? void 0 : formItem.validate("change").catch((err) => debugWarn()));
-      }
-    };
-    const emitInput = (input) => {
-      if (!valueEquals(props2.modelValue, input)) {
-        let formatted;
-        if (isArray(input)) {
-          formatted = input.map((item) => formatter(item, props2.valueFormat, lang.value));
-        } else if (input) {
-          formatted = formatter(input, props2.valueFormat, lang.value);
-        }
-        emit(UPDATE_MODEL_EVENT, input ? formatted : input, lang.value);
       }
     };
     const emitKeydown = (e) => {
@@ -28299,17 +23701,6 @@ var _sfc_main57 = defineComponent({
         _inputs[1].focus();
       }
     };
-    const onPick = (date4 = "", visible = false) => {
-      pickerVisible.value = visible;
-      let result2;
-      if (isArray(date4)) {
-        result2 = date4.map((_2) => _2.toDate());
-      } else {
-        result2 = date4 ? date4.toDate() : date4;
-      }
-      userInput.value = null;
-      emitInput(result2);
-    };
     const onBeforeShow = () => {
       pickerActualVisible.value = true;
     };
@@ -28327,34 +23718,6 @@ var _sfc_main57 = defineComponent({
     const handleClose = () => {
       pickerVisible.value = false;
     };
-    const parsedValue = computed(() => {
-      var _a2;
-      let dayOrDays;
-      if (valueIsEmpty.value) {
-        if (pickerOptions.value.getDefaultValue) {
-          dayOrDays = pickerOptions.value.getDefaultValue();
-        }
-      } else {
-        if (isArray(props2.modelValue)) {
-          dayOrDays = props2.modelValue.map((d2) => parseDate(d2, props2.valueFormat, lang.value));
-        } else {
-          dayOrDays = parseDate((_a2 = props2.modelValue) != null ? _a2 : "", props2.valueFormat, lang.value);
-        }
-      }
-      if (pickerOptions.value.getRangeAvailableTime) {
-        const availableResult = pickerOptions.value.getRangeAvailableTime(dayOrDays);
-        if (!isEqual_default(availableResult, dayOrDays)) {
-          dayOrDays = availableResult;
-          if (!valueIsEmpty.value) {
-            emitInput(dayOrDaysToDate(dayOrDays));
-          }
-        }
-      }
-      if (isArray(dayOrDays) && dayOrDays.some((day) => !day)) {
-        dayOrDays = [];
-      }
-      return dayOrDays;
-    });
     const displayValue = computed(() => {
       if (!pickerOptions.value.panelReady)
         return "";
@@ -28382,11 +23745,11 @@ var _sfc_main57 = defineComponent({
     const isMonthsPicker = computed(() => props2.type === "months");
     const isYearsPicker = computed(() => props2.type === "years");
     const triggerIcon = computed(() => props2.prefixIcon || (isTimeLikePicker.value ? clock_default : calendar_default));
-    const showClose = ref(false);
+    const showClearBtn = computed(() => props2.clearable && !pickerDisabled.value && !props2.readonly && !valueIsEmpty.value && (hovering.value || isFocused.value));
     const onClearIconClick = (event) => {
       if (props2.readonly || pickerDisabled.value)
         return;
-      if (showClose.value) {
+      if (showClearBtn.value) {
         event.stopPropagation();
         if (pickerOptions.value.handleClear) {
           pickerOptions.value.handleClear();
@@ -28394,15 +23757,10 @@ var _sfc_main57 = defineComponent({
           emitInput(valueOnClear.value);
         }
         emitChange(valueOnClear.value, true);
-        showClose.value = false;
         onHide();
       }
       emit("clear");
     };
-    const valueIsEmpty = computed(() => {
-      const { modelValue } = props2;
-      return !modelValue || isArray(modelValue) && !modelValue.filter(Boolean).length;
-    });
     const onMouseDownInput = async (event) => {
       var _a2;
       if (props2.readonly || pickerDisabled.value)
@@ -28415,11 +23773,11 @@ var _sfc_main57 = defineComponent({
       if (props2.readonly || pickerDisabled.value)
         return;
       if (!valueIsEmpty.value && props2.clearable) {
-        showClose.value = true;
+        hovering.value = true;
       }
     };
     const onMouseLeave = () => {
-      showClose.value = false;
+      hovering.value = false;
     };
     const onTouchStartInput = (event) => {
       var _a2;
@@ -28447,7 +23805,6 @@ var _sfc_main57 = defineComponent({
     onBeforeUnmount(() => {
       stophandle == null ? void 0 : stophandle();
     });
-    const userInput = ref(null);
     const handleChange = () => {
       if (userInput.value) {
         const value = parseUserInputToDayjs(displayValue.value);
@@ -28580,17 +23937,6 @@ var _sfc_main57 = defineComponent({
         }
       }
     };
-    const pickerOptions = ref({});
-    const onSetPickerOption = (e) => {
-      pickerOptions.value[e[0]] = e[1];
-      pickerOptions.value.panelReady = true;
-    };
-    const onCalendarChange = (e) => {
-      emit("calendar-change", e);
-    };
-    const onPanelChange = (value, mode, view) => {
-      emit("panel-change", value, mode, view);
-    };
     const focus = () => {
       var _a2;
       (_a2 = inputRef.value) == null ? void 0 : _a2.focus();
@@ -28602,6 +23948,7 @@ var _sfc_main57 = defineComponent({
     provide(PICKER_BASE_INJECTION_KEY, {
       props: props2
     });
+    provide(ROOT_COMMON_PICKER_INJECTION_KEY, commonPicker);
     expose({
       focus,
       blur,
@@ -28613,7 +23960,7 @@ var _sfc_main57 = defineComponent({
       return openBlock(), createBlock(unref(ElTooltip), mergeProps({
         ref_key: "refPopper",
         ref: refPopper,
-        visible: pickerVisible.value,
+        visible: unref(pickerVisible),
         effect: "light",
         pure: "",
         trigger: "click"
@@ -28622,6 +23969,7 @@ var _sfc_main57 = defineComponent({
         teleported: "",
         transition: `${unref(nsDate).namespace.value}-zoom-in-top`,
         "popper-class": [`${unref(nsDate).namespace.value}-picker__popper`, _ctx.popperClass],
+        "popper-style": _ctx.popperStyle,
         "popper-options": unref(elPopperOptions),
         "fallback-placements": _ctx.fallbackPlacements,
         "gpu-acceleration": false,
@@ -28645,7 +23993,12 @@ var _sfc_main57 = defineComponent({
             size: unref(pickerSize),
             disabled: unref(pickerDisabled),
             placeholder: _ctx.placeholder,
-            class: normalizeClass([unref(nsDate).b("editor"), unref(nsDate).bm("editor", _ctx.type), _ctx.$attrs.class]),
+            class: normalizeClass([
+              unref(nsDate).b("editor"),
+              unref(nsDate).bm("editor", _ctx.type),
+              unref(nsDate).is("focus", unref(pickerVisible)),
+              _ctx.$attrs.class
+            ]),
             style: normalizeStyle(_ctx.$attrs.style),
             readonly: !_ctx.editable || _ctx.readonly || unref(isDatesPicker) || unref(isMonthsPicker) || unref(isYearsPicker) || _ctx.type === "week",
             "aria-label": _ctx.ariaLabel,
@@ -28677,7 +24030,7 @@ var _sfc_main57 = defineComponent({
               }, 8, ["class", "onMousedown"])) : createCommentVNode("v-if", true)
             ]),
             suffix: withCtx(() => [
-              showClose.value && _ctx.clearIcon ? (openBlock(), createBlock(unref(ElIcon), {
+              unref(showClearBtn) && _ctx.clearIcon ? (openBlock(), createBlock(unref(ElIcon), {
                 key: 0,
                 class: normalizeClass(`${unref(nsInput).e("icon")} clear-icon`),
                 onMousedown: withModifiers(unref(NOOP), ["prevent"]),
@@ -28756,8 +24109,8 @@ var _sfc_main57 = defineComponent({
         ]),
         content: withCtx(() => [
           renderSlot(_ctx.$slots, "default", {
-            visible: pickerVisible.value,
-            actualVisible: pickerActualVisible.value,
+            visible: unref(pickerVisible),
+            actualVisible: unref(pickerActualVisible),
             parsedValue: unref(parsedValue),
             format: _ctx.format,
             dateFormat: _ctx.dateFormat,
@@ -28766,28 +24119,29 @@ var _sfc_main57 = defineComponent({
             type: _ctx.type,
             defaultValue: _ctx.defaultValue,
             showNow: _ctx.showNow,
+            showConfirm: _ctx.showConfirm,
             showFooter: _ctx.showFooter,
             showWeekNumber: _ctx.showWeekNumber,
-            onPick,
+            onPick: unref(onPick),
             onSelectRange: setSelectionRange,
-            onSetPickerOption,
-            onCalendarChange,
-            onPanelChange,
+            onSetPickerOption: unref(onSetPickerOption),
+            onCalendarChange: unref(onCalendarChange),
+            onPanelChange: unref(onPanelChange),
             onMousedown: withModifiers(() => {
             }, ["stop"])
           })
         ]),
         _: 3
-      }, 16, ["visible", "transition", "popper-class", "popper-options", "fallback-placements", "placement"]);
+      }, 16, ["visible", "transition", "popper-class", "popper-style", "popper-options", "fallback-placements", "placement"]);
     };
   }
 });
-var CommonPicker = _export_sfc(_sfc_main57, [["__file", "picker.vue"]]);
+var CommonPicker = _export_sfc(_sfc_main58, [["__file", "picker.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
 var import_dayjs4 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/panel-time-picker.mjs
 var panelTimePickerProps = buildProps({
   ...timePanelSharedProps,
   datetimeRole: String,
@@ -28796,7 +24150,7 @@ var panelTimePickerProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/composables/use-time-panel.mjs
 var useTimePanel = ({
   getAvailableHours,
   getAvailableMinutes,
@@ -28846,7 +24200,7 @@ var useTimePanel = ({
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/composables/use-time-picker.mjs
 var makeAvailableArr = (disabledList) => {
   const trueOrNumber = (isDisabled, index) => isDisabled || index;
   const getNumber = (predicate) => predicate !== true;
@@ -28895,7 +24249,7 @@ var useOldValue = (props2) => {
   return oldValue;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/basic-time-spinner.mjs
 var basicTimeSpinnerProps = buildProps({
   role: {
     type: String,
@@ -28917,7 +24271,7 @@ var basicTimeSpinnerProps = buildProps({
   ...disabledTimeListsProps
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/directives/repeat-click/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/directives/repeat-click/index.mjs
 var REPEAT_INTERVAL = 100;
 var REPEAT_DELAY = 600;
 var vRepeatClick = {
@@ -28954,8 +24308,8 @@ var vRepeatClick = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
-var _sfc_main58 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/basic-time-spinner.mjs
+var _sfc_main59 = defineComponent({
   __name: "basic-time-spinner",
   props: basicTimeSpinnerProps,
   emits: [CHANGE_EVENT, "select-range", "set-option"],
@@ -29258,10 +24612,10 @@ var _sfc_main58 = defineComponent({
     };
   }
 });
-var TimeSpinner = _export_sfc(_sfc_main58, [["__file", "basic-time-spinner.vue"]]);
+var TimeSpinner = _export_sfc(_sfc_main59, [["__file", "basic-time-spinner.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
-var _sfc_main59 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-pick.mjs
+var _sfc_main60 = defineComponent({
   __name: "panel-time-pick",
   props: panelTimePickerProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -29429,12 +24783,12 @@ var _sfc_main59 = defineComponent({
     };
   }
 });
-var TimePickPanel = _export_sfc(_sfc_main59, [["__file", "panel-time-pick.vue"]]);
+var TimePickPanel = _export_sfc(_sfc_main60, [["__file", "panel-time-pick.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
 var import_dayjs5 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/props/panel-time-range.mjs
 var panelTimeRangeProps = buildProps({
   ...timePanelSharedProps,
   parsedValue: {
@@ -29442,8 +24796,8 @@ var panelTimeRangeProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
-var _sfc_main60 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker-com/panel-time-range.mjs
+var _sfc_main61 = defineComponent({
   __name: "panel-time-range",
   props: panelTimeRangeProps,
   emits: ["pick", "select-range", "set-picker-option"],
@@ -29714,9 +25068,9 @@ var _sfc_main60 = defineComponent({
     };
   }
 });
-var TimeRangePanel = _export_sfc(_sfc_main60, [["__file", "panel-time-range.vue"]]);
+var TimeRangePanel = _export_sfc(_sfc_main61, [["__file", "panel-time-range.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/src/time-picker.mjs
 import_dayjs6.default.extend(import_customParseFormat.default);
 var TimePicker = defineComponent({
   name: "ElTimePicker",
@@ -29764,26 +25118,79 @@ var TimePicker = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-picker/index.mjs
 var ElTimePicker = withInstall(TimePicker);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/constants.mjs
-var ROOT_PICKER_INJECTION_KEY = Symbol();
-var ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY = "ElIsDefaultFormat";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-panel.mjs
+var import_dayjs17 = __toESM(require_dayjs_min(), 1);
+var import_customParseFormat2 = __toESM(require_customParseFormat(), 1);
+var import_advancedFormat = __toESM(require_advancedFormat(), 1);
+var import_localeData2 = __toESM(require_localeData(), 1);
+var import_weekOfYear = __toESM(require_weekOfYear(), 1);
+var import_weekYear = __toESM(require_weekYear(), 1);
+var import_dayOfYear = __toESM(require_dayOfYear(), 1);
+var import_isSameOrAfter = __toESM(require_isSameOrAfter(), 1);
+var import_isSameOrBefore = __toESM(require_isSameOrBefore(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/date-picker.mjs
-var datePickerProps = buildProps({
-  ...timePickerDefaultProps,
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/date-picker-panel.mjs
+var datePickerPanelProps = buildProps({
+  valueFormat: String,
+  dateFormat: String,
+  timeFormat: String,
+  disabled: Boolean,
+  modelValue: {
+    type: definePropType([Date, Array, String, Number]),
+    default: ""
+  },
+  defaultValue: {
+    type: definePropType([Date, Array])
+  },
+  defaultTime: {
+    type: definePropType([Date, Array])
+  },
+  isRange: Boolean,
+  ...disabledTimeListsProps,
+  disabledDate: {
+    type: Function
+  },
+  cellClassName: {
+    type: Function
+  },
+  shortcuts: {
+    type: Array,
+    default: () => []
+  },
+  arrowControl: Boolean,
+  unlinkPanels: Boolean,
+  showNow: {
+    type: Boolean,
+    default: true
+  },
+  showConfirm: Boolean,
+  showFooter: Boolean,
+  showWeekNumber: Boolean,
   type: {
     type: definePropType(String),
     default: "date"
+  },
+  clearable: {
+    type: Boolean,
+    default: true
+  },
+  border: {
+    type: Boolean,
+    default: true
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/constants.mjs
+var ROOT_PICKER_INJECTION_KEY = Symbol("rootPickerContextKey");
+var ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY = "ElIsDefaultFormat";
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-date-pick.mjs
 var import_dayjs11 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/shared.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/shared.mjs
 var selectionModes = [
   "date",
   "dates",
@@ -29795,6 +25202,9 @@ var selectionModes = [
   "range"
 ];
 var datePickerSharedProps = buildProps({
+  cellClassName: {
+    type: definePropType(Function)
+  },
   disabledDate: {
     type: definePropType(Function)
   },
@@ -29817,7 +25227,8 @@ var datePickerSharedProps = buildProps({
       endDate: null,
       selecting: false
     })
-  }
+  },
+  disabled: Boolean
 });
 var panelSharedProps = buildProps({
   type: {
@@ -29831,19 +25242,28 @@ var panelSharedProps = buildProps({
     type: Boolean,
     default: true
   },
+  showConfirm: Boolean,
   showFooter: {
     type: Boolean,
     default: true
   },
-  showWeekNumber: Boolean
+  showWeekNumber: Boolean,
+  border: Boolean,
+  disabled: Boolean
 });
 var panelRangeSharedProps = buildProps({
   unlinkPanels: Boolean,
-  visible: Boolean,
+  visible: {
+    type: Boolean,
+    default: true
+  },
+  showConfirm: Boolean,
   showFooter: {
     type: Boolean,
     default: true
   },
+  border: Boolean,
+  disabled: Boolean,
   parsedValue: {
     type: definePropType(Array)
   }
@@ -29856,14 +25276,15 @@ var selectionModeWithDefault = (mode) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/panel-date-pick.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/panel-date-pick.mjs
 var panelDatePickProps = buildProps({
   ...panelSharedProps,
   parsedValue: {
     type: definePropType([Object, Array])
   },
   visible: {
-    type: Boolean
+    type: Boolean,
+    default: true
   },
   format: {
     type: String,
@@ -29871,7 +25292,7 @@ var panelDatePickProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/utils.mjs
 var import_dayjs7 = __toESM(require_dayjs_min(), 1);
 var isValidRange2 = (range4) => {
   if (!isArray(range4))
@@ -29979,7 +25400,7 @@ var correctlyParseUserInput = (value, format2, lang, defaultFormat) => {
     return value.map((v2) => correctlyParseUserInput(v2, format2, lang, defaultFormat));
   }
   if (isString(value)) {
-    const dayjsValue = defaultFormat.value ? (0, import_dayjs7.default)(value) : (0, import_dayjs7.default)(value, format2);
+    const dayjsValue = (defaultFormat == null ? void 0 : defaultFormat.value) ? (0, import_dayjs7.default)(value) : (0, import_dayjs7.default)(value, format2);
     if (!dayjsValue.isValid()) {
       return dayjsValue;
     }
@@ -29987,18 +25408,15 @@ var correctlyParseUserInput = (value, format2, lang, defaultFormat) => {
   return (0, import_dayjs7.default)(value, format2).locale(lang);
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/basic-date-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/basic-date-table.mjs
 var basicDateTableProps = buildProps({
   ...datePickerSharedProps,
-  cellClassName: {
-    type: definePropType(Function)
-  },
   showWeekNumber: Boolean,
   selectionMode: selectionModeWithDefault("date")
 });
 var basicDateTableEmits = ["changerange", "pick", "select"];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-basic-date-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-basic-date-table.mjs
 var import_dayjs8 = __toESM(require_dayjs_min(), 1);
 var isNormalDay = (type4 = "") => {
   return ["normal", "today"].includes(type4);
@@ -30168,9 +25586,6 @@ var useBasicDateTable = (props2, emit) => {
       });
     }
   };
-  const isSelectedCell = (cell) => {
-    return !unref(hasCurrent) && (cell == null ? void 0 : cell.text) === 1 && cell.type === "normal" || cell.isCurrent;
-  };
   const handleFocus = (event) => {
     if (focusWithClick || unref(hasCurrent) || props2.selectionMode !== "date")
       return;
@@ -30216,6 +25631,8 @@ var useBasicDateTable = (props2, emit) => {
     emit("pick", newValue);
   };
   const handlePickDate = (event, isKeyboardMovement = false) => {
+    if (props2.disabled)
+      return;
     const target2 = event.target.closest("td");
     if (!target2)
       return;
@@ -30270,7 +25687,6 @@ var useBasicDateTable = (props2, emit) => {
     focus,
     isCurrent,
     isWeekActive,
-    isSelectedCell,
     handlePickDate,
     handleMouseUp,
     handleMouseDown,
@@ -30286,7 +25702,7 @@ var useBasicDateTableDOM = (props2, {
   const { t } = useLocale();
   const tableKls = computed(() => [
     ns.b(),
-    { "is-week-mode": props2.selectionMode === "week" }
+    { "is-week-mode": props2.selectionMode === "week" && !props2.disabled }
   ]);
   const tableLabel = computed(() => t("el.datepicker.dateTablePrompt"));
   const getCellClasses = (cell) => {
@@ -30311,7 +25727,7 @@ var useBasicDateTableDOM = (props2, {
         classes.push("end-date");
       }
     }
-    if (cell.disabled) {
+    if (cell.disabled || props2.disabled) {
       classes.push("disabled");
     }
     if (cell.selected) {
@@ -30336,14 +25752,14 @@ var useBasicDateTableDOM = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/basic-cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/basic-cell.mjs
 var basicCellProps = buildProps({
   cell: {
     type: definePropType(Object)
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-cell-render.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-cell-render.mjs
 var ElDatePickerCell = defineComponent({
   name: "ElDatePickerCell",
   props: basicCellProps,
@@ -30370,8 +25786,8 @@ var ElDatePickerCell = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-date-table.mjs
-var _sfc_main61 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-date-table.mjs
+var _sfc_main62 = defineComponent({
   __name: "basic-date-table",
   props: basicDateTableProps,
   emits: basicDateTableEmits,
@@ -30385,7 +25801,6 @@ var _sfc_main61 = defineComponent({
       focus,
       isCurrent,
       isWeekActive,
-      isSelectedCell,
       handlePickDate,
       handleMouseUp,
       handleMouseDown,
@@ -30442,11 +25857,11 @@ var _sfc_main61 = defineComponent({
                 return openBlock(), createElementBlock("td", {
                   key: `${rowKey2}.${columnKey}`,
                   ref_for: true,
-                  ref: (el) => !unref(isUnmounting) && unref(isSelectedCell)(cell) && (currentCellRef.value = el),
+                  ref: (el) => !unref(isUnmounting) && cell.isSelected && (currentCellRef.value = el),
                   class: normalizeClass(unref(getCellClasses)(cell)),
                   "aria-current": cell.isCurrent ? "date" : void 0,
                   "aria-selected": cell.isCurrent,
-                  tabindex: unref(isSelectedCell)(cell) ? 0 : -1,
+                  tabindex: cell.isSelected ? 0 : -1,
                   onFocus: unref(handleFocus)
                 }, [
                   createVNode(unref(ElDatePickerCell), { cell }, null, 8, ["cell"])
@@ -30459,19 +25874,19 @@ var _sfc_main61 = defineComponent({
     };
   }
 });
-var DateTable2 = _export_sfc(_sfc_main61, [["__file", "basic-date-table.vue"]]);
+var DateTable2 = _export_sfc(_sfc_main62, [["__file", "basic-date-table.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-month-table.mjs
 var import_dayjs9 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/basic-month-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/basic-month-table.mjs
 var basicMonthTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("month")
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs
-var _sfc_main62 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-month-table.mjs
+var _sfc_main63 = defineComponent({
   __name: "basic-month-table",
   props: basicMonthTableProps,
   emits: ["changerange", "pick", "select"],
@@ -30482,15 +25897,11 @@ var _sfc_main62 = defineComponent({
     const tbodyRef = ref();
     const currentCellRef = ref();
     const months = ref(props2.date.locale("en").localeData().monthsShort().map((_2) => _2.toLowerCase()));
-    const tableRows = ref([
-      [],
-      [],
-      []
-    ]);
+    const tableRows = ref([[], [], []]);
     const lastRow = ref();
     const lastColumn = ref();
     const rows = computed(() => {
-      var _a2, _b;
+      var _a2, _b, _c;
       const rows2 = tableRows.value;
       const now2 = (0, import_dayjs9.default)().locale(lang.value).startOf("month");
       for (let i = 0; i < 3; i++) {
@@ -30504,7 +25915,15 @@ var _sfc_main62 = defineComponent({
             start: false,
             end: false,
             text: -1,
-            disabled: false
+            disabled: false,
+            isSelected: false,
+            customClass: void 0,
+            date: void 0,
+            dayjs: void 0,
+            isCurrent: void 0,
+            selected: void 0,
+            renderText: void 0,
+            timestamp: void 0
           });
           cell.type = "normal";
           const index = i * 4 + j;
@@ -30522,8 +25941,14 @@ var _sfc_main62 = defineComponent({
           if (isToday) {
             cell.type = "today";
           }
+          const cellDate = calTime.toDate();
           cell.text = index;
-          cell.disabled = ((_b = props2.disabledDate) == null ? void 0 : _b.call(props2, calTime.toDate())) || false;
+          cell.disabled = ((_b = props2.disabledDate) == null ? void 0 : _b.call(props2, cellDate)) || false;
+          cell.date = cellDate;
+          cell.customClass = (_c = props2.cellClassName) == null ? void 0 : _c.call(props2, cellDate);
+          cell.dayjs = calTime;
+          cell.timestamp = calTime.valueOf();
+          cell.isSelected = isSelectedCell(cell);
         }
       }
       return rows2;
@@ -30537,9 +25962,12 @@ var _sfc_main62 = defineComponent({
       const year = props2.date.year();
       const today = /* @__PURE__ */ new Date();
       const month = cell.text;
-      style.disabled = props2.disabledDate ? datesInMonth(props2.date, year, month, lang.value).every(props2.disabledDate) : false;
+      style.disabled = props2.disabled || (props2.disabledDate ? datesInMonth(props2.date, year, month, lang.value).every(props2.disabledDate) : false);
       style.current = castArray2(props2.parsedValue).findIndex((date4) => import_dayjs9.default.isDayjs(date4) && date4.year() === year && date4.month() === month) >= 0;
       style.today = today.getFullYear() === year && today.getMonth() === month;
+      if (cell.customClass) {
+        style[cell.customClass] = true;
+      }
       if (cell.inRange) {
         style["in-range"] = true;
         if (cell.start) {
@@ -30584,6 +26012,8 @@ var _sfc_main62 = defineComponent({
     };
     const handleMonthTableClick = (event) => {
       var _a2;
+      if (props2.disabled)
+        return;
       const target2 = (_a2 = event.target) == null ? void 0 : _a2.closest("td");
       if ((target2 == null ? void 0 : target2.tagName) !== "TD")
         return;
@@ -30645,11 +26075,11 @@ var _sfc_main62 = defineComponent({
                 return openBlock(), createElementBlock("td", {
                   key: key_,
                   ref_for: true,
-                  ref: (el) => isSelectedCell(cell) && (currentCellRef.value = el),
+                  ref: (el) => cell.isSelected && (currentCellRef.value = el),
                   class: normalizeClass(getCellStyle(cell)),
-                  "aria-selected": `${isSelectedCell(cell)}`,
+                  "aria-selected": !!cell.isSelected,
                   "aria-label": unref(t)(`el.datepicker.month${+cell.text + 1}`),
-                  tabindex: isSelectedCell(cell) ? 0 : -1,
+                  tabindex: cell.isSelected ? 0 : -1,
                   onKeydown: [
                     withKeys(withModifiers(handleMonthTableClick, ["prevent", "stop"]), ["space"]),
                     withKeys(withModifiers(handleMonthTableClick, ["prevent", "stop"]), ["enter"])
@@ -30670,19 +26100,19 @@ var _sfc_main62 = defineComponent({
     };
   }
 });
-var MonthTable = _export_sfc(_sfc_main62, [["__file", "basic-month-table.vue"]]);
+var MonthTable = _export_sfc(_sfc_main63, [["__file", "basic-month-table.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-year-table.mjs
 var import_dayjs10 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/basic-year-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/basic-year-table.mjs
 var basicYearTableProps = buildProps({
   ...datePickerSharedProps,
   selectionMode: selectionModeWithDefault("year")
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-year-table.mjs
-var _sfc_main63 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/basic-year-table.mjs
+var _sfc_main64 = defineComponent({
   __name: "basic-year-table",
   props: basicYearTableProps,
   emits: ["changerange", "pick", "select"],
@@ -30705,7 +26135,7 @@ var _sfc_main63 = defineComponent({
     const lastRow = ref();
     const lastColumn = ref();
     const rows = computed(() => {
-      var _a2;
+      var _a2, _b, _c;
       const rows2 = tableRows.value;
       const now2 = (0, import_dayjs10.default)().locale(lang.value).startOf("year");
       for (let i = 0; i < 3; i++) {
@@ -30724,7 +26154,15 @@ var _sfc_main63 = defineComponent({
               start: false,
               end: false,
               text: -1,
-              disabled: false
+              disabled: false,
+              isSelected: false,
+              customClass: void 0,
+              date: void 0,
+              dayjs: void 0,
+              isCurrent: void 0,
+              selected: void 0,
+              renderText: void 0,
+              timestamp: void 0
             };
           }
           cell.type = "normal";
@@ -30745,7 +26183,12 @@ var _sfc_main63 = defineComponent({
           }
           cell.text = index;
           const cellDate = calTime.toDate();
-          cell.disabled = props2.disabledDate && props2.disabledDate(cellDate) || false;
+          cell.disabled = ((_b = props2.disabledDate) == null ? void 0 : _b.call(props2, cellDate)) || false;
+          cell.date = cellDate;
+          cell.customClass = (_c = props2.cellClassName) == null ? void 0 : _c.call(props2, cellDate);
+          cell.dayjs = calTime;
+          cell.timestamp = calTime.valueOf();
+          cell.isSelected = isSelectedCell(cell);
           row[j] = cell;
         }
       }
@@ -30759,9 +26202,12 @@ var _sfc_main63 = defineComponent({
       const kls = {};
       const today = (0, import_dayjs10.default)().locale(lang.value);
       const year = cell.text;
-      kls.disabled = props2.disabledDate ? datesInYear(year, lang.value).every(props2.disabledDate) : false;
+      kls.disabled = props2.disabled || (props2.disabledDate ? datesInYear(year, lang.value).every(props2.disabledDate) : false);
       kls.today = today.year() === year;
       kls.current = castArray2(props2.parsedValue).findIndex((d2) => d2.year() === year) >= 0;
+      if (cell.customClass) {
+        kls[cell.customClass] = true;
+      }
       if (cell.inRange) {
         kls["in-range"] = true;
         if (cell.start) {
@@ -30779,6 +26225,8 @@ var _sfc_main63 = defineComponent({
     };
     const handleYearTableClick = (event) => {
       var _a2;
+      if (props2.disabled)
+        return;
       const target2 = (_a2 = event.target) == null ? void 0 : _a2.closest("td");
       if (!target2 || !target2.textContent || hasClass(target2, "disabled"))
         return;
@@ -30858,11 +26306,11 @@ var _sfc_main63 = defineComponent({
                 return openBlock(), createElementBlock("td", {
                   key: `${rowKey2}_${cellKey}`,
                   ref_for: true,
-                  ref: (el) => isSelectedCell(cell) && (currentCellRef.value = el),
+                  ref: (el) => cell.isSelected && (currentCellRef.value = el),
                   class: normalizeClass(["available", getCellKls(cell)]),
-                  "aria-selected": isSelectedCell(cell),
+                  "aria-selected": cell.isSelected,
                   "aria-label": String(cell.text),
-                  tabindex: isSelectedCell(cell) ? 0 : -1,
+                  tabindex: cell.isSelected ? 0 : -1,
                   onKeydown: [
                     withKeys(withModifiers(handleYearTableClick, ["prevent", "stop"]), ["space"]),
                     withKeys(withModifiers(handleYearTableClick, ["prevent", "stop"]), ["enter"])
@@ -30878,10 +26326,10 @@ var _sfc_main63 = defineComponent({
     };
   }
 });
-var YearTable = _export_sfc(_sfc_main63, [["__file", "basic-year-table.vue"]]);
+var YearTable = _export_sfc(_sfc_main64, [["__file", "basic-year-table.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-pick.mjs
-var _sfc_main64 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-date-pick.mjs
+var _sfc_main65 = defineComponent({
   __name: "panel-date-pick",
   props: panelDatePickProps,
   emits: ["pick", "set-picker-option", "panel-change"],
@@ -30894,8 +26342,7 @@ var _sfc_main64 = defineComponent({
     const slots = useSlots();
     const { t, lang } = useLocale();
     const pickerBase = inject(PICKER_BASE_INJECTION_KEY);
-    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY);
-    const popper = inject(TOOLTIP_INJECTION_KEY);
+    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, void 0);
     const { shortcuts, disabledDate, cellClassName, defaultTime } = pickerBase.props;
     const defaultValue = toRef(pickerBase.props, "defaultValue");
     const currentViewRef = ref();
@@ -31042,6 +26489,8 @@ var _sfc_main64 = defineComponent({
       handlePanelChange("year");
     };
     const showPicker = async (view) => {
+      if (props2.disabled)
+        return;
       currentView.value = view;
       await nextTick();
       handleFocusPicker();
@@ -31056,6 +26505,7 @@ var _sfc_main64 = defineComponent({
       const isMonthView = currentView.value === "month";
       return showDateFooter && isDateView || showYearFooter && isYearView || showMonthFooter && isMonthView;
     });
+    const footerFilled = computed(() => !isMultipleType.value && props2.showNow || props2.showConfirm);
     const disabledConfirm = computed(() => {
       if (!disabledDate)
         return false;
@@ -31095,10 +26545,10 @@ var _sfc_main64 = defineComponent({
       }
     };
     const timeFormat = computed(() => {
-      return props2.timeFormat || extractTimeFormat(props2.format);
+      return props2.timeFormat || extractTimeFormat(props2.format) || DEFAULT_FORMATS_TIME;
     });
     const dateFormat = computed(() => {
-      return props2.dateFormat || extractDateFormat(props2.format);
+      return props2.dateFormat || extractDateFormat(props2.format) || DEFAULT_FORMATS_DATE;
     });
     const visibleTime = computed(() => {
       if (userInputTime.value)
@@ -31281,9 +26731,6 @@ var _sfc_main64 = defineComponent({
       }
       currentView.value = "date";
     }, { immediate: true });
-    watch(() => currentView.value, () => {
-      popper == null ? void 0 : popper.updatePopper();
-    });
     watch(() => defaultValue.value, (val) => {
       if (val) {
         innerDate.value = getDefaultValue2();
@@ -31309,6 +26756,8 @@ var _sfc_main64 = defineComponent({
         class: normalizeClass([
           unref(ppNs).b(),
           unref(dpNs).b(),
+          unref(ppNs).is("border", _ctx.border),
+          unref(ppNs).is("disabled", _ctx.disabled),
           {
             "has-sidebar": _ctx.$slots.sidebar || unref(hasShortcuts),
             "has-time": unref(showTime)
@@ -31329,9 +26778,10 @@ var _sfc_main64 = defineComponent({
               return openBlock(), createElementBlock("button", {
                 key,
                 type: "button",
+                disabled: _ctx.disabled,
                 class: normalizeClass(unref(ppNs).e("shortcut")),
                 onClick: ($event) => handleShortcutClick(shortcut)
-              }, toDisplayString(shortcut.text), 11, ["onClick"]);
+              }, toDisplayString(shortcut.text), 11, ["disabled", "onClick"]);
             }), 128))
           ], 2)) : createCommentVNode("v-if", true),
           createBaseVNode("div", {
@@ -31349,9 +26799,10 @@ var _sfc_main64 = defineComponent({
                   "model-value": unref(visibleDate),
                   size: "small",
                   "validate-event": false,
+                  disabled: _ctx.disabled,
                   onInput: (val) => userInputDate.value = val,
                   onChange: handleVisibleDateChange
-                }, null, 8, ["placeholder", "model-value", "onInput"])
+                }, null, 8, ["placeholder", "model-value", "disabled", "onInput"])
               ], 2),
               withDirectives((openBlock(), createElementBlock("span", {
                 class: normalizeClass(unref(dpNs).e("editor-wrap"))
@@ -31361,10 +26812,11 @@ var _sfc_main64 = defineComponent({
                   "model-value": unref(visibleTime),
                   size: "small",
                   "validate-event": false,
+                  disabled: _ctx.disabled,
                   onFocus: onTimePickerInputFocus,
                   onInput: (val) => userInputTime.value = val,
                   onChange: handleVisibleTimeChange
-                }, null, 8, ["placeholder", "model-value", "onInput"]),
+                }, null, 8, ["placeholder", "model-value", "disabled", "onInput"]),
                 createVNode(unref(TimePickPanel), {
                   visible: timePickerVisible.value,
                   format: unref(timeFormat),
@@ -31388,6 +26840,7 @@ var _sfc_main64 = defineComponent({
                   type: "button",
                   "aria-label": unref(t)(`el.datepicker.prevYear`),
                   class: normalizeClass(["d-arrow-left", unref(ppNs).e("icon-btn")]),
+                  disabled: _ctx.disabled,
                   onClick: ($event) => moveByYear(false)
                 }, [
                   renderSlot(_ctx.$slots, "prev-year", {}, () => [
@@ -31398,11 +26851,12 @@ var _sfc_main64 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label", "onClick"]),
+                ], 10, ["aria-label", "disabled", "onClick"]),
                 withDirectives(createBaseVNode("button", {
                   type: "button",
                   "aria-label": unref(t)(`el.datepicker.prevMonth`),
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "arrow-left"]),
+                  disabled: _ctx.disabled,
                   onClick: ($event) => moveByMonth(false)
                 }, [
                   renderSlot(_ctx.$slots, "prev-month", {}, () => [
@@ -31413,7 +26867,7 @@ var _sfc_main64 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label", "onClick"]), [
+                ], 10, ["aria-label", "disabled", "onClick"]), [
                   [vShow, currentView.value === "date"]
                 ])
               ], 2),
@@ -31445,6 +26899,7 @@ var _sfc_main64 = defineComponent({
                   type: "button",
                   "aria-label": unref(t)(`el.datepicker.nextMonth`),
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "arrow-right"]),
+                  disabled: _ctx.disabled,
                   onClick: ($event) => moveByMonth(true)
                 }, [
                   renderSlot(_ctx.$slots, "next-month", {}, () => [
@@ -31455,13 +26910,14 @@ var _sfc_main64 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label", "onClick"]), [
+                ], 10, ["aria-label", "disabled", "onClick"]), [
                   [vShow, currentView.value === "date"]
                 ]),
                 createBaseVNode("button", {
                   type: "button",
                   "aria-label": unref(t)(`el.datepicker.nextYear`),
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-right"]),
+                  disabled: _ctx.disabled,
                   onClick: ($event) => moveByYear(true)
                 }, [
                   renderSlot(_ctx.$slots, "next-year", {}, () => [
@@ -31472,7 +26928,7 @@ var _sfc_main64 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label", "onClick"])
+                ], 10, ["aria-label", "disabled", "onClick"])
               ], 2)
             ], 2), [
               [vShow, currentView.value !== "time"]
@@ -31489,10 +26945,11 @@ var _sfc_main64 = defineComponent({
                 date: innerDate.value,
                 "parsed-value": _ctx.parsedValue,
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
                 onPick: handleDatePick
-              }, null, 8, ["selection-mode", "date", "parsed-value", "disabled-date", "cell-class-name", "show-week-number"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["selection-mode", "date", "parsed-value", "disabled-date", "disabled", "cell-class-name", "show-week-number"])) : createCommentVNode("v-if", true),
               currentView.value === "year" ? (openBlock(), createBlock(YearTable, {
                 key: 1,
                 ref_key: "currentViewRef",
@@ -31500,9 +26957,11 @@ var _sfc_main64 = defineComponent({
                 "selection-mode": unref(selectionMode),
                 date: innerDate.value,
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
                 "parsed-value": _ctx.parsedValue,
+                "cell-class-name": unref(cellClassName),
                 onPick: handleYearPick
-              }, null, 8, ["selection-mode", "date", "disabled-date", "parsed-value"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["selection-mode", "date", "disabled-date", "disabled", "parsed-value", "cell-class-name"])) : createCommentVNode("v-if", true),
               currentView.value === "month" ? (openBlock(), createBlock(MonthTable, {
                 key: 2,
                 ref_key: "currentViewRef",
@@ -31511,12 +26970,14 @@ var _sfc_main64 = defineComponent({
                 date: innerDate.value,
                 "parsed-value": _ctx.parsedValue,
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
+                "cell-class-name": unref(cellClassName),
                 onPick: handleMonthPick
-              }, null, 8, ["selection-mode", "date", "parsed-value", "disabled-date"])) : createCommentVNode("v-if", true)
+              }, null, 8, ["selection-mode", "date", "parsed-value", "disabled-date", "disabled", "cell-class-name"])) : createCommentVNode("v-if", true)
             ], 34)
           ], 2)
         ], 2),
-        _ctx.showFooter && unref(footerVisible) ? (openBlock(), createElementBlock("div", {
+        _ctx.showFooter && unref(footerVisible) && unref(footerFilled) ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: normalizeClass(unref(ppNs).e("footer"))
         }, [
@@ -31534,7 +26995,8 @@ var _sfc_main64 = defineComponent({
           }, 8, ["class", "disabled"]), [
             [vShow, !unref(isMultipleType) && _ctx.showNow]
           ]),
-          createVNode(unref(ElButton), {
+          _ctx.showConfirm ? (openBlock(), createBlock(unref(ElButton), {
+            key: 0,
             plain: "",
             size: "small",
             class: normalizeClass(unref(ppNs).e("link-btn")),
@@ -31545,27 +27007,27 @@ var _sfc_main64 = defineComponent({
               createTextVNode(toDisplayString(unref(t)("el.datepicker.confirm")), 1)
             ]),
             _: 1
-          }, 8, ["class", "disabled"])
+          }, 8, ["class", "disabled"])) : createCommentVNode("v-if", true)
         ], 2)) : createCommentVNode("v-if", true)
       ], 2);
     };
   }
 });
-var DatePickPanel = _export_sfc(_sfc_main64, [["__file", "panel-date-pick.vue"]]);
+var DatePickPanel = _export_sfc(_sfc_main65, [["__file", "panel-date-pick.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-date-range.mjs
 var import_dayjs14 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/panel-date-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/panel-date-range.mjs
 var panelDateRangeProps = buildProps({
   ...panelSharedProps,
   ...panelRangeSharedProps
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-range-picker.mjs
 var import_dayjs13 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-shortcut.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-shortcut.mjs
 var import_dayjs12 = __toESM(require_dayjs_min(), 1);
 var useShortcut = (lang) => {
   const { emit } = getCurrentInstance();
@@ -31591,7 +27053,7 @@ var useShortcut = (lang) => {
   return handleShortcutClick;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-range-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-range-picker.mjs
 var useRangePicker = (props2, {
   defaultValue,
   defaultTime,
@@ -31676,8 +27138,15 @@ var useRangePicker = (props2, {
     }
   }, { immediate: true });
   watch(() => props2.parsedValue, (parsedValue) => {
-    if (!props2.visible || !(parsedValue == null ? void 0 : parsedValue.length)) {
+    if (!(parsedValue == null ? void 0 : parsedValue.length)) {
       onReset(parsedValue);
+    }
+  }, {
+    immediate: true
+  });
+  watch(() => props2.visible, () => {
+    if (props2.visible) {
+      onReset(props2.parsedValue);
     }
   }, { immediate: true });
   return {
@@ -31696,7 +27165,7 @@ var useRangePicker = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-panel-date-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-panel-date-range.mjs
 var usePanelDateRange = (props2, emit, leftDate, rightDate) => {
   const leftCurrentView = ref("date");
   const leftCurrentViewRef = ref();
@@ -31729,6 +27198,8 @@ var usePanelDateRange = (props2, emit, leftDate, rightDate) => {
     currentViewRef == null ? void 0 : currentViewRef.focus();
   }
   async function showPicker(pickerType, view) {
+    if (props2.disabled)
+      return;
     const currentView = pickerType === "left" ? leftCurrentView : rightCurrentView;
     const currentViewRef = pickerType === "left" ? leftCurrentViewRef : rightCurrentViewRef;
     currentView.value = view;
@@ -31736,6 +27207,8 @@ var usePanelDateRange = (props2, emit, leftDate, rightDate) => {
     focusPicker(currentViewRef.value);
   }
   async function handlePick(mode, pickerType, value) {
+    if (props2.disabled)
+      return;
     const isLeftPicker = pickerType === "left";
     const startDate = isLeftPicker ? leftDate : rightDate;
     const endDate = isLeftPicker ? rightDate : leftDate;
@@ -31785,9 +27258,9 @@ var usePanelDateRange = (props2, emit, leftDate, rightDate) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-date-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-date-range.mjs
 var unit = "month";
-var _sfc_main65 = defineComponent({
+var _sfc_main66 = defineComponent({
   __name: "panel-date-range",
   props: panelDateRangeProps,
   emits: [
@@ -31799,7 +27272,7 @@ var _sfc_main65 = defineComponent({
   setup(__props, { emit }) {
     const props2 = __props;
     const pickerBase = inject(PICKER_BASE_INJECTION_KEY);
-    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY);
+    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, void 0);
     const { disabledDate, cellClassName, defaultTime, clearable } = pickerBase.props;
     const format2 = toRef(pickerBase.props, "format");
     const shortcuts = toRef(pickerBase.props, "shortcuts");
@@ -31807,6 +27280,7 @@ var _sfc_main65 = defineComponent({
     const { lang } = useLocale();
     const leftDate = ref((0, import_dayjs14.default)().locale(lang.value));
     const rightDate = ref((0, import_dayjs14.default)().locale(lang.value).add(1, unit));
+    let shouldBeVisible = true;
     const {
       minDate,
       maxDate,
@@ -31891,10 +27365,10 @@ var _sfc_main65 = defineComponent({
       return "";
     });
     const timeFormat = computed(() => {
-      return props2.timeFormat || extractTimeFormat(format2.value);
+      return props2.timeFormat || extractTimeFormat(format2.value || "") || DEFAULT_FORMATS_TIME;
     });
     const dateFormat = computed(() => {
-      return props2.dateFormat || extractDateFormat(format2.value);
+      return props2.dateFormat || extractDateFormat(format2.value || "") || DEFAULT_FORMATS_DATE;
     });
     const isValidValue3 = (date4) => {
       return isValidRange2(date4) && (disabledDate ? !disabledDate(date4[0].toDate()) && !disabledDate(date4[1].toDate()) : true);
@@ -31979,12 +27453,17 @@ var _sfc_main65 = defineComponent({
       emit("calendar-change", [min_.toDate(), max_ && max_.toDate()]);
       maxDate.value = maxDate_;
       minDate.value = minDate_;
-      handleRangeConfirm(close2);
+      if (!showTime.value && close2) {
+        close2 = !minDate_ || !maxDate_;
+      }
+      shouldBeVisible = close2;
     };
-    watch([maxDate, minDate], ([min4, max4]) => {
-      if (min4 && max4)
-        handleRangeConfirm(true);
-    }, { flush: "post" });
+    watch([maxDate, minDate], ([max4, min4]) => {
+      if (max4 && min4) {
+        handleRangeConfirm(shouldBeVisible);
+        shouldBeVisible = true;
+      }
+    });
     const minTimePickerVisible = ref(false);
     const maxTimePickerVisible = ref(false);
     const handleMinTimeClose = () => {
@@ -32097,7 +27576,7 @@ var _sfc_main65 = defineComponent({
       return isArray(value) ? value.map((_2) => _2.format(format2.value)) : value.format(format2.value);
     };
     const parseUserInput = (value) => {
-      return correctlyParseUserInput(value, format2.value, lang.value, isDefaultFormat);
+      return correctlyParseUserInput(value, format2.value || "", lang.value, isDefaultFormat);
     };
     function onParsedValueChanged(minDate2, maxDate2) {
       if (props2.unlinkPanels && maxDate2) {
@@ -32122,6 +27601,8 @@ var _sfc_main65 = defineComponent({
         class: normalizeClass([
           unref(ppNs).b(),
           unref(drpNs).b(),
+          unref(ppNs).is("border", _ctx.border),
+          unref(ppNs).is("disabled", _ctx.disabled),
           {
             "has-sidebar": _ctx.$slots.sidebar || unref(hasShortcuts),
             "has-time": unref(showTime)
@@ -32142,9 +27623,10 @@ var _sfc_main65 = defineComponent({
               return openBlock(), createElementBlock("button", {
                 key,
                 type: "button",
+                disabled: _ctx.disabled,
                 class: normalizeClass(unref(ppNs).e("shortcut")),
                 onClick: ($event) => unref(handleShortcutClick)(shortcut)
-              }, toDisplayString(shortcut.text), 11, ["onClick"]);
+              }, toDisplayString(shortcut.text), 11, ["disabled", "onClick"]);
             }), 128))
           ], 2)) : createCommentVNode("v-if", true),
           createBaseVNode("div", {
@@ -32162,7 +27644,7 @@ var _sfc_main65 = defineComponent({
                 }, [
                   createVNode(unref(ElInput), {
                     size: "small",
-                    disabled: unref(rangeState).selecting,
+                    disabled: unref(rangeState).selecting || _ctx.disabled,
                     placeholder: unref(t)("el.datepicker.startDate"),
                     class: normalizeClass(unref(drpNs).e("editor")),
                     "model-value": unref(minVisibleDate),
@@ -32177,7 +27659,7 @@ var _sfc_main65 = defineComponent({
                   createVNode(unref(ElInput), {
                     size: "small",
                     class: normalizeClass(unref(drpNs).e("editor")),
-                    disabled: unref(rangeState).selecting,
+                    disabled: unref(rangeState).selecting || _ctx.disabled,
                     placeholder: unref(t)("el.datepicker.startTime"),
                     "model-value": unref(minVisibleTime),
                     "validate-event": false,
@@ -32213,7 +27695,7 @@ var _sfc_main65 = defineComponent({
                   createVNode(unref(ElInput), {
                     size: "small",
                     class: normalizeClass(unref(drpNs).e("editor")),
-                    disabled: unref(rangeState).selecting,
+                    disabled: unref(rangeState).selecting || _ctx.disabled,
                     placeholder: unref(t)("el.datepicker.endDate"),
                     "model-value": unref(maxVisibleDate),
                     readonly: !unref(minDate),
@@ -32228,7 +27710,7 @@ var _sfc_main65 = defineComponent({
                   createVNode(unref(ElInput), {
                     size: "small",
                     class: normalizeClass(unref(drpNs).e("editor")),
-                    disabled: unref(rangeState).selecting,
+                    disabled: unref(rangeState).selecting || _ctx.disabled,
                     placeholder: unref(t)("el.datepicker.endTime"),
                     "model-value": unref(maxVisibleTime),
                     readonly: !unref(minDate),
@@ -32259,6 +27741,7 @@ var _sfc_main65 = defineComponent({
                   type: "button",
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-left"]),
                   "aria-label": unref(t)(`el.datepicker.prevYear`),
+                  disabled: _ctx.disabled,
                   onClick: leftPrevYear
                 }, [
                   renderSlot(_ctx.$slots, "prev-year", {}, () => [
@@ -32269,11 +27752,12 @@ var _sfc_main65 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label"]),
+                ], 10, ["aria-label", "disabled"]),
                 withDirectives(createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "arrow-left"]),
                   "aria-label": unref(t)(`el.datepicker.prevMonth`),
+                  disabled: _ctx.disabled,
                   onClick: leftPrevMonth
                 }, [
                   renderSlot(_ctx.$slots, "prev-month", {}, () => [
@@ -32284,14 +27768,17 @@ var _sfc_main65 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label"]), [
+                ], 10, ["aria-label", "disabled"]), [
                   [vShow, unref(leftCurrentView) === "date"]
                 ]),
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
-                  class: normalizeClass([[unref(ppNs).e("icon-btn"), { "is-disabled": !unref(enableYearArrow) }], "d-arrow-right"]),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
+                  class: normalizeClass([[
+                    unref(ppNs).e("icon-btn"),
+                    unref(ppNs).is("disabled", !unref(enableYearArrow) || _ctx.disabled)
+                  ], "d-arrow-right"]),
                   "aria-label": unref(t)(`el.datepicker.nextYear`),
                   onClick: leftNextYear
                 }, [
@@ -32307,10 +27794,10 @@ var _sfc_main65 = defineComponent({
                 _ctx.unlinkPanels && unref(leftCurrentView) === "date" ? (openBlock(), createElementBlock("button", {
                   key: 1,
                   type: "button",
-                  disabled: !unref(enableMonthArrow),
+                  disabled: !unref(enableMonthArrow) || _ctx.disabled,
                   class: normalizeClass([[
                     unref(ppNs).e("icon-btn"),
-                    { "is-disabled": !unref(enableMonthArrow) }
+                    unref(ppNs).is("disabled", !unref(enableMonthArrow) || _ctx.disabled)
                   ], "arrow-right"]),
                   "aria-label": unref(t)(`el.datepicker.nextMonth`),
                   onClick: leftNextMonth
@@ -32360,10 +27847,11 @@ var _sfc_main65 = defineComponent({
                 "disabled-date": unref(disabledDate),
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
+                disabled: _ctx.disabled,
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "cell-class-name", "show-week-number", "disabled", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
               unref(leftCurrentView) === "year" ? (openBlock(), createBlock(YearTable, {
                 key: 1,
                 ref_key: "leftCurrentViewRef",
@@ -32372,8 +27860,9 @@ var _sfc_main65 = defineComponent({
                 date: leftDate.value,
                 "disabled-date": unref(disabledDate),
                 "parsed-value": _ctx.parsedValue,
+                disabled: _ctx.disabled,
                 onPick: unref(handleLeftYearPick)
-              }, null, 8, ["date", "disabled-date", "parsed-value", "onPick"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "disabled-date", "parsed-value", "disabled", "onPick"])) : createCommentVNode("v-if", true),
               unref(leftCurrentView) === "month" ? (openBlock(), createBlock(MonthTable, {
                 key: 2,
                 ref_key: "leftCurrentViewRef",
@@ -32382,20 +27871,24 @@ var _sfc_main65 = defineComponent({
                 date: leftDate.value,
                 "parsed-value": _ctx.parsedValue,
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
                 onPick: unref(handleLeftMonthPick)
-              }, null, 8, ["date", "parsed-value", "disabled-date", "onPick"])) : createCommentVNode("v-if", true)
+              }, null, 8, ["date", "parsed-value", "disabled-date", "disabled", "onPick"])) : createCommentVNode("v-if", true)
             ], 2),
             createBaseVNode("div", {
               class: normalizeClass([[unref(ppNs).e("content"), unref(drpNs).e("content")], "is-right"])
             }, [
               createBaseVNode("div", {
-                class: normalizeClass(unref(drpNs).e("header"))
+                class: normalizeClass([
+                  unref(drpNs).e("header"),
+                  unref(ppNs).is("disabled", !unref(enableYearArrow) || _ctx.disabled)
+                ])
               }, [
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
-                  class: normalizeClass([[unref(ppNs).e("icon-btn"), { "is-disabled": !unref(enableYearArrow) }], "d-arrow-left"]),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
+                  class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-left"]),
                   "aria-label": unref(t)(`el.datepicker.prevYear`),
                   onClick: rightPrevYear
                 }, [
@@ -32411,11 +27904,8 @@ var _sfc_main65 = defineComponent({
                 _ctx.unlinkPanels && unref(rightCurrentView) === "date" ? (openBlock(), createElementBlock("button", {
                   key: 1,
                   type: "button",
-                  disabled: !unref(enableMonthArrow),
-                  class: normalizeClass([[
-                    unref(ppNs).e("icon-btn"),
-                    { "is-disabled": !unref(enableMonthArrow) }
-                  ], "arrow-left"]),
+                  disabled: !unref(enableMonthArrow) || _ctx.disabled,
+                  class: normalizeClass([unref(ppNs).e("icon-btn"), "arrow-left"]),
                   "aria-label": unref(t)(`el.datepicker.prevMonth`),
                   onClick: rightPrevMonth
                 }, [
@@ -32432,6 +27922,7 @@ var _sfc_main65 = defineComponent({
                   type: "button",
                   "aria-label": unref(t)(`el.datepicker.nextYear`),
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-right"]),
+                  disabled: _ctx.disabled,
                   onClick: rightNextYear
                 }, [
                   renderSlot(_ctx.$slots, "next-year", {}, () => [
@@ -32442,10 +27933,11 @@ var _sfc_main65 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label"]),
+                ], 10, ["aria-label", "disabled"]),
                 withDirectives(createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "arrow-right"]),
+                  disabled: _ctx.disabled,
                   "aria-label": unref(t)(`el.datepicker.nextMonth`),
                   onClick: rightNextMonth
                 }, [
@@ -32457,7 +27949,7 @@ var _sfc_main65 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["aria-label"]), [
+                ], 10, ["disabled", "aria-label"]), [
                   [vShow, unref(rightCurrentView) === "date"]
                 ]),
                 createBaseVNode("div", null, [
@@ -32496,10 +27988,11 @@ var _sfc_main65 = defineComponent({
                 "disabled-date": unref(disabledDate),
                 "cell-class-name": unref(cellClassName),
                 "show-week-number": _ctx.showWeekNumber,
+                disabled: _ctx.disabled,
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "cell-class-name", "show-week-number", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "cell-class-name", "show-week-number", "disabled", "onChangerange", "onSelect"])) : createCommentVNode("v-if", true),
               unref(rightCurrentView) === "year" ? (openBlock(), createBlock(YearTable, {
                 key: 1,
                 ref_key: "rightCurrentViewRef",
@@ -32508,8 +28001,9 @@ var _sfc_main65 = defineComponent({
                 date: rightDate.value,
                 "disabled-date": unref(disabledDate),
                 "parsed-value": _ctx.parsedValue,
+                disabled: _ctx.disabled,
                 onPick: unref(handleRightYearPick)
-              }, null, 8, ["date", "disabled-date", "parsed-value", "onPick"])) : createCommentVNode("v-if", true),
+              }, null, 8, ["date", "disabled-date", "parsed-value", "disabled", "onPick"])) : createCommentVNode("v-if", true),
               unref(rightCurrentView) === "month" ? (openBlock(), createBlock(MonthTable, {
                 key: 2,
                 ref_key: "rightCurrentViewRef",
@@ -32518,12 +28012,13 @@ var _sfc_main65 = defineComponent({
                 date: rightDate.value,
                 "parsed-value": _ctx.parsedValue,
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
                 onPick: unref(handleRightMonthPick)
-              }, null, 8, ["date", "parsed-value", "disabled-date", "onPick"])) : createCommentVNode("v-if", true)
+              }, null, 8, ["date", "parsed-value", "disabled-date", "disabled", "onPick"])) : createCommentVNode("v-if", true)
             ], 2)
           ], 2)
         ], 2),
-        _ctx.showFooter && unref(showTime) ? (openBlock(), createElementBlock("div", {
+        _ctx.showFooter && unref(showTime) && (_ctx.showConfirm || unref(clearable)) ? (openBlock(), createElementBlock("div", {
           key: 0,
           class: normalizeClass(unref(ppNs).e("footer"))
         }, [
@@ -32539,7 +28034,8 @@ var _sfc_main65 = defineComponent({
             ]),
             _: 1
           }, 8, ["class"])) : createCommentVNode("v-if", true),
-          createVNode(unref(ElButton), {
+          _ctx.showConfirm ? (openBlock(), createBlock(unref(ElButton), {
+            key: 1,
             plain: "",
             size: "small",
             class: normalizeClass(unref(ppNs).e("link-btn")),
@@ -32550,18 +28046,18 @@ var _sfc_main65 = defineComponent({
               createTextVNode(toDisplayString(unref(t)("el.datepicker.confirm")), 1)
             ]),
             _: 1
-          }, 8, ["class", "disabled", "onClick"])
+          }, 8, ["class", "disabled", "onClick"])) : createCommentVNode("v-if", true)
         ], 2)) : createCommentVNode("v-if", true)
       ], 2);
     };
   }
 });
-var DateRangePickPanel = _export_sfc(_sfc_main65, [["__file", "panel-date-range.vue"]]);
+var DateRangePickPanel = _export_sfc(_sfc_main66, [["__file", "panel-date-range.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-month-range.mjs
 var import_dayjs15 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/panel-month-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/panel-month-range.mjs
 var panelMonthRangeProps = buildProps({
   ...panelRangeSharedProps
 });
@@ -32571,7 +28067,7 @@ var panelMonthRangeEmits = [
   "calendar-change"
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-month-range-header.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-month-range-header.mjs
 var useMonthRangeHeader = ({
   unlinkPanels,
   leftDate,
@@ -32620,21 +28116,21 @@ var useMonthRangeHeader = ({
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-month-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-month-range.mjs
 var unit2 = "year";
-var __default__51 = defineComponent({
+var __default__52 = defineComponent({
   name: "DatePickerMonthRange"
 });
-var _sfc_main66 = defineComponent({
-  ...__default__51,
+var _sfc_main67 = defineComponent({
+  ...__default__52,
   props: panelMonthRangeProps,
   emits: panelMonthRangeEmits,
   setup(__props, { emit }) {
     const props2 = __props;
     const { lang } = useLocale();
     const pickerBase = inject(PICKER_BASE_INJECTION_KEY);
-    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY);
-    const { shortcuts, disabledDate } = pickerBase.props;
+    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, void 0);
+    const { shortcuts, disabledDate, cellClassName } = pickerBase.props;
     const format2 = toRef(pickerBase.props, "format");
     const defaultValue = toRef(pickerBase.props, "defaultValue");
     const leftDate = ref((0, import_dayjs15.default)().locale(lang.value));
@@ -32727,6 +28223,8 @@ var _sfc_main66 = defineComponent({
         class: normalizeClass([
           unref(ppNs).b(),
           unref(drpNs).b(),
+          unref(ppNs).is("border", _ctx.border),
+          unref(ppNs).is("disabled", _ctx.disabled),
           {
             "has-sidebar": Boolean(_ctx.$slots.sidebar) || unref(hasShortcuts)
           }
@@ -32747,8 +28245,9 @@ var _sfc_main66 = defineComponent({
                 key,
                 type: "button",
                 class: normalizeClass(unref(ppNs).e("shortcut")),
+                disabled: _ctx.disabled,
                 onClick: ($event) => unref(handleShortcutClick)(shortcut)
-              }, toDisplayString(shortcut.text), 11, ["onClick"]);
+              }, toDisplayString(shortcut.text), 11, ["disabled", "onClick"]);
             }), 128))
           ], 2)) : createCommentVNode("v-if", true),
           createBaseVNode("div", {
@@ -32763,6 +28262,7 @@ var _sfc_main66 = defineComponent({
                 createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-left"]),
+                  disabled: _ctx.disabled,
                   onClick: unref(leftPrevYear)
                 }, [
                   renderSlot(_ctx.$slots, "prev-year", {}, () => [
@@ -32773,11 +28273,11 @@ var _sfc_main66 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["onClick"]),
+                ], 10, ["disabled", "onClick"]),
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
                   class: normalizeClass([[
                     unref(ppNs).e("icon-btn"),
                     { [unref(ppNs).is("disabled")]: !unref(enableYearArrow) }
@@ -32802,10 +28302,12 @@ var _sfc_main66 = defineComponent({
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
+                "cell-class-name": unref(cellClassName),
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "onChangerange", "onSelect"])
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "disabled", "cell-class-name", "onChangerange", "onSelect"])
             ], 2),
             createBaseVNode("div", {
               class: normalizeClass([[unref(ppNs).e("content"), unref(drpNs).e("content")], "is-right"])
@@ -32816,7 +28318,7 @@ var _sfc_main66 = defineComponent({
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
                   class: normalizeClass([[unref(ppNs).e("icon-btn"), { "is-disabled": !unref(enableYearArrow) }], "d-arrow-left"]),
                   onClick: unref(rightPrevYear)
                 }, [
@@ -32832,6 +28334,7 @@ var _sfc_main66 = defineComponent({
                 createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass([unref(ppNs).e("icon-btn"), "d-arrow-right"]),
+                  disabled: _ctx.disabled,
                   onClick: unref(rightNextYear)
                 }, [
                   renderSlot(_ctx.$slots, "next-year", {}, () => [
@@ -32842,7 +28345,7 @@ var _sfc_main66 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["onClick"]),
+                ], 10, ["disabled", "onClick"]),
                 createBaseVNode("div", null, toDisplayString(unref(rightLabel)), 1)
               ], 2),
               createVNode(MonthTable, {
@@ -32852,10 +28355,12 @@ var _sfc_main66 = defineComponent({
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
+                "cell-class-name": unref(cellClassName),
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "onChangerange", "onSelect"])
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "disabled", "cell-class-name", "onChangerange", "onSelect"])
             ], 2)
           ], 2)
         ], 2)
@@ -32863,12 +28368,12 @@ var _sfc_main66 = defineComponent({
     };
   }
 });
-var MonthRangePickPanel = _export_sfc(_sfc_main66, [["__file", "panel-month-range.vue"]]);
+var MonthRangePickPanel = _export_sfc(_sfc_main67, [["__file", "panel-month-range.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-year-range.mjs
 var import_dayjs16 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props/panel-year-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/props/panel-year-range.mjs
 var panelYearRangeProps = buildProps({
   ...panelRangeSharedProps
 });
@@ -32878,7 +28383,7 @@ var panelYearRangeEmits = [
   "calendar-change"
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/composables/use-year-range-header.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/composables/use-year-range-header.mjs
 var useYearRangeHeader = ({
   unlinkPanels,
   leftDate,
@@ -32930,14 +28435,14 @@ var useYearRangeHeader = ({
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker-com/panel-year-range.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-com/panel-year-range.mjs
 var step = 10;
 var unit3 = "year";
-var __default__52 = defineComponent({
+var __default__53 = defineComponent({
   name: "DatePickerYearRange"
 });
-var _sfc_main67 = defineComponent({
-  ...__default__52,
+var _sfc_main68 = defineComponent({
+  ...__default__53,
   props: panelYearRangeProps,
   emits: panelYearRangeEmits,
   setup(__props, { emit }) {
@@ -32945,9 +28450,9 @@ var _sfc_main67 = defineComponent({
     const { lang } = useLocale();
     const leftDate = ref((0, import_dayjs16.default)().locale(lang.value));
     const rightDate = ref((0, import_dayjs16.default)().locale(lang.value).add(step, unit3));
-    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY);
+    const isDefaultFormat = inject(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, void 0);
     const pickerBase = inject(PICKER_BASE_INJECTION_KEY);
-    const { shortcuts, disabledDate } = pickerBase.props;
+    const { shortcuts, disabledDate, cellClassName } = pickerBase.props;
     const format2 = toRef(pickerBase.props, "format");
     const defaultValue = toRef(pickerBase.props, "defaultValue");
     const {
@@ -32987,6 +28492,8 @@ var _sfc_main67 = defineComponent({
     const panelKls = computed(() => [
       ppNs.b(),
       drpNs.b(),
+      ppNs.is("border", props2.border),
+      ppNs.is("disabled", props2.disabled),
       {
         "has-sidebar": Boolean(useSlots().sidebar) || hasShortcuts.value
       }
@@ -33087,8 +28594,9 @@ var _sfc_main67 = defineComponent({
                 key,
                 type: "button",
                 class: normalizeClass(unref(ppNs).e("shortcut")),
+                disabled: _ctx.disabled,
                 onClick: ($event) => unref(handleShortcutClick)(shortcut)
-              }, toDisplayString(shortcut.text), 11, ["onClick"]);
+              }, toDisplayString(shortcut.text), 11, ["disabled", "onClick"]);
             }), 128))
           ], 2)) : createCommentVNode("v-if", true),
           createBaseVNode("div", {
@@ -33103,6 +28611,7 @@ var _sfc_main67 = defineComponent({
                 createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass(unref(leftPanelKls).arrowLeftBtn),
+                  disabled: _ctx.disabled,
                   onClick: unref(leftPrevYear)
                 }, [
                   renderSlot(_ctx.$slots, "prev-year", {}, () => [
@@ -33113,11 +28622,11 @@ var _sfc_main67 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["onClick"]),
+                ], 10, ["disabled", "onClick"]),
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
                   class: normalizeClass(unref(leftPanelKls).arrowRightBtn),
                   onClick: unref(leftNextYear)
                 }, [
@@ -33139,10 +28648,12 @@ var _sfc_main67 = defineComponent({
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
+                "cell-class-name": unref(cellClassName),
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "onChangerange", "onSelect"])
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "disabled", "cell-class-name", "onChangerange", "onSelect"])
             ], 2),
             createBaseVNode("div", {
               class: normalizeClass(unref(rightPanelKls).content)
@@ -33153,7 +28664,7 @@ var _sfc_main67 = defineComponent({
                 _ctx.unlinkPanels ? (openBlock(), createElementBlock("button", {
                   key: 0,
                   type: "button",
-                  disabled: !unref(enableYearArrow),
+                  disabled: !unref(enableYearArrow) || _ctx.disabled,
                   class: normalizeClass(unref(rightPanelKls).arrowLeftBtn),
                   onClick: unref(rightPrevYear)
                 }, [
@@ -33169,6 +28680,7 @@ var _sfc_main67 = defineComponent({
                 createBaseVNode("button", {
                   type: "button",
                   class: normalizeClass(unref(rightPanelKls).arrowRightBtn),
+                  disabled: _ctx.disabled,
                   onClick: unref(rightNextYear)
                 }, [
                   renderSlot(_ctx.$slots, "next-year", {}, () => [
@@ -33179,7 +28691,7 @@ var _sfc_main67 = defineComponent({
                       _: 1
                     })
                   ])
-                ], 10, ["onClick"]),
+                ], 10, ["disabled", "onClick"]),
                 createBaseVNode("div", null, toDisplayString(unref(rightLabel)), 1)
               ], 2),
               createVNode(YearTable, {
@@ -33189,10 +28701,12 @@ var _sfc_main67 = defineComponent({
                 "max-date": unref(maxDate),
                 "range-state": unref(rangeState),
                 "disabled-date": unref(disabledDate),
+                disabled: _ctx.disabled,
+                "cell-class-name": unref(cellClassName),
                 onChangerange: unref(handleChangeRange),
                 onPick: handleRangePick,
                 onSelect: unref(onSelect)
-              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "onChangerange", "onSelect"])
+              }, null, 8, ["date", "min-date", "max-date", "range-state", "disabled-date", "disabled", "cell-class-name", "onChangerange", "onSelect"])
             ], 2)
           ], 2)
         ], 2)
@@ -33200,9 +28714,9 @@ var _sfc_main67 = defineComponent({
     };
   }
 });
-var YearRangePickPanel = _export_sfc(_sfc_main67, [["__file", "panel-year-range.vue"]]);
+var YearRangePickPanel = _export_sfc(_sfc_main68, [["__file", "panel-year-range.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/panel-utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/panel-utils.mjs
 var getPanel = function(type4) {
   switch (type4) {
     case "daterange":
@@ -33221,7 +28735,10 @@ var getPanel = function(type4) {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/src/date-picker-panel.mjs
+function _isSlot(s2) {
+  return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
+}
 import_dayjs17.default.extend(import_localeData2.default);
 import_dayjs17.default.extend(import_advancedFormat.default);
 import_dayjs17.default.extend(import_customParseFormat2.default);
@@ -33230,6 +28747,67 @@ import_dayjs17.default.extend(import_weekYear.default);
 import_dayjs17.default.extend(import_dayOfYear.default);
 import_dayjs17.default.extend(import_isSameOrAfter.default);
 import_dayjs17.default.extend(import_isSameOrBefore.default);
+var DatePickerPanel = defineComponent({
+  name: "ElDatePickerPanel",
+  install: null,
+  props: datePickerPanelProps,
+  emits: [UPDATE_MODEL_EVENT, "calendar-change", "panel-change", "visible-change", "pick"],
+  setup(props2, {
+    slots,
+    emit
+  }) {
+    const ns = useNamespace("picker-panel");
+    const pickerInjection = inject(PICKER_BASE_INJECTION_KEY, void 0);
+    if (isUndefined2(pickerInjection)) {
+      const _props = reactive({
+        ...toRefs(props2)
+      });
+      provide(PICKER_BASE_INJECTION_KEY, {
+        props: _props
+      });
+    }
+    provide(ROOT_PICKER_INJECTION_KEY, {
+      slots,
+      pickerNs: ns
+    });
+    const {
+      parsedValue,
+      onCalendarChange,
+      onPanelChange,
+      onSetPickerOption,
+      onPick
+    } = inject(ROOT_COMMON_PICKER_INJECTION_KEY, () => useCommonPicker(props2, emit), true);
+    return () => {
+      const Component = getPanel(props2.type);
+      return createVNode(Component, mergeProps(props2, {
+        "parsedValue": parsedValue.value,
+        "onSet-picker-option": onSetPickerOption,
+        "onCalendar-change": onCalendarChange,
+        "onPanel-change": onPanelChange,
+        "onPick": onPick
+      }), _isSlot(slots) ? slots : {
+        default: () => [slots]
+      });
+    };
+  }
+});
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker-panel/index.mjs
+var ElDatePickerPanel = withInstall(DatePickerPanel);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/props.mjs
+var datePickerProps = buildProps({
+  ...timePickerDefaultProps,
+  type: {
+    type: definePropType(String),
+    default: "date"
+  }
+});
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/src/date-picker.mjs
+function _isSlot2(s2) {
+  return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
+}
 var DatePicker = defineComponent({
   name: "ElDatePicker",
   install: null,
@@ -33240,16 +28818,11 @@ var DatePicker = defineComponent({
     emit,
     slots
   }) {
-    const ns = useNamespace("picker-panel");
     const isDefaultFormat = computed(() => {
       return !props2.format;
     });
     provide(ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY, isDefaultFormat);
     provide(PICKER_POPPER_OPTIONS_INJECTION_KEY, reactive(toRef(props2, "popperOptions")));
-    provide(ROOT_PICKER_INJECTION_KEY, {
-      slots,
-      pickerNs: ns
-    });
     const commonPicker = ref();
     const refProps = {
       focus: () => {
@@ -33276,18 +28849,16 @@ var DatePicker = defineComponent({
     return () => {
       var _a2;
       const format2 = (_a2 = props2.format) != null ? _a2 : DEFAULT_FORMATS_DATEPICKER[props2.type] || DEFAULT_FORMATS_DATE;
-      const Component = getPanel(props2.type);
       return createVNode(CommonPicker, mergeProps(props2, {
         "format": format2,
         "type": props2.type,
         "ref": commonPicker,
         "onUpdate:modelValue": onModelValueUpdated
       }), {
-        default: (scopedProps) => createVNode(Component, scopedProps, {
-          "prev-month": slots["prev-month"],
-          "next-month": slots["next-month"],
-          "prev-year": slots["prev-year"],
-          "next-year": slots["next-year"]
+        default: (scopedProps) => createVNode(ElDatePickerPanel, mergeProps({
+          "border": false
+        }, scopedProps), _isSlot2(slots) ? slots : {
+          default: () => [slots]
         }),
         "range-separator": slots["range-separator"]
       });
@@ -33295,13 +28866,13 @@ var DatePicker = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/date-picker/index.mjs
 var ElDatePicker = withInstall(DatePicker);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/token.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/token.mjs
 var descriptionsKey = Symbol("elDescriptions");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-cell.mjs
 var ElDescriptionsCell = defineComponent({
   name: "ElDescriptionsCell",
   props: {
@@ -33407,7 +28978,7 @@ var ElDescriptionsCell = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-row.mjs
 var descriptionsRowProps = buildProps({
   row: {
     type: definePropType(Array),
@@ -33415,12 +28986,12 @@ var descriptionsRowProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
-var __default__53 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/descriptions-row2.mjs
+var __default__54 = defineComponent({
   name: "ElDescriptionsRow"
 });
-var _sfc_main68 = defineComponent({
-  ...__default__53,
+var _sfc_main69 = defineComponent({
+  ...__default__54,
   props: descriptionsRowProps,
   setup(__props) {
     const descriptions = inject(descriptionsKey, {});
@@ -33474,9 +29045,9 @@ var _sfc_main68 = defineComponent({
     };
   }
 });
-var ElDescriptionsRow = _export_sfc(_sfc_main68, [["__file", "descriptions-row.vue"]]);
+var ElDescriptionsRow = _export_sfc(_sfc_main69, [["__file", "descriptions-row.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description.mjs
 var descriptionProps = buildProps({
   border: Boolean,
   column: {
@@ -33503,15 +29074,15 @@ var descriptionProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/constants.mjs
 var COMPONENT_NAME11 = "ElDescriptionsItem";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description.mjs
-var __default__54 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description2.mjs
+var __default__55 = defineComponent({
   name: "ElDescriptions"
 });
-var _sfc_main69 = defineComponent({
-  ...__default__54,
+var _sfc_main70 = defineComponent({
+  ...__default__55,
   props: descriptionProps,
   setup(__props) {
     const props2 = __props;
@@ -33625,12 +29196,12 @@ var _sfc_main69 = defineComponent({
     };
   }
 });
-var Descriptions = _export_sfc(_sfc_main69, [["__file", "description.vue"]]);
+var Descriptions = _export_sfc(_sfc_main70, [["__file", "description.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/constants/column-alignment.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/column-alignment.mjs
 var columnAlignment = ["left", "center", "right"];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/src/description-item.mjs
 var descriptionItemProps = buildProps({
   label: {
     type: String,
@@ -33679,13 +29250,13 @@ var DescriptionItem = defineComponent({
   props: descriptionItemProps
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/descriptions/index.mjs
 var ElDescriptions = withInstall(Descriptions, {
   DescriptionsItem: DescriptionItem
 });
 var ElDescriptionsItem = withNoopInstall(DescriptionItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-same-target/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-same-target/index.mjs
 var useSameTarget = (handleClick) => {
   if (!handleClick) {
     return { onClick: NOOP, onMousedown: NOOP, onMouseup: NOOP };
@@ -33707,7 +29278,7 @@ var useSameTarget = (handleClick) => {
   return { onClick, onMousedown, onMouseup };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/overlay/src/overlay.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/overlay/src/overlay.mjs
 var overlayProps = buildProps({
   mask: {
     type: Boolean,
@@ -33763,22 +29334,31 @@ var Overlay = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/overlay/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/overlay/index.mjs
 var ElOverlay = Overlay;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/constants.mjs
 var dialogInjectionKey = Symbol("dialogInjectionKey");
 var DEFAULT_DIALOG_TRANSITION = "dialog-fade";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog-content.mjs
 var dialogContentProps = buildProps({
   center: Boolean,
-  alignCenter: Boolean,
+  alignCenter: {
+    type: Boolean,
+    default: void 0
+  },
   closeIcon: {
     type: iconPropType
   },
-  draggable: Boolean,
-  overflow: Boolean,
+  draggable: {
+    type: Boolean,
+    default: void 0
+  },
+  overflow: {
+    type: Boolean,
+    default: void 0
+  },
   fullscreen: Boolean,
   headerClass: String,
   bodyClass: String,
@@ -33800,12 +29380,13 @@ var dialogContentEmits = {
   close: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-draggable/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-draggable/index.mjs
 var useDraggable = (targetRef, dragRef, draggable2, overflow) => {
   const transform2 = {
     offsetX: 0,
     offsetY: 0
   };
+  const isDragging2 = ref(false);
   const adjustPosition = (moveX, moveY) => {
     if (targetRef.value) {
       const { offsetX, offsetY } = transform2;
@@ -33834,11 +29415,15 @@ var useDraggable = (targetRef, dragRef, draggable2, overflow) => {
     const downY = e.clientY;
     const { offsetX, offsetY } = transform2;
     const onMousemove = (e2) => {
+      if (!isDragging2.value) {
+        isDragging2.value = true;
+      }
       const moveX = offsetX + e2.clientX - downX;
       const moveY = offsetY + e2.clientY - downY;
       adjustPosition(moveX, moveY);
     };
     const onMouseup = () => {
+      isDragging2.value = false;
       document.removeEventListener("mousemove", onMousemove);
       document.removeEventListener("mouseup", onMouseup);
     };
@@ -33881,12 +29466,13 @@ var useDraggable = (targetRef, dragRef, draggable2, overflow) => {
     offDraggable();
   });
   return {
+    isDragging: isDragging2,
     resetPosition,
     updatePosition
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/refs.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/refs.mjs
 var composeRefs = (...refs) => {
   return (el) => {
     refs.forEach((ref2) => {
@@ -33899,10 +29485,10 @@ var composeRefs = (...refs) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
-var __default__55 = defineComponent({ name: "ElDialogContent" });
-var _sfc_main70 = defineComponent({
-  ...__default__55,
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog-content2.mjs
+var __default__56 = defineComponent({ name: "ElDialogContent" });
+var _sfc_main71 = defineComponent({
+  ...__default__56,
   props: dialogContentProps,
   emits: dialogContentEmits,
   setup(__props, { expose }) {
@@ -33911,17 +29497,18 @@ var _sfc_main70 = defineComponent({
     const { Close } = CloseComponents;
     const { dialogRef, headerRef, bodyId, ns, style } = inject(dialogInjectionKey);
     const { focusTrapRef } = inject(FOCUS_TRAP_INJECTION_KEY);
+    const composedDialogRef = composeRefs(focusTrapRef, dialogRef);
+    const draggable2 = computed(() => !!props2.draggable);
+    const overflow = computed(() => !!props2.overflow);
+    const { resetPosition, updatePosition, isDragging: isDragging2 } = useDraggable(dialogRef, headerRef, draggable2, overflow);
     const dialogKls = computed(() => [
       ns.b(),
       ns.is("fullscreen", props2.fullscreen),
-      ns.is("draggable", props2.draggable),
-      ns.is("align-center", props2.alignCenter),
+      ns.is("draggable", draggable2.value),
+      ns.is("dragging", isDragging2.value),
+      ns.is("align-center", !!props2.alignCenter),
       { [ns.m("center")]: props2.center }
     ]);
-    const composedDialogRef = composeRefs(focusTrapRef, dialogRef);
-    const draggable2 = computed(() => props2.draggable);
-    const overflow = computed(() => props2.overflow);
-    const { resetPosition, updatePosition } = useDraggable(dialogRef, headerRef, draggable2, overflow);
     expose({
       resetPosition,
       updatePosition
@@ -33978,9 +29565,9 @@ var _sfc_main70 = defineComponent({
     };
   }
 });
-var ElDialogContent = _export_sfc(_sfc_main70, [["__file", "dialog-content.vue"]]);
+var ElDialogContent = _export_sfc(_sfc_main71, [["__file", "dialog-content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog.mjs
 var dialogProps = buildProps({
   ...dialogContentProps,
   appendToBody: Boolean,
@@ -34038,7 +29625,7 @@ var dialogProps = buildProps({
   },
   transition: {
     type: definePropType([String, Object]),
-    default: DEFAULT_DIALOG_TRANSITION
+    default: void 0
   }
 });
 var dialogEmits = {
@@ -34050,8 +29637,9 @@ var dialogEmits = {
   openAutoFocus: () => true,
   closeAutoFocus: () => true
 };
+var dialogContextKey = Symbol("dialogContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-lockscreen/index.mjs
 var useLockscreen = (trigger, options = {}) => {
   if (!isRef(trigger)) {
     throwError("[useLockscreen]", "You need to pass a ref param to this function");
@@ -34094,7 +29682,7 @@ var useLockscreen = (trigger, options = {}) => {
   onScopeDispose(() => cleanup());
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/use-dialog.mjs
 var useDialog = (props2, targetRef) => {
   var _a2;
   const instance = getCurrentInstance();
@@ -34109,7 +29697,15 @@ var useDialog = (props2, targetRef) => {
   const zIndex2 = ref((_a2 = props2.zIndex) != null ? _a2 : nextZIndex());
   let openTimer = void 0;
   let closeTimer = void 0;
-  const namespace = useGlobalConfig("namespace", defaultNamespace);
+  const config = useGlobalConfig();
+  const namespace = computed(() => {
+    var _a22, _b;
+    return (_b = (_a22 = config.value) == null ? void 0 : _a22.namespace) != null ? _b : defaultNamespace;
+  });
+  const globalConfig2 = computed(() => {
+    var _a22;
+    return (_a22 = config.value) == null ? void 0 : _a22.dialog;
+  });
   const style = computed(() => {
     const style2 = {};
     const varPrefix = `--${namespace.value}-dialog`;
@@ -34123,21 +29719,35 @@ var useDialog = (props2, targetRef) => {
     }
     return style2;
   });
+  const _draggable = computed(() => {
+    var _a22, _b, _c;
+    return ((_c = (_b = props2.draggable) != null ? _b : (_a22 = globalConfig2.value) == null ? void 0 : _a22.draggable) != null ? _c : false) && !props2.fullscreen;
+  });
+  const _alignCenter = computed(() => {
+    var _a22, _b, _c;
+    return (_c = (_b = props2.alignCenter) != null ? _b : (_a22 = globalConfig2.value) == null ? void 0 : _a22.alignCenter) != null ? _c : false;
+  });
+  const _overflow = computed(() => {
+    var _a22, _b, _c;
+    return (_c = (_b = props2.overflow) != null ? _b : (_a22 = globalConfig2.value) == null ? void 0 : _a22.overflow) != null ? _c : false;
+  });
   const overlayDialogStyle = computed(() => {
-    if (props2.alignCenter) {
+    if (_alignCenter.value) {
       return { display: "flex" };
     }
     return {};
   });
   const transitionConfig = computed(() => {
+    var _a22, _b, _c;
+    const transition = (_c = (_b = props2.transition) != null ? _b : (_a22 = globalConfig2.value) == null ? void 0 : _a22.transition) != null ? _c : DEFAULT_DIALOG_TRANSITION;
     const baseConfig = {
-      name: props2.transition,
+      name: transition,
       onAfterEnter: afterEnter,
       onBeforeLeave: beforeLeave,
       onAfterLeave: afterLeave
     };
-    if (isObject(props2.transition)) {
-      const config = { ...props2.transition };
+    if (isObject(transition)) {
+      const config2 = { ...transition };
       const _mergeHook = (userHook, defaultHook) => {
         return (el) => {
           if (isArray(userHook)) {
@@ -34151,13 +29761,13 @@ var useDialog = (props2, targetRef) => {
           defaultHook();
         };
       };
-      config.onAfterEnter = _mergeHook(config.onAfterEnter, afterEnter);
-      config.onBeforeLeave = _mergeHook(config.onBeforeLeave, beforeLeave);
-      config.onAfterLeave = _mergeHook(config.onAfterLeave, afterLeave);
-      if (!config.name) {
-        config.name = DEFAULT_DIALOG_TRANSITION;
+      config2.onAfterEnter = _mergeHook(config2.onAfterEnter, afterEnter);
+      config2.onBeforeLeave = _mergeHook(config2.onBeforeLeave, beforeLeave);
+      config2.onAfterLeave = _mergeHook(config2.onAfterLeave, afterLeave);
+      if (!config2.name) {
+        config2.name = DEFAULT_DIALOG_TRANSITION;
       }
-      return config;
+      return config2;
     }
     return baseConfig;
   });
@@ -34300,17 +29910,20 @@ var useDialog = (props2, targetRef) => {
     rendered,
     visible,
     zIndex: zIndex2,
-    transitionConfig
+    transitionConfig,
+    _draggable,
+    _alignCenter,
+    _overflow
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
-var __default__56 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/src/dialog2.mjs
+var __default__57 = defineComponent({
   name: "ElDialog",
   inheritAttrs: false
 });
-var _sfc_main71 = defineComponent({
-  ...__default__56,
+var _sfc_main72 = defineComponent({
+  ...__default__57,
   props: dialogProps,
   emits: dialogEmits,
   setup(__props, { expose }) {
@@ -34336,6 +29949,9 @@ var _sfc_main71 = defineComponent({
       rendered,
       transitionConfig,
       zIndex: zIndex2,
+      _draggable,
+      _alignCenter,
+      _overflow,
       handleClose,
       onModalClick,
       onOpenAutoFocus,
@@ -34352,7 +29968,6 @@ var _sfc_main71 = defineComponent({
       style
     });
     const overlayEvent = useSameTarget(onModalClick);
-    const draggable2 = computed(() => props2.draggable && !props2.fullscreen);
     const penetrable = computed(() => props2.modalPenetrable && !props2.modal && !props2.fullscreen);
     const resetPosition = () => {
       var _a2;
@@ -34413,10 +30028,10 @@ var _sfc_main71 = defineComponent({
                             ref: dialogContentRef
                           }, _ctx.$attrs, {
                             center: _ctx.center,
-                            "align-center": _ctx.alignCenter,
+                            "align-center": unref(_alignCenter),
                             "close-icon": _ctx.closeIcon,
-                            draggable: unref(draggable2),
-                            overflow: _ctx.overflow,
+                            draggable: unref(_draggable),
+                            overflow: unref(_overflow),
                             fullscreen: _ctx.fullscreen,
                             "header-class": _ctx.headerClass,
                             "body-class": _ctx.bodyClass,
@@ -34465,12 +30080,12 @@ var _sfc_main71 = defineComponent({
     };
   }
 });
-var Dialog = _export_sfc(_sfc_main71, [["__file", "dialog.vue"]]);
+var Dialog = _export_sfc(_sfc_main72, [["__file", "dialog.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dialog/index.mjs
 var ElDialog = withInstall(Dialog);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/divider/src/divider2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/divider/src/divider.mjs
 var dividerProps = buildProps({
   direction: {
     type: String,
@@ -34488,12 +30103,12 @@ var dividerProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/divider/src/divider.mjs
-var __default__57 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/divider/src/divider2.mjs
+var __default__58 = defineComponent({
   name: "ElDivider"
 });
-var _sfc_main72 = defineComponent({
-  ...__default__57,
+var _sfc_main73 = defineComponent({
+  ...__default__58,
   props: dividerProps,
   setup(__props) {
     const props2 = __props;
@@ -34519,12 +30134,630 @@ var _sfc_main72 = defineComponent({
     };
   }
 });
-var Divider = _export_sfc(_sfc_main72, [["__file", "divider.vue"]]);
+var Divider = _export_sfc(_sfc_main73, [["__file", "divider.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/divider/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/divider/index.mjs
 var ElDivider = withInstall(Divider);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/src/drawer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/splitter.mjs
+var splitterProps = buildProps({
+  layout: {
+    type: String,
+    default: "horizontal",
+    values: ["horizontal", "vertical"]
+  },
+  lazy: Boolean
+});
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/type.mjs
+var splitterRootContextKey = Symbol("splitterRootContextKey");
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useContainer.mjs
+function useContainer(layout2) {
+  const containerEl = ref();
+  const { width, height } = useElementSize(containerEl);
+  const containerSize = computed(() => {
+    return layout2.value === "horizontal" ? width.value : height.value;
+  });
+  return { containerEl, containerSize };
+}
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useSize.mjs
+function getPct(str) {
+  return Number(str.slice(0, -1)) / 100;
+}
+function getPx(str) {
+  return Number(str.slice(0, -2));
+}
+function isPct(itemSize3) {
+  return isString(itemSize3) && itemSize3.endsWith("%");
+}
+function isPx(itemSize3) {
+  return isString(itemSize3) && itemSize3.endsWith("px");
+}
+function useSize2(panels, containerSize) {
+  const propSizes = computed(() => panels.value.map((i) => i.size));
+  const panelCounts = computed(() => panels.value.length);
+  const percentSizes = ref([]);
+  watch([propSizes, panelCounts, containerSize], () => {
+    var _a2;
+    let ptgList = [];
+    let emptyCount = 0;
+    for (let i = 0; i < panelCounts.value; i += 1) {
+      const itemSize3 = (_a2 = panels.value[i]) == null ? void 0 : _a2.size;
+      if (isPct(itemSize3)) {
+        ptgList[i] = getPct(itemSize3);
+      } else if (isPx(itemSize3)) {
+        ptgList[i] = getPx(itemSize3) / containerSize.value;
+      } else if (itemSize3 || itemSize3 === 0) {
+        const num = Number(itemSize3);
+        if (!Number.isNaN(num)) {
+          ptgList[i] = num / containerSize.value;
+        }
+      } else {
+        emptyCount += 1;
+        ptgList[i] = void 0;
+      }
+    }
+    const totalPtg = ptgList.reduce((acc, ptg) => acc + (ptg || 0), 0);
+    if (totalPtg > 1 || !emptyCount) {
+      const scale = 1 / totalPtg;
+      ptgList = ptgList.map((ptg) => ptg === void 0 ? 0 : ptg * scale);
+    } else {
+      const avgRest = (1 - totalPtg) / emptyCount;
+      ptgList = ptgList.map((ptg) => ptg === void 0 ? avgRest : ptg);
+    }
+    percentSizes.value = ptgList;
+  });
+  const ptg2px = (ptg) => ptg * containerSize.value;
+  const pxSizes = computed(() => percentSizes.value.map(ptg2px));
+  return { percentSizes, pxSizes };
+}
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useResize.mjs
+function useResize(panels, containerSize, pxSizes, lazy) {
+  const ptg2px = (ptg) => ptg * containerSize.value || 0;
+  function getLimitSize(str, defaultLimit) {
+    if (isPct(str)) {
+      return ptg2px(getPct(str));
+    } else if (isPx(str)) {
+      return getPx(str);
+    }
+    return str != null ? str : defaultLimit;
+  }
+  const lazyOffset = ref(0);
+  const movingIndex = ref(null);
+  let cachePxSizes = [];
+  let updatePanelSizes = NOOP;
+  const limitSizes = computed(() => panels.value.map((item) => [item.min, item.max]));
+  watch(lazy, () => {
+    if (lazyOffset.value) {
+      const mouseup = new MouseEvent("mouseup", { bubbles: true });
+      window.dispatchEvent(mouseup);
+    }
+  });
+  const onMoveStart = (index) => {
+    lazyOffset.value = 0;
+    movingIndex.value = { index, confirmed: false };
+    cachePxSizes = pxSizes.value;
+  };
+  const onMoving = (index, offset3) => {
+    var _a2, _b;
+    let confirmedIndex = null;
+    if ((!movingIndex.value || !movingIndex.value.confirmed) && offset3 !== 0) {
+      if (offset3 > 0) {
+        confirmedIndex = index;
+        movingIndex.value = { index, confirmed: true };
+      } else {
+        for (let i = index; i >= 0; i -= 1) {
+          if (cachePxSizes[i] > 0) {
+            confirmedIndex = i;
+            movingIndex.value = { index: i, confirmed: true };
+            break;
+          }
+        }
+      }
+    }
+    const mergedIndex = (_b = confirmedIndex != null ? confirmedIndex : (_a2 = movingIndex.value) == null ? void 0 : _a2.index) != null ? _b : index;
+    const numSizes = [...cachePxSizes];
+    const nextIndex = mergedIndex + 1;
+    const startMinSize = getLimitSize(limitSizes.value[mergedIndex][0], 0);
+    const endMinSize = getLimitSize(limitSizes.value[nextIndex][0], 0);
+    const startMaxSize = getLimitSize(limitSizes.value[mergedIndex][1], containerSize.value || 0);
+    const endMaxSize = getLimitSize(limitSizes.value[nextIndex][1], containerSize.value || 0);
+    let mergedOffset = offset3;
+    if (numSizes[mergedIndex] + mergedOffset < startMinSize) {
+      mergedOffset = startMinSize - numSizes[mergedIndex];
+    }
+    if (numSizes[nextIndex] - mergedOffset < endMinSize) {
+      mergedOffset = numSizes[nextIndex] - endMinSize;
+    }
+    if (numSizes[mergedIndex] + mergedOffset > startMaxSize) {
+      mergedOffset = startMaxSize - numSizes[mergedIndex];
+    }
+    if (numSizes[nextIndex] - mergedOffset > endMaxSize) {
+      mergedOffset = numSizes[nextIndex] - endMaxSize;
+    }
+    numSizes[mergedIndex] += mergedOffset;
+    numSizes[nextIndex] -= mergedOffset;
+    lazyOffset.value = mergedOffset;
+    updatePanelSizes = () => {
+      panels.value.forEach((panel, index2) => {
+        panel.size = numSizes[index2];
+      });
+      updatePanelSizes = NOOP;
+    };
+    if (!lazy.value) {
+      updatePanelSizes();
+    }
+  };
+  const onMoveEnd = () => {
+    if (lazy.value) {
+      updatePanelSizes();
+    }
+    lazyOffset.value = 0;
+    movingIndex.value = null;
+    cachePxSizes = [];
+  };
+  const cacheCollapsedSize = [];
+  const onCollapse = (index, type4) => {
+    if (!cacheCollapsedSize.length) {
+      cacheCollapsedSize.push(...pxSizes.value);
+    }
+    const currentSizes = pxSizes.value;
+    const currentIndex = type4 === "start" ? index : index + 1;
+    const targetIndex = type4 === "start" ? index + 1 : index;
+    const currentSize = currentSizes[currentIndex];
+    const targetSize = currentSizes[targetIndex];
+    if (currentSize !== 0 && targetSize !== 0) {
+      currentSizes[currentIndex] = 0;
+      currentSizes[targetIndex] += currentSize;
+      cacheCollapsedSize[index] = currentSize;
+    } else {
+      const totalSize = currentSize + targetSize;
+      const targetCacheCollapsedSize = cacheCollapsedSize[index];
+      const currentCacheCollapsedSize = totalSize - targetCacheCollapsedSize;
+      currentSizes[targetIndex] = targetCacheCollapsedSize;
+      currentSizes[currentIndex] = currentCacheCollapsedSize;
+    }
+    panels.value.forEach((panel, index2) => {
+      panel.size = currentSizes[index2];
+    });
+  };
+  return {
+    lazyOffset,
+    onMoveStart,
+    onMoving,
+    onMoveEnd,
+    movingIndex,
+    onCollapse
+  };
+}
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/splitter2.mjs
+var __default__59 = defineComponent({
+  name: "ElSplitter"
+});
+var _sfc_main74 = defineComponent({
+  ...__default__59,
+  props: splitterProps,
+  emits: ["resizeStart", "resize", "resizeEnd", "collapse"],
+  setup(__props, { emit: emits }) {
+    const props2 = __props;
+    const ns = useNamespace("splitter");
+    const layout2 = toRef(props2, "layout");
+    const lazy = toRef(props2, "lazy");
+    const { containerEl, containerSize } = useContainer(layout2);
+    const {
+      removeChild: unregisterPanel,
+      children: panels,
+      addChild: registerPanel,
+      ChildrenSorter: PanelsSorter
+    } = useOrderedChildren(getCurrentInstance(), "ElSplitterPanel");
+    watch(panels, () => {
+      panels.value.forEach((instance, index) => {
+        instance.setIndex(index);
+      });
+    });
+    const { percentSizes, pxSizes } = useSize2(panels, containerSize);
+    const {
+      lazyOffset,
+      movingIndex,
+      onMoveStart,
+      onMoving,
+      onMoveEnd,
+      onCollapse
+    } = useResize(panels, containerSize, pxSizes, lazy);
+    const splitterStyles = computed(() => {
+      return {
+        [`--${ns.b()}-bar-offset`]: lazy.value ? `${lazyOffset.value}px` : void 0
+      };
+    });
+    const onResizeStart = (index) => {
+      onMoveStart(index);
+      emits("resizeStart", index, pxSizes.value);
+    };
+    const onResize = (index, offset3) => {
+      onMoving(index, offset3);
+      if (!lazy.value) {
+        emits("resize", index, pxSizes.value);
+      }
+    };
+    const onResizeEnd = (index) => {
+      onMoveEnd();
+      emits("resizeEnd", index, pxSizes.value);
+    };
+    const onCollapsible = (index, type4) => {
+      onCollapse(index, type4);
+      emits("collapse", index, type4, pxSizes.value);
+    };
+    provide(splitterRootContextKey, reactive({
+      panels,
+      percentSizes,
+      pxSizes,
+      layout: layout2,
+      lazy,
+      movingIndex,
+      containerSize,
+      onMoveStart: onResizeStart,
+      onMoving: onResize,
+      onMoveEnd: onResizeEnd,
+      onCollapse: onCollapsible,
+      registerPanel,
+      unregisterPanel
+    }));
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        ref_key: "containerEl",
+        ref: containerEl,
+        class: normalizeClass([unref(ns).b(), unref(ns).e(unref(layout2))]),
+        style: normalizeStyle(unref(splitterStyles))
+      }, [
+        renderSlot(_ctx.$slots, "default"),
+        createVNode(unref(PanelsSorter)),
+        createCommentVNode(" Prevent iframe touch events from breaking "),
+        unref(movingIndex) ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass([unref(ns).e("mask"), unref(ns).e(`mask-${unref(layout2)}`)])
+        }, null, 2)) : createCommentVNode("v-if", true)
+      ], 6);
+    };
+  }
+});
+var Splitter = _export_sfc(_sfc_main74, [["__file", "splitter.vue"]]);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/usePanel.mjs
+function getCollapsible(collapsible) {
+  if (collapsible && isObject(collapsible)) {
+    return collapsible;
+  }
+  return {
+    start: !!collapsible,
+    end: !!collapsible
+  };
+}
+function isCollapsible(panel, size3, nextPanel, nextSize) {
+  if ((panel == null ? void 0 : panel.collapsible.end) && size3 > 0) {
+    return true;
+  }
+  if ((nextPanel == null ? void 0 : nextPanel.collapsible.start) && nextSize === 0 && size3 > 0) {
+    return true;
+  }
+  return false;
+}
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-bar.mjs
+var __default__60 = defineComponent({
+  name: "ElSplitterBar"
+});
+var _sfc_main75 = defineComponent({
+  ...__default__60,
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    layout: {
+      type: String,
+      values: ["horizontal", "vertical"],
+      default: "horizontal"
+    },
+    resizable: {
+      type: Boolean,
+      default: true
+    },
+    lazy: Boolean,
+    startCollapsible: Boolean,
+    endCollapsible: Boolean
+  },
+  emits: ["moveStart", "moving", "moveEnd", "collapse"],
+  setup(__props, { emit }) {
+    const props2 = __props;
+    const ns = useNamespace("splitter-bar");
+    const isHorizontal2 = computed(() => props2.layout === "horizontal");
+    const barWrapStyles = computed(() => {
+      if (isHorizontal2.value) {
+        return { width: 0 };
+      }
+      return { height: 0 };
+    });
+    const draggerStyles = computed(() => {
+      return {
+        width: isHorizontal2.value ? "16px" : "100%",
+        height: isHorizontal2.value ? "100%" : "16px",
+        cursor: isHorizontal2.value ? "col-resize" : "row-resize",
+        touchAction: "none"
+      };
+    });
+    const draggerPseudoClass = computed(() => {
+      const prefix = ns.e("dragger");
+      return {
+        [`${prefix}-horizontal`]: isHorizontal2.value,
+        [`${prefix}-vertical`]: !isHorizontal2.value,
+        [`${prefix}-active`]: !!startPos.value
+      };
+    });
+    const startPos = ref(null);
+    const onMousedown = (e) => {
+      if (!props2.resizable)
+        return;
+      startPos.value = [e.pageX, e.pageY];
+      emit("moveStart", props2.index);
+      window.addEventListener("mouseup", onMouseUp);
+      window.addEventListener("mousemove", onMouseMove);
+    };
+    const onTouchStart = (e) => {
+      if (props2.resizable && e.touches.length === 1) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        startPos.value = [touch.pageX, touch.pageY];
+        emit("moveStart", props2.index);
+        window.addEventListener("touchend", onTouchEnd);
+        window.addEventListener("touchmove", onTouchMove);
+      }
+    };
+    const onMouseMove = (e) => {
+      const { pageX, pageY } = e;
+      const offsetX = pageX - startPos.value[0];
+      const offsetY = pageY - startPos.value[1];
+      const offset3 = isHorizontal2.value ? offsetX : offsetY;
+      emit("moving", props2.index, offset3);
+    };
+    const onTouchMove = (e) => {
+      if (e.touches.length === 1) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const offsetX = touch.pageX - startPos.value[0];
+        const offsetY = touch.pageY - startPos.value[1];
+        const offset3 = isHorizontal2.value ? offsetX : offsetY;
+        emit("moving", props2.index, offset3);
+      }
+    };
+    const onMouseUp = () => {
+      startPos.value = null;
+      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("mousemove", onMouseMove);
+      emit("moveEnd", props2.index);
+    };
+    const onTouchEnd = () => {
+      startPos.value = null;
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchmove", onTouchMove);
+      emit("moveEnd", props2.index);
+    };
+    const StartIcon = computed(() => isHorizontal2.value ? arrow_left_default : arrow_up_default);
+    const EndIcon = computed(() => isHorizontal2.value ? arrow_right_default : arrow_down_default);
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass([unref(ns).b()]),
+        style: normalizeStyle(unref(barWrapStyles))
+      }, [
+        __props.startCollapsible ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: normalizeClass([unref(ns).e("collapse-icon"), unref(ns).e(`${__props.layout}-collapse-icon-start`)]),
+          onClick: ($event) => emit("collapse", __props.index, "start")
+        }, [
+          renderSlot(_ctx.$slots, "start-collapsible", {}, () => [
+            (openBlock(), createBlock(resolveDynamicComponent(unref(StartIcon)), { style: { "width": "12px", "height": "12px" } }))
+          ])
+        ], 10, ["onClick"])) : createCommentVNode("v-if", true),
+        createBaseVNode("div", {
+          class: normalizeClass([
+            unref(ns).e("dragger"),
+            unref(draggerPseudoClass),
+            __props.resizable ? "" : unref(ns).e("disable"),
+            unref(ns).is("lazy", __props.resizable && __props.lazy)
+          ]),
+          style: normalizeStyle(unref(draggerStyles)),
+          onMousedown,
+          onTouchstart: onTouchStart
+        }, null, 38),
+        __props.endCollapsible ? (openBlock(), createElementBlock("div", {
+          key: 1,
+          class: normalizeClass([unref(ns).e("collapse-icon"), unref(ns).e(`${__props.layout}-collapse-icon-end`)]),
+          onClick: ($event) => emit("collapse", __props.index, "end")
+        }, [
+          renderSlot(_ctx.$slots, "end-collapsible", {}, () => [
+            (openBlock(), createBlock(resolveDynamicComponent(unref(EndIcon)), { style: { "width": "12px", "height": "12px" } }))
+          ])
+        ], 10, ["onClick"])) : createCommentVNode("v-if", true)
+      ], 6);
+    };
+  }
+});
+var SplitBar = _export_sfc(_sfc_main75, [["__file", "split-bar.vue"]]);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-panel.mjs
+var splitterPanelProps = buildProps({
+  min: {
+    type: [String, Number]
+  },
+  max: {
+    type: [String, Number]
+  },
+  size: {
+    type: [String, Number]
+  },
+  resizable: {
+    type: Boolean,
+    default: true
+  },
+  collapsible: Boolean
+});
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-panel2.mjs
+var COMPONENT_NAME12 = "ElSplitterPanel";
+var __default__61 = defineComponent({
+  name: COMPONENT_NAME12
+});
+var _sfc_main76 = defineComponent({
+  ...__default__61,
+  props: splitterPanelProps,
+  emits: ["update:size"],
+  setup(__props, { emit: emits }) {
+    const props2 = __props;
+    const ns = useNamespace("splitter-panel");
+    const splitterContext = inject(splitterRootContextKey);
+    if (!splitterContext)
+      throwError(COMPONENT_NAME12, "usage: <el-splitter><el-splitter-panel /></el-splitter/>");
+    const { panels, layout: layout2, lazy, containerSize, pxSizes } = toRefs(splitterContext);
+    const {
+      registerPanel,
+      unregisterPanel,
+      onCollapse,
+      onMoveEnd,
+      onMoveStart,
+      onMoving
+    } = splitterContext;
+    const panelEl = ref();
+    const instance = getCurrentInstance();
+    const uid2 = instance.uid;
+    const index = ref(0);
+    const panel = computed(() => panels.value[index.value]);
+    const setIndex = (val) => {
+      index.value = val;
+    };
+    const panelSize = computed(() => {
+      var _a2;
+      if (!panel.value)
+        return 0;
+      return (_a2 = pxSizes.value[index.value]) != null ? _a2 : 0;
+    });
+    const nextSize = computed(() => {
+      var _a2;
+      if (!panel.value)
+        return 0;
+      return (_a2 = pxSizes.value[index.value + 1]) != null ? _a2 : 0;
+    });
+    const nextPanel = computed(() => {
+      if (panel.value) {
+        return panels.value[index.value + 1];
+      }
+      return null;
+    });
+    const isResizable = computed(() => {
+      var _a2;
+      if (!nextPanel.value)
+        return false;
+      return props2.resizable && ((_a2 = nextPanel.value) == null ? void 0 : _a2.resizable) && (panelSize.value !== 0 || !props2.min) && (nextSize.value !== 0 || !nextPanel.value.min);
+    });
+    const isShowBar = computed(() => {
+      if (!panel.value)
+        return false;
+      return index.value !== panels.value.length - 1;
+    });
+    const startCollapsible = computed(() => isCollapsible(panel.value, panelSize.value, nextPanel.value, nextSize.value));
+    const endCollapsible = computed(() => isCollapsible(nextPanel.value, nextSize.value, panel.value, panelSize.value));
+    function sizeToPx(str) {
+      if (isPct(str)) {
+        return getPct(str) * containerSize.value || 0;
+      } else if (isPx(str)) {
+        return getPx(str);
+      }
+      return str != null ? str : 0;
+    }
+    let isSizeUpdating = false;
+    watch(() => props2.size, () => {
+      if (!isSizeUpdating && panel.value) {
+        const size3 = sizeToPx(props2.size);
+        const maxSize = sizeToPx(props2.max);
+        const minSize = sizeToPx(props2.min);
+        const finalSize = Math.min(Math.max(size3, minSize || 0), maxSize || size3);
+        if (finalSize !== size3) {
+          emits("update:size", finalSize);
+        }
+        panel.value.size = finalSize;
+      }
+    });
+    watch(() => {
+      var _a2;
+      return (_a2 = panel.value) == null ? void 0 : _a2.size;
+    }, (val) => {
+      if (val !== props2.size) {
+        isSizeUpdating = true;
+        emits("update:size", val);
+        nextTick(() => isSizeUpdating = false);
+      }
+    });
+    watch(() => props2.resizable, (val) => {
+      if (panel.value) {
+        panel.value.resizable = val;
+      }
+    });
+    const _panel = reactive({
+      el: panelEl.value,
+      uid: uid2,
+      getVnode: () => instance.vnode,
+      setIndex,
+      ...props2,
+      collapsible: computed(() => getCollapsible(props2.collapsible))
+    });
+    registerPanel(_panel);
+    onBeforeUnmount(() => unregisterPanel(_panel));
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock(Fragment, null, [
+        createBaseVNode("div", mergeProps({
+          ref_key: "panelEl",
+          ref: panelEl,
+          class: [unref(ns).b()],
+          style: { flexBasis: `${unref(panelSize)}px` }
+        }, _ctx.$attrs), [
+          renderSlot(_ctx.$slots, "default")
+        ], 16),
+        unref(isShowBar) ? (openBlock(), createBlock(SplitBar, {
+          key: 0,
+          index: index.value,
+          layout: unref(layout2),
+          lazy: unref(lazy),
+          resizable: unref(isResizable),
+          "start-collapsible": unref(startCollapsible),
+          "end-collapsible": unref(endCollapsible),
+          onMoveStart: unref(onMoveStart),
+          onMoving: unref(onMoving),
+          onMoveEnd: unref(onMoveEnd),
+          onCollapse: unref(onCollapse)
+        }, {
+          "start-collapsible": withCtx(() => [
+            renderSlot(_ctx.$slots, "start-collapsible")
+          ]),
+          "end-collapsible": withCtx(() => [
+            renderSlot(_ctx.$slots, "end-collapsible")
+          ]),
+          _: 3
+        }, 8, ["index", "layout", "lazy", "resizable", "start-collapsible", "end-collapsible", "onMoveStart", "onMoving", "onMoveEnd", "onCollapse"])) : createCommentVNode("v-if", true)
+      ], 64);
+    };
+  }
+});
+var SplitPanel = _export_sfc(_sfc_main76, [["__file", "split-panel.vue"]]);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/index.mjs
+var ElSplitter = withInstall(Splitter, {
+  SplitPanel
+});
+var ElSplitterPanel = withNoopInstall(SplitPanel);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/src/drawer.mjs
 var drawerProps = buildProps({
   ...dialogProps,
   direction: {
@@ -34532,6 +30765,7 @@ var drawerProps = buildProps({
     default: "rtl",
     values: ["ltr", "rtl", "ttb", "btt"]
   },
+  resizable: Boolean,
   size: {
     type: [String, Number],
     default: "30%"
@@ -34551,13 +30785,13 @@ var drawerProps = buildProps({
 });
 var drawerEmits = dialogEmits;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
-var __default__58 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/src/drawer2.mjs
+var __default__62 = defineComponent({
   name: "ElDrawer",
   inheritAttrs: false
 });
-var _sfc_main73 = defineComponent({
-  ...__default__58,
+var _sfc_main77 = defineComponent({
+  ...__default__62,
   props: drawerProps,
   emits: drawerEmits,
   setup(__props, { expose }) {
@@ -34629,77 +30863,100 @@ var _sfc_main73 = defineComponent({
                     onReleaseRequested: unref(onCloseRequested)
                   }, {
                     default: withCtx(() => [
-                      createBaseVNode("div", mergeProps({
-                        ref_key: "drawerRef",
-                        ref: drawerRef,
-                        "aria-modal": "true",
-                        "aria-label": _ctx.title || void 0,
-                        "aria-labelledby": !_ctx.title ? unref(titleId) : void 0,
-                        "aria-describedby": unref(bodyId)
-                      }, _ctx.$attrs, {
-                        class: [unref(ns).b(), _ctx.direction, unref(visible) && "open"],
-                        style: unref(isHorizontal2) ? "width: " + unref(drawerSize) : "height: " + unref(drawerSize),
-                        role: "dialog",
-                        onClick: withModifiers(() => {
-                        }, ["stop"])
-                      }), [
-                        createBaseVNode("span", {
-                          ref_key: "focusStartRef",
-                          ref: focusStartRef,
-                          class: normalizeClass(unref(ns).e("sr-focus")),
-                          tabindex: "-1"
-                        }, null, 2),
-                        _ctx.withHeader ? (openBlock(), createElementBlock("header", {
-                          key: 0,
-                          class: normalizeClass([unref(ns).e("header"), _ctx.headerClass])
-                        }, [
-                          !_ctx.$slots.title ? renderSlot(_ctx.$slots, "header", {
+                      createVNode(unref(ElSplitter), {
+                        class: normalizeClass(unref(ns).b("splitter")),
+                        layout: unref(isHorizontal2) ? "horizontal" : "vertical"
+                      }, {
+                        default: withCtx(() => [
+                          ["rtl", "btt"].includes(_ctx.direction) ? (openBlock(), createBlock(unref(ElSplitterPanel), {
                             key: 0,
-                            close: unref(handleClose),
-                            titleId: unref(titleId),
-                            titleClass: unref(ns).e("title")
-                          }, () => [
-                            !_ctx.$slots.title ? (openBlock(), createElementBlock("span", {
-                              key: 0,
-                              id: unref(titleId),
-                              role: "heading",
-                              "aria-level": _ctx.headerAriaLevel,
-                              class: normalizeClass(unref(ns).e("title"))
-                            }, toDisplayString(_ctx.title), 11, ["id", "aria-level"])) : createCommentVNode("v-if", true)
-                          ]) : renderSlot(_ctx.$slots, "title", { key: 1 }, () => [
-                            createCommentVNode(" DEPRECATED SLOT ")
-                          ]),
-                          _ctx.showClose ? (openBlock(), createElementBlock("button", {
-                            key: 2,
-                            "aria-label": unref(t)("el.drawer.close"),
-                            class: normalizeClass(unref(ns).e("close-btn")),
-                            type: "button",
-                            onClick: unref(handleClose)
-                          }, [
-                            createVNode(unref(ElIcon), {
-                              class: normalizeClass(unref(ns).e("close"))
-                            }, {
-                              default: withCtx(() => [
-                                createVNode(unref(close_default))
-                              ]),
-                              _: 1
-                            }, 8, ["class"])
-                          ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
-                        ], 2)) : createCommentVNode("v-if", true),
-                        unref(rendered) ? (openBlock(), createElementBlock("div", {
-                          key: 1,
-                          id: unref(bodyId),
-                          class: normalizeClass([unref(ns).e("body"), _ctx.bodyClass])
-                        }, [
-                          renderSlot(_ctx.$slots, "default")
-                        ], 10, ["id"])) : createCommentVNode("v-if", true),
-                        _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
-                          key: 2,
-                          class: normalizeClass([unref(ns).e("footer"), _ctx.footerClass])
-                        }, [
-                          renderSlot(_ctx.$slots, "footer")
-                        ], 2)) : createCommentVNode("v-if", true)
-                      ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])
+                            onClick: unref(onModalClick)
+                          }, null, 8, ["onClick"])) : createCommentVNode("v-if", true),
+                          createVNode(unref(ElSplitterPanel), {
+                            resizable: _ctx.resizable,
+                            size: unref(drawerSize)
+                          }, {
+                            default: withCtx(() => [
+                              createBaseVNode("div", mergeProps({
+                                ref_key: "drawerRef",
+                                ref: drawerRef,
+                                "aria-modal": "true",
+                                "aria-label": _ctx.title || void 0,
+                                "aria-labelledby": !_ctx.title ? unref(titleId) : void 0,
+                                "aria-describedby": unref(bodyId)
+                              }, _ctx.$attrs, {
+                                class: [unref(ns).b(), _ctx.direction, unref(visible) && "open"],
+                                role: "dialog",
+                                onClick: withModifiers(() => {
+                                }, ["stop"])
+                              }), [
+                                createBaseVNode("span", {
+                                  ref_key: "focusStartRef",
+                                  ref: focusStartRef,
+                                  class: normalizeClass(unref(ns).e("sr-focus")),
+                                  tabindex: "-1"
+                                }, null, 2),
+                                _ctx.withHeader ? (openBlock(), createElementBlock("header", {
+                                  key: 0,
+                                  class: normalizeClass([unref(ns).e("header"), _ctx.headerClass])
+                                }, [
+                                  !_ctx.$slots.title ? renderSlot(_ctx.$slots, "header", {
+                                    key: 0,
+                                    close: unref(handleClose),
+                                    titleId: unref(titleId),
+                                    titleClass: unref(ns).e("title")
+                                  }, () => [
+                                    !_ctx.$slots.title ? (openBlock(), createElementBlock("span", {
+                                      key: 0,
+                                      id: unref(titleId),
+                                      role: "heading",
+                                      "aria-level": _ctx.headerAriaLevel,
+                                      class: normalizeClass(unref(ns).e("title"))
+                                    }, toDisplayString(_ctx.title), 11, ["id", "aria-level"])) : createCommentVNode("v-if", true)
+                                  ]) : renderSlot(_ctx.$slots, "title", { key: 1 }, () => [
+                                    createCommentVNode(" DEPRECATED SLOT ")
+                                  ]),
+                                  _ctx.showClose ? (openBlock(), createElementBlock("button", {
+                                    key: 2,
+                                    "aria-label": unref(t)("el.drawer.close"),
+                                    class: normalizeClass(unref(ns).e("close-btn")),
+                                    type: "button",
+                                    onClick: unref(handleClose)
+                                  }, [
+                                    createVNode(unref(ElIcon), {
+                                      class: normalizeClass(unref(ns).e("close"))
+                                    }, {
+                                      default: withCtx(() => [
+                                        createVNode(unref(close_default))
+                                      ]),
+                                      _: 1
+                                    }, 8, ["class"])
+                                  ], 10, ["aria-label", "onClick"])) : createCommentVNode("v-if", true)
+                                ], 2)) : createCommentVNode("v-if", true),
+                                unref(rendered) ? (openBlock(), createElementBlock("div", {
+                                  key: 1,
+                                  id: unref(bodyId),
+                                  class: normalizeClass([unref(ns).e("body"), _ctx.bodyClass])
+                                }, [
+                                  renderSlot(_ctx.$slots, "default")
+                                ], 10, ["id"])) : createCommentVNode("v-if", true),
+                                _ctx.$slots.footer ? (openBlock(), createElementBlock("div", {
+                                  key: 2,
+                                  class: normalizeClass([unref(ns).e("footer"), _ctx.footerClass])
+                                }, [
+                                  renderSlot(_ctx.$slots, "footer")
+                                ], 2)) : createCommentVNode("v-if", true)
+                              ], 16, ["aria-label", "aria-labelledby", "aria-describedby", "onClick"])
+                            ]),
+                            _: 3
+                          }, 8, ["resizable", "size"]),
+                          ["ltr", "ttb"].includes(_ctx.direction) ? (openBlock(), createBlock(unref(ElSplitterPanel), {
+                            key: 1,
+                            onClick: unref(onModalClick)
+                          }, null, 8, ["onClick"])) : createCommentVNode("v-if", true)
+                        ]),
+                        _: 3
+                      }, 8, ["class", "layout"])
                     ]),
                     _: 3
                   }, 8, ["trapped", "focus-trap-el", "focus-start-el", "onFocusAfterTrapped", "onFocusAfterReleased", "onFocusoutPrevented", "onReleaseRequested"])
@@ -34717,31 +30974,31 @@ var _sfc_main73 = defineComponent({
     };
   }
 });
-var Drawer = _export_sfc(_sfc_main73, [["__file", "drawer.vue"]]);
+var Drawer = _export_sfc(_sfc_main77, [["__file", "drawer.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/drawer/index.mjs
 var ElDrawer = withInstall(Drawer);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection2.mjs
-var _sfc_main74 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection2.mjs
+var _sfc_main78 = defineComponent({
   inheritAttrs: false
 });
 function _sfc_render5(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var Collection = _export_sfc(_sfc_main74, [["render", _sfc_render5], ["__file", "collection.vue"]]);
+var Collection = _export_sfc(_sfc_main78, [["render", _sfc_render5], ["__file", "collection.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection-item.mjs
-var _sfc_main75 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection-item.mjs
+var _sfc_main79 = defineComponent({
   name: "ElCollectionItem",
   inheritAttrs: false
 });
 function _sfc_render6(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var CollectionItem = _export_sfc(_sfc_main75, [["render", _sfc_render6], ["__file", "collection-item.vue"]]);
+var CollectionItem = _export_sfc(_sfc_main79, [["render", _sfc_render6], ["__file", "collection-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/collection/src/collection.mjs
 var COLLECTION_ITEM_SIGN = `data-el-collection-item`;
 var createCollectionWithScope = (name) => {
   const COLLECTION_NAME = `El${name}Collection`;
@@ -34801,7 +31058,7 @@ var createCollectionWithScope = (name) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group.mjs
 var rovingFocusGroupProps = buildProps({
   style: { type: definePropType([String, Array, Object]) },
   currentTabId: {
@@ -34828,11 +31085,11 @@ var {
   COLLECTION_ITEM_INJECTION_KEY
 } = createCollectionWithScope("RovingFocusGroup");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/tokens.mjs
 var ROVING_FOCUS_GROUP_INJECTION_KEY = Symbol("elRovingFocusGroup");
 var ROVING_FOCUS_GROUP_ITEM_INJECTION_KEY = Symbol("elRovingFocusGroupItem");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/utils.mjs
 var MAP_KEY_TO_FOCUS_INTENT = {
   ArrowLeft: "prev",
   ArrowUp: "prev",
@@ -34877,11 +31134,11 @@ var focusFirst = (elements) => {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group-impl.mjs
 var CURRENT_TAB_ID_CHANGE_EVT = "currentTabIdChange";
 var ENTRY_FOCUS_EVT = "rovingFocusGroup.entryFocus";
 var EVT_OPTS = { bubbles: false, cancelable: true };
-var _sfc_main76 = defineComponent({
+var _sfc_main80 = defineComponent({
   name: "ElRovingFocusGroupImpl",
   inheritAttrs: false,
   props: rovingFocusGroupProps,
@@ -34967,10 +31224,10 @@ var _sfc_main76 = defineComponent({
 function _sfc_render7(_ctx, _cache, $props, $setup, $data, $options) {
   return renderSlot(_ctx.$slots, "default");
 }
-var ElRovingFocusGroupImpl = _export_sfc(_sfc_main76, [["render", _sfc_render7], ["__file", "roving-focus-group-impl.vue"]]);
+var ElRovingFocusGroupImpl = _export_sfc(_sfc_main80, [["render", _sfc_render7], ["__file", "roving-focus-group-impl.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
-var _sfc_main77 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-group2.mjs
+var _sfc_main81 = defineComponent({
   name: "ElRovingFocusGroup",
   components: {
     ElFocusGroupCollection: ElCollection,
@@ -34992,9 +31249,9 @@ function _sfc_render8(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   });
 }
-var ElRovingFocusGroup = _export_sfc(_sfc_main77, [["render", _sfc_render8], ["__file", "roving-focus-group.vue"]]);
+var ElRovingFocusGroup = _export_sfc(_sfc_main81, [["render", _sfc_render8], ["__file", "roving-focus-group.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown.mjs
 var dropdownProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   triggerKeys: {
@@ -35099,13 +31356,13 @@ var {
   COLLECTION_ITEM_INJECTION_KEY: COLLECTION_ITEM_INJECTION_KEY2
 } = createCollectionWithScope("Dropdown");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/tokens.mjs
 var DROPDOWN_INJECTION_KEY = Symbol("elDropdown");
 var DROPDOWN_INSTANCE_INJECTION_KEY = "elDropdown";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown2.mjs
 var { ButtonGroup: ElButtonGroup2 } = ElButton;
-var _sfc_main78 = defineComponent({
+var _sfc_main82 = defineComponent({
   name: "ElDropdown",
   components: {
     ElButton,
@@ -35391,10 +31648,10 @@ function _sfc_render9(_ctx, _cache, $props, $setup, $data, $options) {
     })) : createCommentVNode("v-if", true)
   ], 2);
 }
-var Dropdown = _export_sfc(_sfc_main78, [["render", _sfc_render9], ["__file", "dropdown.vue"]]);
+var Dropdown = _export_sfc(_sfc_main82, [["render", _sfc_render9], ["__file", "dropdown.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
-var _sfc_main79 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/roving-focus-group/src/roving-focus-item.mjs
+var _sfc_main83 = defineComponent({
   components: {
     ElRovingFocusCollectionItem: ElCollectionItem
   },
@@ -35489,10 +31746,10 @@ function _sfc_render10(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["id", "focusable", "active"]);
 }
-var ElRovingFocusItem = _export_sfc(_sfc_main79, [["render", _sfc_render10], ["__file", "roving-focus-item.vue"]]);
+var ElRovingFocusItem = _export_sfc(_sfc_main83, [["render", _sfc_render10], ["__file", "roving-focus-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
-var _sfc_main80 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-item-impl.mjs
+var _sfc_main84 = defineComponent({
   name: "DropdownItemImpl",
   components: {
     ElIcon
@@ -35572,9 +31829,9 @@ function _sfc_render11(_ctx, _cache, $props, $setup, $data, $options) {
     ], 16, ["aria-disabled", "tabindex", "role", "onClick", "onFocus", "onKeydown", "onMousedown", "onPointermove", "onPointerleave"])
   ], 64);
 }
-var ElDropdownItemImpl = _export_sfc(_sfc_main80, [["render", _sfc_render11], ["__file", "dropdown-item-impl.vue"]]);
+var ElDropdownItemImpl = _export_sfc(_sfc_main84, [["render", _sfc_render11], ["__file", "dropdown-item-impl.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/useDropdown.mjs
 var useDropdown = () => {
   const elDropdown = inject(DROPDOWN_INSTANCE_INJECTION_KEY, {});
   const _elDropdownSize = computed(() => elDropdown == null ? void 0 : elDropdown.dropdownSize);
@@ -35584,8 +31841,8 @@ var useDropdown = () => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
-var _sfc_main81 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-item.mjs
+var _sfc_main85 = defineComponent({
   name: "ElDropdownItem",
   components: {
     ElDropdownCollectionItem: ElCollectionItem2,
@@ -35685,10 +31942,10 @@ function _sfc_render12(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["disabled", "text-value"]);
 }
-var DropdownItem = _export_sfc(_sfc_main81, [["render", _sfc_render12], ["__file", "dropdown-item.vue"]]);
+var DropdownItem = _export_sfc(_sfc_main85, [["render", _sfc_render12], ["__file", "dropdown-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
-var _sfc_main82 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/src/dropdown-menu.mjs
+var _sfc_main86 = defineComponent({
   name: "ElDropdownMenu",
   props: dropdownMenuProps,
   setup(props2) {
@@ -35765,9 +32022,9 @@ function _sfc_render13(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 46, ["role", "aria-labelledby", "onBlur", "onFocus", "onKeydown", "onMousedown"]);
 }
-var DropdownMenu = _export_sfc(_sfc_main82, [["render", _sfc_render13], ["__file", "dropdown-menu.vue"]]);
+var DropdownMenu = _export_sfc(_sfc_main86, [["render", _sfc_render13], ["__file", "dropdown-menu.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/dropdown/index.mjs
 var ElDropdown = withInstall(Dropdown, {
   DropdownItem,
   DropdownMenu
@@ -35775,12 +32032,12 @@ var ElDropdown = withInstall(Dropdown, {
 var ElDropdownItem = withNoopInstall(DropdownItem);
 var ElDropdownMenu = withNoopInstall(DropdownMenu);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/img-empty.mjs
-var __default__59 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/img-empty.mjs
+var __default__63 = defineComponent({
   name: "ImgEmpty"
 });
-var _sfc_main83 = defineComponent({
-  ...__default__59,
+var _sfc_main87 = defineComponent({
+  ...__default__63,
   setup(__props) {
     const ns = useNamespace("empty");
     const id = useId();
@@ -35905,9 +32162,9 @@ var _sfc_main83 = defineComponent({
     };
   }
 });
-var ImgEmpty = _export_sfc(_sfc_main83, [["__file", "img-empty.vue"]]);
+var ImgEmpty = _export_sfc(_sfc_main87, [["__file", "img-empty.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/empty.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/empty2.mjs
 var emptyProps = buildProps({
   image: {
     type: String,
@@ -35920,12 +32177,12 @@ var emptyProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/empty2.mjs
-var __default__60 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/empty/src/empty.mjs
+var __default__64 = defineComponent({
   name: "ElEmpty"
 });
-var _sfc_main84 = defineComponent({
-  ...__default__60,
+var _sfc_main88 = defineComponent({
+  ...__default__64,
   props: emptyProps,
   setup(__props) {
     const props2 = __props;
@@ -35966,12 +32223,12 @@ var _sfc_main84 = defineComponent({
     };
   }
 });
-var Empty = _export_sfc(_sfc_main84, [["__file", "empty.vue"]]);
+var Empty = _export_sfc(_sfc_main88, [["__file", "empty.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/empty/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/empty/index.mjs
 var ElEmpty = withInstall(Empty);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form.mjs
 var formMetaProps = buildProps({
   size: {
     type: String,
@@ -36025,7 +32282,7 @@ var formEmits = {
   validate: (prop, isValid, message2) => (isArray(prop) || isString(prop)) && isBoolean2(isValid) && isString(message2)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/utils.mjs
 function useFormLabelWidth() {
   const potentialLabelWidthArr = ref([]);
   const autoLabelWidth = computed(() => {
@@ -36064,13 +32321,13 @@ var filterFields = (fields, props2) => {
   return normalized.length > 0 ? fields.filter((field) => field.propString && normalized.includes(field.propString)) : fields;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form2.mjs
-var COMPONENT_NAME12 = "ElForm";
-var __default__61 = defineComponent({
-  name: COMPONENT_NAME12
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form2.mjs
+var COMPONENT_NAME13 = "ElForm";
+var __default__65 = defineComponent({
+  name: COMPONENT_NAME13
 });
-var _sfc_main85 = defineComponent({
-  ...__default__61,
+var _sfc_main89 = defineComponent({
+  ...__default__65,
   props: formProps,
   emits: formEmits,
   setup(__props, { expose, emit }) {
@@ -36213,7 +32470,7 @@ var _sfc_main85 = defineComponent({
     };
   }
 });
-var Form = _export_sfc(_sfc_main85, [["__file", "form.vue"]]);
+var Form = _export_sfc(_sfc_main89, [["__file", "form.vue"]]);
 
 // node_modules/.pnpm/async-validator@4.2.5/node_modules/async-validator/dist-web/index.js
 function _extends() {
@@ -37263,7 +33520,7 @@ Schema.warning = warning;
 Schema.messages = messages;
 Schema.validators = validators;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-item.mjs
 var formItemValidateStates = [
   "",
   "error",
@@ -37311,10 +33568,10 @@ var formItemProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
-var COMPONENT_NAME13 = "ElLabelWrap";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-label-wrap.mjs
+var COMPONENT_NAME14 = "ElLabelWrap";
 var FormLabelWrap = defineComponent({
-  name: COMPONENT_NAME13,
+  name: COMPONENT_NAME14,
   props: {
     isAutoWidth: Boolean,
     updateAll: Boolean
@@ -37325,7 +33582,7 @@ var FormLabelWrap = defineComponent({
     const formContext = inject(formContextKey, void 0);
     const formItemContext = inject(formItemContextKey);
     if (!formItemContext)
-      throwError(COMPONENT_NAME13, "usage: <el-form-item><label-wrap /></el-form-item>");
+      throwError(COMPONENT_NAME14, "usage: <el-form-item><label-wrap /></el-form-item>");
     const ns = useNamespace("form");
     const el = ref();
     const computedWidth = ref(0);
@@ -37399,12 +33656,12 @@ var FormLabelWrap = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-item2.mjs
-var __default__62 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/src/form-item2.mjs
+var __default__66 = defineComponent({
   name: "ElFormItem"
 });
-var _sfc_main86 = defineComponent({
-  ...__default__62,
+var _sfc_main90 = defineComponent({
+  ...__default__66,
   props: formItemProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -37707,15 +33964,15 @@ var _sfc_main86 = defineComponent({
     };
   }
 });
-var FormItem = _export_sfc(_sfc_main86, [["__file", "form-item.vue"]]);
+var FormItem = _export_sfc(_sfc_main90, [["__file", "form-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/form/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/form/index.mjs
 var ElForm = withInstall(Form, {
   FormItem
 });
 var ElFormItem = withNoopInstall(FormItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/src/image-viewer.mjs
 var imageViewerProps = buildProps({
   urlList: {
     type: definePropType(Array),
@@ -37761,12 +34018,12 @@ var imageViewerEmits = {
   rotate: (deg) => isNumber2(deg)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
-var __default__63 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/src/image-viewer2.mjs
+var __default__67 = defineComponent({
   name: "ElImageViewer"
 });
-var _sfc_main87 = defineComponent({
-  ...__default__63,
+var _sfc_main91 = defineComponent({
+  ...__default__67,
   props: imageViewerProps,
   emits: imageViewerEmits,
   setup(__props, { expose, emit }) {
@@ -38195,12 +34452,12 @@ var _sfc_main87 = defineComponent({
     };
   }
 });
-var ImageViewer = _export_sfc(_sfc_main87, [["__file", "image-viewer.vue"]]);
+var ImageViewer = _export_sfc(_sfc_main91, [["__file", "image-viewer.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image-viewer/index.mjs
 var ElImageViewer = withInstall(ImageViewer);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image/src/image.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image/src/image.mjs
 var imageProps = buildProps({
   hideOnClickModal: Boolean,
   src: {
@@ -38265,13 +34522,13 @@ var imageEmits = {
   show: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image/src/image2.mjs
-var __default__64 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image/src/image2.mjs
+var __default__68 = defineComponent({
   name: "ElImage",
   inheritAttrs: false
 });
-var _sfc_main88 = defineComponent({
-  ...__default__64,
+var _sfc_main92 = defineComponent({
+  ...__default__68,
   props: imageProps,
   emits: imageEmits,
   setup(__props, { expose, emit }) {
@@ -38342,8 +34599,8 @@ var _sfc_main88 = defineComponent({
       hasLoadError.value = true;
       emit("error", event);
     }
-    function handleLazyLoad() {
-      if (isInContainer(container.value, _scrollContainer.value)) {
+    function handleLazyLoad(isIntersecting) {
+      if (isIntersecting) {
         loadImage();
         removeLazyLoadListener();
       }
@@ -38360,18 +34617,20 @@ var _sfc_main88 = defineComponent({
       } else if (isString(scrollContainer) && scrollContainer !== "") {
         _scrollContainer.value = (_a2 = document.querySelector(scrollContainer)) != null ? _a2 : void 0;
       } else if (container.value) {
-        _scrollContainer.value = getScrollContainer(container.value);
+        const scrollContainer2 = getScrollContainer(container.value);
+        _scrollContainer.value = isWindow(scrollContainer2) ? void 0 : scrollContainer2;
       }
-      if (_scrollContainer.value) {
-        stopScrollListener = useEventListener(_scrollContainer, "scroll", lazyLoadHandler);
-        setTimeout(() => handleLazyLoad(), 100);
-      }
+      const { stop } = useIntersectionObserver(container, ([entry]) => {
+        lazyLoadHandler(entry.isIntersecting);
+      }, { root: _scrollContainer });
+      stopScrollListener = stop;
     }
     function removeLazyLoadListener() {
-      if (!isClient || !_scrollContainer.value || !lazyLoadHandler)
+      if (!isClient || !lazyLoadHandler)
         return;
       stopScrollListener == null ? void 0 : stopScrollListener();
       _scrollContainer.value = void 0;
+      stopScrollListener = void 0;
     }
     function clickHandler() {
       if (!preview.value)
@@ -38479,12 +34738,12 @@ var _sfc_main88 = defineComponent({
     };
   }
 });
-var Image2 = _export_sfc(_sfc_main88, [["__file", "image.vue"]]);
+var Image2 = _export_sfc(_sfc_main92, [["__file", "image.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/image/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/image/index.mjs
 var ElImage = withInstall(Image2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/src/input-number.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/src/input-number.mjs
 var inputNumberProps = buildProps({
   id: {
     type: String,
@@ -38552,12 +34811,12 @@ var inputNumberEmits = {
   [UPDATE_MODEL_EVENT]: (val) => isNumber2(val) || isNil_default(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
-var __default__65 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/src/input-number2.mjs
+var __default__69 = defineComponent({
   name: "ElInputNumber"
 });
-var _sfc_main89 = defineComponent({
-  ...__default__65,
+var _sfc_main93 = defineComponent({
+  ...__default__69,
   props: inputNumberProps,
   emits: inputNumberEmits,
   setup(__props, { expose, emit }) {
@@ -38909,12 +35168,12 @@ var _sfc_main89 = defineComponent({
     };
   }
 });
-var InputNumber = _export_sfc(_sfc_main89, [["__file", "input-number.vue"]]);
+var InputNumber = _export_sfc(_sfc_main93, [["__file", "input-number.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-number/index.mjs
 var ElInputNumber = withInstall(InputNumber);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/input-tag.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/input-tag.mjs
 var inputTagProps = buildProps({
   modelValue: {
     type: definePropType(Array)
@@ -38933,6 +35192,10 @@ var inputTagProps = buildProps({
   },
   size: useSizeProp,
   clearable: Boolean,
+  clearIcon: {
+    type: iconPropType,
+    default: circle_close_default
+  },
   disabled: {
     type: Boolean,
     default: void 0
@@ -38966,6 +35229,12 @@ var inputTagProps = buildProps({
     type: Boolean,
     default: true
   },
+  collapseTags: Boolean,
+  collapseTagsTooltip: Boolean,
+  maxCollapseTags: {
+    type: Number,
+    default: 1
+  },
   ariaLabel: String
 });
 var inputTagEmits = {
@@ -38979,12 +35248,13 @@ var inputTagEmits = {
   clear: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-input-tag.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-input-tag.mjs
 function useInputTag({ props: props2, emit, formItem }) {
   const disabled = useFormDisabled();
   const size3 = useFormSize();
   const inputRef = shallowRef();
   const inputValue = ref();
+  const tagTooltipRef = ref();
   const tagSize = computed(() => {
     return ["small"].includes(size3.value) ? "small" : "default";
   });
@@ -38996,6 +35266,14 @@ function useInputTag({ props: props2, emit, formItem }) {
   const inputLimit = computed(() => {
     var _a2, _b;
     return isUndefined2(props2.max) ? false : ((_b = (_a2 = props2.modelValue) == null ? void 0 : _a2.length) != null ? _b : 0) >= props2.max;
+  });
+  const showTagList = computed(() => {
+    var _a2;
+    return props2.collapseTags ? (_a2 = props2.modelValue) == null ? void 0 : _a2.slice(0, props2.maxCollapseTags) : props2.modelValue;
+  });
+  const collapseTagList = computed(() => {
+    var _a2;
+    return props2.collapseTags ? (_a2 = props2.modelValue) == null ? void 0 : _a2.slice(props2.maxCollapseTags) : [];
   });
   const addTagsEmit = (value) => {
     var _a2;
@@ -39095,6 +35373,10 @@ function useInputTag({ props: props2, emit, formItem }) {
   };
   const { wrapperRef, isFocused } = useFocusController(inputRef, {
     disabled,
+    beforeBlur(event) {
+      var _a2;
+      return (_a2 = tagTooltipRef.value) == null ? void 0 : _a2.isFocusInsideContent(event);
+    },
     afterBlur() {
       var _a2;
       if (props2.saveOnBlur) {
@@ -39122,6 +35404,7 @@ function useInputTag({ props: props2, emit, formItem }) {
   return {
     inputRef,
     wrapperRef,
+    tagTooltipRef,
     isFocused,
     isComposing,
     inputValue,
@@ -39131,6 +35414,8 @@ function useInputTag({ props: props2, emit, formItem }) {
     closable,
     disabled,
     inputLimit,
+    showTagList,
+    collapseTagList,
     handleDragged,
     handleInput,
     handleKeydown,
@@ -39145,7 +35430,7 @@ function useInputTag({ props: props2, emit, formItem }) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-hovering.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-hovering.mjs
 function useHovering() {
   const hovering = ref(false);
   const handleMouseEnter = () => {
@@ -39161,11 +35446,13 @@ function useHovering() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-calc-input-width/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/constants/form.mjs
+var MINIMUM_INPUT_WIDTH = 11;
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-calc-input-width/index.mjs
 function useCalcInputWidth() {
   const calculatorRef = shallowRef();
   const calculatorWidth = ref(0);
-  const MINIMUM_INPUT_WIDTH = 11;
   const inputStyle = computed(() => ({
     minWidth: `${Math.max(calculatorWidth.value, MINIMUM_INPUT_WIDTH)}px`
   }));
@@ -39181,7 +35468,7 @@ function useCalcInputWidth() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-drag-tag.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-drag-tag.mjs
 function useDragTag({
   wrapperRef,
   handleDragged,
@@ -39267,7 +35554,7 @@ function useDragTag({
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-input-tag-dom.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/composables/use-input-tag-dom.mjs
 function useInputTagDom({
   props: props2,
   isFocused,
@@ -39320,13 +35607,13 @@ function useInputTagDom({
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/input-tag2.mjs
-var __default__66 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/src/input-tag2.mjs
+var __default__70 = defineComponent({
   name: "ElInputTag",
   inheritAttrs: false
 });
-var _sfc_main90 = defineComponent({
-  ...__default__66,
+var _sfc_main94 = defineComponent({
+  ...__default__70,
   props: inputTagProps,
   emits: inputTagEmits,
   setup(__props, { expose, emit }) {
@@ -39346,6 +35633,7 @@ var _sfc_main90 = defineComponent({
     const {
       inputRef,
       wrapperRef,
+      tagTooltipRef,
       isFocused,
       inputValue,
       size: size3,
@@ -39353,6 +35641,8 @@ var _sfc_main90 = defineComponent({
       placeholder,
       closable,
       disabled,
+      showTagList,
+      collapseTagList,
       handleDragged,
       handleInput,
       handleKeydown,
@@ -39414,7 +35704,7 @@ var _sfc_main90 = defineComponent({
         createBaseVNode("div", {
           class: normalizeClass(unref(innerKls))
         }, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.modelValue, (item, index) => {
+          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(showTagList), (item, index) => {
             return openBlock(), createBlock(unref(ElTag), {
               key: index,
               size: unref(tagSize),
@@ -39441,6 +35731,58 @@ var _sfc_main90 = defineComponent({
               _: 2
             }, 1032, ["size", "closable", "type", "effect", "draggable", "onClose", "onDragstart", "onDragover", "onDragend", "onDrop"]);
           }), 128)),
+          _ctx.collapseTags && _ctx.modelValue && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(unref(ElTooltip), {
+            key: 0,
+            ref_key: "tagTooltipRef",
+            ref: tagTooltipRef,
+            disabled: !_ctx.collapseTagsTooltip,
+            "fallback-placements": ["bottom", "top", "right", "left"],
+            effect: _ctx.tagEffect,
+            placement: "bottom"
+          }, {
+            default: withCtx(() => [
+              createVNode(unref(ElTag), {
+                closable: false,
+                size: unref(tagSize),
+                type: _ctx.tagType,
+                effect: _ctx.tagEffect,
+                "disable-transitions": ""
+              }, {
+                default: withCtx(() => [
+                  createTextVNode(" + " + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 1)
+                ]),
+                _: 1
+              }, 8, ["size", "type", "effect"])
+            ]),
+            content: withCtx(() => [
+              createBaseVNode("div", {
+                class: normalizeClass(unref(ns).e("input-tag-list"))
+              }, [
+                (openBlock(true), createElementBlock(Fragment, null, renderList(unref(collapseTagList), (item, index) => {
+                  return openBlock(), createBlock(unref(ElTag), {
+                    key: index,
+                    size: unref(tagSize),
+                    closable: unref(closable),
+                    type: _ctx.tagType,
+                    effect: _ctx.tagEffect,
+                    "disable-transitions": "",
+                    onClose: ($event) => unref(handleRemoveTag)(index + _ctx.maxCollapseTags)
+                  }, {
+                    default: withCtx(() => [
+                      renderSlot(_ctx.$slots, "tag", {
+                        value: item,
+                        index: index + _ctx.maxCollapseTags
+                      }, () => [
+                        createTextVNode(toDisplayString(item), 1)
+                      ])
+                    ]),
+                    _: 2
+                  }, 1032, ["size", "closable", "type", "effect", "onClose"]);
+                }), 128))
+              ], 2)
+            ]),
+            _: 3
+          }, 8, ["disabled", "effect"])) : createCommentVNode("v-if", true),
           createBaseVNode("div", {
             class: normalizeClass(unref(ns).e("input-wrapper"))
           }, [
@@ -39498,7 +35840,7 @@ var _sfc_main90 = defineComponent({
             onClick: unref(handleClear)
           }, {
             default: withCtx(() => [
-              createVNode(unref(circle_close_default))
+              (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))
             ]),
             _: 1
           }, 8, ["class", "onMousedown", "onClick"])) : createCommentVNode("v-if", true),
@@ -39520,12 +35862,12 @@ var _sfc_main90 = defineComponent({
     };
   }
 });
-var InputTag = _export_sfc(_sfc_main90, [["__file", "input-tag.vue"]]);
+var InputTag = _export_sfc(_sfc_main94, [["__file", "input-tag.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/input-tag/index.mjs
 var ElInputTag = withInstall(InputTag);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/link/src/link2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/link/src/link.mjs
 var linkProps = buildProps({
   type: {
     type: String,
@@ -39551,12 +35893,12 @@ var linkEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/link/src/link.mjs
-var __default__67 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/link/src/link2.mjs
+var __default__71 = defineComponent({
   name: "ElLink"
 });
-var _sfc_main91 = defineComponent({
-  ...__default__67,
+var _sfc_main95 = defineComponent({
+  ...__default__71,
   props: linkProps,
   emits: linkEmits,
   setup(__props, { emit }) {
@@ -39615,12 +35957,12 @@ var _sfc_main91 = defineComponent({
     };
   }
 });
-var Link = _export_sfc(_sfc_main91, [["__file", "link.vue"]]);
+var Link = _export_sfc(_sfc_main95, [["__file", "link.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/link/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/link/index.mjs
 var ElLink = withInstall(Link);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/submenu.mjs
 var SubMenu = class {
   constructor(parent2, domNode) {
     this.parent = parent2;
@@ -39680,7 +36022,7 @@ var SubMenu = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/menu-item.mjs
 var MenuItem = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -39731,7 +36073,7 @@ var MenuItem = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/utils/menu-bar.mjs
 var Menu = class {
   constructor(domNode, namespace) {
     this.domNode = domNode;
@@ -39747,12 +36089,12 @@ var Menu = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
-var __default__68 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-collapse-transition.mjs
+var __default__72 = defineComponent({
   name: "ElMenuCollapseTransition"
 });
-var _sfc_main92 = defineComponent({
-  ...__default__68,
+var _sfc_main96 = defineComponent({
+  ...__default__72,
   setup(__props) {
     const ns = useNamespace("menu");
     const listeners = {
@@ -39798,9 +36140,9 @@ var _sfc_main92 = defineComponent({
     };
   }
 });
-var ElMenuCollapseTransition = _export_sfc(_sfc_main92, [["__file", "menu-collapse-transition.vue"]]);
+var ElMenuCollapseTransition = _export_sfc(_sfc_main96, [["__file", "menu-collapse-transition.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu.mjs
 function useMenu(instance, currentIndex) {
   const indexPath = computed(() => {
     let parent2 = instance.parent;
@@ -39826,7 +36168,7 @@ function useMenu(instance, currentIndex) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu-color.mjs
 function useMenuColor(props2) {
   const menuBarColor = computed(() => {
     const color = props2.backgroundColor;
@@ -39835,7 +36177,7 @@ function useMenuColor(props2) {
   return menuBarColor;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/use-menu-css-var.mjs
 var useMenuCssVar = (props2, level) => {
   const ns = useNamespace("menu");
   return computed(() => ns.cssVarBlock({
@@ -39848,11 +36190,11 @@ var useMenuCssVar = (props2, level) => {
   }));
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/tokens.mjs
 var MENU_INJECTION_KEY = "rootMenu";
 var SUB_MENU_INJECTION_KEY = "subMenu:";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/sub-menu.mjs
 var subMenuProps = buildProps({
   index: {
     type: String,
@@ -39880,9 +36222,9 @@ var subMenuProps = buildProps({
     type: iconPropType
   }
 });
-var COMPONENT_NAME14 = "ElSubMenu";
+var COMPONENT_NAME15 = "ElSubMenu";
 var SubMenu2 = defineComponent({
-  name: COMPONENT_NAME14,
+  name: COMPONENT_NAME15,
   props: subMenuProps,
   setup(props2, { slots, expose }) {
     const instance = getCurrentInstance();
@@ -39891,10 +36233,10 @@ var SubMenu2 = defineComponent({
     const nsSubMenu = useNamespace("sub-menu");
     const rootMenu = inject(MENU_INJECTION_KEY);
     if (!rootMenu)
-      throwError(COMPONENT_NAME14, "can not inject root menu");
+      throwError(COMPONENT_NAME15, "can not inject root menu");
     const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
     if (!subMenu)
-      throwError(COMPONENT_NAME14, "can not inject sub menu");
+      throwError(COMPONENT_NAME15, "can not inject sub menu");
     const items = ref({});
     const subMenus = ref({});
     let timeout;
@@ -40118,7 +36460,7 @@ var SubMenu2 = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu.mjs
 var menuProps = buildProps({
   mode: {
     type: String,
@@ -40275,7 +36617,7 @@ var Menu2 = defineComponent({
       var _a2, _b;
       if (!menu.value)
         return -1;
-      const items2 = Array.from((_b = (_a2 = menu.value) == null ? void 0 : _a2.childNodes) != null ? _b : []).filter((item) => item.nodeName !== "#text" || item.nodeValue);
+      const items2 = Array.from((_b = (_a2 = menu.value) == null ? void 0 : _a2.childNodes) != null ? _b : []).filter((item) => item.nodeName !== "#comment" && (item.nodeName !== "#text" || item.nodeValue));
       const computedMenuStyle = getComputedStyle(menu.value);
       const paddingLeft = Number.parseInt(computedMenuStyle.paddingLeft, 10);
       const paddingRight = Number.parseInt(computedMenuStyle.paddingRight, 10);
@@ -40283,8 +36625,6 @@ var Menu2 = defineComponent({
       let calcWidth = 0;
       let sliceIndex2 = 0;
       items2.forEach((item, index) => {
-        if (item.nodeName === "#comment")
-          return;
         calcWidth += calcMenuItemWidth(item);
         if (calcWidth <= menuWidth - moreItemWidth) {
           sliceIndex2 = index + 1;
@@ -40396,7 +36736,9 @@ var Menu2 = defineComponent({
       let slot = (_b = (_a2 = slots.default) == null ? void 0 : _a2.call(slots)) != null ? _b : [];
       const vShowMore = [];
       if (props2.mode === "horizontal" && menu.value) {
-        const originalSlot = flattedChildren(slot);
+        const originalSlot = flattedChildren(slot).filter((vnode) => {
+          return (vnode == null ? void 0 : vnode.shapeFlag) !== 8;
+        });
         const slotDefault = sliceIndex.value === -1 ? originalSlot : originalSlot.slice(0, sliceIndex.value);
         const slotMore = sliceIndex.value === -1 ? [] : originalSlot.slice(sliceIndex.value);
         if ((slotMore == null ? void 0 : slotMore.length) && props2.ellipsis) {
@@ -40448,7 +36790,7 @@ var Menu2 = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item.mjs
 var menuItemProps = buildProps({
   index: {
     type: definePropType([String, null]),
@@ -40463,13 +36805,13 @@ var menuItemEmits = {
   click: (item) => isString(item.index) && isArray(item.indexPath)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
-var COMPONENT_NAME15 = "ElMenuItem";
-var __default__69 = defineComponent({
-  name: COMPONENT_NAME15
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item2.mjs
+var COMPONENT_NAME16 = "ElMenuItem";
+var __default__73 = defineComponent({
+  name: COMPONENT_NAME16
 });
-var _sfc_main93 = defineComponent({
-  ...__default__69,
+var _sfc_main97 = defineComponent({
+  ...__default__73,
   props: menuItemProps,
   emits: menuItemEmits,
   setup(__props, { expose, emit }) {
@@ -40480,11 +36822,11 @@ var _sfc_main93 = defineComponent({
     const nsMenu = useNamespace("menu");
     const nsMenuItem = useNamespace("menu-item");
     if (!rootMenu)
-      throwError(COMPONENT_NAME15, "can not inject root menu");
+      throwError(COMPONENT_NAME16, "can not inject root menu");
     const { parentMenu, indexPath } = useMenu(instance, toRef(props2, "index"));
     const subMenu = inject(`${SUB_MENU_INJECTION_KEY}${parentMenu.value.uid}`);
     if (!subMenu)
-      throwError(COMPONENT_NAME15, "can not inject sub menu");
+      throwError(COMPONENT_NAME16, "can not inject sub menu");
     const active = computed(() => props2.index === rootMenu.activeIndex);
     const item = reactive({
       index: props2.index,
@@ -40554,19 +36896,19 @@ var _sfc_main93 = defineComponent({
     };
   }
 });
-var MenuItem2 = _export_sfc(_sfc_main93, [["__file", "menu-item.vue"]]);
+var MenuItem2 = _export_sfc(_sfc_main97, [["__file", "menu-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item-group.mjs
 var menuItemGroupProps = {
   title: String
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
-var __default__70 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/src/menu-item-group2.mjs
+var __default__74 = defineComponent({
   name: "ElMenuItemGroup"
 });
-var _sfc_main94 = defineComponent({
-  ...__default__70,
+var _sfc_main98 = defineComponent({
+  ...__default__74,
   props: menuItemGroupProps,
   setup(__props) {
     const ns = useNamespace("menu-item-group");
@@ -40588,9 +36930,9 @@ var _sfc_main94 = defineComponent({
     };
   }
 });
-var MenuItemGroup = _export_sfc(_sfc_main94, [["__file", "menu-item-group.vue"]]);
+var MenuItemGroup = _export_sfc(_sfc_main98, [["__file", "menu-item-group.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/menu/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/menu/index.mjs
 var ElMenu = withInstall(Menu2, {
   MenuItem: MenuItem2,
   MenuItemGroup,
@@ -40600,7 +36942,7 @@ var ElMenuItem = withNoopInstall(MenuItem2);
 var ElMenuItemGroup = withNoopInstall(MenuItemGroup);
 var ElSubMenu = withNoopInstall(SubMenu2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/src/page-header.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/src/page-header.mjs
 var pageHeaderProps = buildProps({
   icon: {
     type: iconPropType,
@@ -40616,12 +36958,12 @@ var pageHeaderEmits = {
   back: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
-var __default__71 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/src/page-header2.mjs
+var __default__75 = defineComponent({
   name: "ElPageHeader"
 });
-var _sfc_main95 = defineComponent({
-  ...__default__71,
+var _sfc_main99 = defineComponent({
+  ...__default__75,
   props: pageHeaderProps,
   emits: pageHeaderEmits,
   setup(__props, { emit }) {
@@ -40707,15 +37049,15 @@ var _sfc_main95 = defineComponent({
     };
   }
 });
-var PageHeader = _export_sfc(_sfc_main95, [["__file", "page-header.vue"]]);
+var PageHeader = _export_sfc(_sfc_main99, [["__file", "page-header.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/page-header/index.mjs
 var ElPageHeader = withInstall(PageHeader);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/constants.mjs
 var elPaginationKey = Symbol("elPaginationKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/prev.mjs
 var paginationPrevProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -40733,12 +37075,12 @@ var paginationPrevEmits = {
   click: (evt) => evt instanceof MouseEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
-var __default__72 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/prev2.mjs
+var __default__76 = defineComponent({
   name: "ElPaginationPrev"
 });
-var _sfc_main96 = defineComponent({
-  ...__default__72,
+var _sfc_main100 = defineComponent({
+  ...__default__76,
   props: paginationPrevProps,
   emits: paginationPrevEmits,
   setup(__props) {
@@ -40764,9 +37106,9 @@ var _sfc_main96 = defineComponent({
     };
   }
 });
-var Prev = _export_sfc(_sfc_main96, [["__file", "prev.vue"]]);
+var Prev = _export_sfc(_sfc_main100, [["__file", "prev.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/next.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/next.mjs
 var paginationNextProps = buildProps({
   disabled: Boolean,
   currentPage: {
@@ -40785,12 +37127,12 @@ var paginationNextProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
-var __default__73 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/next2.mjs
+var __default__77 = defineComponent({
   name: "ElPaginationNext"
 });
-var _sfc_main97 = defineComponent({
-  ...__default__73,
+var _sfc_main101 = defineComponent({
+  ...__default__77,
   props: paginationNextProps,
   emits: ["click"],
   setup(__props) {
@@ -40816,14 +37158,36 @@ var _sfc_main97 = defineComponent({
     };
   }
 });
-var Next = _export_sfc(_sfc_main97, [["__file", "next.vue"]]);
+var Next = _export_sfc(_sfc_main101, [["__file", "next.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/token.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useProps.mjs
+var defaultProps = {
+  label: "label",
+  value: "value",
+  disabled: "disabled",
+  options: "options"
+};
+function useProps(props2) {
+  const aliasProps = computed(() => ({ ...defaultProps, ...props2.props }));
+  const getLabel = (option) => get_default(option, aliasProps.value.label);
+  const getValue3 = (option) => get_default(option, aliasProps.value.value);
+  const getDisabled = (option) => get_default(option, aliasProps.value.disabled);
+  const getOptions = (option) => get_default(option, aliasProps.value.options);
+  return {
+    aliasProps,
+    getLabel,
+    getValue: getValue3,
+    getDisabled,
+    getOptions
+  };
+}
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/token.mjs
 var selectGroupKey = Symbol("ElSelectGroup");
 var selectKey = Symbol("ElSelect");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option.mjs
-var COMPONENT_NAME16 = "ElOption";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option.mjs
+var COMPONENT_NAME17 = "ElOption";
 var optionProps = buildProps({
   value: {
     type: [String, Number, Boolean, Object],
@@ -40836,15 +37200,15 @@ var optionProps = buildProps({
   disabled: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/strings.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/strings.mjs
 var escapeStringRegexp = (string3 = "") => string3.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
 var capitalize3 = (str) => capitalize(str);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/useOption.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/useOption.mjs
 function useOption(props2, states) {
   const select = inject(selectKey);
   if (!select) {
-    throwError(COMPONENT_NAME16, "usage: <el-select><el-option /></el-select/>");
+    throwError(COMPONENT_NAME17, "usage: <el-select><el-option /></el-select/>");
   }
   const selectGroup = inject(selectGroupKey, { disabled: false });
   const itemSelected = computed(() => {
@@ -40921,10 +37285,10 @@ function useOption(props2, states) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option2.mjs
-var _sfc_main98 = defineComponent({
-  name: COMPONENT_NAME16,
-  componentName: COMPONENT_NAME16,
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option2.mjs
+var _sfc_main102 = defineComponent({
+  name: COMPONENT_NAME17,
+  componentName: COMPONENT_NAME17,
   props: optionProps,
   setup(props2) {
     const ns = useNamespace("select");
@@ -41004,10 +37368,10 @@ function _sfc_render14(_ctx, _cache) {
     [vShow, _ctx.visible]
   ]);
 }
-var Option = _export_sfc(_sfc_main98, [["render", _sfc_render14], ["__file", "option.vue"]]);
+var Option = _export_sfc(_sfc_main102, [["render", _sfc_render14], ["__file", "option.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
-var _sfc_main99 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select-dropdown.mjs
+var _sfc_main103 = defineComponent({
   name: "ElSelectDropdown",
   componentName: "ElSelectDropdown",
   setup() {
@@ -41054,9 +37418,9 @@ function _sfc_render15(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)) : createCommentVNode("v-if", true)
   ], 6);
 }
-var ElSelectMenu = _export_sfc(_sfc_main99, [["render", _sfc_render15], ["__file", "select-dropdown.vue"]]);
+var ElSelectMenu = _export_sfc(_sfc_main103, [["render", _sfc_render15], ["__file", "select-dropdown.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/useSelect.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/useSelect.mjs
 var useSelect = (props2, emit) => {
   const { t } = useLocale();
   const contentId = useId();
@@ -41132,8 +37496,8 @@ var useSelect = (props2, emit) => {
     var _a2;
     return (_a2 = form == null ? void 0 : form.statusIcon) != null ? _a2 : false;
   });
-  const showClose = computed(() => {
-    return props2.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
+  const showClearBtn = computed(() => {
+    return props2.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props2.remote && props2.filterable && !props2.remoteShowSuffix ? "" : props2.suffixIcon);
   const iconReverse = computed(() => nsSelect.is("reverse", !!(iconComponent.value && expanded.value)));
@@ -41513,7 +37877,7 @@ var useSelect = (props2, emit) => {
   const handleClickOutside = (event) => {
     expanded.value = false;
     if (isFocused.value) {
-      const _event2 = new FocusEvent("focus", event);
+      const _event2 = new FocusEvent("blur", event);
       nextTick(() => handleBlur(_event2));
     }
   };
@@ -41595,7 +37959,8 @@ var useSelect = (props2, emit) => {
   };
   const tagStyle = computed(() => {
     const gapWidth = getGapWidth();
-    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
+    const inputSlotWidth = props2.filterable ? gapWidth + MINIMUM_INPUT_WIDTH : 0;
+    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth - inputSlotWidth : states.selectionWidth - inputSlotWidth;
     return { maxWidth: `${maxWidth}px` };
   });
   const collapseTagStyle = computed(() => {
@@ -41646,7 +38011,7 @@ var useSelect = (props2, emit) => {
     currentPlaceholder,
     mouseEnterEventName,
     needStatusIcon,
-    showClose,
+    showClearBtn,
     iconComponent,
     iconReverse,
     validateState,
@@ -41694,7 +38059,7 @@ var useSelect = (props2, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/options.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/options.mjs
 var ElOptions = defineComponent({
   name: "ElOptions",
   setup(_2, { slots }) {
@@ -41733,7 +38098,7 @@ var ElOptions = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select.mjs
 var selectProps = buildProps({
   name: String,
   id: String,
@@ -41765,6 +38130,9 @@ var selectProps = buildProps({
   popperClass: {
     type: String,
     default: ""
+  },
+  popperStyle: {
+    type: definePropType([String, Object])
   },
   popperOptions: {
     type: definePropType(Object),
@@ -41850,7 +38218,8 @@ var selectProps = buildProps({
     type: definePropType(Array)
   },
   props: {
-    type: definePropType(Object)
+    type: definePropType(Object),
+    default: () => defaultProps
   },
   ...useEmptyValuesProps,
   ...useAriaProps(["ariaLabel"])
@@ -41866,15 +38235,93 @@ var selectEmits = {
   clear: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select2.mjs
-var COMPONENT_NAME17 = "ElSelect";
-var _sfc_main100 = defineComponent({
-  name: COMPONENT_NAME17,
-  componentName: COMPONENT_NAME17,
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option-group.mjs
+var _sfc_main104 = defineComponent({
+  name: "ElOptionGroup",
+  componentName: "ElOptionGroup",
+  props: {
+    label: String,
+    disabled: Boolean
+  },
+  setup(props2) {
+    const ns = useNamespace("select");
+    const groupRef = ref();
+    const instance = getCurrentInstance();
+    const children = ref([]);
+    provide(selectGroupKey, reactive({
+      ...toRefs(props2)
+    }));
+    const visible = computed(() => children.value.some((option) => option.visible === true));
+    const isOption = (node) => {
+      var _a2;
+      return node.type.name === "ElOption" && !!((_a2 = node.component) == null ? void 0 : _a2.proxy);
+    };
+    const flattedChildren2 = (node) => {
+      const nodes = castArray_default(node);
+      const children2 = [];
+      nodes.forEach((child) => {
+        var _a2;
+        if (!isVNode(child))
+          return;
+        if (isOption(child)) {
+          children2.push(child.component.proxy);
+        } else if (isArray(child.children) && child.children.length) {
+          children2.push(...flattedChildren2(child.children));
+        } else if ((_a2 = child.component) == null ? void 0 : _a2.subTree) {
+          children2.push(...flattedChildren2(child.component.subTree));
+        }
+      });
+      return children2;
+    };
+    const updateChildren = () => {
+      children.value = flattedChildren2(instance.subTree);
+    };
+    onMounted(() => {
+      updateChildren();
+    });
+    useMutationObserver(groupRef, updateChildren, {
+      attributes: true,
+      subtree: true,
+      childList: true
+    });
+    return {
+      groupRef,
+      visible,
+      ns
+    };
+  }
+});
+function _sfc_render16(_ctx, _cache, $props, $setup, $data, $options) {
+  return withDirectives((openBlock(), createElementBlock("ul", {
+    ref: "groupRef",
+    class: normalizeClass(_ctx.ns.be("group", "wrap"))
+  }, [
+    createBaseVNode("li", {
+      class: normalizeClass(_ctx.ns.be("group", "title"))
+    }, toDisplayString(_ctx.label), 3),
+    createBaseVNode("li", null, [
+      createBaseVNode("ul", {
+        class: normalizeClass(_ctx.ns.b("group"))
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 2)
+    ])
+  ], 2)), [
+    [vShow, _ctx.visible]
+  ]);
+}
+var OptionGroup = _export_sfc(_sfc_main104, [["render", _sfc_render16], ["__file", "option-group.vue"]]);
+
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/select2.mjs
+var COMPONENT_NAME18 = "ElSelect";
+var _sfc_main105 = defineComponent({
+  name: COMPONENT_NAME18,
+  componentName: COMPONENT_NAME18,
   components: {
     ElSelectMenu,
     ElOption: Option,
     ElOptions,
+    ElOptionGroup: OptionGroup,
     ElTag,
     ElScrollbar,
     ElTooltip,
@@ -41914,6 +38361,12 @@ var _sfc_main100 = defineComponent({
     });
     const API = useSelect(_props, emit);
     const { calculatorRef, inputStyle } = useCalcInputWidth();
+    const { getLabel, getValue: getValue3, getOptions, getDisabled } = useProps(props2);
+    const getOptionProps = (option) => ({
+      label: getLabel(option),
+      value: getValue3(option),
+      disabled: getDisabled(option)
+    });
     const flatTreeSelectData = (data) => {
       return data.reduce((acc, item) => {
         acc.push(item);
@@ -41980,15 +38433,21 @@ var _sfc_main100 = defineComponent({
       modelValue,
       selectedLabel,
       calculatorRef,
-      inputStyle
+      inputStyle,
+      getLabel,
+      getValue: getValue3,
+      getOptions,
+      getDisabled,
+      getOptionProps
     };
   }
 });
-function _sfc_render16(_ctx, _cache) {
+function _sfc_render17(_ctx, _cache) {
   const _component_el_tag = resolveComponent("el-tag");
   const _component_el_tooltip = resolveComponent("el-tooltip");
   const _component_el_icon = resolveComponent("el-icon");
   const _component_el_option = resolveComponent("el-option");
+  const _component_el_option_group = resolveComponent("el-option-group");
   const _component_el_options = resolveComponent("el-options");
   const _component_el_scrollbar = resolveComponent("el-scrollbar");
   const _component_el_select_menu = resolveComponent("el-select-menu");
@@ -42005,6 +38464,7 @@ function _sfc_render16(_ctx, _cache) {
       placement: _ctx.placement,
       teleported: _ctx.teleported,
       "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
+      "popper-style": _ctx.popperStyle,
       "popper-options": _ctx.popperOptions,
       "fallback-placements": _ctx.fallbackPlacements,
       effect: _ctx.effect,
@@ -42092,6 +38552,7 @@ function _sfc_render16(_ctx, _cache) {
                   effect: _ctx.effect,
                   placement: "bottom",
                   "popper-class": _ctx.popperClass,
+                  "popper-style": _ctx.popperStyle,
                   teleported: _ctx.teleported
                 }, {
                   default: withCtx(() => [
@@ -42154,7 +38615,7 @@ function _sfc_render16(_ctx, _cache) {
                     ], 2)
                   ]),
                   _: 3
-                }, 8, ["disabled", "effect", "popper-class", "teleported"])) : createCommentVNode("v-if", true)
+                }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
               ]) : createCommentVNode("v-if", true),
               createBaseVNode("div", {
                 class: normalizeClass([
@@ -42227,7 +38688,7 @@ function _sfc_render16(_ctx, _cache) {
               ref: "suffixRef",
               class: normalizeClass(_ctx.nsSelect.e("suffix"))
             }, [
-              _ctx.iconComponent && !_ctx.showClose ? (openBlock(), createBlock(_component_el_icon, {
+              _ctx.iconComponent && !_ctx.showClearBtn ? (openBlock(), createBlock(_component_el_icon, {
                 key: 0,
                 class: normalizeClass([_ctx.nsSelect.e("caret"), _ctx.nsSelect.e("icon"), _ctx.iconReverse])
               }, {
@@ -42236,7 +38697,7 @@ function _sfc_render16(_ctx, _cache) {
                 ]),
                 _: 1
               }, 8, ["class"])) : createCommentVNode("v-if", true),
-              _ctx.showClose && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
+              _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {
                 key: 1,
                 class: normalizeClass([
                   _ctx.nsSelect.e("caret"),
@@ -42299,14 +38760,24 @@ function _sfc_render16(_ctx, _cache) {
                 createVNode(_component_el_options, null, {
                   default: withCtx(() => [
                     renderSlot(_ctx.$slots, "default", {}, () => [
-                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (item, index) => {
-                        var _a2, _b, _c, _d, _e, _f;
-                        return openBlock(), createBlock(_component_el_option, {
-                          key: index,
-                          label: item[(_b = (_a2 = _ctx.props) == null ? void 0 : _a2.label) != null ? _b : "label"],
-                          value: item[(_d = (_c = _ctx.props) == null ? void 0 : _c.value) != null ? _d : "value"],
-                          disabled: item[(_f = (_e = _ctx.props) == null ? void 0 : _e.disabled) != null ? _f : "disabled"]
-                        }, null, 8, ["label", "value", "disabled"]);
+                      (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.options, (option, index) => {
+                        var _a2;
+                        return openBlock(), createElementBlock(Fragment, { key: index }, [
+                          ((_a2 = _ctx.getOptions(option)) == null ? void 0 : _a2.length) ? (openBlock(), createBlock(_component_el_option_group, {
+                            key: 0,
+                            label: _ctx.getLabel(option),
+                            disabled: _ctx.getDisabled(option)
+                          }, {
+                            default: withCtx(() => [
+                              (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.getOptions(option), (item) => {
+                                return openBlock(), createBlock(_component_el_option, mergeProps({
+                                  key: _ctx.getValue(item)
+                                }, _ctx.getOptionProps(item)), null, 16);
+                              }), 128))
+                            ]),
+                            _: 2
+                          }, 1032, ["label", "disabled"])) : (openBlock(), createBlock(_component_el_option, normalizeProps(mergeProps({ key: 1 }, _ctx.getOptionProps(option))), null, 16))
+                        ], 64);
                       }), 128))
                     ])
                   ]),
@@ -42343,91 +38814,14 @@ function _sfc_render16(_ctx, _cache) {
         }, 512)
       ]),
       _: 3
-    }, 8, ["visible", "placement", "teleported", "popper-class", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
+    }, 8, ["visible", "placement", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
   ], 16, ["onMouseleave"])), [
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
-var Select = _export_sfc(_sfc_main100, [["render", _sfc_render16], ["__file", "select.vue"]]);
+var Select = _export_sfc(_sfc_main105, [["render", _sfc_render17], ["__file", "select.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/src/option-group.mjs
-var _sfc_main101 = defineComponent({
-  name: "ElOptionGroup",
-  componentName: "ElOptionGroup",
-  props: {
-    label: String,
-    disabled: Boolean
-  },
-  setup(props2) {
-    const ns = useNamespace("select");
-    const groupRef = ref();
-    const instance = getCurrentInstance();
-    const children = ref([]);
-    provide(selectGroupKey, reactive({
-      ...toRefs(props2)
-    }));
-    const visible = computed(() => children.value.some((option) => option.visible === true));
-    const isOption = (node) => {
-      var _a2;
-      return node.type.name === "ElOption" && !!((_a2 = node.component) == null ? void 0 : _a2.proxy);
-    };
-    const flattedChildren2 = (node) => {
-      const nodes = castArray_default(node);
-      const children2 = [];
-      nodes.forEach((child) => {
-        var _a2;
-        if (!isVNode(child))
-          return;
-        if (isOption(child)) {
-          children2.push(child.component.proxy);
-        } else if (isArray(child.children) && child.children.length) {
-          children2.push(...flattedChildren2(child.children));
-        } else if ((_a2 = child.component) == null ? void 0 : _a2.subTree) {
-          children2.push(...flattedChildren2(child.component.subTree));
-        }
-      });
-      return children2;
-    };
-    const updateChildren = () => {
-      children.value = flattedChildren2(instance.subTree);
-    };
-    onMounted(() => {
-      updateChildren();
-    });
-    useMutationObserver(groupRef, updateChildren, {
-      attributes: true,
-      subtree: true,
-      childList: true
-    });
-    return {
-      groupRef,
-      visible,
-      ns
-    };
-  }
-});
-function _sfc_render17(_ctx, _cache, $props, $setup, $data, $options) {
-  return withDirectives((openBlock(), createElementBlock("ul", {
-    ref: "groupRef",
-    class: normalizeClass(_ctx.ns.be("group", "wrap"))
-  }, [
-    createBaseVNode("li", {
-      class: normalizeClass(_ctx.ns.be("group", "title"))
-    }, toDisplayString(_ctx.label), 3),
-    createBaseVNode("li", null, [
-      createBaseVNode("ul", {
-        class: normalizeClass(_ctx.ns.b("group"))
-      }, [
-        renderSlot(_ctx.$slots, "default")
-      ], 2)
-    ])
-  ], 2)), [
-    [vShow, _ctx.visible]
-  ]);
-}
-var OptionGroup = _export_sfc(_sfc_main101, [["render", _sfc_render17], ["__file", "option-group.vue"]]);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select/index.mjs
 var ElSelect = withInstall(Select, {
   Option,
   OptionGroup
@@ -42435,10 +38829,10 @@ var ElSelect = withInstall(Select, {
 var ElOption = withNoopInstall(Option);
 var ElOptionGroup = withNoopInstall(OptionGroup);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/usePagination.mjs
 var usePagination = () => inject(elPaginationKey, {});
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/sizes.mjs
 var paginationSizesProps = buildProps({
   pageSize: {
     type: Number,
@@ -42460,12 +38854,12 @@ var paginationSizesProps = buildProps({
   appendSizeTo: String
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
-var __default__74 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/sizes2.mjs
+var __default__78 = defineComponent({
   name: "ElPaginationSizes"
 });
-var _sfc_main102 = defineComponent({
-  ...__default__74,
+var _sfc_main106 = defineComponent({
+  ...__default__78,
   props: paginationSizesProps,
   emits: ["page-size-change"],
   setup(__props, { emit }) {
@@ -42522,9 +38916,9 @@ var _sfc_main102 = defineComponent({
     };
   }
 });
-var Sizes = _export_sfc(_sfc_main102, [["__file", "sizes.vue"]]);
+var Sizes = _export_sfc(_sfc_main106, [["__file", "sizes.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/jumper.mjs
 var paginationJumperProps = buildProps({
   size: {
     type: String,
@@ -42532,12 +38926,12 @@ var paginationJumperProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
-var __default__75 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/jumper2.mjs
+var __default__79 = defineComponent({
   name: "ElPaginationJumper"
 });
-var _sfc_main103 = defineComponent({
-  ...__default__75,
+var _sfc_main107 = defineComponent({
+  ...__default__79,
   props: paginationJumperProps,
   setup(__props) {
     const { t } = useLocale();
@@ -42584,9 +38978,9 @@ var _sfc_main103 = defineComponent({
     };
   }
 });
-var Jumper = _export_sfc(_sfc_main103, [["__file", "jumper.vue"]]);
+var Jumper = _export_sfc(_sfc_main107, [["__file", "jumper.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/total.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/total.mjs
 var paginationTotalProps = buildProps({
   total: {
     type: Number,
@@ -42594,12 +38988,12 @@ var paginationTotalProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
-var __default__76 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/total2.mjs
+var __default__80 = defineComponent({
   name: "ElPaginationTotal"
 });
-var _sfc_main104 = defineComponent({
-  ...__default__76,
+var _sfc_main108 = defineComponent({
+  ...__default__80,
   props: paginationTotalProps,
   setup(__props) {
     const { t } = useLocale();
@@ -42615,9 +39009,9 @@ var _sfc_main104 = defineComponent({
     };
   }
 });
-var Total = _export_sfc(_sfc_main104, [["__file", "total.vue"]]);
+var Total = _export_sfc(_sfc_main108, [["__file", "total.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/pager.mjs
 var paginationPagerProps = buildProps({
   currentPage: {
     type: Number,
@@ -42634,12 +39028,12 @@ var paginationPagerProps = buildProps({
   disabled: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
-var __default__77 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/components/pager2.mjs
+var __default__81 = defineComponent({
   name: "ElPaginationPager"
 });
-var _sfc_main105 = defineComponent({
-  ...__default__77,
+var _sfc_main109 = defineComponent({
+  ...__default__81,
   props: paginationPagerProps,
   emits: [CHANGE_EVENT],
   setup(__props, { emit }) {
@@ -42837,9 +39231,9 @@ var _sfc_main105 = defineComponent({
     };
   }
 });
-var Pager = _export_sfc(_sfc_main105, [["__file", "pager.vue"]]);
+var Pager = _export_sfc(_sfc_main109, [["__file", "pager.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/pagination.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/src/pagination.mjs
 var isAbsent = (v2) => typeof v2 !== "number";
 var paginationProps = buildProps({
   pageSize: Number,
@@ -43116,10 +39510,10 @@ var Pagination = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/pagination/index.mjs
 var ElPagination = withInstall(Pagination);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/src/popconfirm.mjs
 var popconfirmProps = buildProps({
   title: String,
   confirmButtonText: String,
@@ -43159,19 +39553,23 @@ var popconfirmEmits = {
   cancel: (e) => e instanceof MouseEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
-var __default__78 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/src/popconfirm2.mjs
+var __default__82 = defineComponent({
   name: "ElPopconfirm"
 });
-var _sfc_main106 = defineComponent({
-  ...__default__78,
+var _sfc_main110 = defineComponent({
+  ...__default__82,
   props: popconfirmProps,
   emits: popconfirmEmits,
-  setup(__props, { emit }) {
+  setup(__props, { expose, emit }) {
     const props2 = __props;
     const { t } = useLocale();
     const ns = useNamespace("popconfirm");
     const tooltipRef = ref();
+    const popperRef = computed(() => {
+      var _a2;
+      return (_a2 = unref(tooltipRef)) == null ? void 0 : _a2.popperRef;
+    });
     const hidePopper = () => {
       var _a2, _b;
       (_b = (_a2 = tooltipRef.value) == null ? void 0 : _a2.onClose) == null ? void 0 : _b.call(_a2);
@@ -43191,6 +39589,10 @@ var _sfc_main106 = defineComponent({
     };
     const finalConfirmButtonText = computed(() => props2.confirmButtonText || t("el.popconfirm.confirmButtonText"));
     const finalCancelButtonText = computed(() => props2.cancelButtonText || t("el.popconfirm.cancelButtonText"));
+    expose({
+      popperRef,
+      hide: hidePopper
+    });
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(ElTooltip), mergeProps({
         ref_key: "tooltipRef",
@@ -43265,12 +39667,12 @@ var _sfc_main106 = defineComponent({
     };
   }
 });
-var Popconfirm = _export_sfc(_sfc_main106, [["__file", "popconfirm.vue"]]);
+var Popconfirm = _export_sfc(_sfc_main110, [["__file", "popconfirm.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popconfirm/index.mjs
 var ElPopconfirm = withInstall(Popconfirm);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/popover.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/popover.mjs
 var popoverProps = buildProps({
   trigger: useTooltipTriggerProps.trigger,
   triggerKeys: useTooltipTriggerProps.triggerKeys,
@@ -43334,13 +39736,13 @@ var popoverEmits = {
   "after-leave": () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/popover2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/popover2.mjs
 var updateEventKeyRaw = `onUpdate:visible`;
-var __default__79 = defineComponent({
+var __default__83 = defineComponent({
   name: "ElPopover"
 });
-var _sfc_main107 = defineComponent({
-  ...__default__79,
+var _sfc_main111 = defineComponent({
+  ...__default__83,
   props: popoverProps,
   emits: popoverEmits,
   setup(__props, { expose, emit }) {
@@ -43441,9 +39843,9 @@ var _sfc_main107 = defineComponent({
     };
   }
 });
-var Popover = _export_sfc(_sfc_main107, [["__file", "popover.vue"]]);
+var Popover = _export_sfc(_sfc_main111, [["__file", "popover.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/directive.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popover/src/directive.mjs
 var attachEvents = (el, binding) => {
   const popperComponent = binding.arg || binding.value;
   const popover = popperComponent == null ? void 0 : popperComponent.popperRef;
@@ -43461,13 +39863,13 @@ var PopoverDirective = {
 };
 var VPopover = "popover";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/popover/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/popover/index.mjs
 var ElPopoverDirective = withInstallDirective(PopoverDirective, VPopover);
 var ElPopover = withInstall(Popover, {
   directive: ElPopoverDirective
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/progress/src/progress.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/progress/src/progress.mjs
 var progressProps = buildProps({
   type: {
     type: String,
@@ -43522,12 +39924,12 @@ var progressProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/progress/src/progress2.mjs
-var __default__80 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/progress/src/progress2.mjs
+var __default__84 = defineComponent({
   name: "ElProgress"
 });
-var _sfc_main108 = defineComponent({
-  ...__default__80,
+var _sfc_main112 = defineComponent({
+  ...__default__84,
   props: progressProps,
   setup(__props) {
     const props2 = __props;
@@ -43723,12 +40125,12 @@ var _sfc_main108 = defineComponent({
     };
   }
 });
-var Progress = _export_sfc(_sfc_main108, [["__file", "progress.vue"]]);
+var Progress = _export_sfc(_sfc_main112, [["__file", "progress.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/progress/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/progress/index.mjs
 var ElProgress = withInstall(Progress);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/rate/src/rate2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/rate/src/rate2.mjs
 var rateProps = buildProps({
   modelValue: {
     type: Number,
@@ -43805,12 +40207,12 @@ var rateEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber2(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/rate/src/rate.mjs
-var __default__81 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/rate/src/rate.mjs
+var __default__85 = defineComponent({
   name: "ElRate"
 });
-var _sfc_main109 = defineComponent({
-  ...__default__81,
+var _sfc_main113 = defineComponent({
+  ...__default__85,
   props: rateProps,
   emits: rateEmits,
   setup(__props, { expose, emit }) {
@@ -44051,12 +40453,12 @@ var _sfc_main109 = defineComponent({
     };
   }
 });
-var Rate = _export_sfc(_sfc_main109, [["__file", "rate.vue"]]);
+var Rate = _export_sfc(_sfc_main113, [["__file", "rate.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/rate/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/rate/index.mjs
 var ElRate = withInstall(Rate);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/result/src/result.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/result/src/result.mjs
 var IconMap = {
   primary: "icon-primary",
   success: "icon-success",
@@ -44087,12 +40489,12 @@ var resultProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/result/src/result2.mjs
-var __default__82 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/result/src/result2.mjs
+var __default__86 = defineComponent({
   name: "ElResult"
 });
-var _sfc_main110 = defineComponent({
-  ...__default__82,
+var _sfc_main114 = defineComponent({
+  ...__default__86,
   props: resultProps,
   setup(__props) {
     const props2 = __props;
@@ -44146,12 +40548,12 @@ var _sfc_main110 = defineComponent({
     };
   }
 });
-var Result = _export_sfc(_sfc_main110, [["__file", "result.vue"]]);
+var Result = _export_sfc(_sfc_main114, [["__file", "result.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/result/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/result/index.mjs
 var ElResult = withInstall(Result);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/row.mjs
 var RowJustify = [
   "start",
   "center",
@@ -44181,12 +40583,12 @@ var rowProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/row2.mjs
-var __default__83 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/row/src/row2.mjs
+var __default__87 = defineComponent({
   name: "ElRow"
 });
-var _sfc_main111 = defineComponent({
-  ...__default__83,
+var _sfc_main115 = defineComponent({
+  ...__default__87,
   props: rowProps,
   setup(__props) {
     const props2 = __props;
@@ -44221,13 +40623,13 @@ var _sfc_main111 = defineComponent({
     };
   }
 });
-var Row = _export_sfc(_sfc_main111, [["__file", "row.vue"]]);
+var Row = _export_sfc(_sfc_main115, [["__file", "row.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/row/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/row/index.mjs
 var ElRow = withInstall(Row);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
-var _sfc_main112 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/group-item.mjs
+var _sfc_main116 = defineComponent({
   props: {
     item: {
       type: Object,
@@ -44251,9 +40653,9 @@ function _sfc_render18(_ctx, _cache, $props, $setup, $data, $options) {
     style: normalizeStyle({ ..._ctx.style, lineHeight: `${_ctx.height}px` })
   }, toDisplayString(_ctx.item.label), 7);
 }
-var GroupItem = _export_sfc(_sfc_main112, [["render", _sfc_render18], ["__file", "group-item.vue"]]);
+var GroupItem = _export_sfc(_sfc_main116, [["render", _sfc_render18], ["__file", "group-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useOption.mjs
 function useOption2(props2, { emit }) {
   return {
     hoverItem: () => {
@@ -44269,29 +40671,7 @@ function useOption2(props2, { emit }) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useProps.mjs
-var defaultProps = {
-  label: "label",
-  value: "value",
-  disabled: "disabled",
-  options: "options"
-};
-function useProps(props2) {
-  const aliasProps = computed(() => ({ ...defaultProps, ...props2.props }));
-  const getLabel = (option) => get_default(option, aliasProps.value.label);
-  const getValue3 = (option) => get_default(option, aliasProps.value.value);
-  const getDisabled = (option) => get_default(option, aliasProps.value.disabled);
-  const getOptions = (option) => get_default(option, aliasProps.value.options);
-  return {
-    aliasProps,
-    getLabel,
-    getValue: getValue3,
-    getDisabled,
-    getOptions
-  };
-}
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/defaults.mjs
 var selectV2Props = buildProps({
   allowCreate: Boolean,
   autocomplete: {
@@ -44366,10 +40746,8 @@ var selectV2Props = buildProps({
     type: Boolean,
     default: true
   },
-  popperClass: {
-    type: String,
-    default: ""
-  },
+  popperClass: useTooltipContentProps.popperClass,
+  popperStyle: useTooltipContentProps.popperStyle,
   popperOptions: {
     type: definePropType(Object),
     default: () => ({})
@@ -44454,11 +40832,11 @@ var optionV2Emits = {
   select: (val, index) => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/token.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/token.mjs
 var selectV2InjectionKey = Symbol("ElSelectV2Injection");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
-var _sfc_main113 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/option-item.mjs
+var _sfc_main117 = defineComponent({
   props: optionV2Props,
   emits: optionV2Emits,
   setup(props2, { emit }) {
@@ -44497,7 +40875,7 @@ function _sfc_render19(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, ["aria-selected", "onMousemove", "onClick"]);
 }
-var OptionItem = _export_sfc(_sfc_main113, [["render", _sfc_render19], ["__file", "option-item.vue"]]);
+var OptionItem = _export_sfc(_sfc_main117, [["render", _sfc_render19], ["__file", "option-item.vue"]]);
 
 // node_modules/.pnpm/memoize-one@6.0.0/node_modules/memoize-one/dist/memoize-one.esm.js
 var safeIsNaN = Number.isNaN || function ponyfill(value) {
@@ -44550,7 +40928,7 @@ function memoizeOne(resultFn, isEqual3) {
   return memoized;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-cache.mjs
 var useCache = () => {
   const vm = getCurrentInstance();
   const props2 = vm.proxy.$props;
@@ -44560,7 +40938,7 @@ var useCache = () => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/defaults.mjs
 var DEFAULT_DYNAMIC_LIST_ITEM_SIZE = 50;
 var ITEM_RENDER_EVT = "itemRendered";
 var SCROLL_EVT = "scroll";
@@ -44588,7 +40966,7 @@ var ScrollbarDirKey = {
 };
 var SCROLLBAR_MIN_SIZE = 20;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-wheel.mjs
 var LayoutKeys = {
   [HORIZONTAL]: "deltaX",
   [VERTICAL]: "deltaY"
@@ -44620,7 +40998,7 @@ var useWheel = ({ atEndEdge, atStartEdge, layout: layout2 }, onWheelDelta) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/props.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/props.mjs
 var itemSize = buildProp({
   type: definePropType([Number, Function]),
   required: true
@@ -44749,7 +41127,7 @@ var virtualizedScrollbarProps = buildProps({
   visible: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/utils.mjs
 var getScrollDir = (prev, cur) => prev < cur ? FORWARD : BACKWARD;
 var isHorizontal = (dir) => dir === LTR || dir === RTL || dir === HORIZONTAL;
 var isRTL = (dir) => dir === RTL;
@@ -44796,7 +41174,7 @@ function renderThumbStyle2({ move, size: size3, bar }, layout2) {
   return style;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/scrollbar.mjs
 var ScrollBar = defineComponent({
   name: "ElVirtualScrollBar",
   props: virtualizedScrollbarProps,
@@ -44833,7 +41211,7 @@ var ScrollBar = defineComponent({
         return ratio * trackSize.value / 100;
       }
       const SCROLLBAR_MAX_SIZE = trackSize.value / 3;
-      return Math.floor(Math.min(Math.max(ratio * trackSize.value, SCROLLBAR_MIN_SIZE), SCROLLBAR_MAX_SIZE));
+      return Math.floor(Math.min(Math.max(ratio * trackSize.value / 100, SCROLLBAR_MIN_SIZE), SCROLLBAR_MAX_SIZE));
     });
     const thumbStyle = computed(() => {
       if (!Number.isFinite(thumbSize.value)) {
@@ -44943,7 +41321,7 @@ var ScrollBar = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/builders/build-list.mjs
 var createList = ({
   name,
   getOffset: getOffset3,
@@ -45293,7 +41671,7 @@ var createList = ({
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-list.mjs
 var FixedSizeList = createList({
   name: "ElFixedSizeList",
   getItemOffset: ({ itemSize: itemSize3 }, index) => index * itemSize3,
@@ -45355,7 +41733,7 @@ var FixedSizeList = createList({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-list.mjs
 var getItemFromCache = (props2, index, listCache) => {
   const { itemSize: itemSize3 } = props2;
   const { items, lastVisitedIndex } = listCache;
@@ -45497,7 +41875,7 @@ var DynamicSizeList = createList({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/select-dropdown.mjs
 var props = {
   loading: Boolean,
   data: {
@@ -45723,7 +42101,7 @@ var ElSelectMenu2 = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useAllowCreate.mjs
 function useAllowCreate(props2, states) {
   const { aliasProps, getLabel, getValue: getValue3 } = useProps(props2);
   const createOptionCount = ref(0);
@@ -45804,7 +42182,7 @@ function useAllowCreate(props2, states) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/useSelect.mjs
 var useSelect2 = (props2, emit) => {
   const { t } = useLocale();
   const nsSelect = useNamespace("select");
@@ -45890,7 +42268,7 @@ var useSelect2 = (props2, emit) => {
     return props2.multiple ? isArray(props2.modelValue) && props2.modelValue.length > 0 : !isEmptyValue2(props2.modelValue);
   });
   const showClearBtn = computed(() => {
-    return props2.clearable && !selectDisabled.value && states.inputHovering && hasModelValue.value;
+    return props2.clearable && !selectDisabled.value && hasModelValue.value && (isFocused.value || states.inputHovering);
   });
   const iconComponent = computed(() => props2.remote && props2.filterable ? "" : props2.suffixIcon);
   const iconReverse = computed(() => iconComponent.value && nsSelect.is("reverse", expanded.value));
@@ -46005,7 +42383,8 @@ var useSelect2 = (props2, emit) => {
   };
   const tagStyle = computed(() => {
     const gapWidth = getGapWidth();
-    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth : states.selectionWidth;
+    const inputSlotWidth = props2.filterable ? gapWidth + MINIMUM_INPUT_WIDTH : 0;
+    const maxWidth = collapseItemRef.value && props2.maxCollapseTags === 1 ? states.selectionWidth - states.collapseItemWidth - gapWidth - inputSlotWidth : states.selectionWidth - inputSlotWidth;
     return { maxWidth: `${maxWidth}px` };
   });
   const collapseTagStyle = computed(() => {
@@ -46333,7 +42712,7 @@ var useSelect2 = (props2, emit) => {
   const handleClickOutside = (event) => {
     expanded.value = false;
     if (isFocused.value) {
-      const _event2 = new FocusEvent("focus", event);
+      const _event2 = new FocusEvent("blur", event);
       handleBlur(_event2);
     }
   };
@@ -46544,8 +42923,8 @@ var useSelect2 = (props2, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/select.mjs
-var _sfc_main114 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/src/select.mjs
+var _sfc_main118 = defineComponent({
   name: "ElSelectV2",
   components: {
     ElSelectMenu: ElSelectMenu2,
@@ -46615,6 +42994,7 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
       visible: _ctx.dropdownMenuVisible,
       teleported: _ctx.teleported,
       "popper-class": [_ctx.nsSelect.e("popper"), _ctx.popperClass],
+      "popper-style": _ctx.popperStyle,
       "gpu-acceleration": false,
       "stop-popper-mouse-event": false,
       "popper-options": _ctx.popperOptions,
@@ -46701,6 +43081,7 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
                 effect: _ctx.effect,
                 placement: "bottom",
                 "popper-class": _ctx.popperClass,
+                "popper-style": _ctx.popperStyle,
                 teleported: _ctx.teleported
               }, {
                 default: withCtx(() => [
@@ -46763,7 +43144,7 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
                   ], 2)
                 ]),
                 _: 3
-              }, 8, ["disabled", "effect", "popper-class", "teleported"])) : createCommentVNode("v-if", true)
+              }, 8, ["disabled", "effect", "popper-class", "popper-style", "teleported"])) : createCommentVNode("v-if", true)
             ]) : createCommentVNode("v-if", true),
             createBaseVNode("div", {
               class: normalizeClass([
@@ -46893,10 +43274,12 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
             name: "header",
             fn: withCtx(() => [
               createBaseVNode("div", {
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "header"))
+                class: normalizeClass(_ctx.nsSelect.be("dropdown", "header")),
+                onClick: withModifiers(() => {
+                }, ["stop"])
               }, [
                 renderSlot(_ctx.$slots, "header")
-              ], 2)
+              ], 10, ["onClick"])
             ])
           } : void 0,
           _ctx.$slots.loading && _ctx.loading ? {
@@ -46924,26 +43307,28 @@ function _sfc_render20(_ctx, _cache, $props, $setup, $data, $options) {
             name: "footer",
             fn: withCtx(() => [
               createBaseVNode("div", {
-                class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer"))
+                class: normalizeClass(_ctx.nsSelect.be("dropdown", "footer")),
+                onClick: withModifiers(() => {
+                }, ["stop"])
               }, [
                 renderSlot(_ctx.$slots, "footer")
-              ], 2)
+              ], 10, ["onClick"])
             ])
           } : void 0
         ]), 1032, ["data", "width", "hovering-index", "scrollbar-always-on"])
       ]),
       _: 3
-    }, 8, ["visible", "teleported", "popper-class", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
+    }, 8, ["visible", "teleported", "popper-class", "popper-style", "popper-options", "fallback-placements", "effect", "placement", "transition", "persistent", "append-to", "show-arrow", "offset", "onBeforeShow", "onHide"])
   ], 42, ["onMouseenter", "onMouseleave"])), [
     [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]
   ]);
 }
-var Select2 = _export_sfc(_sfc_main114, [["render", _sfc_render20], ["__file", "select.vue"]]);
+var Select2 = _export_sfc(_sfc_main118, [["render", _sfc_render20], ["__file", "select.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/select-v2/index.mjs
 var ElSelectV2 = withInstall(Select2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton.mjs
 var skeletonProps = buildProps({
   animated: Boolean,
   count: {
@@ -46963,7 +43348,7 @@ var skeletonProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton-item.mjs
 var skeletonItemProps = buildProps({
   variant: {
     type: String,
@@ -46982,12 +43367,12 @@ var skeletonItemProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
-var __default__84 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton-item2.mjs
+var __default__88 = defineComponent({
   name: "ElSkeletonItem"
 });
-var _sfc_main115 = defineComponent({
-  ...__default__84,
+var _sfc_main119 = defineComponent({
+  ...__default__88,
   props: skeletonItemProps,
   setup(__props) {
     const ns = useNamespace("skeleton");
@@ -47000,9 +43385,9 @@ var _sfc_main115 = defineComponent({
     };
   }
 });
-var SkeletonItem = _export_sfc(_sfc_main115, [["__file", "skeleton-item.vue"]]);
+var SkeletonItem = _export_sfc(_sfc_main119, [["__file", "skeleton-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs
 var useThrottleRender = (loading, throttle2 = 0) => {
   if (throttle2 === 0)
     return loading;
@@ -47043,12 +43428,12 @@ var useThrottleRender = (loading, throttle2 = 0) => {
   return throttled;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
-var __default__85 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/src/skeleton2.mjs
+var __default__89 = defineComponent({
   name: "ElSkeleton"
 });
-var _sfc_main116 = defineComponent({
-  ...__default__85,
+var _sfc_main120 = defineComponent({
+  ...__default__89,
   props: skeletonProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -47086,18 +43471,18 @@ var _sfc_main116 = defineComponent({
     };
   }
 });
-var Skeleton = _export_sfc(_sfc_main116, [["__file", "skeleton.vue"]]);
+var Skeleton = _export_sfc(_sfc_main120, [["__file", "skeleton.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/skeleton/index.mjs
 var ElSkeleton = withInstall(Skeleton, {
   SkeletonItem
 });
 var ElSkeletonItem = withNoopInstall(SkeletonItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/constants.mjs
 var sliderContextKey = Symbol("sliderContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/slider.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/slider2.mjs
 var sliderProps = buildProps({
   modelValue: {
     type: definePropType([Number, Array]),
@@ -47184,7 +43569,7 @@ var sliderEmits = {
   [CHANGE_EVENT]: isValidValue
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/button2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/button.mjs
 var sliderButtonProps = buildProps({
   modelValue: {
     type: Number,
@@ -47202,7 +43587,7 @@ var sliderButtonEmits = {
   [UPDATE_MODEL_EVENT]: (value) => isNumber2(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-slider-button.mjs
 var useTooltip = (props2, formatTooltip, showTooltip) => {
   const tooltip = ref();
   const tooltipVisible = ref(false);
@@ -47438,12 +43823,12 @@ var useSliderButton = (props2, initData, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/button.mjs
-var __default__86 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/button2.mjs
+var __default__90 = defineComponent({
   name: "ElSliderButton"
 });
-var _sfc_main117 = defineComponent({
-  ...__default__86,
+var _sfc_main121 = defineComponent({
+  ...__default__90,
   props: sliderButtonProps,
   emits: sliderButtonEmits,
   setup(__props, { expose, emit }) {
@@ -47524,9 +43909,9 @@ var _sfc_main117 = defineComponent({
     };
   }
 });
-var SliderButton = _export_sfc(_sfc_main117, [["__file", "button.vue"]]);
+var SliderButton = _export_sfc(_sfc_main121, [["__file", "button.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/marker.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/marker.mjs
 var sliderMarkerProps = buildProps({
   mark: {
     type: definePropType([String, Object]),
@@ -47549,7 +43934,7 @@ var SliderMarker = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-slide.mjs
 var useSlide = (props2, initData, emit) => {
   const { form: elForm, formItem: elFormItem } = useFormItem();
   const slider = shallowRef();
@@ -47588,7 +43973,8 @@ var useSlide = (props2, initData, emit) => {
   });
   const resetSize = () => {
     if (slider.value) {
-      initData.sliderSize = slider.value[`client${props2.vertical ? "Height" : "Width"}`];
+      const rect = slider.value.getBoundingClientRect();
+      initData.sliderSize = rect[props2.vertical ? "height" : "width"];
     }
   };
   const getButtonRefByPercent = (percent) => {
@@ -47695,7 +44081,7 @@ var useSlide = (props2, initData, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-stops.mjs
 var useStops = (props2, initData, minValue, maxValue) => {
   const stops = computed(() => {
     if (!props2.showStops || props2.min > props2.max)
@@ -47723,7 +44109,7 @@ var useStops = (props2, initData, minValue, maxValue) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-marks.mjs
 var useMarks = (props2) => {
   return computed(() => {
     if (!props2.marks) {
@@ -47738,7 +44124,7 @@ var useMarks = (props2) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-watch.mjs
 var useWatch = (props2, initData, minValue, maxValue, emit, elFormItem) => {
   const _emit = (val) => {
     emit(UPDATE_MODEL_EVENT, val);
@@ -47811,7 +44197,7 @@ var useWatch = (props2, initData, minValue, maxValue, emit, elFormItem) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/composables/use-lifecycle.mjs
 var useLifecycle = (props2, initData, resetSize) => {
   const sliderWrapper = ref();
   onMounted(async () => {
@@ -47841,12 +44227,12 @@ var useLifecycle = (props2, initData, resetSize) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/slider2.mjs
-var __default__87 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/src/slider.mjs
+var __default__91 = defineComponent({
   name: "ElSlider"
 });
-var _sfc_main118 = defineComponent({
-  ...__default__87,
+var _sfc_main122 = defineComponent({
+  ...__default__91,
   props: sliderProps,
   emits: sliderEmits,
   setup(__props, { expose, emit }) {
@@ -48062,12 +44448,12 @@ var _sfc_main118 = defineComponent({
     };
   }
 });
-var Slider = _export_sfc(_sfc_main118, [["__file", "slider.vue"]]);
+var Slider = _export_sfc(_sfc_main122, [["__file", "slider.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/slider/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/slider/index.mjs
 var ElSlider = withInstall(Slider);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/item.mjs
 var spaceItemProps = buildProps({
   prefixCls: {
     type: String
@@ -48083,7 +44469,7 @@ var SpaceItem = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/use-space.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/use-space.mjs
 var SIZE_MAP = {
   small: 8,
   default: 12,
@@ -48141,7 +44527,7 @@ function useSpace(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/space.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/space/src/space.mjs
 var spaceProps = buildProps({
   direction: {
     type: String,
@@ -48262,10 +44648,10 @@ var Space = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/space/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/space/index.mjs
 var ElSpace = withInstall(Space);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/src/statistic.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/src/statistic.mjs
 var statisticProps = buildProps({
   decimalSeparator: {
     type: String,
@@ -48292,12 +44678,12 @@ var statisticProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/src/statistic2.mjs
-var __default__88 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/src/statistic2.mjs
+var __default__92 = defineComponent({
   name: "ElStatistic"
 });
-var _sfc_main119 = defineComponent({
-  ...__default__88,
+var _sfc_main123 = defineComponent({
+  ...__default__92,
   props: statisticProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -48356,12 +44742,12 @@ var _sfc_main119 = defineComponent({
     };
   }
 });
-var Statistic = _export_sfc(_sfc_main119, [["__file", "statistic.vue"]]);
+var Statistic = _export_sfc(_sfc_main123, [["__file", "statistic.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/statistic/index.mjs
 var ElStatistic = withInstall(Statistic);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/countdown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/countdown.mjs
 var countdownProps = buildProps({
   format: {
     type: String,
@@ -48383,7 +44769,7 @@ var countdownEmits = {
   [CHANGE_EVENT]: (value) => isNumber2(value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/utils.mjs
 var timeUnits2 = [
   ["Y", 1e3 * 60 * 60 * 24 * 365],
   ["M", 1e3 * 60 * 60 * 24 * 30],
@@ -48411,12 +44797,12 @@ var formatTime = (timestamp2, format2) => {
   return replacedText.replace(escapeRegex, "$1");
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/countdown2.mjs
-var __default__89 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/src/countdown2.mjs
+var __default__93 = defineComponent({
   name: "ElCountdown"
 });
-var _sfc_main120 = defineComponent({
-  ...__default__89,
+var _sfc_main124 = defineComponent({
+  ...__default__93,
   props: countdownProps,
   emits: countdownEmits,
   setup(__props, { expose, emit }) {
@@ -48485,12 +44871,12 @@ var _sfc_main120 = defineComponent({
     };
   }
 });
-var Countdown = _export_sfc(_sfc_main120, [["__file", "countdown.vue"]]);
+var Countdown = _export_sfc(_sfc_main124, [["__file", "countdown.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/countdown/index.mjs
 var ElCountdown = withInstall(Countdown);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/steps.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/steps2.mjs
 var stepsProps = buildProps({
   space: {
     type: [Number, String],
@@ -48526,15 +44912,15 @@ var stepsEmits = {
   [CHANGE_EVENT]: (newVal, oldVal) => [newVal, oldVal].every(isNumber2)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/tokens.mjs
 var STEPS_INJECTION_KEY = "ElSteps";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/steps2.mjs
-var __default__90 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/steps.mjs
+var __default__94 = defineComponent({
   name: "ElSteps"
 });
-var _sfc_main121 = defineComponent({
-  ...__default__90,
+var _sfc_main125 = defineComponent({
+  ...__default__94,
   props: stepsProps,
   emits: stepsEmits,
   setup(__props, { emit }) {
@@ -48565,9 +44951,9 @@ var _sfc_main121 = defineComponent({
     };
   }
 });
-var Steps = _export_sfc(_sfc_main121, [["__file", "steps.vue"]]);
+var Steps = _export_sfc(_sfc_main125, [["__file", "steps.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/item.mjs
 var stepProps = buildProps({
   title: {
     type: String,
@@ -48587,12 +44973,12 @@ var stepProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/item2.mjs
-var __default__91 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/src/item2.mjs
+var __default__95 = defineComponent({
   name: "ElStep"
 });
-var _sfc_main122 = defineComponent({
-  ...__default__91,
+var _sfc_main126 = defineComponent({
+  ...__default__95,
   props: stepProps,
   setup(__props) {
     const props2 = __props;
@@ -48614,9 +45000,9 @@ var _sfc_main122 = defineComponent({
     const currentStatus = computed(() => {
       return props2.status || internalStatus.value;
     });
-    const prevStatus = computed(() => {
+    const prevInternalStatus = computed(() => {
       const prevStep = parent2.steps.value[index.value - 1];
-      return prevStep ? prevStep.currentStatus : "wait";
+      return prevStep ? prevStep.internalStatus.value : "wait";
     });
     const isCenter = computed(() => {
       return parent2.props.alignCenter;
@@ -48672,7 +45058,7 @@ var _sfc_main122 = defineComponent({
     const updateStatus = (activeIndex) => {
       if (activeIndex > index.value) {
         internalStatus.value = parent2.props.finishStatus;
-      } else if (activeIndex === index.value && prevStatus.value !== "error") {
+      } else if (activeIndex === index.value && prevInternalStatus.value !== "error") {
         internalStatus.value = parent2.props.processStatus;
       } else {
         internalStatus.value = "wait";
@@ -48681,13 +45067,14 @@ var _sfc_main122 = defineComponent({
       if (prevChild)
         prevChild.calcProgress(internalStatus.value);
     };
-    const stepItemState = reactive({
+    const stepItemState = {
       uid: currentInstance.uid,
       getVnode: () => currentInstance.vnode,
       currentStatus,
+      internalStatus,
       setIndex,
       calcProgress
-    });
+    };
     parent2.addStep(stepItemState);
     onBeforeUnmount(() => {
       parent2.removeStep(stepItemState);
@@ -48772,18 +45159,18 @@ var _sfc_main122 = defineComponent({
     };
   }
 });
-var Step = _export_sfc(_sfc_main122, [["__file", "item.vue"]]);
+var Step = _export_sfc(_sfc_main126, [["__file", "item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/steps/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/steps/index.mjs
 var ElSteps = withInstall(Steps, {
   Step
 });
 var ElStep = withNoopInstall(Step);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/validator.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/validator.mjs
 var isValidComponentSize = (val) => ["", ...componentSizes].includes(val);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/switch/src/switch.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/switch/src/switch.mjs
 var switchProps = buildProps({
   modelValue: {
     type: [Boolean, String, Number],
@@ -48851,13 +45238,13 @@ var switchEmits = {
   [INPUT_EVENT]: (val) => isBoolean2(val) || isString(val) || isNumber2(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/switch/src/switch2.mjs
-var COMPONENT_NAME18 = "ElSwitch";
-var __default__92 = defineComponent({
-  name: COMPONENT_NAME18
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/switch/src/switch2.mjs
+var COMPONENT_NAME19 = "ElSwitch";
+var __default__96 = defineComponent({
+  name: COMPONENT_NAME19
 });
-var _sfc_main123 = defineComponent({
-  ...__default__92,
+var _sfc_main127 = defineComponent({
+  ...__default__96,
   props: switchProps,
   emits: switchEmits,
   setup(__props, { expose, emit }) {
@@ -48933,7 +45320,7 @@ var _sfc_main123 = defineComponent({
         isBoolean2(shouldChange)
       ].includes(true);
       if (!isPromiseOrBool) {
-        throwError(COMPONENT_NAME18, "beforeChange must return type `Promise<boolean>` or `boolean`");
+        throwError(COMPONENT_NAME19, "beforeChange must return type `Promise<boolean>` or `boolean`");
       }
       if (isPromise(shouldChange)) {
         shouldChange.then((result2) => {
@@ -49066,12 +45453,12 @@ var _sfc_main123 = defineComponent({
     };
   }
 });
-var Switch = _export_sfc(_sfc_main123, [["__file", "switch.vue"]]);
+var Switch = _export_sfc(_sfc_main127, [["__file", "switch.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/switch/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/switch/index.mjs
 var ElSwitch = withInstall(Switch);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/util.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/util.mjs
 var getCell = function(event) {
   var _a2;
   return (_a2 = event.target) == null ? void 0 : _a2.closest("td");
@@ -49395,8 +45782,15 @@ function createTablePopper(props2, popperContent, row, column2, trigger, table) 
   vm.component.exposed.onOpen();
   const scrollContainer = parentNode == null ? void 0 : parentNode.querySelector(`.${ns}-scrollbar__wrap`);
   removePopper = () => {
+    var _a22, _b;
+    if ((_b = (_a22 = vm.component) == null ? void 0 : _a22.exposed) == null ? void 0 : _b.onClose) {
+      vm.component.exposed.onClose();
+    }
     render(null, container);
-    scrollContainer == null ? void 0 : scrollContainer.removeEventListener("scroll", removePopper);
+    const currentRemovePopper = removePopper;
+    scrollContainer == null ? void 0 : scrollContainer.removeEventListener("scroll", currentRemovePopper);
+    currentRemovePopper.trigger = void 0;
+    currentRemovePopper.vm = void 0;
     removePopper = null;
   };
   removePopper.trigger = trigger != null ? trigger : void 0;
@@ -49494,7 +45888,7 @@ var ensurePosition = (style, key) => {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/expand.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/expand.mjs
 function useExpand(watcherData) {
   const instance = getCurrentInstance();
   const defaultExpandAll = ref(false);
@@ -49557,7 +45951,7 @@ function useExpand(watcherData) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/current.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/current.mjs
 function useCurrent(watcherData) {
   const instance = getCurrentInstance();
   const _currentRowKey = ref(null);
@@ -49624,7 +46018,7 @@ function useCurrent(watcherData) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/tree.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/tree.mjs
 function useTree(watcherData) {
   const expandRowKeys = ref([]);
   const treeData = ref({});
@@ -49836,7 +46230,7 @@ function useTree(watcherData) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/watcher.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/watcher.mjs
 var sortData = (data, states) => {
   const sortingColumn = states.sortingColumn;
   if (!sortingColumn || isString(sortingColumn.sortable)) {
@@ -50276,7 +46670,7 @@ function useWatcher() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/index.mjs
 function replaceColumn(array4, column2) {
   return array4.map((item) => {
     var _a2;
@@ -50463,7 +46857,7 @@ function useStore() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/store/helper.mjs
 var InitialStateMap = {
   rowKey: "rowKey",
   defaultExpandAll: "defaultExpandAll",
@@ -50525,7 +46919,7 @@ function getArrKeysValue(props2, key) {
   }
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-layout.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-layout.mjs
 var TableLayout = class {
   constructor(options) {
     this.observers = [];
@@ -50720,9 +47114,9 @@ var TableLayout = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/filter-panel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/filter-panel.mjs
 var { CheckboxGroup: ElCheckboxGroup2 } = ElCheckbox;
-var _sfc_main124 = defineComponent({
+var _sfc_main128 = defineComponent({
   name: "ElTableFilterPanel",
   components: {
     ElCheckbox,
@@ -50995,9 +47389,9 @@ function _sfc_render21(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["visible", "placement", "popper-class", "append-to"]);
 }
-var FilterPanel = _export_sfc(_sfc_main124, [["render", _sfc_render21], ["__file", "filter-panel.vue"]]);
+var FilterPanel = _export_sfc(_sfc_main128, [["render", _sfc_render21], ["__file", "filter-panel.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/layout-observer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/layout-observer.mjs
 function useLayoutObserver(root2) {
   const instance = getCurrentInstance();
   onBeforeMount(() => {
@@ -51061,10 +47455,10 @@ function useLayoutObserver(root2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/tokens.mjs
 var TABLE_INJECTION_KEY = Symbol("ElTable");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/event-helper.mjs
 function useEvent(props2, emit) {
   const instance = getCurrentInstance();
   const parent2 = inject(TABLE_INJECTION_KEY);
@@ -51239,7 +47633,7 @@ function useEvent(props2, emit) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/style.helper.mjs
 function useStyle(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
@@ -51314,7 +47708,7 @@ function useStyle(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/utils-helper.mjs
 var getAllColumns = (columns2) => {
   const result2 = [];
   columns2.forEach((column2) => {
@@ -51390,7 +47784,7 @@ function useUtils(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-header/index.mjs
 var TableHeader = defineComponent({
   name: "ElTableHeader",
   components: {
@@ -51604,7 +47998,7 @@ var TableHeader = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/events-helper.mjs
 function isGreaterThan(a2, b2, epsilon = 0.03) {
   return a2 - b2 > epsilon;
 }
@@ -51672,7 +48066,7 @@ function useEvents(props2) {
     }
   };
   const handleCellMouseEnter = (event, row, tooltipOptions) => {
-    var _a2, _b, _c, _d, _e, _f;
+    var _a2, _b, _c, _d, _e, _f, _g, _h;
     if (!parent2)
       return;
     const table = parent2;
@@ -51697,6 +48091,9 @@ function useEvents(props2) {
       table == null ? void 0 : table.emit("cell-mouse-enter", hoverState.row, hoverState.column, hoverState.cell, event);
     }
     if (!tooltipOptions) {
+      if (((_d = removePopper) == null ? void 0 : _d.trigger) === cell) {
+        (_e = removePopper) == null ? void 0 : _e();
+      }
       return;
     }
     const cellChild = event.target.querySelector(".cell");
@@ -51712,9 +48109,9 @@ function useEvents(props2) {
     const horizontalPadding = left + right;
     const verticalPadding = top + bottom;
     if (isGreaterThan(rangeWidth + horizontalPadding, cellChildWidth) || isGreaterThan(rangeHeight + verticalPadding, cellChildHeight) || isGreaterThan(cellChild.scrollWidth, cellChildWidth)) {
-      createTablePopper(tooltipOptions, (_d = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _d : "", row, column2, cell, table);
-    } else if (((_e = removePopper) == null ? void 0 : _e.trigger) === cell) {
-      (_f = removePopper) == null ? void 0 : _f();
+      createTablePopper(tooltipOptions, (_f = (cell == null ? void 0 : cell.innerText) || (cell == null ? void 0 : cell.textContent)) != null ? _f : "", row, column2, cell, table);
+    } else if (((_g = removePopper) == null ? void 0 : _g.trigger) === cell) {
+      (_h = removePopper) == null ? void 0 : _h();
     }
   };
   const handleCellMouseLeave = (event) => {
@@ -51740,7 +48137,7 @@ function useEvents(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/styles-helper.mjs
 function useStyles(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
@@ -51845,12 +48242,12 @@ function useStyles(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/td-wrapper.mjs
-var __default__93 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/td-wrapper.mjs
+var __default__97 = defineComponent({
   name: "TableTdWrapper"
 });
-var _sfc_main125 = defineComponent({
-  ...__default__93,
+var _sfc_main129 = defineComponent({
+  ...__default__97,
   props: {
     colspan: {
       type: Number,
@@ -51872,9 +48269,9 @@ var _sfc_main125 = defineComponent({
     };
   }
 });
-var TdWrapper = _export_sfc(_sfc_main125, [["__file", "td-wrapper.vue"]]);
+var TdWrapper = _export_sfc(_sfc_main129, [["__file", "td-wrapper.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/render-helper.mjs
 function useRender(props2) {
   const parent2 = inject(TABLE_INJECTION_KEY);
   const ns = useNamespace("table");
@@ -52081,7 +48478,7 @@ function useRender(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/defaults.mjs
 var defaultProps2 = {
   store: {
     required: true,
@@ -52105,7 +48502,7 @@ var defaultProps2 = {
   highlight: Boolean
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-body/index.mjs
 var TableBody = defineComponent({
   name: "ElTableBody",
   props: defaultProps2,
@@ -52190,7 +48587,7 @@ var TableBody = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/mapState-helper.mjs
 function useMapState() {
   const table = inject(TABLE_INJECTION_KEY);
   const store = table == null ? void 0 : table.store;
@@ -52227,7 +48624,7 @@ function useMapState() {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/style-helper.mjs
 function useStyle2(props2) {
   const { columns: columns2 } = useMapState();
   const ns = useNamespace("table");
@@ -52261,7 +48658,7 @@ function useStyle2(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-footer/index.mjs
 var TableFooter = defineComponent({
   name: "ElTableFooter",
   props: {
@@ -52358,7 +48755,7 @@ var TableFooter = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/utils-helper.mjs
 function useUtils2(store) {
   const setCurrentRow = (row) => {
     store.commit("setCurrentRow", row);
@@ -52405,7 +48802,7 @@ function useUtils2(store) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/style-helper.mjs
 function useStyle3(props2, layout2, store, table) {
   const isHidden2 = ref(false);
   const renderExpanded = ref(null);
@@ -52670,7 +49067,7 @@ function useStyle3(props2, layout2, store, table) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/key-render-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/key-render-helper.mjs
 function useKeyRender(table) {
   const observer = ref();
   const initWatchDom = () => {
@@ -52692,7 +49089,7 @@ function useKeyRender(table) {
   });
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table/defaults.mjs
 var defaultProps3 = {
   data: {
     type: Array,
@@ -52782,7 +49179,7 @@ var defaultProps3 = {
   nativeScrollbar: Boolean
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/h-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/h-helper.mjs
 function hColgroup(props2) {
   const isAuto = props2.tableLayout === "auto";
   let columns2 = props2.columns || [];
@@ -52810,7 +49207,7 @@ function hColgroup(props2) {
 }
 hColgroup.props = ["columns", "tableLayout"];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/composables/use-scrollbar.mjs
 var useScrollbar = () => {
   const scrollBarRef = ref();
   const scrollTo = (options, yCoord) => {
@@ -52931,7 +49328,7 @@ T.getEventType = function() {
 };
 var Y = T;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/directives/mousewheel/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/directives/mousewheel/index.mjs
 var mousewheel = function(element, callback) {
   if (element && element.addEventListener) {
     const fn2 = function(event) {
@@ -52947,9 +49344,9 @@ var Mousewheel = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table.mjs
 var tableIdSeed = 1;
-var _sfc_main126 = defineComponent({
+var _sfc_main130 = defineComponent({
   name: "ElTable",
   directives: {
     Mousewheel
@@ -53295,9 +49692,9 @@ function _sfc_render22(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 46, ["data-prefix", "onMouseleave"]);
 }
-var Table = _export_sfc(_sfc_main126, [["render", _sfc_render22], ["__file", "table.vue"]]);
+var Table = _export_sfc(_sfc_main130, [["render", _sfc_render22], ["__file", "table.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/config.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/config.mjs
 var defaultClassNames = {
   selection: "table-column--selection",
   expand: "table__expand-column"
@@ -53507,7 +49904,7 @@ function treeCellPrefix({
   return ele;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/watcher-helper.mjs
 function getAllAliases(props2, aliases) {
   return props2.reduce((prev, cur) => {
     prev[cur] = cur;
@@ -53557,6 +49954,7 @@ function useWatcher2(owner, props_) {
       "showOverflowTooltip",
       "tooltipFormatter"
     ];
+    const parentProps = ["showOverflowTooltip"];
     const aliases = {
       property: "prop",
       align: "realAlign",
@@ -53571,6 +49969,13 @@ function useWatcher2(owner, props_) {
         });
       }
     });
+    parentProps.forEach((key) => {
+      if (hasOwn(owner.value.props, key)) {
+        watch(() => owner.value.props[key], (newVal) => {
+          instance.columnConfig.value[key] = newVal;
+        });
+      }
+    });
   };
   return {
     registerComplexWatchers,
@@ -53578,7 +49983,7 @@ function useWatcher2(owner, props_) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/render-helper.mjs
 function useRender2(props2, slots, owner) {
   const instance = getCurrentInstance();
   const columnId = ref("");
@@ -53742,7 +50147,7 @@ function useRender2(props2, slots, owner) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/defaults.mjs
 var defaultProps4 = {
   type: {
     type: String,
@@ -53805,7 +50210,7 @@ var defaultProps4 = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/src/table-column/index.mjs
 var columnIdSeed = 1;
 var ElTableColumn = defineComponent({
   name: "ElTableColumn",
@@ -53943,13 +50348,13 @@ var ElTableColumn = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table/index.mjs
 var ElTable = withInstall(Table, {
   TableColumn: ElTableColumn
 });
 var ElTableColumn2 = withNoopInstall(ElTableColumn);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/constants.mjs
 var SortOrder = ((SortOrder2) => {
   SortOrder2["ASC"] = "asc";
   SortOrder2["DESC"] = "desc";
@@ -53977,10 +50382,10 @@ var oppositeOrderMap = {
   /* ASC */
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/private.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/private.mjs
 var placeholderSign = Symbol("placeholder");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/utils.mjs
 var calcColumnStyle = (column2, fixedColumn, fixed) => {
   var _a2;
   const flex = {
@@ -54009,7 +50414,7 @@ var calcColumnStyle = (column2, fixedColumn, fixed) => {
   return style;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-columns.mjs
 function useColumns(props2, columns2, fixed) {
   const _columns = computed(() => unref(columns2).map((column2, index) => {
     var _a2, _b;
@@ -54095,7 +50500,7 @@ function useColumns(props2, columns2, fixed) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-scrollbar.mjs
 var useScrollbar2 = (props2, {
   mainTableRef,
   leftTableRef,
@@ -54152,7 +50557,7 @@ var useScrollbar2 = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-row.mjs
 var useRow = (props2, {
   mainTableRef,
   leftTableRef,
@@ -54288,7 +50693,7 @@ var useRow = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-data.mjs
 var useData = (props2, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex }) => {
   const depthMap = ref({});
   const flattenedData = computed(() => {
@@ -54329,7 +50734,7 @@ var useData = (props2, { expandedRowKeys, lastRenderedRowIndex, resetAfterIndex 
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/utils.mjs
 var sumReducer = (sum22, num) => sum22 + num;
 var sum2 = (listLike) => {
   return isArray(listLike) ? listLike.reduce(sumReducer, 0) : listLike;
@@ -54345,7 +50750,7 @@ var enforceUnit = (style) => {
 };
 var componentToSlot = (ComponentLike) => isVNode(ComponentLike) ? (props2) => h(ComponentLike, props2) : ComponentLike;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-styles.mjs
 var useStyles2 = (props2, {
   columnsTotalWidth,
   rowsHeight,
@@ -54415,7 +50820,7 @@ var useStyles2 = (props2, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/use-table.mjs
 function useTable(props2) {
   const mainTableRef = ref();
   const leftTableRef = ref();
@@ -54569,11 +50974,11 @@ function useTable(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/tokens.mjs
 var TableV2InjectionKey = Symbol("tableV2");
 var TABLE_V2_GRID_INJECTION_KEY = "tableV2GridScrollLeft";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/common.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/common.mjs
 var classType = String;
 var columns = {
   type: definePropType(Array),
@@ -54606,7 +51011,7 @@ var styleType = {
   type: definePropType(Object)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/row.mjs
 var tableV2RowProps = buildProps({
   class: String,
   columns,
@@ -54647,7 +51052,7 @@ var tableV2RowProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/header.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/header.mjs
 var requiredNumberType = {
   type: Number,
   required: true
@@ -54675,7 +51080,7 @@ var tableV2HeaderProps = buildProps({
   width: requiredNumberType
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/grid.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/grid.mjs
 var tableV2GridProps = buildProps({
   columns,
   data: dataType,
@@ -54708,7 +51113,7 @@ var tableV2GridProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table.mjs
 var tableV2Props = buildProps({
   cache: tableV2GridProps.cache,
   estimatedRowHeight: tableV2RowProps.estimatedRowHeight,
@@ -54804,10 +51209,10 @@ var tableV2Props = buildProps({
   rowEventHandlers: tableV2RowProps.rowEventHandlers
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
-var COMPONENT_NAME19 = "ElTableV2Header";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header.mjs
+var COMPONENT_NAME20 = "ElTableV2Header";
 var TableV2Header = defineComponent({
-  name: COMPONENT_NAME19,
+  name: COMPONENT_NAME20,
   props: tableV2HeaderProps,
   setup(props2, {
     slots,
@@ -54899,7 +51304,7 @@ var TableV2Header = defineComponent({
 });
 var Header2 = TableV2Header;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/hooks/use-grid-wheel.mjs
 var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWheelDelta) => {
   let frameHandle = null;
   let xOffset = 0;
@@ -54939,7 +51344,7 @@ var useGridWheel = ({ atXEndEdge, atXStartEdge, atYEndEdge, atYStartEdge }, onWh
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/builders/build-grid.mjs
 var createGrid = ({
   name,
   clearCache,
@@ -55372,7 +51777,7 @@ var createGrid = ({
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/dynamic-size-grid.mjs
 var { max: max2, min: min2, floor: floor2 } = Math;
 var ACCESS_SIZER_KEY_MAP = {
   column: "columnWidth",
@@ -55598,7 +52003,7 @@ var DynamicSizeGrid = createGrid({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/virtual-list/src/components/fixed-size-grid.mjs
 var FixedSizeGrid = createGrid({
   name: "ElFixedSizeGrid",
   getColumnPosition: ({ columnWidth }, index) => [
@@ -55709,8 +52114,8 @@ var FixedSizeGrid = createGrid({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
-var COMPONENT_NAME20 = "ElTableV2Grid";
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table-grid.mjs
+var COMPONENT_NAME21 = "ElTableV2Grid";
 var useTableGrid = (props2) => {
   const headerRef = ref();
   const bodyRef = ref();
@@ -55822,7 +52227,7 @@ var useTableGrid = (props2) => {
   };
 };
 var TableGrid = defineComponent({
-  name: COMPONENT_NAME20,
+  name: COMPONENT_NAME21,
   props: tableV2GridProps,
   setup(props2, {
     slots,
@@ -55942,8 +52347,8 @@ var TableGrid = defineComponent({
 });
 var Table2 = TableGrid;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
-function _isSlot(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/main-table.mjs
+function _isSlot3(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
 var MainTable = (props2, {
@@ -55955,14 +52360,14 @@ var MainTable = (props2, {
   } = props2;
   return createVNode(Table2, mergeProps({
     "ref": mainTableRef
-  }, rest2), _isSlot(slots) ? slots : {
+  }, rest2), _isSlot3(slots) ? slots : {
     default: () => [slots]
   });
 };
 var MainTable$1 = MainTable;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
-function _isSlot2(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/left-table.mjs
+function _isSlot4(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
 var LeftTable = (props2, {
@@ -55976,14 +52381,14 @@ var LeftTable = (props2, {
   } = props2;
   return createVNode(Table2, mergeProps({
     "ref": leftTableRef
-  }, rest2), _isSlot2(slots) ? slots : {
+  }, rest2), _isSlot4(slots) ? slots : {
     default: () => [slots]
   });
 };
 var LeftTable$1 = LeftTable;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
-function _isSlot3(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/right-table.mjs
+function _isSlot5(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
 var LeftTable2 = (props2, {
@@ -55997,13 +52402,13 @@ var LeftTable2 = (props2, {
   } = props2;
   return createVNode(Table2, mergeProps({
     "ref": rightTableRef
-  }, rest2), _isSlot3(slots) ? slots : {
+  }, rest2), _isSlot5(slots) ? slots : {
     default: () => [slots]
   });
 };
 var RightTable = LeftTable2;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/row.mjs
 var useTableRow = (props2) => {
   const {
     isScrolling
@@ -56115,9 +52520,9 @@ var useTableRow = (props2) => {
     onExpand
   };
 };
-var COMPONENT_NAME21 = "ElTableV2TableRow";
+var COMPONENT_NAME22 = "ElTableV2TableRow";
 var TableV2Row = defineComponent({
-  name: COMPONENT_NAME21,
+  name: COMPONENT_NAME22,
   props: tableV2RowProps,
   setup(props2, {
     expose,
@@ -56203,8 +52608,8 @@ var TableV2Row = defineComponent({
 });
 var Row2 = TableV2Row;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
-function _isSlot4(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/row.mjs
+function _isSlot6(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
 var RowRenderer = (props2, {
@@ -56289,13 +52694,13 @@ var RowRenderer = (props2, {
     "onMouseenter": handlerMouseEnter,
     "onMouseleave": handlerMouseLeave,
     "rowkey": _rowKey
-  }), _isSlot4(slots) ? slots : {
+  }), _isSlot6(slots) ? slots : {
     default: () => [slots]
   });
 };
 var Row3 = RowRenderer;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/cell.mjs
 var TableV2Cell = (props2, {
   slots
 }) => {
@@ -56316,7 +52721,7 @@ TableV2Cell.displayName = "ElTableV2Cell";
 TableV2Cell.inheritAttrs = false;
 var TableCell = TableV2Cell;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/expand-icon.mjs
 var ExpandIcon = (props2) => {
   const {
     expanded,
@@ -56338,7 +52743,7 @@ var ExpandIcon = (props2) => {
 };
 var ExpandIcon$1 = ExpandIcon;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/cell.mjs
 var CellRenderer = ({
   columns: columns2,
   column: column2,
@@ -56428,7 +52833,7 @@ var CellRenderer = ({
 CellRenderer.inheritAttrs = false;
 var Cell = CellRenderer;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/header-row.mjs
 var tableV2HeaderRowProps = buildProps({
   class: String,
   columns,
@@ -56440,7 +52845,7 @@ var tableV2HeaderRowProps = buildProps({
   style: { type: definePropType(Object) }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header-row.mjs
 var TableV2HeaderRow = defineComponent({
   name: "ElTableV2HeaderRow",
   props: tableV2HeaderRowProps,
@@ -56485,8 +52890,8 @@ var TableV2HeaderRow = defineComponent({
 });
 var HeaderRow = TableV2HeaderRow;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
-function _isSlot5(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/header.mjs
+function _isSlot7(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
 var HeaderRenderer = ({
@@ -56515,13 +52920,13 @@ var HeaderRenderer = ({
     headerIndex,
     style
   };
-  return createVNode(HeaderRow, extraProps, _isSlot5(slots) ? slots : {
+  return createVNode(HeaderRow, extraProps, _isSlot7(slots) ? slots : {
     default: () => [slots]
   });
 };
 var Header3 = HeaderRenderer;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/header-cell.mjs
 var HeaderCell = (props2, {
   slots
 }) => renderSlot(slots, "default", props2, () => {
@@ -56535,7 +52940,7 @@ HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 var HeaderCell$1 = HeaderCell;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/sort-icon.mjs
 var SortIcon = (props2) => {
   const {
     sortOrder
@@ -56549,7 +52954,7 @@ var SortIcon = (props2) => {
 };
 var SortIcon$1 = SortIcon;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs
 var HeaderCellRenderer = (props2, {
   slots
 }) => {
@@ -56608,7 +53013,7 @@ var HeaderCellRenderer = (props2, {
 };
 var HeaderCell2 = HeaderCellRenderer;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/footer.mjs
 var Footer2 = (props2, {
   slots
 }) => {
@@ -56621,7 +53026,7 @@ var Footer2 = (props2, {
 Footer2.displayName = "ElTableV2Footer";
 var Footer$1 = Footer2;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/empty.mjs
 var Footer3 = (props2, {
   slots
 }) => {
@@ -56634,7 +53039,7 @@ var Footer3 = (props2, {
 Footer3.displayName = "ElTableV2Empty";
 var Empty2 = Footer3;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/renderers/overlay.mjs
 var Overlay2 = (props2, {
   slots
 }) => {
@@ -56647,13 +53052,13 @@ var Overlay2 = (props2, {
 Overlay2.displayName = "ElTableV2Overlay";
 var Overlay$1 = Overlay2;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
-function _isSlot6(s2) {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/table-v2.mjs
+function _isSlot8(s2) {
   return typeof s2 === "function" || Object.prototype.toString.call(s2) === "[object Object]" && !isVNode(s2);
 }
-var COMPONENT_NAME22 = "ElTableV2";
+var COMPONENT_NAME23 = "ElTableV2";
 var TableV2 = defineComponent({
-  name: COMPONENT_NAME22,
+  name: COMPONENT_NAME23,
   props: tableV2Props,
   setup(props2, {
     slots,
@@ -56851,7 +53256,7 @@ var TableV2 = defineComponent({
             let _slot;
             return slots.cell ? createVNode(Cell, mergeProps(props3, tableCellProps, {
               "style": _columnsStyles[props3.column.key]
-            }), _isSlot6(_slot = slots.cell(props3)) ? _slot : {
+            }), _isSlot8(_slot = slots.cell(props3)) ? _slot : {
               default: () => [_slot]
             }) : createVNode(Cell, mergeProps(props3, tableCellProps, {
               "style": _columnsStyles[props3.column.key]
@@ -56864,7 +53269,7 @@ var TableV2 = defineComponent({
             let _slot2;
             return slots["header-cell"] ? createVNode(HeaderCell2, mergeProps(props3, tableHeaderCellProps, {
               "style": _columnsStyles[props3.column.key]
-            }), _isSlot6(_slot2 = slots["header-cell"](props3)) ? _slot2 : {
+            }), _isSlot8(_slot2 = slots["header-cell"](props3)) ? _slot2 : {
               default: () => [_slot2]
             }) : createVNode(HeaderCell2, mergeProps(props3, tableHeaderCellProps, {
               "style": _columnsStyles[props3.column.key]
@@ -56882,11 +53287,11 @@ var TableV2 = defineComponent({
       return createVNode("div", {
         "class": rootKls,
         "style": unref(rootStyle)
-      }, [createVNode(MainTable$1, mainTableProps, _isSlot6(tableSlots) ? tableSlots : {
+      }, [createVNode(MainTable$1, mainTableProps, _isSlot8(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
-      }), createVNode(LeftTable$1, leftTableProps, _isSlot6(tableSlots) ? tableSlots : {
+      }), createVNode(LeftTable$1, leftTableProps, _isSlot8(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
-      }), createVNode(RightTable, rightTableProps, _isSlot6(tableSlots) ? tableSlots : {
+      }), createVNode(RightTable, rightTableProps, _isSlot8(tableSlots) ? tableSlots : {
         default: () => [tableSlots]
       }), slots.footer && createVNode(Footer$1, footerProps, {
         default: slots.footer
@@ -56905,7 +53310,7 @@ var TableV2 = defineComponent({
 });
 var TableV2$1 = TableV2;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/auto-resizer.mjs
 var autoResizerProps = buildProps({
   disableWidth: Boolean,
   disableHeight: Boolean,
@@ -56914,7 +53319,7 @@ var autoResizerProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/composables/use-auto-resize.mjs
 var useAutoResize = (props2) => {
   const sizer = ref();
   const width$ = ref(0);
@@ -56949,7 +53354,7 @@ var useAutoResize = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/src/components/auto-resizer.mjs
 var AutoResizer = defineComponent({
   name: "ElAutoResizer",
   props: autoResizerProps,
@@ -56981,14 +53386,14 @@ var AutoResizer = defineComponent({
 });
 var AutoResizer$1 = AutoResizer;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/table-v2/index.mjs
 var ElTableV2 = withInstall(TableV2$1);
 var ElAutoResizer = withInstall(AutoResizer$1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/constants.mjs
 var tabsRootContextKey = Symbol("tabsRootContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-bar.mjs
 var tabBarProps = buildProps({
   tabs: {
     type: definePropType(Array),
@@ -57000,19 +53405,19 @@ var tabBarProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
-var COMPONENT_NAME23 = "ElTabBar";
-var __default__94 = defineComponent({
-  name: COMPONENT_NAME23
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-bar2.mjs
+var COMPONENT_NAME24 = "ElTabBar";
+var __default__98 = defineComponent({
+  name: COMPONENT_NAME24
 });
-var _sfc_main127 = defineComponent({
-  ...__default__94,
+var _sfc_main131 = defineComponent({
+  ...__default__98,
   props: tabBarProps,
   setup(__props, { expose }) {
     const props2 = __props;
     const rootTabs = inject(tabsRootContextKey);
     if (!rootTabs)
-      throwError(COMPONENT_NAME23, "<el-tabs><el-tab-bar /></el-tabs>");
+      throwError(COMPONENT_NAME24, "<el-tabs><el-tab-bar /></el-tabs>");
     const ns = useNamespace("tabs");
     const barRef = ref();
     const barStyle = ref();
@@ -57079,9 +53484,9 @@ var _sfc_main127 = defineComponent({
     };
   }
 });
-var TabBar = _export_sfc(_sfc_main127, [["__file", "tab-bar.vue"]]);
+var TabBar = _export_sfc(_sfc_main131, [["__file", "tab-bar.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-nav.mjs
 var tabNavProps = buildProps({
   panes: {
     type: definePropType(Array),
@@ -57103,9 +53508,9 @@ var tabNavEmits = {
   tabClick: (tab, tabName, ev) => ev instanceof Event,
   tabRemove: (tab, ev) => ev instanceof Event
 };
-var COMPONENT_NAME24 = "ElTabNav";
+var COMPONENT_NAME25 = "ElTabNav";
 var TabNav = defineComponent({
-  name: COMPONENT_NAME24,
+  name: COMPONENT_NAME25,
   props: tabNavProps,
   emits: tabNavEmits,
   setup(props2, {
@@ -57114,7 +53519,7 @@ var TabNav = defineComponent({
   }) {
     const rootTabs = inject(tabsRootContextKey);
     if (!rootTabs)
-      throwError(COMPONENT_NAME24, `<el-tabs><tab-nav /></el-tabs>`);
+      throwError(COMPONENT_NAME25, `<el-tabs><tab-nav /></el-tabs>`);
     const ns = useNamespace("tabs");
     const visibility = useDocumentVisibility();
     const focused = useWindowFocus();
@@ -57350,7 +53755,7 @@ var TabNav = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tabs.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tabs.mjs
 var tabsProps = buildProps({
   type: {
     type: String,
@@ -57520,7 +53925,7 @@ var Tabs = defineComponent({
 });
 var Tabs$1 = Tabs;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-pane.mjs
 var tabPaneProps = buildProps({
   label: {
     type: String,
@@ -57534,13 +53939,13 @@ var tabPaneProps = buildProps({
   lazy: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
-var COMPONENT_NAME25 = "ElTabPane";
-var __default__95 = defineComponent({
-  name: COMPONENT_NAME25
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/src/tab-pane2.mjs
+var COMPONENT_NAME26 = "ElTabPane";
+var __default__99 = defineComponent({
+  name: COMPONENT_NAME26
 });
-var _sfc_main128 = defineComponent({
-  ...__default__95,
+var _sfc_main132 = defineComponent({
+  ...__default__99,
   props: tabPaneProps,
   setup(__props) {
     const props2 = __props;
@@ -57548,7 +53953,7 @@ var _sfc_main128 = defineComponent({
     const slots = useSlots();
     const tabsRoot = inject(tabsRootContextKey);
     if (!tabsRoot)
-      throwError(COMPONENT_NAME25, "usage: <el-tabs><el-tab-pane /></el-tabs/>");
+      throwError(COMPONENT_NAME26, "usage: <el-tabs><el-tab-pane /></el-tabs/>");
     const ns = useNamespace("tab-pane");
     const paneRef = ref();
     const index = ref();
@@ -57609,15 +54014,15 @@ var _sfc_main128 = defineComponent({
     };
   }
 });
-var TabPane = _export_sfc(_sfc_main128, [["__file", "tab-pane.vue"]]);
+var TabPane = _export_sfc(_sfc_main132, [["__file", "tab-pane.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tabs/index.mjs
 var ElTabs = withInstall(Tabs$1, {
   TabPane
 });
 var ElTabPane = withNoopInstall(TabPane);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/text/src/text.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/text/src/text2.mjs
 var textProps = buildProps({
   type: {
     type: String,
@@ -57639,12 +54044,12 @@ var textProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/text/src/text2.mjs
-var __default__96 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/text/src/text.mjs
+var __default__100 = defineComponent({
   name: "ElText"
 });
-var _sfc_main129 = defineComponent({
-  ...__default__96,
+var _sfc_main133 = defineComponent({
+  ...__default__100,
   props: textProps,
   setup(__props) {
     const props2 = __props;
@@ -57701,16 +54106,16 @@ var _sfc_main129 = defineComponent({
     };
   }
 });
-var Text2 = _export_sfc(_sfc_main129, [["__file", "text.vue"]]);
+var Text2 = _export_sfc(_sfc_main133, [["__file", "text.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/text/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/text/index.mjs
 var ElText = withInstall(Text2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
 var import_dayjs18 = __toESM(require_dayjs_min(), 1);
 var import_customParseFormat3 = __toESM(require_customParseFormat(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select.mjs
 var timeSelectProps = buildProps({
   format: {
     type: String,
@@ -57765,7 +54170,7 @@ var timeSelectProps = buildProps({
   ...useEmptyValuesProps
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/utils.mjs
 var parseTime = (time) => {
   const values2 = (time || "").split(":");
   if (values2.length >= 2) {
@@ -57822,12 +54227,12 @@ var nextTime = (time, step2) => {
   return formatTime2(next);
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
-var __default__97 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/src/time-select2.mjs
+var __default__101 = defineComponent({
   name: "ElTimeSelect"
 });
-var _sfc_main130 = defineComponent({
-  ...__default__97,
+var _sfc_main134 = defineComponent({
+  ...__default__101,
   props: timeSelectProps,
   emits: [CHANGE_EVENT, "blur", "focus", "clear", UPDATE_MODEL_EVENT],
   setup(__props, { expose }) {
@@ -57942,15 +54347,15 @@ var _sfc_main130 = defineComponent({
     };
   }
 });
-var TimeSelect = _export_sfc(_sfc_main130, [["__file", "time-select.vue"]]);
+var TimeSelect = _export_sfc(_sfc_main134, [["__file", "time-select.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/time-select/index.mjs
 var ElTimeSelect = withInstall(TimeSelect);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/tokens.mjs
 var TIMELINE_INJECTION_KEY = "timeline";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline.mjs
 var Timeline = defineComponent({
   name: "ElTimeline",
   setup(_2, { slots }) {
@@ -57962,7 +54367,7 @@ var Timeline = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline-item.mjs
 var timelineItemProps = buildProps({
   timestamp: {
     type: String,
@@ -57995,12 +54400,12 @@ var timelineItemProps = buildProps({
   hollow: Boolean
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
-var __default__98 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/src/timeline-item2.mjs
+var __default__102 = defineComponent({
   name: "ElTimelineItem"
 });
-var _sfc_main131 = defineComponent({
-  ...__default__98,
+var _sfc_main135 = defineComponent({
+  ...__default__102,
   props: timelineItemProps,
   setup(__props) {
     const props2 = __props;
@@ -58062,15 +54467,15 @@ var _sfc_main131 = defineComponent({
     };
   }
 });
-var TimelineItem = _export_sfc(_sfc_main131, [["__file", "timeline-item.vue"]]);
+var TimelineItem = _export_sfc(_sfc_main135, [["__file", "timeline-item.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/timeline/index.mjs
 var ElTimeline = withInstall(Timeline, {
   TimelineItem
 });
 var ElTimelineItem = withNoopInstall(TimelineItem);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/common.mjs
 var tooltipV2CommonProps = buildProps({
   nowrap: Boolean
 });
@@ -58083,7 +54488,7 @@ var TooltipV2Sides = ((TooltipV2Sides2) => {
 })(TooltipV2Sides || {});
 var tooltipV2Sides = Object.values(TooltipV2Sides);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
 var tooltipV2ArrowProps = buildProps({
   width: {
     type: Number,
@@ -58106,7 +54511,7 @@ var tooltipV2ArrowSpecialProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
 var tooltipV2Strategies = ["absolute", "fixed"];
 var tooltipV2Placements = [
   "top-start",
@@ -58154,7 +54559,7 @@ var tooltipV2ContentProps = buildProps({
   ...useAriaProps(["ariaLabel"])
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/root.mjs
 var tooltipV2RootProps = buildProps({
   delayDuration: {
     type: Number,
@@ -58173,7 +54578,7 @@ var tooltipV2RootProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/trigger.mjs
 var EventHandler = {
   type: definePropType(Function)
 };
@@ -58186,7 +54591,7 @@ var tooltipV2TriggerProps = buildProps({
   onMouseLeave: EventHandler
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/tooltip.mjs
 var tooltipV2Props = buildProps({
   ...tooltipV2RootProps,
   ...tooltipV2ArrowProps,
@@ -58205,17 +54610,17 @@ var tooltipV2Props = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/constants.mjs
 var tooltipV2RootKey = Symbol("tooltipV2");
 var tooltipV2ContentKey = Symbol("tooltipV2Content");
 var TOOLTIP_V2_OPEN = "tooltip_v2.open";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
-var __default__99 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/root2.mjs
+var __default__103 = defineComponent({
   name: "ElTooltipV2Root"
 });
-var _sfc_main132 = defineComponent({
-  ...__default__99,
+var _sfc_main136 = defineComponent({
+  ...__default__103,
   props: tooltipV2RootProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -58282,14 +54687,14 @@ var _sfc_main132 = defineComponent({
     };
   }
 });
-var TooltipV2Root = _export_sfc(_sfc_main132, [["__file", "root.vue"]]);
+var TooltipV2Root = _export_sfc(_sfc_main136, [["__file", "root.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/arrow.mjs
-var __default__100 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/arrow2.mjs
+var __default__104 = defineComponent({
   name: "ElTooltipV2Arrow"
 });
-var _sfc_main133 = defineComponent({
-  ...__default__100,
+var _sfc_main137 = defineComponent({
+  ...__default__104,
   props: {
     ...tooltipV2ArrowProps,
     ...tooltipV2ArrowSpecialProps
@@ -58319,7 +54724,7 @@ var _sfc_main133 = defineComponent({
     };
   }
 });
-var TooltipV2Arrow = _export_sfc(_sfc_main133, [["__file", "arrow.vue"]]);
+var TooltipV2Arrow = _export_sfc(_sfc_main137, [["__file", "arrow.vue"]]);
 
 // node_modules/.pnpm/@floating-ui+utils@0.2.10/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 var sides = ["top", "right", "bottom", "left"];
@@ -59115,7 +55520,7 @@ function getFrameElement(win) {
   return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
 }
 
-// node_modules/.pnpm/@floating-ui+dom@1.7.3/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
+// node_modules/.pnpm/@floating-ui+dom@1.7.4/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs
 function getCssDimensions(element) {
   const css = getComputedStyle2(element);
   let width = parseFloat(css.width) || 0;
@@ -59240,15 +55645,9 @@ function getWindowScrollBarX(element, rect) {
   }
   return rect.left + leftScroll;
 }
-function getHTMLOffset(documentElement, scroll, ignoreScrollbarX) {
-  if (ignoreScrollbarX === void 0) {
-    ignoreScrollbarX = false;
-  }
+function getHTMLOffset(documentElement, scroll) {
   const htmlRect = documentElement.getBoundingClientRect();
-  const x2 = htmlRect.left + scroll.scrollLeft - (ignoreScrollbarX ? 0 : (
-    // RTL <body> scrollbar.
-    getWindowScrollBarX(documentElement, htmlRect)
-  ));
+  const x2 = htmlRect.left + scroll.scrollLeft - getWindowScrollBarX(documentElement, htmlRect);
   const y = htmlRect.top + scroll.scrollTop;
   return {
     x: x2,
@@ -59286,7 +55685,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
       offsets.y = offsetRect.y + offsetParent.clientTop;
     }
   }
-  const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll, true) : createCoords(0);
+  const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
   return {
     width: rect.width * scale.x,
     height: rect.height * scale.y,
@@ -59315,6 +55714,7 @@ function getDocumentRect(element) {
     y
   };
 }
+var SCROLLBAR_MAX = 25;
 function getViewportRect(element, strategy) {
   const win = getWindow(element);
   const html = getDocumentElement(element);
@@ -59331,6 +55731,19 @@ function getViewportRect(element, strategy) {
       x2 = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
     }
+  }
+  const windowScrollbarX = getWindowScrollBarX(html);
+  if (windowScrollbarX <= 0) {
+    const doc = html.ownerDocument;
+    const body = doc.body;
+    const bodyStyles = getComputedStyle(body);
+    const bodyMarginInline = doc.compatMode === "CSS1Compat" ? parseFloat(bodyStyles.marginLeft) + parseFloat(bodyStyles.marginRight) || 0 : 0;
+    const clippingStableScrollbarWidth = Math.abs(html.clientWidth - body.clientWidth - bodyMarginInline);
+    if (clippingStableScrollbarWidth <= SCROLLBAR_MAX) {
+      width -= clippingStableScrollbarWidth;
+    }
+  } else if (windowScrollbarX <= SCROLLBAR_MAX) {
+    width += windowScrollbarX;
   }
   return {
     width,
@@ -59716,7 +56129,7 @@ var computePosition2 = (reference, floating, options) => {
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden.mjs
 var visualHiddenProps = buildProps({
   style: {
     type: definePropType([String, Object, Array]),
@@ -59724,12 +56137,12 @@ var visualHiddenProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
-var __default__101 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/visual-hidden/src/visual-hidden2.mjs
+var __default__105 = defineComponent({
   name: "ElVisuallyHidden"
 });
-var _sfc_main134 = defineComponent({
-  ...__default__101,
+var _sfc_main138 = defineComponent({
+  ...__default__105,
   props: visualHiddenProps,
   setup(__props) {
     const props2 = __props;
@@ -59757,9 +56170,9 @@ var _sfc_main134 = defineComponent({
     };
   }
 });
-var ElVisuallyHidden = _export_sfc(_sfc_main134, [["__file", "visual-hidden.vue"]]);
+var ElVisuallyHidden = _export_sfc(_sfc_main138, [["__file", "visual-hidden.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-floating/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-floating/index.mjs
 var useFloatingProps = buildProps({});
 var unrefReference = (elRef) => {
   if (!isClient)
@@ -59842,12 +56255,12 @@ var arrowMiddleware = ({
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/content2.mjs
-var __default__102 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/content.mjs
+var __default__106 = defineComponent({
   name: "ElTooltipV2Content"
 });
-var _sfc_main135 = defineComponent({
-  ...__default__102,
+var _sfc_main139 = defineComponent({
+  ...__default__106,
   props: { ...tooltipV2ContentProps, ...tooltipV2CommonProps },
   setup(__props) {
     const props2 = __props;
@@ -59942,9 +56355,9 @@ var _sfc_main135 = defineComponent({
     };
   }
 });
-var TooltipV2Content = _export_sfc(_sfc_main135, [["__file", "content.vue"]]);
+var TooltipV2Content = _export_sfc(_sfc_main139, [["__file", "content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/forward-ref.mjs
 var forwardRefProps = buildProps({
   setRef: {
     type: definePropType(Function),
@@ -59976,12 +56389,12 @@ var ForwardRef = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
-var __default__103 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/trigger2.mjs
+var __default__107 = defineComponent({
   name: "ElTooltipV2Trigger"
 });
-var _sfc_main136 = defineComponent({
-  ...__default__103,
+var _sfc_main140 = defineComponent({
+  ...__default__107,
   props: {
     ...tooltipV2CommonProps,
     ...tooltipV2TriggerProps
@@ -60058,14 +56471,14 @@ var _sfc_main136 = defineComponent({
     };
   }
 });
-var TooltipV2Trigger = _export_sfc(_sfc_main136, [["__file", "trigger.vue"]]);
+var TooltipV2Trigger = _export_sfc(_sfc_main140, [["__file", "trigger.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
-var __default__104 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/src/tooltip2.mjs
+var __default__108 = defineComponent({
   name: "ElTooltipV2"
 });
-var _sfc_main137 = defineComponent({
-  ...__default__104,
+var _sfc_main141 = defineComponent({
+  ...__default__108,
   props: tooltipV2Props,
   setup(__props) {
     const props2 = __props;
@@ -60127,12 +56540,12 @@ var _sfc_main137 = defineComponent({
     };
   }
 });
-var TooltipV2 = _export_sfc(_sfc_main137, [["__file", "tooltip.vue"]]);
+var TooltipV2 = _export_sfc(_sfc_main141, [["__file", "tooltip.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tooltip-v2/index.mjs
 var ElTooltipV2 = withInstall(TooltipV2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer.mjs
 var LEFT_CHECK_CHANGE_EVENT = "left-check-change";
 var RIGHT_CHECK_CHANGE_EVENT = "right-check-change";
 var transferProps = buildProps({
@@ -60198,7 +56611,7 @@ var transferEmits = {
   [RIGHT_CHECK_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
 var CHECKED_CHANGE_EVENT = "checked-change";
 var transferPanelProps = buildProps({
   data: transferProps.data,
@@ -60217,7 +56630,7 @@ var transferPanelEmits = {
   [CHECKED_CHANGE_EVENT]: transferCheckedChangeFn
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-props-alias.mjs
 var usePropsAlias = (props2) => {
   const initProps = {
     label: "label",
@@ -60230,7 +56643,7 @@ var usePropsAlias = (props2) => {
   }));
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-check.mjs
 var useCheck = (props2, panelState, emit) => {
   const propsAlias = usePropsAlias(props2);
   const filteredData = computed(() => {
@@ -60314,12 +56727,12 @@ var useCheck = (props2, panelState, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer-panel.mjs
-var __default__105 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer-panel2.mjs
+var __default__109 = defineComponent({
   name: "ElTransferPanel"
 });
-var _sfc_main138 = defineComponent({
-  ...__default__105,
+var _sfc_main142 = defineComponent({
+  ...__default__109,
   props: transferPanelProps,
   emits: transferPanelEmits,
   setup(__props, { expose, emit }) {
@@ -60433,9 +56846,9 @@ var _sfc_main138 = defineComponent({
     };
   }
 });
-var TransferPanel = _export_sfc(_sfc_main138, [["__file", "transfer-panel.vue"]]);
+var TransferPanel = _export_sfc(_sfc_main142, [["__file", "transfer-panel.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-computed-data.mjs
 var useComputedData = (props2) => {
   const propsAlias = usePropsAlias(props2);
   const dataObj = computed(() => props2.data.reduce((o2, cur) => (o2[cur[propsAlias.value.key]] = cur) && o2, {}));
@@ -60459,7 +56872,7 @@ var useComputedData = (props2) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-move.mjs
 var useMove = (props2, checkedState, emit) => {
   const propsAlias = usePropsAlias(props2);
   const _emit = (value, direction2, movedKeys) => {
@@ -60494,7 +56907,7 @@ var useMove = (props2, checkedState, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/composables/use-checked-change.mjs
 var useCheckedChange = (checkedState, emit) => {
   const onSourceCheckedChange = (val, movedKeys) => {
     checkedState.leftChecked = val;
@@ -60514,12 +56927,12 @@ var useCheckedChange = (checkedState, emit) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
-var __default__106 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/src/transfer2.mjs
+var __default__110 = defineComponent({
   name: "ElTransfer"
 });
-var _sfc_main139 = defineComponent({
-  ...__default__106,
+var _sfc_main143 = defineComponent({
+  ...__default__110,
   props: transferProps,
   emits: transferEmits,
   setup(__props, { expose, emit }) {
@@ -60663,12 +57076,12 @@ var _sfc_main139 = defineComponent({
     };
   }
 });
-var Transfer = _export_sfc(_sfc_main139, [["__file", "transfer.vue"]]);
+var Transfer = _export_sfc(_sfc_main143, [["__file", "transfer.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/transfer/index.mjs
 var ElTransfer = withInstall(Transfer);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/util.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/util.mjs
 var NODE_KEY = "$treeNodeId";
 var markNodeData = function(node, data) {
   if (!data || data[NODE_KEY])
@@ -60690,7 +57103,7 @@ var handleCurrentChange = (store, emit, setCurrent) => {
   emit("current-change", currentNode ? currentNode.data : null, currentNode);
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/node.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/node.mjs
 var getChildState = (node) => {
   let all = true;
   let none = true;
@@ -61132,7 +57545,7 @@ var Node3 = class _Node {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/tree-store.mjs
 var TreeStore = class {
   constructor(options) {
     this.lazy = false;
@@ -61456,13 +57869,13 @@ var TreeStore = class {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tokens.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tokens.mjs
 var ROOT_TREE_INJECTION_KEY = "RootTree";
 var NODE_INSTANCE_INJECTION_KEY = "NodeInstance";
 var TREE_NODE_MAP_INJECTION_KEY = "TreeNodeMap";
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
-var _sfc_main140 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree-node-content.mjs
+var _sfc_main144 = defineComponent({
   name: "ElTreeNodeContent",
   props: {
     node: {
@@ -61484,9 +57897,9 @@ var _sfc_main140 = defineComponent({
     };
   }
 });
-var NodeContent2 = _export_sfc(_sfc_main140, [["__file", "tree-node-content.vue"]]);
+var NodeContent2 = _export_sfc(_sfc_main144, [["__file", "tree-node-content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useNodeExpandEventBroadcast.mjs
 function useNodeExpandEventBroadcast(props2) {
   const parentNodeMap = inject(TREE_NODE_MAP_INJECTION_KEY, null);
   const currentNodeMap = {
@@ -61513,7 +57926,7 @@ function useNodeExpandEventBroadcast(props2) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useDragNode.mjs
 var dragEventsKey = Symbol("dragEvents");
 function useDragNodeHandler({
   props: props2,
@@ -61679,8 +58092,8 @@ function useDragNodeHandler({
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree-node.mjs
-var _sfc_main141 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree-node.mjs
+var _sfc_main145 = defineComponent({
   name: "ElTreeNode",
   components: {
     ElCollapseTransition,
@@ -61978,9 +58391,9 @@ function _sfc_render23(_ctx, _cache, $props, $setup, $data, $options) {
     [vShow, _ctx.node.visible]
   ]);
 }
-var ElTreeNode = _export_sfc(_sfc_main141, [["render", _sfc_render23], ["__file", "tree-node.vue"]]);
+var ElTreeNode = _export_sfc(_sfc_main145, [["render", _sfc_render23], ["__file", "tree-node.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/model/useKeydown.mjs
 function useKeydown({ el$ }, store) {
   const ns = useNamespace("tree");
   onMounted(() => {
@@ -62071,8 +58484,8 @@ function useKeydown({ el$ }, store) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree.mjs
-var _sfc_main142 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/src/tree.mjs
+var _sfc_main146 = defineComponent({
   name: "ElTree",
   components: { ElTreeNode },
   props: {
@@ -62395,12 +58808,12 @@ function _sfc_render24(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 2);
 }
-var Tree = _export_sfc(_sfc_main142, [["render", _sfc_render24], ["__file", "tree.vue"]]);
+var Tree = _export_sfc(_sfc_main146, [["render", _sfc_render24], ["__file", "tree.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree/index.mjs
 var ElTree = withInstall(Tree);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/select.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/select.mjs
 var useSelect3 = (props2, { attrs, emit }, {
   select,
   tree,
@@ -62442,7 +58855,7 @@ var useSelect3 = (props2, { attrs, emit }, {
   return result2;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree-select-option.mjs
 var component = defineComponent({
   extends: ElOption,
   setup(props2, ctx) {
@@ -62470,7 +58883,7 @@ var component = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/utils.mjs
 function isValidValue2(val) {
   return val || val === 0;
 }
@@ -62506,7 +58919,7 @@ function treeEach(treeData, callback, getChildren, parent2) {
   }
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree.mjs
 var useTree2 = (props2, { attrs, slots, emit }, {
   select,
   tree,
@@ -62662,7 +59075,7 @@ var useTree2 = (props2, { attrs, slots, emit }, {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs
 var CacheOptions = defineComponent({
   props: {
     data: {
@@ -62688,8 +59101,8 @@ var CacheOptions = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
-var _sfc_main143 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/src/tree-select.mjs
+var _sfc_main147 = defineComponent({
   name: "ElTreeSelect",
   inheritAttrs: false,
   props: {
@@ -62753,12 +59166,12 @@ var _sfc_main143 = defineComponent({
     });
   }
 });
-var TreeSelect = _export_sfc(_sfc_main143, [["__file", "tree-select.vue"]]);
+var TreeSelect = _export_sfc(_sfc_main147, [["__file", "tree-select.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-select/index.mjs
 var ElTreeSelect = withInstall(TreeSelect);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/virtual-tree.mjs
 var ROOT_TREE_INJECTION_KEY2 = Symbol();
 var EMPTY_NODE = {
   key: -1,
@@ -62891,7 +59304,7 @@ var treeNodeEmits = {
   check: (node, checked) => node && isBoolean2(checked)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useCheck.mjs
 function useCheck2(props2, tree) {
   const checkedKeys = ref(/* @__PURE__ */ new Set());
   const indeterminateKeys = ref(/* @__PURE__ */ new Set());
@@ -63070,7 +59483,7 @@ function useCheck2(props2, tree) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useFilter.mjs
 function useFilter(props2, tree) {
   const hiddenNodeKeySet = ref(/* @__PURE__ */ new Set([]));
   const hiddenExpandIconKeySet = ref(/* @__PURE__ */ new Set([]));
@@ -63138,7 +59551,7 @@ function useFilter(props2, tree) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/composables/useTree.mjs
 function useTree3(props2, emit) {
   const expandedKeySet = ref(/* @__PURE__ */ new Set());
   const currentKey = ref();
@@ -63415,7 +59828,7 @@ function useTree3(props2, emit) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree-node-content.mjs
 var ElNodeContent = defineComponent({
   name: "ElTreeNodeContent",
   props: treeNodeContentProps,
@@ -63430,12 +59843,12 @@ var ElNodeContent = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
-var __default__107 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree-node.mjs
+var __default__111 = defineComponent({
   name: "ElTreeNode"
 });
-var _sfc_main144 = defineComponent({
-  ...__default__107,
+var _sfc_main148 = defineComponent({
+  ...__default__111,
   props: treeNodeProps,
   emits: treeNodeEmits,
   setup(__props, { emit }) {
@@ -63550,14 +59963,14 @@ var _sfc_main144 = defineComponent({
     };
   }
 });
-var ElTreeNode2 = _export_sfc(_sfc_main144, [["__file", "tree-node.vue"]]);
+var ElTreeNode2 = _export_sfc(_sfc_main148, [["__file", "tree-node.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
-var __default__108 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/src/tree.mjs
+var __default__112 = defineComponent({
   name: "ElTreeV2"
 });
-var _sfc_main145 = defineComponent({
-  ...__default__108,
+var _sfc_main149 = defineComponent({
+  ...__default__112,
   props: treeProps,
   emits: treeEmits,
   setup(__props, { expose, emit }) {
@@ -63681,15 +60094,15 @@ var _sfc_main145 = defineComponent({
     };
   }
 });
-var TreeV2 = _export_sfc(_sfc_main145, [["__file", "tree.vue"]]);
+var TreeV2 = _export_sfc(_sfc_main149, [["__file", "tree.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tree-v2/index.mjs
 var ElTreeV2 = withInstall(TreeV2);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/constants.mjs
 var uploadContextKey = Symbol("uploadContextKey");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/ajax.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/ajax.mjs
 var SCOPE3 = "ElUpload";
 var UploadAjaxError = class extends Error {
   constructor(message2, status, method5, url2) {
@@ -63771,7 +60184,7 @@ var ajaxUpload = (option) => {
   return xhr;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload.mjs
 var uploadListTypes = ["text", "picture", "picture-card"];
 var fileId = 1;
 var genFileId = () => Date.now() + fileId++;
@@ -63868,7 +60281,7 @@ var uploadProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-list.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-list.mjs
 var uploadListProps = buildProps({
   files: {
     type: definePropType(Array),
@@ -63892,12 +60305,12 @@ var uploadListEmits = {
   remove: (file) => !!file
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
-var __default__109 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-list2.mjs
+var __default__113 = defineComponent({
   name: "ElUploadList"
 });
-var _sfc_main146 = defineComponent({
-  ...__default__109,
+var _sfc_main150 = defineComponent({
+  ...__default__113,
   props: uploadListProps,
   emits: uploadListEmits,
   setup(__props, { emit }) {
@@ -64057,9 +60470,9 @@ var _sfc_main146 = defineComponent({
     };
   }
 });
-var UploadList = _export_sfc(_sfc_main146, [["__file", "upload-list.vue"]]);
+var UploadList = _export_sfc(_sfc_main150, [["__file", "upload-list.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-dragger.mjs
 var uploadDraggerProps = buildProps({
   disabled: Boolean
 });
@@ -64067,19 +60480,19 @@ var uploadDraggerEmits = {
   file: (file) => isArray(file)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
-var COMPONENT_NAME26 = "ElUploadDrag";
-var __default__110 = defineComponent({
-  name: COMPONENT_NAME26
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-dragger2.mjs
+var COMPONENT_NAME27 = "ElUploadDrag";
+var __default__114 = defineComponent({
+  name: COMPONENT_NAME27
 });
-var _sfc_main147 = defineComponent({
-  ...__default__110,
+var _sfc_main151 = defineComponent({
+  ...__default__114,
   props: uploadDraggerProps,
   emits: uploadDraggerEmits,
   setup(__props, { emit }) {
     const uploaderContext = inject(uploadContextKey);
     if (!uploaderContext) {
-      throwError(COMPONENT_NAME26, "usage: <el-upload><el-upload-dragger /></el-upload>");
+      throwError(COMPONENT_NAME27, "usage: <el-upload><el-upload-dragger /></el-upload>");
     }
     const ns = useNamespace("upload");
     const dragover = ref(false);
@@ -64121,9 +60534,9 @@ var _sfc_main147 = defineComponent({
     };
   }
 });
-var UploadDragger = _export_sfc(_sfc_main147, [["__file", "upload-dragger.vue"]]);
+var UploadDragger = _export_sfc(_sfc_main151, [["__file", "upload-dragger.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-content.mjs
 var uploadContentProps = buildProps({
   ...uploadBaseProps,
   beforeUpload: {
@@ -64156,13 +60569,13 @@ var uploadContentProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
-var __default__111 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload-content2.mjs
+var __default__115 = defineComponent({
   name: "ElUploadContent",
   inheritAttrs: false
 });
-var _sfc_main148 = defineComponent({
-  ...__default__111,
+var _sfc_main152 = defineComponent({
+  ...__default__115,
   props: uploadContentProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -64343,9 +60756,9 @@ var _sfc_main148 = defineComponent({
     };
   }
 });
-var UploadContent = _export_sfc(_sfc_main148, [["__file", "upload-content.vue"]]);
+var UploadContent = _export_sfc(_sfc_main152, [["__file", "upload-content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/use-handlers.mjs
 var SCOPE4 = "ElUpload";
 var revokeFileObjectURL = (file) => {
   var _a2;
@@ -64475,12 +60888,12 @@ var useHandlers = (props2, uploadRef) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload2.mjs
-var __default__112 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/src/upload2.mjs
+var __default__116 = defineComponent({
   name: "ElUpload"
 });
-var _sfc_main149 = defineComponent({
-  ...__default__112,
+var _sfc_main153 = defineComponent({
+  ...__default__116,
   props: uploadProps,
   setup(__props, { expose }) {
     const props2 = __props;
@@ -64594,12 +61007,12 @@ var _sfc_main149 = defineComponent({
     };
   }
 });
-var Upload = _export_sfc(_sfc_main149, [["__file", "upload.vue"]]);
+var Upload = _export_sfc(_sfc_main153, [["__file", "upload.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/upload/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/upload/index.mjs
 var ElUpload = withInstall(Upload);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/watermark.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/watermark.mjs
 var watermarkProps = buildProps({
   zIndex: {
     type: Number,
@@ -64628,7 +61041,7 @@ var watermarkProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/utils.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/utils.mjs
 function toLowercaseSeparator(key) {
   return key.replace(/([A-Z])/g, "-$1").toLowerCase();
 }
@@ -64649,8 +61062,15 @@ var reRendering = (mutation, watermarkElement) => {
   return flag;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/useClips.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/useClips.mjs
 var FontGap = 3;
+var TEXT_ALIGN_RATIO_MAP = {
+  left: [0, 0.5],
+  start: [0, 0.5],
+  center: [0.5, 0],
+  right: [1, -0.5],
+  end: [1, -0.5]
+};
 function prepareCanvas(width, height, ratio = 1) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -64662,7 +61082,7 @@ function prepareCanvas(width, height, ratio = 1) {
   return [ctx, canvas, realWidth, realHeight];
 }
 function useClips() {
-  function getClips(content, rotate, ratio, width, height, font, gapX, gapY) {
+  function getClips(content, rotate, ratio, width, height, font, gapX, gapY, space) {
     const [ctx, canvas, contentWidth, contentHeight] = prepareCanvas(width, height, ratio);
     if (content instanceof HTMLImageElement) {
       ctx.drawImage(content, 0, 0, contentWidth, contentHeight);
@@ -64683,7 +61103,8 @@ function useClips() {
       ctx.textBaseline = textBaseline;
       const contents = isArray(content) ? content : [content];
       contents == null ? void 0 : contents.forEach((item, index) => {
-        ctx.fillText(item != null ? item : "", contentWidth / 2, index * (mergedFontSize + FontGap * ratio));
+        const [alignRatio, spaceRatio] = TEXT_ALIGN_RATIO_MAP[textAlign];
+        ctx.fillText(item != null ? item : "", contentWidth * alignRatio + space * spaceRatio, index * (mergedFontSize + FontGap * ratio));
       });
     }
     const angle = Math.PI / 180 * Number(rotate);
@@ -64738,12 +61159,12 @@ function useClips() {
   return getClips;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/watermark2.mjs
-var __default__113 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/src/watermark2.mjs
+var __default__117 = defineComponent({
   name: "ElWatermark"
 });
-var _sfc_main150 = defineComponent({
-  ...__default__113,
+var _sfc_main154 = defineComponent({
+  ...__default__117,
   props: watermarkProps,
   setup(__props) {
     const props2 = __props;
@@ -64843,6 +61264,7 @@ var _sfc_main150 = defineComponent({
     const getMarkSize = (ctx) => {
       let defaultWidth = 120;
       let defaultHeight = 64;
+      let space = 0;
       const { image, content, width, height, rotate } = props2;
       if (!image && ctx.measureText) {
         ctx.font = `${Number(fontSize.value)}px ${fontFamily.value}`;
@@ -64866,10 +61288,10 @@ var _sfc_main150 = defineComponent({
         defaultWidth = maxWidth;
         defaultHeight = maxHeight * contents.length + (contents.length - 1) * FontGap;
         const angle = Math.PI / 180 * Number(rotate);
-        const space = Math.ceil(Math.abs(Math.sin(angle) * defaultHeight) / 2);
+        space = Math.ceil(Math.abs(Math.sin(angle) * defaultHeight) / 2);
         defaultWidth += space;
       }
-      return [width != null ? width : defaultWidth, height != null ? height : defaultHeight];
+      return [width != null ? width : defaultWidth, height != null ? height : defaultHeight, space];
     };
     const getClips = useClips();
     const renderWatermark = () => {
@@ -64883,7 +61305,7 @@ var _sfc_main150 = defineComponent({
           watermarkRef.value = document.createElement("div");
         }
         const ratio = getPixelRatio();
-        const [markWidth, markHeight] = getMarkSize(ctx);
+        const [markWidth, markHeight, space] = getMarkSize(ctx);
         const drawCanvas = (drawContent) => {
           const [textClips, clipWidth] = getClips(drawContent || "", rotate, ratio, markWidth, markHeight, {
             color: color.value,
@@ -64893,7 +61315,7 @@ var _sfc_main150 = defineComponent({
             fontFamily: fontFamily.value,
             textAlign: textAlign.value,
             textBaseline: textBaseline.value
-          }, gapX.value, gapY.value);
+          }, gapX.value, gapY.value, space);
           appendWatermark(textClips, clipWidth);
         };
         if (image) {
@@ -64951,12 +61373,12 @@ var _sfc_main150 = defineComponent({
     };
   }
 });
-var Watermark = _export_sfc(_sfc_main150, [["__file", "watermark.vue"]]);
+var Watermark = _export_sfc(_sfc_main154, [["__file", "watermark.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/watermark/index.mjs
 var ElWatermark = withInstall(Watermark);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/mask.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/mask.mjs
 var maskProps = buildProps({
   zIndex: {
     type: Number,
@@ -64976,7 +61398,7 @@ var maskProps = buildProps({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/helper.mjs
 var useTarget = (target2, open, gap, mergedMask, scrollIntoViewOptions) => {
   const posInfo = ref(null);
   const getTargetEl = () => {
@@ -65177,13 +61599,13 @@ var overflowMiddleware = () => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/mask2.mjs
-var __default__114 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/mask2.mjs
+var __default__118 = defineComponent({
   name: "ElTourMask",
   inheritAttrs: false
 });
-var _sfc_main151 = defineComponent({
-  ...__default__114,
+var _sfc_main155 = defineComponent({
+  ...__default__118,
   props: maskProps,
   setup(__props) {
     const props2 = __props;
@@ -65210,13 +61632,20 @@ var _sfc_main151 = defineComponent({
       const _radius = radius.value;
       return props2.pos ? `${_path} M${props2.pos.left + _radius},${props2.pos.top} h${props2.pos.width - _radius * 2} ${info.topRight} v${props2.pos.height - _radius * 2} ${info.bottomRight} h${-props2.pos.width + _radius * 2} ${info.bottomLeft} v${-props2.pos.height + _radius * 2} ${info.topLeft} z` : _path;
     });
-    const pathStyle = computed(() => {
-      return {
-        fill: props2.fill,
-        pointerEvents: "auto",
-        cursor: "auto"
-      };
-    });
+    const maskStyle = computed(() => ({
+      position: "fixed",
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      zIndex: props2.zIndex,
+      pointerEvents: props2.pos && props2.targetAreaClickable ? "none" : "auto"
+    }));
+    const pathStyle = computed(() => ({
+      fill: props2.fill,
+      pointerEvents: "auto",
+      cursor: "auto"
+    }));
     useLockscreen(toRef(props2, "visible"), {
       ns
     });
@@ -65224,15 +61653,7 @@ var _sfc_main151 = defineComponent({
       return _ctx.visible ? (openBlock(), createElementBlock("div", mergeProps({
         key: 0,
         class: unref(ns).e("mask"),
-        style: {
-          position: "fixed",
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          zIndex: _ctx.zIndex,
-          pointerEvents: _ctx.pos && _ctx.targetAreaClickable ? "none" : "auto"
-        }
+        style: unref(maskStyle)
       }, _ctx.$attrs), [
         (openBlock(), createElementBlock("svg", { style: {
           width: "100%",
@@ -65248,9 +61669,9 @@ var _sfc_main151 = defineComponent({
     };
   }
 });
-var ElTourMask = _export_sfc(_sfc_main151, [["__file", "mask.vue"]]);
+var ElTourMask = _export_sfc(_sfc_main155, [["__file", "mask.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/content.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/content.mjs
 var tourStrategies = ["absolute", "fixed"];
 var tourPlacements = [
   "top-start",
@@ -65295,12 +61716,12 @@ var tourContentEmits = {
   close: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/content2.mjs
-var __default__115 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/content2.mjs
+var __default__119 = defineComponent({
   name: "ElTourContent"
 });
-var _sfc_main152 = defineComponent({
-  ...__default__115,
+var _sfc_main156 = defineComponent({
+  ...__default__119,
   props: tourContentProps,
   emits: tourContentEmits,
   setup(__props, { emit }) {
@@ -65358,9 +61779,9 @@ var _sfc_main152 = defineComponent({
     };
   }
 });
-var ElTourContent = _export_sfc(_sfc_main152, [["__file", "content.vue"]]);
+var ElTourContent = _export_sfc(_sfc_main156, [["__file", "content.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/steps.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/steps.mjs
 var ElTourSteps = defineComponent({
   name: "ElTourSteps",
   props: {
@@ -65404,7 +61825,7 @@ var ElTourSteps = defineComponent({
   }
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/tour.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/tour2.mjs
 var tourProps = buildProps({
   modelValue: Boolean,
   current: {
@@ -65470,12 +61891,12 @@ var tourEmits = {
   change: (current) => isNumber2(current)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/tour2.mjs
-var __default__116 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/tour.mjs
+var __default__120 = defineComponent({
   name: "ElTour"
 });
-var _sfc_main153 = defineComponent({
-  ...__default__116,
+var _sfc_main157 = defineComponent({
+  ...__default__120,
   props: tourProps,
   emits: tourEmits,
   setup(__props, { emit }) {
@@ -65612,9 +62033,9 @@ var _sfc_main153 = defineComponent({
     };
   }
 });
-var Tour = _export_sfc(_sfc_main153, [["__file", "tour.vue"]]);
+var Tour = _export_sfc(_sfc_main157, [["__file", "tour.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/step.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/step.mjs
 var tourStepProps = buildProps({
   target: {
     type: definePropType([String, Object, Function])
@@ -65658,12 +62079,12 @@ var tourStepEmits = {
   close: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/step2.mjs
-var __default__117 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/src/step2.mjs
+var __default__121 = defineComponent({
   name: "ElTourStep"
 });
-var _sfc_main154 = defineComponent({
-  ...__default__117,
+var _sfc_main158 = defineComponent({
+  ...__default__121,
   props: tourStepProps,
   emits: tourStepEmits,
   setup(__props, { emit }) {
@@ -65731,6 +62152,26 @@ var _sfc_main154 = defineComponent({
       tourOnClose();
       emit("close");
     };
+    const handleKeydown = (e) => {
+      const target2 = e.target;
+      if (target2 == null ? void 0 : target2.isContentEditable)
+        return;
+      const actions = {
+        [EVENT_CODE.left]: () => current.value > 0 && onPrev(),
+        [EVENT_CODE.right]: onNext
+      };
+      const action = actions[e.code];
+      if (action) {
+        e.preventDefault();
+        action();
+      }
+    };
+    onMounted(() => {
+      window.addEventListener("keydown", handleKeydown);
+    });
+    onBeforeUnmount(() => {
+      window.removeEventListener("keydown", handleKeydown);
+    });
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock(Fragment, null, [
         unref(mergedShowClose) ? (openBlock(), createElementBlock("button", {
@@ -65818,15 +62259,15 @@ var _sfc_main154 = defineComponent({
     };
   }
 });
-var TourStep = _export_sfc(_sfc_main154, [["__file", "step.vue"]]);
+var TourStep = _export_sfc(_sfc_main158, [["__file", "step.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/tour/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/tour/index.mjs
 var ElTour = withInstall(Tour, {
   TourStep
 });
 var ElTourStep = withNoopInstall(TourStep);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor.mjs
 var anchorProps = buildProps({
   container: {
     type: definePropType([
@@ -65865,10 +62306,10 @@ var anchorEmits = {
   click: (e, href) => e instanceof MouseEvent && (isString(href) || isUndefined2(href))
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/constants.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/constants.mjs
 var anchorKey = Symbol("anchor");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/element.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/dom/element.mjs
 var getElement = (target2) => {
   if (!isClient || target2 === "")
     return null;
@@ -65882,7 +62323,7 @@ var getElement = (target2) => {
   return target2;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/throttleByRaf.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/throttleByRaf.mjs
 function throttleByRaf(cb) {
   let timer = 0;
   const throttle2 = (...args) => {
@@ -65901,12 +62342,12 @@ function throttleByRaf(cb) {
   return throttle2;
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor2.mjs
-var __default__118 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor2.mjs
+var __default__122 = defineComponent({
   name: "ElAnchor"
 });
-var _sfc_main155 = defineComponent({
-  ...__default__118,
+var _sfc_main159 = defineComponent({
+  ...__default__122,
   props: anchorProps,
   emits: anchorEmits,
   setup(__props, { expose, emit }) {
@@ -66096,20 +62537,20 @@ var _sfc_main155 = defineComponent({
     };
   }
 });
-var Anchor = _export_sfc(_sfc_main155, [["__file", "anchor.vue"]]);
+var Anchor = _export_sfc(_sfc_main159, [["__file", "anchor.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor-link.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor-link.mjs
 var anchorLinkProps = buildProps({
   title: String,
   href: String
 });
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor-link2.mjs
-var __default__119 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/src/anchor-link2.mjs
+var __default__123 = defineComponent({
   name: "ElAnchorLink"
 });
-var _sfc_main156 = defineComponent({
-  ...__default__119,
+var _sfc_main160 = defineComponent({
+  ...__default__123,
   props: anchorLinkProps,
   setup(__props) {
     const props2 = __props;
@@ -66181,15 +62622,15 @@ var _sfc_main156 = defineComponent({
     };
   }
 });
-var AnchorLink = _export_sfc(_sfc_main156, [["__file", "anchor-link.vue"]]);
+var AnchorLink = _export_sfc(_sfc_main160, [["__file", "anchor-link.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/anchor/index.mjs
 var ElAnchor = withInstall(Anchor, {
   AnchorLink
 });
 var ElAnchorLink = withNoopInstall(AnchorLink);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/src/segmented.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/src/segmented.mjs
 var defaultProps5 = {
   label: "label",
   value: "value",
@@ -66228,12 +62669,12 @@ var segmentedEmits = {
   [CHANGE_EVENT]: (val) => isString(val) || isNumber2(val) || isBoolean2(val)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/src/segmented2.mjs
-var __default__120 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/src/segmented2.mjs
+var __default__124 = defineComponent({
   name: "ElSegmented"
 });
-var _sfc_main157 = defineComponent({
-  ...__default__120,
+var _sfc_main161 = defineComponent({
+  ...__default__124,
   props: segmentedProps,
   emits: segmentedEmits,
   setup(__props, { emit }) {
@@ -66262,6 +62703,7 @@ var _sfc_main157 = defineComponent({
       emit(CHANGE_EVENT, value);
     };
     const aliasProps = computed(() => ({ ...defaultProps5, ...props2.props }));
+    const intoAny = (item) => item;
     const getValue3 = (item) => {
       return isObject(item) ? item[aliasProps.value.value] : item;
     };
@@ -66374,7 +62816,9 @@ var _sfc_main157 = defineComponent({
               createBaseVNode("div", {
                 class: normalizeClass(unref(ns).e("item-label"))
               }, [
-                renderSlot(_ctx.$slots, "default", { item }, () => [
+                renderSlot(_ctx.$slots, "default", {
+                  item: intoAny(item)
+                }, () => [
                   createTextVNode(toDisplayString(getLabel(item)), 1)
                 ])
               ], 2)
@@ -66385,12 +62829,12 @@ var _sfc_main157 = defineComponent({
     };
   }
 });
-var Segmented = _export_sfc(_sfc_main157, [["__file", "segmented.vue"]]);
+var Segmented = _export_sfc(_sfc_main161, [["__file", "segmented.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/segmented/index.mjs
 var ElSegmented = withInstall(Segmented);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/helper.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/helper.mjs
 var filterOption = (pattern4, option) => {
   const lowerCase2 = pattern4.toLowerCase();
   const label = option.label || option.value;
@@ -66537,7 +62981,7 @@ var getCursorPosition = (element, options = {
   return relativePosition;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention2.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention.mjs
 var mentionProps = buildProps({
   ...inputProps,
   options: {
@@ -66601,7 +63045,7 @@ var mentionEmits = {
   blur: (evt) => evt instanceof FocusEvent
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention-dropdown.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention-dropdown.mjs
 var mentionDropdownProps = buildProps({
   options: {
     type: definePropType(Array),
@@ -66616,12 +63060,12 @@ var mentionDropdownEmits = {
   select: (option) => isString(option.value)
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention-dropdown2.mjs
-var __default__121 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention-dropdown2.mjs
+var __default__125 = defineComponent({
   name: "ElMentionDropdown"
 });
-var _sfc_main158 = defineComponent({
-  ...__default__121,
+var _sfc_main162 = defineComponent({
+  ...__default__125,
   props: mentionDropdownProps,
   emits: mentionDropdownEmits,
   setup(__props, { expose, emit }) {
@@ -66775,15 +63219,15 @@ var _sfc_main158 = defineComponent({
     };
   }
 });
-var ElMentionDropdown = _export_sfc(_sfc_main158, [["__file", "mention-dropdown.vue"]]);
+var ElMentionDropdown = _export_sfc(_sfc_main162, [["__file", "mention-dropdown.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention.mjs
-var __default__122 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/src/mention2.mjs
+var __default__126 = defineComponent({
   name: "ElMention",
   inheritAttrs: false
 });
-var _sfc_main159 = defineComponent({
-  ...__default__122,
+var _sfc_main163 = defineComponent({
+  ...__default__126,
   props: mentionProps,
   emits: mentionEmits,
   setup(__props, { expose, emit }) {
@@ -67048,585 +63492,12 @@ var _sfc_main159 = defineComponent({
     };
   }
 });
-var Mention = _export_sfc(_sfc_main159, [["__file", "mention.vue"]]);
+var Mention = _export_sfc(_sfc_main163, [["__file", "mention.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/mention/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/mention/index.mjs
 var ElMention = withInstall(Mention);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/splitter.mjs
-var splitterProps = buildProps({
-  layout: {
-    type: String,
-    default: "horizontal",
-    values: ["horizontal", "vertical"]
-  }
-});
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/type.mjs
-var splitterRootContextKey = Symbol("splitterRootContextKey");
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useContainer.mjs
-function useContainer(layout2) {
-  const containerEl = ref();
-  const { width, height } = useElementSize(containerEl);
-  const containerSize = computed(() => {
-    return layout2.value === "horizontal" ? width.value : height.value;
-  });
-  return { containerEl, containerSize };
-}
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useSize.mjs
-function getPct(str) {
-  return Number(str.slice(0, -1)) / 100;
-}
-function getPx(str) {
-  return Number(str.slice(0, -2));
-}
-function isPct(itemSize3) {
-  return isString(itemSize3) && itemSize3.endsWith("%");
-}
-function isPx(itemSize3) {
-  return isString(itemSize3) && itemSize3.endsWith("px");
-}
-function useSize2(panels, containerSize) {
-  const propSizes = computed(() => panels.value.map((i) => i.size));
-  const panelCounts = computed(() => panels.value.length);
-  const percentSizes = ref([]);
-  watch([propSizes, panelCounts, containerSize], () => {
-    var _a2;
-    let ptgList = [];
-    let emptyCount = 0;
-    for (let i = 0; i < panelCounts.value; i += 1) {
-      const itemSize3 = (_a2 = panels.value[i]) == null ? void 0 : _a2.size;
-      if (isPct(itemSize3)) {
-        ptgList[i] = getPct(itemSize3);
-      } else if (isPx(itemSize3)) {
-        ptgList[i] = getPx(itemSize3) / containerSize.value;
-      } else if (itemSize3 || itemSize3 === 0) {
-        const num = Number(itemSize3);
-        if (!Number.isNaN(num)) {
-          ptgList[i] = num / containerSize.value;
-        }
-      } else {
-        emptyCount += 1;
-        ptgList[i] = void 0;
-      }
-    }
-    const totalPtg = ptgList.reduce((acc, ptg) => acc + (ptg || 0), 0);
-    if (totalPtg > 1 || !emptyCount) {
-      const scale = 1 / totalPtg;
-      ptgList = ptgList.map((ptg) => ptg === void 0 ? 0 : ptg * scale);
-    } else {
-      const avgRest = (1 - totalPtg) / emptyCount;
-      ptgList = ptgList.map((ptg) => ptg === void 0 ? avgRest : ptg);
-    }
-    percentSizes.value = ptgList;
-  });
-  const ptg2px = (ptg) => ptg * containerSize.value;
-  const pxSizes = computed(() => percentSizes.value.map(ptg2px));
-  return { percentSizes, pxSizes };
-}
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/useResize.mjs
-function useResize(panels, containerSize, pxSizes) {
-  const ptg2px = (ptg) => ptg * containerSize.value || 0;
-  function getLimitSize(str, defaultLimit) {
-    if (isPct(str)) {
-      return ptg2px(getPct(str));
-    } else if (isPx(str)) {
-      return getPx(str);
-    }
-    return str != null ? str : defaultLimit;
-  }
-  const movingIndex = ref(null);
-  let cachePxSizes = [];
-  const limitSizes = computed(() => panels.value.map((item) => [item.min, item.max]));
-  const onMoveStart = (index) => {
-    movingIndex.value = { index, confirmed: false };
-    cachePxSizes = pxSizes.value;
-  };
-  const onMoving = (index, offset3) => {
-    var _a2, _b;
-    let confirmedIndex = null;
-    if ((!movingIndex.value || !movingIndex.value.confirmed) && offset3 !== 0) {
-      if (offset3 > 0) {
-        confirmedIndex = index;
-        movingIndex.value = { index, confirmed: true };
-      } else {
-        for (let i = index; i >= 0; i -= 1) {
-          if (cachePxSizes[i] > 0) {
-            confirmedIndex = i;
-            movingIndex.value = { index: i, confirmed: true };
-            break;
-          }
-        }
-      }
-    }
-    const mergedIndex = (_b = confirmedIndex != null ? confirmedIndex : (_a2 = movingIndex.value) == null ? void 0 : _a2.index) != null ? _b : index;
-    const numSizes = [...cachePxSizes];
-    const nextIndex = mergedIndex + 1;
-    const startMinSize = getLimitSize(limitSizes.value[mergedIndex][0], 0);
-    const endMinSize = getLimitSize(limitSizes.value[nextIndex][0], 0);
-    const startMaxSize = getLimitSize(limitSizes.value[mergedIndex][1], containerSize.value || 0);
-    const endMaxSize = getLimitSize(limitSizes.value[nextIndex][1], containerSize.value || 0);
-    let mergedOffset = offset3;
-    if (numSizes[mergedIndex] + mergedOffset < startMinSize) {
-      mergedOffset = startMinSize - numSizes[mergedIndex];
-    }
-    if (numSizes[nextIndex] - mergedOffset < endMinSize) {
-      mergedOffset = numSizes[nextIndex] - endMinSize;
-    }
-    if (numSizes[mergedIndex] + mergedOffset > startMaxSize) {
-      mergedOffset = startMaxSize - numSizes[mergedIndex];
-    }
-    if (numSizes[nextIndex] - mergedOffset > endMaxSize) {
-      mergedOffset = numSizes[nextIndex] - endMaxSize;
-    }
-    numSizes[mergedIndex] += mergedOffset;
-    numSizes[nextIndex] -= mergedOffset;
-    panels.value.forEach((panel, index2) => {
-      panel.size = numSizes[index2];
-    });
-  };
-  const onMoveEnd = () => {
-    movingIndex.value = null;
-    cachePxSizes = [];
-  };
-  const cacheCollapsedSize = [];
-  const onCollapse = (index, type4) => {
-    if (!cacheCollapsedSize.length) {
-      cacheCollapsedSize.push(...pxSizes.value);
-    }
-    const currentSizes = pxSizes.value;
-    const currentIndex = type4 === "start" ? index : index + 1;
-    const targetIndex = type4 === "start" ? index + 1 : index;
-    const currentSize = currentSizes[currentIndex];
-    const targetSize = currentSizes[targetIndex];
-    if (currentSize !== 0 && targetSize !== 0) {
-      currentSizes[currentIndex] = 0;
-      currentSizes[targetIndex] += currentSize;
-      cacheCollapsedSize[index] = currentSize;
-    } else {
-      const totalSize = currentSize + targetSize;
-      const targetCacheCollapsedSize = cacheCollapsedSize[index];
-      const currentCacheCollapsedSize = totalSize - targetCacheCollapsedSize;
-      currentSizes[targetIndex] = targetCacheCollapsedSize;
-      currentSizes[currentIndex] = currentCacheCollapsedSize;
-    }
-    panels.value.forEach((panel, index2) => {
-      panel.size = currentSizes[index2];
-    });
-  };
-  return { onMoveStart, onMoving, onMoveEnd, movingIndex, onCollapse };
-}
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/splitter2.mjs
-var __default__123 = defineComponent({
-  name: "ElSplitter"
-});
-var _sfc_main160 = defineComponent({
-  ...__default__123,
-  props: splitterProps,
-  emits: ["resizeStart", "resize", "resizeEnd", "collapse"],
-  setup(__props, { emit: emits }) {
-    const props2 = __props;
-    const ns = useNamespace("splitter");
-    const { containerEl, containerSize } = useContainer(toRef(props2, "layout"));
-    const {
-      removeChild: unregisterPanel,
-      children: panels,
-      addChild: registerPanel,
-      ChildrenSorter: PanelsSorter
-    } = useOrderedChildren(getCurrentInstance(), "ElSplitterPanel");
-    watch(panels, () => {
-      panels.value.forEach((instance, index) => {
-        instance.setIndex(index);
-      });
-    });
-    const { percentSizes, pxSizes } = useSize2(panels, containerSize);
-    const { onMoveStart, onMoving, onMoveEnd, onCollapse, movingIndex } = useResize(panels, containerSize, pxSizes);
-    const onResizeStart = (index) => {
-      onMoveStart(index);
-      emits("resizeStart", index, pxSizes.value);
-    };
-    const onResize = (index, offset3) => {
-      onMoving(index, offset3);
-      emits("resize", index, pxSizes.value);
-    };
-    const onResizeEnd = (index) => {
-      onMoveEnd();
-      emits("resizeEnd", index, pxSizes.value);
-    };
-    const onCollapsible = (index, type4) => {
-      onCollapse(index, type4);
-      emits("collapse", index, type4, pxSizes.value);
-    };
-    provide(splitterRootContextKey, reactive({
-      panels,
-      percentSizes,
-      pxSizes,
-      layout: props2.layout,
-      movingIndex,
-      containerSize,
-      onMoveStart: onResizeStart,
-      onMoving: onResize,
-      onMoveEnd: onResizeEnd,
-      onCollapse: onCollapsible,
-      registerPanel,
-      unregisterPanel
-    }));
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref_key: "containerEl",
-        ref: containerEl,
-        class: normalizeClass([unref(ns).b(), unref(ns).e(_ctx.layout)])
-      }, [
-        renderSlot(_ctx.$slots, "default"),
-        createVNode(unref(PanelsSorter)),
-        createCommentVNode(" Prevent iframe touch events from breaking "),
-        unref(movingIndex) ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass([unref(ns).e("mask"), unref(ns).e(`mask-${_ctx.layout}`)])
-        }, null, 2)) : createCommentVNode("v-if", true)
-      ], 2);
-    };
-  }
-});
-var Splitter = _export_sfc(_sfc_main160, [["__file", "splitter.vue"]]);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/hooks/usePanel.mjs
-function getCollapsible(collapsible) {
-  if (collapsible && isObject(collapsible)) {
-    return collapsible;
-  }
-  return {
-    start: !!collapsible,
-    end: !!collapsible
-  };
-}
-function isCollapsible(panel, size3, nextPanel, nextSize) {
-  if ((panel == null ? void 0 : panel.collapsible.end) && size3 > 0) {
-    return true;
-  }
-  if ((nextPanel == null ? void 0 : nextPanel.collapsible.start) && nextSize === 0 && size3 > 0) {
-    return true;
-  }
-  return false;
-}
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-bar.mjs
-var __default__124 = defineComponent({
-  name: "ElSplitterBar"
-});
-var _sfc_main161 = defineComponent({
-  ...__default__124,
-  props: {
-    index: {
-      type: Number,
-      required: true
-    },
-    layout: {
-      type: String,
-      values: ["horizontal", "vertical"],
-      default: "horizontal"
-    },
-    resizable: {
-      type: Boolean,
-      default: true
-    },
-    startCollapsible: {
-      type: Boolean
-    },
-    endCollapsible: {
-      type: Boolean
-    }
-  },
-  emits: ["moveStart", "moving", "moveEnd", "collapse"],
-  setup(__props, { emit }) {
-    const props2 = __props;
-    const ns = useNamespace("splitter-bar");
-    const isHorizontal2 = computed(() => props2.layout === "horizontal");
-    const barWrapStyles = computed(() => {
-      if (isHorizontal2.value) {
-        return { width: 0 };
-      }
-      return { height: 0 };
-    });
-    const draggerStyles = computed(() => {
-      return {
-        width: isHorizontal2.value ? "16px" : "100%",
-        height: isHorizontal2.value ? "100%" : "16px",
-        cursor: isHorizontal2.value ? "col-resize" : "row-resize",
-        touchAction: "none"
-      };
-    });
-    const draggerPseudoClass = computed(() => {
-      const prefix = ns.e("dragger");
-      return {
-        [`${prefix}-horizontal`]: isHorizontal2.value,
-        [`${prefix}-vertical`]: !isHorizontal2.value,
-        [`${prefix}-active`]: !!startPos.value
-      };
-    });
-    const startPos = ref(null);
-    const onMousedown = (e) => {
-      if (!props2.resizable)
-        return;
-      startPos.value = [e.pageX, e.pageY];
-      emit("moveStart", props2.index);
-      window.addEventListener("mouseup", onMouseUp);
-      window.addEventListener("mousemove", onMouseMove);
-    };
-    const onTouchStart = (e) => {
-      if (props2.resizable && e.touches.length === 1) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        startPos.value = [touch.pageX, touch.pageY];
-        emit("moveStart", props2.index);
-        window.addEventListener("touchend", onTouchEnd);
-        window.addEventListener("touchmove", onTouchMove);
-      }
-    };
-    const onMouseMove = (e) => {
-      const { pageX, pageY } = e;
-      const offsetX = pageX - startPos.value[0];
-      const offsetY = pageY - startPos.value[1];
-      const offset3 = isHorizontal2.value ? offsetX : offsetY;
-      emit("moving", props2.index, offset3);
-    };
-    const onTouchMove = (e) => {
-      if (e.touches.length === 1) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const offsetX = touch.pageX - startPos.value[0];
-        const offsetY = touch.pageY - startPos.value[1];
-        const offset3 = isHorizontal2.value ? offsetX : offsetY;
-        emit("moving", props2.index, offset3);
-      }
-    };
-    const onMouseUp = () => {
-      startPos.value = null;
-      window.removeEventListener("mouseup", onMouseUp);
-      window.removeEventListener("mousemove", onMouseMove);
-      emit("moveEnd", props2.index);
-    };
-    const onTouchEnd = () => {
-      startPos.value = null;
-      window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("touchmove", onTouchMove);
-      emit("moveEnd", props2.index);
-    };
-    const StartIcon = computed(() => isHorizontal2.value ? arrow_left_default : arrow_up_default);
-    const EndIcon = computed(() => isHorizontal2.value ? arrow_right_default : arrow_down_default);
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        class: normalizeClass([unref(ns).b()]),
-        style: normalizeStyle(unref(barWrapStyles))
-      }, [
-        __props.startCollapsible ? (openBlock(), createElementBlock("div", {
-          key: 0,
-          class: normalizeClass([unref(ns).e("collapse-icon"), unref(ns).e(`${__props.layout}-collapse-icon-start`)]),
-          onClick: ($event) => emit("collapse", __props.index, "start")
-        }, [
-          renderSlot(_ctx.$slots, "start-collapsible", {}, () => [
-            (openBlock(), createBlock(resolveDynamicComponent(unref(StartIcon)), { style: { "width": "12px", "height": "12px" } }))
-          ])
-        ], 10, ["onClick"])) : createCommentVNode("v-if", true),
-        createBaseVNode("div", {
-          class: normalizeClass([
-            unref(ns).e("dragger"),
-            unref(draggerPseudoClass),
-            __props.resizable ? "" : unref(ns).e("disable")
-          ]),
-          style: normalizeStyle(unref(draggerStyles)),
-          onMousedown,
-          onTouchstart: onTouchStart
-        }, null, 38),
-        __props.endCollapsible ? (openBlock(), createElementBlock("div", {
-          key: 1,
-          class: normalizeClass([unref(ns).e("collapse-icon"), unref(ns).e(`${__props.layout}-collapse-icon-end`)]),
-          onClick: ($event) => emit("collapse", __props.index, "end")
-        }, [
-          renderSlot(_ctx.$slots, "end-collapsible", {}, () => [
-            (openBlock(), createBlock(resolveDynamicComponent(unref(EndIcon)), { style: { "width": "12px", "height": "12px" } }))
-          ])
-        ], 10, ["onClick"])) : createCommentVNode("v-if", true)
-      ], 6);
-    };
-  }
-});
-var SplitBar = _export_sfc(_sfc_main161, [["__file", "split-bar.vue"]]);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-panel.mjs
-var splitterPanelProps = buildProps({
-  min: {
-    type: [String, Number]
-  },
-  max: {
-    type: [String, Number]
-  },
-  size: {
-    type: [String, Number]
-  },
-  resizable: {
-    type: Boolean,
-    default: true
-  },
-  collapsible: Boolean
-});
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/src/split-panel2.mjs
-var COMPONENT_NAME27 = "ElSplitterPanel";
-var __default__125 = defineComponent({
-  name: COMPONENT_NAME27
-});
-var _sfc_main162 = defineComponent({
-  ...__default__125,
-  props: splitterPanelProps,
-  emits: ["update:size"],
-  setup(__props, { emit: emits }) {
-    const props2 = __props;
-    const ns = useNamespace("splitter-panel");
-    const splitterContext = inject(splitterRootContextKey);
-    if (!splitterContext)
-      throwError(COMPONENT_NAME27, "usage: <el-splitter><el-splitter-panel /></el-splitter/>");
-    const { panels, layout: layout2, containerSize, pxSizes } = toRefs(splitterContext);
-    const {
-      registerPanel,
-      unregisterPanel,
-      onCollapse,
-      onMoveEnd,
-      onMoveStart,
-      onMoving
-    } = splitterContext;
-    const panelEl = ref();
-    const instance = getCurrentInstance();
-    const uid2 = instance.uid;
-    const index = ref(0);
-    const panel = computed(() => panels.value[index.value]);
-    const setIndex = (val) => {
-      index.value = val;
-    };
-    const panelSize = computed(() => {
-      var _a2;
-      if (!panel.value)
-        return 0;
-      return (_a2 = pxSizes.value[index.value]) != null ? _a2 : 0;
-    });
-    const nextSize = computed(() => {
-      var _a2;
-      if (!panel.value)
-        return 0;
-      return (_a2 = pxSizes.value[index.value + 1]) != null ? _a2 : 0;
-    });
-    const nextPanel = computed(() => {
-      if (panel.value) {
-        return panels.value[index.value + 1];
-      }
-      return null;
-    });
-    const isResizable = computed(() => {
-      var _a2;
-      if (!nextPanel.value)
-        return false;
-      return props2.resizable && ((_a2 = nextPanel.value) == null ? void 0 : _a2.resizable) && (panelSize.value !== 0 || !props2.min) && (nextSize.value !== 0 || !nextPanel.value.min);
-    });
-    const isShowBar = computed(() => {
-      if (!panel.value)
-        return false;
-      return index.value !== panels.value.length - 1;
-    });
-    const startCollapsible = computed(() => isCollapsible(panel.value, panelSize.value, nextPanel.value, nextSize.value));
-    const endCollapsible = computed(() => isCollapsible(nextPanel.value, nextSize.value, panel.value, panelSize.value));
-    function sizeToPx(str) {
-      if (isPct(str)) {
-        return getPct(str) * containerSize.value || 0;
-      } else if (isPx(str)) {
-        return getPx(str);
-      }
-      return str != null ? str : 0;
-    }
-    let isSizeUpdating = false;
-    watch(() => props2.size, () => {
-      if (panel.value) {
-        const size3 = sizeToPx(props2.size);
-        const maxSize = sizeToPx(props2.max);
-        const minSize = sizeToPx(props2.min);
-        const finalSize = Math.min(Math.max(size3, minSize || 0), maxSize || size3);
-        if (finalSize !== size3) {
-          isSizeUpdating = true;
-          emits("update:size", finalSize);
-        }
-        panel.value.size = finalSize;
-        nextTick(() => isSizeUpdating = false);
-      }
-    });
-    watch(() => {
-      var _a2;
-      return (_a2 = panel.value) == null ? void 0 : _a2.size;
-    }, (val) => {
-      if (!isSizeUpdating && val !== props2.size) {
-        emits("update:size", val);
-      }
-    });
-    watch(() => props2.resizable, (val) => {
-      if (panel.value) {
-        panel.value.resizable = val;
-      }
-    });
-    const _panel = reactive({
-      el: panelEl.value,
-      uid: uid2,
-      getVnode: () => instance.vnode,
-      setIndex,
-      ...props2,
-      collapsible: getCollapsible(props2.collapsible)
-    });
-    registerPanel(_panel);
-    onBeforeUnmount(() => unregisterPanel(_panel));
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createBaseVNode("div", mergeProps({
-          ref_key: "panelEl",
-          ref: panelEl,
-          class: [unref(ns).b()],
-          style: { flexBasis: `${unref(panelSize)}px` }
-        }, _ctx.$attrs), [
-          renderSlot(_ctx.$slots, "default")
-        ], 16),
-        unref(isShowBar) ? (openBlock(), createBlock(SplitBar, {
-          key: 0,
-          index: index.value,
-          layout: unref(layout2),
-          resizable: unref(isResizable),
-          "start-collapsible": unref(startCollapsible),
-          "end-collapsible": unref(endCollapsible),
-          onMoveStart: unref(onMoveStart),
-          onMoving: unref(onMoving),
-          onMoveEnd: unref(onMoveEnd),
-          onCollapse: unref(onCollapse)
-        }, {
-          "start-collapsible": withCtx(() => [
-            renderSlot(_ctx.$slots, "start-collapsible")
-          ]),
-          "end-collapsible": withCtx(() => [
-            renderSlot(_ctx.$slots, "end-collapsible")
-          ]),
-          _: 3
-        }, 8, ["index", "layout", "resizable", "start-collapsible", "end-collapsible", "onMoveStart", "onMoving", "onMoveEnd", "onCollapse"])) : createCommentVNode("v-if", true)
-      ], 64);
-    };
-  }
-});
-var SplitPanel = _export_sfc(_sfc_main162, [["__file", "split-panel.vue"]]);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/splitter/index.mjs
-var ElSplitter = withInstall(Splitter, {
-  SplitPanel
-});
-var ElSplitterPanel = withNoopInstall(SplitPanel);
-
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/component.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/component.mjs
 var Components = [
   ElAffix,
   ElAlert,
@@ -67653,6 +63524,7 @@ var Components = [
   ElCollapse,
   ElCollapseItem,
   ElCollapseTransition,
+  ElColorPickerPanel,
   ElColorPicker,
   ElConfigProvider,
   ElContainer,
@@ -67661,6 +63533,7 @@ var Components = [
   ElHeader,
   ElMain,
   ElDatePicker,
+  ElDatePickerPanel,
   ElDescriptions,
   ElDescriptionsItem,
   ElDialog,
@@ -67738,7 +63611,7 @@ var Components = [
   ElSplitterPanel
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/infinite-scroll/src/index.mjs
 var SCOPE5 = "ElInfiniteScroll";
 var CHECK_INTERVAL = 50;
 var DEFAULT_DELAY = 200;
@@ -67860,14 +63733,14 @@ var InfiniteScroll = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/infinite-scroll/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/infinite-scroll/index.mjs
 var _InfiniteScroll = InfiniteScroll;
 _InfiniteScroll.install = (app) => {
   app.directive("InfiniteScroll", _InfiniteScroll);
 };
 var ElInfiniteScroll = _InfiniteScroll;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/loading.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/loading.mjs
 function createLoadingComponent(options, appContext) {
   let afterLeaveTimer;
   const afterLeaveFlag = ref(false);
@@ -67983,7 +63856,7 @@ function createLoadingComponent(options, appContext) {
   };
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/service.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/service.mjs
 var fullscreenInstance = void 0;
 var Loading = function(options = {}) {
   if (!isClient)
@@ -68081,7 +63954,7 @@ var addClassList = (options, parent2, instance) => {
 };
 Loading._context = null;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/directive.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/loading/src/directive.mjs
 var INSTANCE_KEY = Symbol("ElLoading");
 var getAttributeName = (name) => {
   return `element-loading-${hyphenate(name)}`;
@@ -68155,7 +64028,7 @@ var vLoading = {
 };
 vLoading._context = null;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/loading/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/loading/index.mjs
 var ElLoading = {
   install(app) {
     Loading._context = app._context;
@@ -68167,7 +64040,7 @@ var ElLoading = {
   service: Loading
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/message.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/message2.mjs
 var messageTypes = [
   "primary",
   "success",
@@ -68175,6 +64048,15 @@ var messageTypes = [
   "warning",
   "error"
 ];
+var messagePlacement = [
+  "top",
+  "top-left",
+  "top-right",
+  "bottom",
+  "bottom-left",
+  "bottom-right"
+];
+var MESSAGE_DEFAULT_PLACEMENT = "top";
 var messageDefaults = mutable({
   customClass: "",
   dangerouslyUseHTMLString: false,
@@ -68187,6 +64069,7 @@ var messageDefaults = mutable({
   type: "info",
   plain: false,
   offset: 16,
+  placement: void 0,
   zIndex: 0,
   grouping: false,
   repeatNum: 1,
@@ -68242,6 +64125,11 @@ var messageProps = buildProps({
     type: Number,
     default: messageDefaults.offset
   },
+  placement: {
+    type: String,
+    values: messagePlacement,
+    default: messageDefaults.placement
+  },
   zIndex: {
     type: Number,
     default: messageDefaults.zIndex
@@ -68259,9 +64147,16 @@ var messageEmits = {
   destroy: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/instance.mjs
-var instances = shallowReactive([]);
-var getInstance = (id) => {
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/instance.mjs
+var placementInstances = shallowReactive({});
+var getOrCreatePlacementInstances = (placement) => {
+  if (!placementInstances[placement]) {
+    placementInstances[placement] = shallowReactive([]);
+  }
+  return placementInstances[placement];
+};
+var getInstance = (id, placement) => {
+  const instances = placementInstances[placement] || [];
   const idx = instances.findIndex((instance) => instance.id === id);
   const current = instances[idx];
   let prev;
@@ -68270,23 +64165,24 @@ var getInstance = (id) => {
   }
   return { current, prev };
 };
-var getLastOffset = (id) => {
-  const { prev } = getInstance(id);
+var getLastOffset = (id, placement) => {
+  const { prev } = getInstance(id, placement);
   if (!prev)
     return 0;
   return prev.vm.exposed.bottom.value;
 };
-var getOffsetOrSpace = (id, offset3) => {
+var getOffsetOrSpace = (id, offset3, placement) => {
+  const instances = placementInstances[placement] || [];
   const idx = instances.findIndex((instance) => instance.id === id);
   return idx > 0 ? 16 : offset3;
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/message2.mjs
-var __default__126 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/message.mjs
+var __default__127 = defineComponent({
   name: "ElMessage"
 });
-var _sfc_main163 = defineComponent({
-  ...__default__126,
+var _sfc_main164 = defineComponent({
+  ...__default__127,
   props: messageProps,
   emits: messageEmits,
   setup(__props, { expose, emit }) {
@@ -68305,11 +64201,22 @@ var _sfc_main163 = defineComponent({
       return { [ns.bm("icon", type4)]: type4 && TypeComponentsMap[type4] };
     });
     const iconComponent = computed(() => props2.icon || TypeComponentsMap[props2.type] || "");
-    const lastOffset = computed(() => getLastOffset(props2.id));
-    const offset3 = computed(() => getOffsetOrSpace(props2.id, props2.offset) + lastOffset.value);
+    const placement = computed(() => props2.placement || MESSAGE_DEFAULT_PLACEMENT);
+    const lastOffset = computed(() => getLastOffset(props2.id, placement.value));
+    const offset3 = computed(() => {
+      return getOffsetOrSpace(props2.id, props2.offset, placement.value) + lastOffset.value;
+    });
     const bottom = computed(() => height.value + offset3.value);
+    const horizontalClass = computed(() => {
+      if (placement.value.includes("left"))
+        return ns.is("left");
+      if (placement.value.includes("right"))
+        return ns.is("right");
+      return ns.is("center");
+    });
+    const verticalProperty = computed(() => placement.value.startsWith("top") ? "top" : "bottom");
     const customStyle = computed(() => ({
-      top: `${offset3.value}px`,
+      [verticalProperty.value]: `${offset3.value}px`,
       zIndex: currentZIndex.value
     }));
     function startTimer() {
@@ -68373,6 +64280,8 @@ var _sfc_main163 = defineComponent({
               { [unref(ns).m(_ctx.type)]: _ctx.type },
               unref(ns).is("closable", _ctx.showClose),
               unref(ns).is("plain", _ctx.plain),
+              unref(ns).is("bottom", unref(verticalProperty) === "bottom"),
+              unref(horizontalClass),
               _ctx.customClass
             ]),
             style: normalizeStyle(unref(customStyle)),
@@ -68426,25 +64335,42 @@ var _sfc_main163 = defineComponent({
     };
   }
 });
-var MessageConstructor = _export_sfc(_sfc_main163, [["__file", "message.vue"]]);
+var MessageConstructor = _export_sfc(_sfc_main164, [["__file", "message.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/method.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message/src/method.mjs
 var seed = 1;
+var normalizeAppendTo = (normalized) => {
+  const appendTo = normalized.appendTo;
+  if (!appendTo) {
+    normalized.appendTo = document.body;
+  } else if (isString(normalized.appendTo)) {
+    let appendTo2 = document.querySelector(normalized.appendTo);
+    if (!isElement2(appendTo2)) {
+      appendTo2 = document.body;
+    }
+    normalized.appendTo = appendTo2;
+  }
+};
+var normalizePlacement = (normalized) => {
+  if (!normalized.placement && isString(messageConfig.placement) && messageConfig.placement) {
+    normalized.placement = messageConfig.placement;
+  }
+  if (!normalized.placement) {
+    normalized.placement = MESSAGE_DEFAULT_PLACEMENT;
+  }
+  if (!messagePlacement.includes(normalized.placement)) {
+    debugWarn("ElMessage", `Invalid placement: ${normalized.placement}. Falling back to '${MESSAGE_DEFAULT_PLACEMENT}'.`);
+    normalized.placement = MESSAGE_DEFAULT_PLACEMENT;
+  }
+};
 var normalizeOptions = (params) => {
   const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;
   const normalized = {
     ...messageDefaults,
     ...options
   };
-  if (!normalized.appendTo) {
-    normalized.appendTo = document.body;
-  } else if (isString(normalized.appendTo)) {
-    let appendTo = document.querySelector(normalized.appendTo);
-    if (!isElement2(appendTo)) {
-      appendTo = document.body;
-    }
-    normalized.appendTo = appendTo;
-  }
+  normalizeAppendTo(normalized);
+  normalizePlacement(normalized);
   if (isBoolean2(messageConfig.grouping) && !normalized.grouping) {
     normalized.grouping = messageConfig.grouping;
   }
@@ -68463,6 +64389,8 @@ var normalizeOptions = (params) => {
   return normalized;
 };
 var closeMessage = (instance) => {
+  const placement = instance.props.placement || MESSAGE_DEFAULT_PLACEMENT;
+  const instances = placementInstances[placement];
   const idx = instances.indexOf(instance);
   if (idx === -1)
     return;
@@ -68510,6 +64438,7 @@ var message = (options = {}, context) => {
   if (!isClient)
     return { close: () => void 0 };
   const normalized = normalizeOptions(options);
+  const instances = getOrCreatePlacementInstances(normalized.placement || MESSAGE_DEFAULT_PLACEMENT);
   if (normalized.grouping && instances.length) {
     const instance2 = instances.find(({ vnode: vm }) => {
       var _a2;
@@ -68535,20 +64464,31 @@ messageTypes.forEach((type4) => {
   };
 });
 function closeAll(type4) {
-  const instancesToClose = [...instances];
-  for (const instance of instancesToClose) {
-    if (!type4 || type4 === instance.props.type) {
-      instance.handler.close();
+  for (const placement in placementInstances) {
+    if (hasOwn(placementInstances, placement)) {
+      const instances = [...placementInstances[placement]];
+      for (const instance of instances) {
+        if (!type4 || type4 === instance.props.type) {
+          instance.handler.close();
+        }
+      }
     }
   }
 }
+function closeAllByPlacement(placement) {
+  if (!placementInstances[placement])
+    return;
+  const instances = [...placementInstances[placement]];
+  instances.forEach((instance) => instance.handler.close());
+}
 message.closeAll = closeAll;
+message.closeAllByPlacement = closeAllByPlacement;
 message._context = null;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message/index.mjs
 var ElMessage = withInstallFunction(message, "$message");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/directives/trap-focus/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/directives/trap-focus/index.mjs
 var FOCUSABLE_CHILDREN = "_trap-focus-children";
 var FOCUS_STACK = [];
 var FOCUS_HANDLER = (e) => {
@@ -68597,8 +64537,8 @@ var TrapFocus = {
   }
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/src/index.mjs
-var _sfc_main164 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/src/index.mjs
+var _sfc_main165 = defineComponent({
   name: "ElMessageBox",
   directives: {
     TrapFocus
@@ -68758,7 +64698,7 @@ var _sfc_main164 = defineComponent({
     });
     const draggable2 = computed(() => props2.draggable);
     const overflow = computed(() => props2.overflow);
-    useDraggable(rootRef, headerRef, draggable2, overflow);
+    const { isDragging: isDragging2 } = useDraggable(rootRef, headerRef, draggable2, overflow);
     onMounted(async () => {
       await nextTick();
       if (props2.closeOnHashChange) {
@@ -68862,6 +64802,7 @@ var _sfc_main164 = defineComponent({
       focusStartRef,
       headerRef,
       inputRef,
+      isDragging: isDragging2,
       confirmRef,
       doClose,
       handleClose,
@@ -68915,6 +64856,7 @@ function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
                     _ctx.ns.b(),
                     _ctx.customClass,
                     _ctx.ns.is("draggable", _ctx.draggable),
+                    _ctx.ns.is("dragging", _ctx.isDragging),
                     { [_ctx.ns.m("center")]: _ctx.center }
                   ]),
                   style: normalizeStyle(_ctx.customStyle),
@@ -68982,13 +64924,9 @@ function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
                         renderSlot(_ctx.$slots, "default", {}, () => [
                           !_ctx.dangerouslyUseHTMLString ? (openBlock(), createBlock(resolveDynamicComponent(_ctx.showInput ? "label" : "p"), {
                             key: 0,
-                            for: _ctx.showInput ? _ctx.inputId : void 0
-                          }, {
-                            default: withCtx(() => [
-                              createTextVNode(toDisplayString(!_ctx.dangerouslyUseHTMLString ? _ctx.message : ""), 1)
-                            ]),
-                            _: 1
-                          }, 8, ["for"])) : (openBlock(), createBlock(resolveDynamicComponent(_ctx.showInput ? "label" : "p"), {
+                            for: _ctx.showInput ? _ctx.inputId : void 0,
+                            textContent: toDisplayString(_ctx.message)
+                          }, null, 8, ["for", "textContent"])) : (openBlock(), createBlock(resolveDynamicComponent(_ctx.showInput ? "label" : "p"), {
                             key: 1,
                             for: _ctx.showInput ? _ctx.inputId : void 0,
                             innerHTML: _ctx.message
@@ -69072,9 +65010,9 @@ function _sfc_render25(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["onAfterLeave"]);
 }
-var MessageBoxConstructor = _export_sfc(_sfc_main164, [["render", _sfc_render25], ["__file", "index.vue"]]);
+var MessageBoxConstructor = _export_sfc(_sfc_main165, [["render", _sfc_render25], ["__file", "index.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/src/messageBox.mjs
 var messageInstance = /* @__PURE__ */ new Map();
 var getAppendToElement = (props2) => {
   let appendTo = document.body;
@@ -69204,7 +65142,7 @@ MessageBox.close = () => {
 };
 MessageBox._context = null;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/message-box/index.mjs
 var _MessageBox = MessageBox;
 _MessageBox.install = (app) => {
   _MessageBox._context = app._context;
@@ -69216,7 +65154,7 @@ _MessageBox.install = (app) => {
 };
 var ElMessageBox = _MessageBox;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notification.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notification.mjs
 var notificationTypes = [
   "primary",
   "success",
@@ -69289,12 +65227,12 @@ var notificationEmits = {
   destroy: () => true
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notification2.mjs
-var __default__127 = defineComponent({
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notification2.mjs
+var __default__128 = defineComponent({
   name: "ElNotification"
 });
-var _sfc_main165 = defineComponent({
-  ...__default__127,
+var _sfc_main166 = defineComponent({
+  ...__default__128,
   props: notificationProps,
   emits: notificationEmits,
   setup(__props, { expose }) {
@@ -69422,9 +65360,9 @@ var _sfc_main165 = defineComponent({
     };
   }
 });
-var NotificationConstructor = _export_sfc(_sfc_main165, [["__file", "notification.vue"]]);
+var NotificationConstructor = _export_sfc(_sfc_main166, [["__file", "notification.vue"]]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notify.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -69533,10 +65471,10 @@ notify.closeAll = closeAll2;
 notify.updateOffsets = updateOffsets;
 notify._context = null;
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/components/notification/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/components/notification/index.mjs
 var ElNotification = withInstallFunction(notify, "$notify");
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/plugin.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/plugin.mjs
 var Plugins = [
   ElInfiniteScroll,
   ElLoading,
@@ -69546,13 +65484,13 @@ var Plugins = [
   ElPopoverDirective
 ];
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/defaults.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/defaults.mjs
 var installer = makeInstaller([...Components, ...Plugins]);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/index.mjs
 var import_dayjs19 = __toESM(require_dayjs_min(), 1);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-focus/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-focus/index.mjs
 var useFocus = (el) => {
   return {
     focus: () => {
@@ -69562,7 +65500,7 @@ var useFocus = (el) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-modal/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-modal/index.mjs
 var modalStack = [];
 var closeModal = (e) => {
   if (modalStack.length === 0)
@@ -69585,7 +65523,7 @@ var useModal = (instance, visibleRef) => {
 if (isClient)
   useEventListener(document, "keydown", closeModal);
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs
 var usePreventGlobal = (indicator, evt, cb) => {
   const prevent = (e) => {
     if (cb(e))
@@ -69601,7 +65539,7 @@ var usePreventGlobal = (indicator, evt, cb) => {
   }, { immediate: true });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/global-node.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/utils/vue/global-node.mjs
 var globalNodes = [];
 var target = !isClient ? void 0 : document.body;
 function createGlobalNode(id) {
@@ -69620,7 +65558,7 @@ function removeGlobalNode(el) {
   el.remove();
 }
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-teleport/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-teleport/index.mjs
 var useTeleport = (contentRenderer, appendToBody) => {
   const isTeleportVisible = ref(false);
   if (!isClient) {
@@ -69657,7 +65595,7 @@ var useTeleport = (contentRenderer, appendToBody) => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-transition-fallthrough/index.mjs
 var AFTER_APPEAR = "after-appear";
 var AFTER_ENTER = "after-enter";
 var AFTER_LEAVE = "after-leave";
@@ -69718,7 +65656,7 @@ var useTransitionFallthrough = () => {
   };
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/hooks/use-intermediate-render/index.mjs
 var useDelayedRender = ({
   indicator,
   intermediateIndicator,
@@ -69758,7 +65696,7 @@ var useDelayedRender = ({
   });
 };
 
-// node_modules/.pnpm/element-plus@2.10.5_vue@3.5.18_typescript@5.8.3_/node_modules/element-plus/es/index.mjs
+// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/es/index.mjs
 var install = installer.install;
 var version3 = installer.version;
 var export_dayjs = import_dayjs19.default;
@@ -69816,10 +65754,12 @@ export {
   ElCollection2 as ElCollection,
   ElCollectionItem2 as ElCollectionItem,
   ElColorPicker,
+  ElColorPickerPanel,
   ElConfigProvider,
   ElContainer,
   ElCountdown,
   ElDatePicker,
+  ElDatePickerPanel,
   ElDescriptions,
   ElDescriptionsItem,
   ElDialog,
@@ -69920,6 +65860,8 @@ export {
   LAST_KEYS,
   LEFT_CHECK_CHANGE_EVENT,
   MENU_INJECTION_KEY,
+  MESSAGE_DEFAULT_PLACEMENT,
+  MINIMUM_INPUT_WIDTH,
   Mousewheel,
   NODE_INSTANCE_INJECTION_KEY,
   PICKER_BASE_INJECTION_KEY,
@@ -69927,6 +65869,8 @@ export {
   POPPER_CONTENT_INJECTION_KEY,
   POPPER_INJECTION_KEY,
   RIGHT_CHECK_CHANGE_EVENT,
+  ROOT_COMMON_COLOR_INJECTION_KEY,
+  ROOT_COMMON_PICKER_INJECTION_KEY,
   ROOT_PICKER_INJECTION_KEY,
   ROOT_PICKER_IS_DEFAULT_FORMAT_INJECTION_KEY,
   ROOT_TREE_INJECTION_KEY,
@@ -70001,8 +65945,10 @@ export {
   collapseEmits,
   collapseItemProps,
   collapseProps,
-  colorPickerContextKey,
   colorPickerEmits,
+  colorPickerPanelContextKey,
+  colorPickerPanelEmits,
+  colorPickerPanelProps,
   colorPickerProps,
   columnAlignment,
   componentSizeMap,
@@ -70014,6 +65960,7 @@ export {
   createModelToggleComposable,
   dateEquals,
   datePickTypes,
+  datePickerPanelProps,
   datePickerProps,
   dayOrDaysToDate,
   export_dayjs as dayjs,
@@ -70023,6 +65970,7 @@ export {
   defaultProps5 as defaultProps,
   descriptionItemProps,
   descriptionProps,
+  dialogContextKey,
   dialogEmits,
   dialogInjectionKey,
   dialogProps,
@@ -70075,6 +66023,7 @@ export {
   messageConfig,
   messageDefaults,
   messageEmits,
+  messagePlacement,
   messageProps,
   messageTypes,
   namespaceContextKey,
@@ -70284,9 +66233,6 @@ lodash-es/lodash.js:
    * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
    * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
    *)
-
-@element-plus/icons-vue/dist/index.js:
-  (*! Element Plus Icons Vue v2.3.1 *)
 
 normalize-wheel-es/dist/index.mjs:
   (**

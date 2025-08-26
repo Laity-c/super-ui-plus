@@ -7,6 +7,19 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "Node",
+    "jsx": "preserve", // 保留JSX语法，由Vite插件处理
+    "jsxImportSource": "vue", // 指定Vue作为JSX导入源
+    "types": ["vite/client", "element-plus/global"],
+    // 限制类型查找范围，排除 React 类型
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules"
+    ],
+    "isolatedModules": true, // 启用独立模块
+    // "strict": true, // 启用所有严格类型检查选项
+    // "noImplicitAny": false, // 允许隐式的 any 类型
+    // "experimentalDecorators": true, // 启用装饰器
+    // "jsxFactory": "h", // 指定 JSX 使用的运行时函数
     "resolveJsonModule": true,
     "noImplicitThis": true,
     "allowSyntheticDefaultImports": true,
@@ -14,15 +27,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "garfish-microservice-ui/*": [
-        "packages/*"
-      ]
+      "@super-ui/*": ["packages/*"],
     },
     "outDir": "dist",
     "lib": ["esnext", "dom"]
-  },
-  "vueCompilerOptions": {
-    "plugins": ["@uni-helper/uni-types/volar-plugin"]
   },
   "include": [
     "src/**/*.ts",
