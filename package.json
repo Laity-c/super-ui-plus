@@ -42,10 +42,17 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue-jsx": "^5.1.0",
+    "@vueuse/core": "^13.9.0",
+    "dayjs": "^1.11.15",
     "element-plus": "^2.10.5",
+    "eslint-plugin-n": "15.0.0",
+    "eslint-plugin-promise": "6.0.0",
+    "sortablejs": "^1.15.6",
     "vitepress-demo-preview-fock-component": "^2.3.6",
-    "vitepress-demo-preview-fock-plugin": "^1.2.4"
+    "vitepress-demo-preview-fock-plugin": "^1.2.4",
+    "vue-eslint-parser": "^10.2.0"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
@@ -56,9 +63,8 @@
     "@vitest/ui": "^3.2.4",
     "@vue/runtime-dom": "^3.5.20",
     "@vue/tsconfig": "^0.7.0",
-    "eslint": "^8.57.1",
+    "eslint": "8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="field.length" class="card table-search">
+  <div v-if="field.length" :class="['table-search', { card: ifCardStyle }]">
     <el-form ref="formRef" :model="model">
       <Grid ref="gridRef" :collapsed="collapsed" :gap="[20, 0]" :cols="searchCol">
         <GridItem
@@ -69,6 +69,7 @@ export interface SearchFormProps {
   model: { [key: string]: any } // 搜索参数
   searchCol?: number | Record<BreakPoint, number>
   collapsed?: boolean // 展开/收起状态
+  ifCardStyle?: boolean // 是否使用 card 样式
 }
 
 // 默认值
@@ -76,13 +77,14 @@ const props = withDefaults(defineProps<SearchFormProps>(), {
   field: () => [],
   searchCol: () => ({ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }),
   collapsed: () => false,
+  ifCardStyle: () => true,
 })
 
 // 搜索表单ref
 const formRef = ref<FormInstance>()
 
 // 获取表单验证规则
-const getRules = (rules: any, item: any) => {
+const getRules = (rules: any = [], item: any) => {
   if (item.valueType && item.required) {
     const requiredRules = { required: true, message: `${item.label}必填` }
     return setRules(item.valueType, rules ? [requiredRules, ...rules] : [requiredRules], item.label)
@@ -92,7 +94,7 @@ const getRules = (rules: any, item: any) => {
     return setRules(item.valueType, rules, item.label)
   }
 
-  return {}
+  return rules
 }
 
 // 获取响应式设置

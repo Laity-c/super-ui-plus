@@ -99,6 +99,23 @@ provide('cols', gridCols)
 const slots = useSlots().default!()
 
 /**
+ * 响应式与折叠功能
+ *
+ * 解决方案一：（目前使用该方案）
+ *  通过 Grid 组件提供的 breakPoint 响应式变量来感知当前屏幕断点，并据此计算布局。
+ *  折叠逻辑：
+ *    showCollapse 计算属性是实现折叠功能的关键。它遍历所有 field 项，累加它们在当前断点下的实际占用列数（span + offset），
+ *    并与 searchCol 在该断点下的值进行比较。一旦总列数超过设定值，showCollapse 就会返回 true，从而在 UI 上显示“展开/合并”按钮。
+ *
+ * 解决方案二：
+ *  通过直接在FormGrid中添加一个collapsible控制人为的传入是否需要开启收起/展开按钮
+ *  然后再设置一个retentionCount属性来控制显示的个数，我们直接对传入的find对象做切割处理，这样页面上就只会显示指定个数的元素了
+ *  代码：if (this.collapsible && this.retentionCount) {
+        fields = fields.slice(0, this.retentionCount);
+      }
+ */
+
+/**
  * 查找需要隐藏的元素索引，用于在折叠行中确定从哪个元素开始隐藏。
  * 该函数会遍历插槽中的内容，识别出 suffix 元素和普通子元素，
  * 并根据断点、列数、偏移等信息计算每个元素所占的列宽，

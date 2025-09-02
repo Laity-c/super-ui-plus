@@ -4,6 +4,18 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  // 指定如何解析语法
+  parser: 'vue-eslint-parser',
+  // 优先级低于 parse 的语法解析配置
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    jsxPragma: 'React',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -11,7 +23,7 @@ module.exports = {
     // eslint-plugin-import 插件， @see https://www.npmjs.com/package/eslint-plugin-import
     'plugin:import/recommended',
     // eslint-config-airbnb-base 插件 已经改用 eslint-config-standard 插件
-    'standard',
+    // 'standard',
     // 1. 接入 prettier 的规则
     'prettier',
     'plugin:prettier/recommended',
@@ -28,11 +40,6 @@ module.exports = {
       },
     },
   ],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-  },
   plugins: [
     '@typescript-eslint',
     'vue',

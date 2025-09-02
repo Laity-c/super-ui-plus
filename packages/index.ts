@@ -5,6 +5,7 @@ import { SuperGrid } from './components/Grid'
 import { SuperGridItem } from './components/GridItem'
 import { SuperFormGrid } from './components/FormGrid'
 import { SuperSearchForm } from './components/SearchForm'
+import { SuperProTable } from './components/ProTable'
 
 // 导入你的组件库样式（如果你的样式是全量导入的）
 // 如果你采用了Element Plus的按需导入样式策略，这里可以省略，
@@ -19,7 +20,8 @@ const components = [
   SuperGrid,
   SuperGridItem,
   SuperFormGrid,
-  SuperSearchForm
+  SuperSearchForm,
+  SuperProTable
 ]
 
 // 定义组件库的安装函数（Plugin 对象的 install 方法）
@@ -53,7 +55,8 @@ export {
   SuperGrid,
   SuperGridItem,
   SuperFormGrid,
-  SuperSearchForm
+  SuperSearchForm,
+  SuperProTable
 }
 
 // 默认导出插件对象，用于 `app.use()` 全局注册

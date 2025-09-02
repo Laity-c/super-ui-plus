@@ -55,7 +55,7 @@ export type FieldNamesProps = {
 
 export type SuperFormItemProps = {
   el?: SearchType; // 当前项搜索框的类型
-  label: string; //标题名称
+  label?: string; //标题名称
   name: string; // 绑定字段名
   labelWidth?: number; // 搜索项 label 宽度
   tooltip?: string; // 搜索提示
