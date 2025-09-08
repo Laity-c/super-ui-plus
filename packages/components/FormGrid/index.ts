@@ -1,5 +1,4 @@
-import { withInstall } from 'element-plus/es/utils/vue/install'
 import FormGrid from './src/index.vue'
+export * from "./src/type"
 
-export const SuperFormGrid = withInstall(FormGrid)
-export default SuperFormGrid
+export const SuperFormGrid: typeof FormGrid = FormGrid

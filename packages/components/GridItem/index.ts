@@ -1,5 +1,4 @@
-import { withInstall } from 'element-plus/es/utils/vue/install'
 import GridItem from './src/index.vue'
+export * from './src/type'
 
-export const SuperGridItem = withInstall(GridItem)
-export default SuperGridItem
+export const SuperGridItem = GridItem

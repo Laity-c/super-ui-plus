@@ -19,20 +19,14 @@ import {
   type VNodeArrayChildren,
   type VNode,
 } from 'vue'
-import type { BreakPoint } from '../../../types/grid'
+import type { BreakPoint } from '../../../types'
+import type { GridProps } from './type'
 
 defineOptions({
   name: 'SuperGrid',
 })
 
-type Props = {
-  cols?: number | Record<BreakPoint, number>
-  collapsed?: boolean
-  collapsedRows?: number
-  gap?: [number, number] | number
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<GridProps>(), {
   cols: () => ({ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }),
   collapsed: false,
   collapsedRows: 1,
@@ -89,14 +83,14 @@ const hiddenIndex = ref(-1)
 provide('shouldHiddenIndex', hiddenIndex)
 
 // 注入 cols
-const gridCols = computed(() => {
+const gridCols: any = computed(() => {
   if (typeof props.cols === 'object') return props.cols[breakPoint.value] ?? props.cols
   return props.cols
 })
 provide('cols', gridCols)
 
 // 寻找需要开始折叠的字段 index
-const slots = useSlots().default!()
+const slots = useSlots().default!({}) || []
 
 /**
  * 响应式与折叠功能

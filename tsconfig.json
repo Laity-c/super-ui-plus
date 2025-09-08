@@ -2,6 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "files": [],
   "compilerOptions": {
+    "strict": true,
     "composite": true,
     "noEmit": true,
     "skipLibCheck": true,
@@ -9,7 +10,7 @@
     "moduleResolution": "Node",
     "jsx": "preserve", // 保留JSX语法，由Vite插件处理
     "jsxImportSource": "vue", // 指定Vue作为JSX导入源
-    "types": ["vite/client", "element-plus/global"],
+    "types": ["vite/client", "element-plus/global", "lodash"],
     // 限制类型查找范围，排除 React 类型
     "typeRoots": [
       "./node_modules/@types",
@@ -25,22 +26,9 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@super-ui/*": ["packages/*"],
-    },
     "outDir": "dist",
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "build/**/*.ts",
-    "build/**/*.d.ts",
-    "vite.config.ts"
-  ],
-  "exclude": ["node_modules", "dist", "**/*.js"],
+  "exclude": ["node_modules", "dist", "**/*.js", "**/*.md"],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }

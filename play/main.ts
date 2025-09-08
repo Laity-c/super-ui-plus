@@ -5,7 +5,10 @@ import 'element-plus/dist/index.css'
 import locale from 'element-plus/es/locale/lang/zh-cn'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-import SuperUi from '../packages/index'
+// import SuperUi from '../packages/super-ui-plus'
+import SuperUi2 from '../dist/super-ui-plus'
+import '../dist/super-ui-plus/index.css'
+// import "../packages/theme-chalk/src/index.scss"
 
 const app = createApp(App)
 
@@ -20,6 +23,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 
-app.use(SuperUi)
+app.use(SuperUi2)
 
 app.mount('#app')

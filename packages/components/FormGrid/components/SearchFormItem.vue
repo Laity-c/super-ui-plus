@@ -29,13 +29,9 @@
 
 <script setup lang="ts" name="SearchFormItem">
 import { computed } from 'vue'
-import type { SuperFormItemProps } from '../../../types/searchForm'
+import type { SearchFormItemProps } from '../src/type'
 
-interface SearchFormItem {
-  field: SuperFormItemProps
-  model: { [key: string]: any }
-}
-const props = defineProps<SearchFormItem>()
+const props = defineProps<SearchFormItemProps>()
 
 const _searchParam = computed(() => props.model)
 

@@ -1,10 +1,9 @@
 import type { VNode, Ref } from "vue";
 import type { DefaultRow } from "element-plus/es/components/table/src/table/defaults";
-import type { FormItemProps } from "element-plus";
-import type { TableColumnCtx } from "element-plus/es/components/table/src/table-column/defaults";
-import type { ProTableProps, SummaryMethodProps } from "../components/ProTable/src/index.vue";
+import type { FormItemProps, TableColumnCtx } from "element-plus";
+import type { ProTableProps, SummaryMethodProps } from "../components/ProTable/src/type";
 import type { SearchType } from "./searchForm"
-import ProTable from "../components/ProTable/index.vue";
+import { SuperProTable } from "../components/ProTable/index";
 
 export interface EnumProps {
   label?: string; // 选项框显示的文字
@@ -51,4 +50,4 @@ export interface ColumnProps<T extends DefaultRow = DefaultRow>
   _children?: ColumnProps<T>[]; // 多级表头
 }
 
-export type ProTableInstance = Omit<InstanceType<typeof ProTable>, keyof ProTableProps>;
+export type ProTableInstance = Omit<InstanceType<typeof SuperProTable>, keyof ProTableProps>;

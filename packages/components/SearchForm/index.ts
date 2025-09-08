@@ -1,5 +1,4 @@
-import { withInstall } from 'element-plus/es/utils/vue/install'
 import SearchForm from './src/index.vue'
+export * from './src/type'
 
-export const SuperSearchForm = withInstall(SearchForm)
-export default SuperSearchForm
+export const SuperSearchForm: typeof SearchForm = SearchForm

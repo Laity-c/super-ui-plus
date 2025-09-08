@@ -131,44 +131,24 @@ import {
   nextTick,
   type VNode,
 } from 'vue'
-import { ElTable, ElMessage } from 'element-plus'
-import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
+import Sortable from 'sortablejs'
 import { useTable } from '../../../hooks/useTable'
 import { useSelection } from '../../../hooks/useSelection'
-import type { ColumnProps, TypeProps } from '../../../types/proTable'
-import type { SuperFormItemProps } from '../../../types/searchForm'
-import { Refresh, Operation, Search } from '@element-plus/icons-vue'
 import { getPrefixCls, generateUUID } from '../../../utils'
+
+import { ElTable, ElMessage } from 'element-plus'
+import { Refresh, Operation, Search } from '@element-plus/icons-vue'
 import Pagination from './components/Pagination.vue'
 import ColSetting from './components/ColSetting.vue'
 import TableColumn from './components/TableColumn.vue'
 import SuperSearchForm from '../../../components/SearchForm/src/index.vue'
-import Sortable from 'sortablejs'
 
+import type { FormInstance, TableColumnCtx, TableInstance } from 'element-plus'
+import type { ColumnProps, TypeProps } from '../../../types'
+import type { ProTableProps, SummaryMethodProps } from './type'
 defineOptions({
   name: 'SuperProTable',
 })
-
-export interface ProTableProps {
-  columns: ColumnProps[] // 列配置项  ==> 必传
-  data?: any[] // 静态 table data 数据，若存在则不会使用 requestApi 返回的 data ==> 非必传
-  requestApi?: (params: any) => Promise<any> // 请求表格数据的 api ==> 非必传
-  requestAuto?: boolean // 是否自动执行请求 api ==> 非必传（默认为true）
-  requestError?: (params: any) => void // 表格 api 请求错误监听 ==> 非必传
-  dataCallback?: (data: any) => any // 返回数据的回调函数，可以对数据进行处理 ==> 非必传
-  title?: string // 表格标题 ==> 非必传
-  pagination?: boolean // 是否需要分页组件 ==> 非必传（默认为true）
-  initParam?: any // 初始化请求参数 ==> 非必传（默认为{}）
-  border?: boolean // 是否带有纵向边框 ==> 非必传（默认为true）
-  toolButton?: ('refresh' | 'setting' | 'search')[] | boolean // 是否显示表格功能按钮 ==> 非必传（默认为true）
-  rowKey?: string // 行数据的 Key，用来优化 Table 的渲染，当表格数据多选时，所指定的 id ==> 非必传（默认为 id）
-  showSummary?: boolean // 是否在表格底部显示合计行
-  sumText?: string // 自定义合计行文本
-  sumNaNText?: string // 当数据为非数字时，该字段用于代替合计行显示的值
-  ifDblclick?: boolean // 是否开启双击单元格编辑
-  showSearch?: boolean // 是否显示搜索模块
-  field?: SuperFormItemProps[] // 搜索配置列
-}
 
 // 接受父组件参数，配置默认值
 const props = withDefaults(defineProps<ProTableProps>(), {
@@ -185,19 +165,19 @@ const props = withDefaults(defineProps<ProTableProps>(), {
 })
 
 // 获取样式前缀
-const prefixCls = getPrefixCls('table')
+const prefixCls: string = getPrefixCls('table')
 
 // table 实例
-const tableRef = ref<InstanceType<typeof ElTable>>()
+const tableRef = ref<TableInstance>()
 
 // 生成组件唯一id
-const uuid = ref('id-' + generateUUID())
+const uuid = ref<any>('id-' + generateUUID())
 
 // column 列类型
 const columnTypes: TypeProps[] = ['selection', 'radio', 'index', 'expand', 'sort']
 
 // 是否显示搜索模块
-const isShowSearch = ref(props.showSearch)
+const isShowSearch = ref<boolean>(props.showSearch)
 
 // 控制 ToolButton 显示
 const showToolButton = (key: 'refresh' | 'setting' | 'search') => {
@@ -205,7 +185,7 @@ const showToolButton = (key: 'refresh' | 'setting' | 'search') => {
 }
 
 // 单选值
-const radio = ref('')
+const radio = ref<any>('')
 
 // 表格多选 Hooks
 const { selectionChange, selectedList, selectedListIds, isSelected } = useSelection(props.rowKey)
@@ -230,7 +210,7 @@ const {
 )
 
 // 清空选中数据列表
-const clearSelection = () => tableRef.value!.clearSelection()
+const clearSelection: any = () => tableRef.value!.clearSelection()
 
 // 初始化表格数据 && 拖拽排序
 onMounted(() => {
@@ -304,9 +284,9 @@ const openColSetting = () => colRef.value.openColSetting()
 
 // 定义 emit 事件
 const emit = defineEmits<{
-  search: []
-  reset: []
-  dragSort: [{ newIndex?: number; oldIndex?: number }]
+  (e: 'search'): void
+  (e: 'reset'): void
+  (e: 'dragSort', value: any): void
 }>()
 
 // 点击搜索表单搜索按钮时触发
@@ -331,11 +311,6 @@ const dragSort = () => {
 
 // 获取自定义的合计计算方法
 // 表尾合计行（自行根据条件计算）
-export interface SummaryMethodProps<T = any> {
-  columns: TableColumnCtx[]
-  data: T[]
-}
-
 const getSummaries = (param: SummaryMethodProps) => {
   const { columns, data } = param
 
@@ -382,8 +357,8 @@ const getSummaries = (param: SummaryMethodProps) => {
 
 /** 编辑表格逻辑开始 */
 // 记录当前点击的单元格坐标位置
-const currentRowIndex = ref()
-const currentColumnIndex = ref()
+const currentRowIndex = ref<any>()
+const currentColumnIndex = ref<any>()
 
 // 工具函数：获取单元格的行列索引
 const getCellIndices = (row: any, cell: HTMLTableCellElement) => {
@@ -458,9 +433,9 @@ const handleDocumentClick = (event: MouseEvent) => {
 /** 编辑表格逻辑结束 */
 
 // 表格内表单验证方法
-const tableFormRef = useTemplateRef('tableForm')
+const tableFormRef = useTemplateRef<FormInstance>('tableForm')
 // 调用验证方法时处于true，方法执行完为fals，防止上方的（点击表格外区域的逻辑）方法执行，不然会导致编辑表格内容处于关闭状态
-const isValidate = ref(false)
+const isValidate = ref<boolean>(false)
 
 const validateTableForm = async (rowIndex?: number) => {
   return new Promise((resolve, reject) => {

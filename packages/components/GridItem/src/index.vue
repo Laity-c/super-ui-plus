@@ -5,24 +5,14 @@
 </template>
 <script setup lang="ts" name="SuperGridItem">
 import { computed, inject, type Ref, ref, useAttrs, watch } from 'vue'
-import type { BreakPoint, Responsive } from '../../../types/grid'
+import type { BreakPoint } from '../../../types'
+import type { GridItemProps } from './type'
 
 defineOptions({
   name: 'SuperGridItem',
 })
 
-type Props = {
-  offset?: number
-  span?: number
-  suffix?: boolean
-  xs?: Responsive
-  sm?: Responsive
-  md?: Responsive
-  lg?: Responsive
-  xl?: Responsive
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<GridItemProps>(), {
   offset: 0,
   span: 1,
   suffix: false,

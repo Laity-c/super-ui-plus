@@ -28,7 +28,7 @@ pnpm add super-ui-plus
 ```typescript
 import { createApp } from 'vue'
 import SuperUIPlus from 'super-ui-plus'
-import 'super-ui-plus/dist/style.css'
+import '@super-ui-plus/dist/style.css'
 
 const app = createApp(App)
 app.use(SuperUIPlus)

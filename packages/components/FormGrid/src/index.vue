@@ -1,6 +1,6 @@
 <template>
   <div v-if="field.length" :class="['table-search', { card: ifCardStyle }]">
-    <el-form ref="formRef" :model="model">
+    <ElForm ref="formRef" :model="model">
       <Grid ref="gridRef" :collapsed="collapsed" :gap="[20, 0]" :cols="searchCol">
         <GridItem
           v-for="(item, index) in field"
@@ -9,7 +9,7 @@
           :index="index"
         >
           <template v-if="!item?.slotName || !item?.slotName?.includes('Component')">
-            <el-form-item
+            <ElFormItem
               :prop="item.name"
               v-bind="item.formItemProps"
               :rules="getRules(item.formItemProps?.rules, item)"
@@ -34,7 +34,7 @@
               <template v-else>
                 <SearchFormItem :field="item" :model="model"></SearchFormItem>
               </template>
-            </el-form-item>
+            </ElFormItem>
           </template>
 
           <template v-else>
@@ -45,35 +45,29 @@
           <slot name="append"></slot>
         </GridItem>
       </Grid>
-    </el-form>
+    </ElForm>
   </div>
 </template>
 <script setup lang="ts" name="SuperFormGrid">
-import { ref, computed } from 'vue'
-import type { SuperFormItemProps } from '../../../types/searchForm'
-import type { BreakPoint } from '../../../types/grid'
-import { InfoFilled } from '@element-plus/icons-vue'
-import type { FormInstance } from 'element-plus'
+import { ref, computed, type Ref } from 'vue'
+
 import { setRules } from '../../../utils'
 
+import { InfoFilled } from '@element-plus/icons-vue'
 import SearchFormItem from '../components/SearchFormItem.vue'
 import Grid from '../../Grid/src/index.vue'
 import GridItem from '../../GridItem/src/index.vue'
+
+import type { BreakPoint, SuperFormItemProps } from '../../../types'
+import type { FormGridProps } from './type'
+import { type FormInstance, ElForm, ElFormItem } from 'element-plus'
 
 defineOptions({
   name: 'SuperFormGrid',
 })
 
-export interface SearchFormProps {
-  field?: SuperFormItemProps[] // 搜索配置列
-  model: { [key: string]: any } // 搜索参数
-  searchCol?: number | Record<BreakPoint, number>
-  collapsed?: boolean // 展开/收起状态
-  ifCardStyle?: boolean // 是否使用 card 样式
-}
-
 // 默认值
-const props = withDefaults(defineProps<SearchFormProps>(), {
+const props = withDefaults(defineProps<FormGridProps>(), {
   field: () => [],
   searchCol: () => ({ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }),
   collapsed: () => false,
@@ -84,7 +78,7 @@ const props = withDefaults(defineProps<SearchFormProps>(), {
 const formRef = ref<FormInstance>()
 
 // 获取表单验证规则
-const getRules = (rules: any = [], item: any) => {
+const getRules = (rules: any = [], item: any = {}): any[] => {
   if (item.valueType && item.required) {
     const requiredRules = { required: true, message: `${item.label}必填` }
     return setRules(item.valueType, rules ? [requiredRules, ...rules] : [requiredRules], item.label)
@@ -94,11 +88,11 @@ const getRules = (rules: any = [], item: any) => {
     return setRules(item.valueType, rules, item.label)
   }
 
-  return rules
+  return [...rules]
 }
 
 // 获取响应式设置
-const getResponsive = (item: SuperFormItemProps) => {
+const getResponsive = (item: SuperFormItemProps): Record<string, any> => {
   return {
     span: item?.span,
     offset: item?.offset ?? 0,
@@ -111,7 +105,7 @@ const getResponsive = (item: SuperFormItemProps) => {
 }
 
 // 获取响应式断点
-const gridRef = ref()
+const gridRef = ref<any>()
 const breakPoint = computed<BreakPoint>(() => gridRef.value?.breakPoint)
 
 // 判断是否显示 展开/合并 按钮
@@ -132,9 +126,9 @@ const showCollapse = computed(() => {
 })
 
 defineExpose({
-  formRef,
-  gridRef,
-  showCollapse,
+  formRef: formRef as Ref<FormInstance | undefined>,
+  gridRef: gridRef as Ref<any>,
+  showCollapse: showCollapse as Ref<boolean>,
 })
 </script>
 

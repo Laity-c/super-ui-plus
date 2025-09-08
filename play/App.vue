@@ -4,6 +4,7 @@ import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-
 import { reactive, ref, watch, computed, useTemplateRef, h, resolveComponent } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import { ElInput, ElMessage } from 'element-plus'
+// import { SuperHeader, SuperGrid, SuperGridItem } from '../dist/super-ui-plus'
 // const res = ({ searchParam }) => {
 //   return <div>1212</div>
 // }
@@ -558,7 +559,7 @@ const treeData = reactive<any[]>(generateTreeData())
     <section class="component-demo">
       <div class="demo-item">
         <h2>Header 组件演示</h2>
-        <SuperHeader title="页面标题" />
+        <SuperHeader title="页面标题">页面标题</SuperHeader>
       </div>
 
       <div class="demo-item">

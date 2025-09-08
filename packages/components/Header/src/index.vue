@@ -16,28 +16,13 @@
 <script name="SuperHeader" lang="tsx" setup>
 import { useSlots } from 'vue'
 import { getPrefixCls } from '../../../utils'
+import type { HeaderProps } from './type'
 
 defineOptions({
   name: 'SuperHeader',
 })
 
-export interface Props {
-  /**
-   * 是否显示分割线
-   */
-  divider?: boolean
-  /**
-   * 尺寸
-   * @type "small" | "medium"
-   */
-  size?: 'small' | 'medium'
-  /**
-   * 底部边框线
-   */
-  border?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<HeaderProps>(), {
   divider: false,
   size: 'small',
   border: false,

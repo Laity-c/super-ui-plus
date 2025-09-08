@@ -13,17 +13,7 @@
 </template>
 
 <script setup lang="ts" name="Pagination">
-export interface Pageable {
-  pageNum: number
-  pageSize: number
-  total: number
-}
-
-interface PaginationProps {
-  pageable: Pageable
-  handleSizeChange: (size: number) => void
-  handleCurrentChange: (currentPage: number) => void
-}
+import type { PaginationProps } from '../type'
 
 defineProps<PaginationProps>()
 </script>

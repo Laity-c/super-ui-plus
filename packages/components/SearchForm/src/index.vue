@@ -36,24 +36,14 @@
 <script setup lang="ts" name="SuperSearchForm">
 import { ref, computed, watch, useTemplateRef, nextTick } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
-import type { SuperFormItemProps } from '../../../types/searchForm'
-import type { BreakPoint } from '../../../types/grid'
-import { Delete, Search, ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 
+import { Delete, Search, ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import FormGrid from '../../FormGrid/src/index.vue'
 
+import type { SearchFormProps } from './type'
 defineOptions({
   name: 'SuperSearchForm',
 })
-
-export interface SearchFormProps {
-  field?: SuperFormItemProps[] // 搜索配置列
-  model: { [key: string]: any } // 搜索参数
-  searchCol?: number | Record<BreakPoint, number>
-  ifCollapsed?: boolean // 展开/收起状态
-  ifCardStyle?: boolean // 是否使用 card 样式
-  autoSearch?: boolean // 是否开启自动搜索
-}
 
 // 默认值
 const props = withDefaults(defineProps<SearchFormProps>(), {

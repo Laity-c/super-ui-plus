@@ -1,5 +1,4 @@
-import { withInstall } from 'element-plus/es/utils/vue/install'
 import ProTable from './src/index.vue'
+export * from './src/type'
 
-export const SuperProTable: typeof ProTable = withInstall(ProTable)
-export default SuperProTable
+export const SuperProTable: typeof ProTable = ProTable

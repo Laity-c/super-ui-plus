@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "preserve",
+    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "types": ["lodash", "vite/client", "element-plus/global"],
+    "skipLibCheck": true,
+    "declaration": false,
+    "disableSizeLimit": true,
+    "noImplicitAny": false,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "isolatedModules": true,
+    "preserveValueImports": false,
+    "paths": {
+      "element-plus": ["./node_modules/element-plus"],
+      "async-validator": ["./node_modules/async-validator"],
+      "@vue/shared": ["./node_modules/@vue/shared"],
+      "lodash-unified": ["./node_modules/lodash-unified"]
+    }
+  },
+  "include": [
+    "typings",
+    "packages/**/*.ts",   // <-- 确保添加这一行，以包含 packages 目录下的所有 TypeScript 文件
+    "packages/**/*.vue",  // <-- 如果 packages 目录下有 Vue 文件，也添加
+    "types/**/*.d.ts"     // <-- 如果您有自定义类型声明文件，也包含
+  ],
+  "exclude": [
+    "node_modules", 
+    "**/dist", 
+    "**/*.md",
+    "packages/theme-chalk/**/*",
+    "packages/resolver/**/*",
+  ]
+}

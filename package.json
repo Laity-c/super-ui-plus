@@ -1,47 +1,47 @@
 {
   "name": "super-ui-plus",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "type": "module",
-  "description": "A modern Vue 3 UI component library",
-  "keywords": [
-    "vue",
-    "vue3",
-    "ui",
-    "components",
-    "typescript"
-  ],
+  "description": "Vue3 中基于Element-plus二次封装基础组件文档",
   "author": "Your Name",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./dist/style.css": "./dist/style.css"
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "docs"
+    ]
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build",
+    "stub:build": "pnpm run -C scripts/build stub",
+    "build": "pnpm run clean && pnpm run build:theme && pnpm run build:main",
+    "build:theme": "pnpm run -C packages/theme-chalk build",
+    "build:main": "pnpm run -C scripts/build build",
+    "clean": "rimraf dist && rimraf packages/theme-chalk/dist",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:style": "stylelint \"**/*.{css,scss,vue}\" --fix",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "publish": "publish.sh"
   },
   "peerDependencies": {
+    "element-plus": "^2.7.8",
     "vue": "^3.5.0"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@super-ui-plus/components": "workspace:*",
+    "@super-ui-plus/eslint-config": "workspace:*",
+    "@super-ui-plus/resolver": "workspace:*",
+    "@super-ui-plus/theme-chalk": "workspace:*",
+    "@super-ui-plus/types": "workspace:*",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/fs-extra": "^11.0.4",
     "@types/sortablejs": "^1.15.8",
     "@vitejs/plugin-vue-jsx": "^5.1.0",
     "@vueuse/core": "^13.9.0",
@@ -49,12 +49,15 @@
     "element-plus": "^2.10.5",
     "eslint-plugin-n": "15.0.0",
     "eslint-plugin-promise": "6.0.0",
+    "fs-extra": "^11.3.1",
     "sortablejs": "^1.15.6",
+    "tsx": "^4.20.5",
     "vitepress-demo-preview-fock-component": "^2.3.6",
     "vitepress-demo-preview-fock-plugin": "^1.2.4",
     "vue-eslint-parser": "^10.2.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.20",
     "@types/node": "^24.1.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
@@ -62,16 +65,28 @@
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "@vue/runtime-dom": "^3.5.20",
+    "@vue/shared": "^3.5.21",
     "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.14",
+    "consola": "^3.2.3",
+    "cssnano": "^7.0.4",
     "eslint": "8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.7.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.32.0",
+    "fast-glob": "^3.2.11",
+    "glob": "^11.0.3",
     "jsdom": "^26.1.0",
-    "sass": "^1.89.2",
-    "sass-loader": "^16.0.5",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.14.3",
+    "rollup-plugin-banner2": "^1.2.3",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-scss": "^4.0.0",
+    "sass": "1.32.13",
+    "sass-loader": "13.1.0",
     "stylelint": "^16.11.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recess-order": "^4.6.0",
@@ -80,11 +95,19 @@
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-prettier": "^5.0.2",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4",
+    "unbuild": "^0.7.4",
+    "vite": "^5.2.9",
     "vite-plugin-dts": "^4.5.4",
     "vitepress": "^1.6.3",
     "vitest": "^3.2.4",
     "vue": "^3.5.17",
-    "vue-tsc": "^2.2.12"
-  }
+    "vue-tsc": "1.8.27"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "ui",
+    "components",
+    "typescript"
+  ]
 }
