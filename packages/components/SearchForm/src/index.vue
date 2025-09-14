@@ -14,8 +14,11 @@
 
       <template #append>
         <div class="operation">
-          <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-          <el-button :icon="Delete" @click="handleReset">重置</el-button>
+          <slot name="beforeContent"></slot>
+          <el-button v-if="props.hideSearch" type="primary" :icon="Search" @click="handleSearch">
+            搜索
+          </el-button>
+          <el-button v-if="props.hideReset" :icon="Delete" @click="handleReset">重置</el-button>
           <el-button
             v-if="showCollapse && ifCollapsed"
             type="primary"
@@ -28,6 +31,7 @@
               <component :is="collapsed ? ArrowDown : ArrowUp"></component>
             </el-icon>
           </el-button>
+          <slot name="afterContent"></slot>
         </div>
       </template>
     </FormGrid>
@@ -52,6 +56,8 @@ const props = withDefaults(defineProps<SearchFormProps>(), {
   ifCollapsed: () => true,
   ifCardStyle: () => true,
   autoSearch: () => true,
+  hideSearch: () => true,
+  hideReset: () => true,
 })
 
 const emit = defineEmits<{

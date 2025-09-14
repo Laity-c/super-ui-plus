@@ -35,7 +35,7 @@ const getRules = (rules: any = [], item: any) => {
     return setRules(item.valueType, rules, item.label)
   }
 
-  return [...rules, { index: 1 }]
+  return [...rules]
 }
 
 const RenderTableColumn = (item: ColumnProps) => {

@@ -14,9 +14,11 @@
     <template v-if="field?.el === 'ElCascader'" #default="{ data }">
       <span>{{ data[fieldNames.label] }}</span>
     </template>
-    <template v-if="field?.el === 'ElSelect'">
+    <template
+      v-if="['ElSelect', 'ElCheckboxGroup', 'ElRadioGroup'].find(ctype => ctype === field?.el)"
+    >
       <component
-        :is="`el-option`"
+        :is="sublevelDropdownName[field.el!]"
         v-for="(col, index) in columnEnum"
         :key="index"
         :label="col[fieldNames.label]"
@@ -64,4 +66,11 @@ const placeholder = computed(() => {
 
   return { placeholder }
 })
+
+// 处理是否多选/下拉/单选组组件
+const sublevelDropdownName: Record<string, string> = {
+  ElSelect: 'el-option',
+  ElCheckboxGroup: 'el-checkbox',
+  ElRadioGroup: 'el-radio',
+}
 </script>

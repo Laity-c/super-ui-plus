@@ -9,4 +9,5 @@ export type GridItemProps = {
   md?: Responsive
   lg?: Responsive
   xl?: Responsive
+  show?: boolean
 }

@@ -29,15 +29,15 @@ export function setRules(valueType: keyof typeof regexp, rules: any[] = [], labe
 
   // 根据 valueType 添加不同的校验规则
   if (valueType === "required") {
-    return [...rules, { required: true, message: `${label}必填`, index: 1 }];
+    return [...rules, { required: true, message: `${label}必填`, trigger: ["blur", "change"] }];
   }
 
   if (valueType === "phone") {
-    return [...rules, { validator: phoneValidator, index: 1 }];
+    return [...rules, { validator: phoneValidator, trigger: ["blur", "change"] }];
   }
 
   // 其他类型的校验规则
-  return [...rules, { pattern: regexp[valueType], message: message[valueType] }];
+  return [...rules, { pattern: regexp[valueType], message: message[valueType], trigger: ["blur", "change"] }];
 }
 
 /**
@@ -77,6 +77,14 @@ export function formatValue(callValue: any, format?: ((value: any) => string) | 
   if(format && callValue) {
     if (typeof format === "function") {
       return format(callValue);
+    }
+
+    if (format === "year") {
+      return dayjs(callValue).format("YYYY");
+    }
+
+    if (format === "month") {
+      return dayjs(callValue).format("MM");
     }
 
     if (format === "date") {

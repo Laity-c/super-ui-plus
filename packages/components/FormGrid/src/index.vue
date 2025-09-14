@@ -1,6 +1,6 @@
 <template>
   <div v-if="field.length" :class="['table-search', { card: ifCardStyle }]">
-    <ElForm ref="formRef" :model="model">
+    <ElForm ref="formRef" :model="model" v-bind="$attrs">
       <Grid ref="gridRef" :collapsed="collapsed" :gap="[20, 0]" :cols="searchCol">
         <GridItem
           v-for="(item, index) in field"
@@ -46,6 +46,8 @@
         </GridItem>
       </Grid>
     </ElForm>
+    <!-- 默认插槽 -->
+    <slot></slot>
   </div>
 </template>
 <script setup lang="ts" name="SuperFormGrid">
@@ -101,6 +103,7 @@ const getResponsive = (item: SuperFormItemProps): Record<string, any> => {
     md: item?.md,
     lg: item?.lg,
     xl: item?.xl,
+    show: typeof item?.show === 'function' ? item.show() : (item?.show ?? true),
   }
 }
 

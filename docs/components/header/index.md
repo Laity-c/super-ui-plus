@@ -1,6 +1,7 @@
 # Header
 
 ## 示例
+### 基本使用
 <preview path="./index.vue"></preview>
 
 ## API
@@ -10,7 +11,7 @@
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |
 | divider | 是否显示分割线 | `boolean` | - | `false` |
-| size | 尺寸 | `string` | `small` / `medium` | `small` |
+| size | 尺寸 | `string` | `small` | `medium` | `small` |
 | border | 底部边框线 | `boolean` | - | `false` |
 
 ### Slots

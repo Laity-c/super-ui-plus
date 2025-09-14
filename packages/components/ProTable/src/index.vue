@@ -54,6 +54,8 @@
         :row-key="rowKey"
         :showSummary="showSummary"
         :summary-method="getSummaries"
+        :height="height"
+        :span-method="spanMethod"
         @selection-change="selectionChange"
         @cell-dblclick="handleDoubleClick"
         @cell-click="handleClickOutside"
@@ -65,7 +67,7 @@
           <el-table-column
             v-if="item.type && columnTypes.includes(item.type)"
             v-bind="item"
-            :align="item.align ?? 'center'"
+            :align="item.align ?? align"
             :reserve-selection="item.type == 'selection'"
           >
             <template #default="scope">
@@ -93,6 +95,7 @@
             :ifDblclick="ifDblclick"
             :isValidate="isValidate"
             :pageable="pageable"
+            :align="align"
           >
             <template v-for="slotName in Object.keys($slots)" #[slotName]="scope">
               <slot :name="slotName" v-bind="scope" />
@@ -137,7 +140,7 @@ import { useSelection } from '../../../hooks/useSelection'
 import { getPrefixCls, generateUUID } from '../../../utils'
 
 import { ElTable, ElMessage } from 'element-plus'
-import { Refresh, Operation, Search } from '@element-plus/icons-vue'
+import { Refresh, Operation, Search, DCaret } from '@element-plus/icons-vue'
 import Pagination from './components/Pagination.vue'
 import ColSetting from './components/ColSetting.vue'
 import TableColumn from './components/TableColumn.vue'
@@ -162,6 +165,9 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   sumNaNText: 'N/A',
   ifDblclick: false,
   showSearch: false,
+  align: 'center',
+  ifContinuousMultiple: true,
+  autoScroll: true,
 })
 
 // 获取样式前缀
@@ -239,6 +245,17 @@ const processTableData = computed(() => {
 
 // 监听页面 initParam 改化，重新获取表格数据
 watch(() => props.initParam, getTableList, { deep: true })
+// 监听分页参数改变, 清空多选数据
+watch(
+  () => pageable.value.pageNum,
+  () => {
+    // 如果没有开启连续多选切换分页时，则清空多选数据
+    if (!props.ifContinuousMultiple) clearSelection()
+    // 分页自动滚动到首行
+    if (props.autoScroll) tableRef.value!.setScrollTop(0)
+  },
+  { deep: true },
+)
 
 // 接收 columns 并设置为响应式
 const tableColumns = reactive<ColumnProps[]>(props.columns)

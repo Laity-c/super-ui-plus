@@ -38,6 +38,7 @@
     "play/**/*.vue",
     "build/**/*.ts",
     "build/**/*.d.ts",
+    "docs/components/**/*.vue",
     "vite.config.ts"
   ]
 }

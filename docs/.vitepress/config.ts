@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress"
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import pkg from "../../package.json"
 
 import {
@@ -47,12 +48,12 @@ export default defineConfig({
       }
     ],
     ["meta", { name: "keywords", content }],
-    ["link", { rel: "icon", href: "/logo.jpg" }]
+    ["link", { rel: "icon", href: "/logo.png" }]
   ],
   lastUpdated: true,
   themeConfig: {
     logo: "/favicon.ico",
-    siteTitle: "TuiPlus基础组件文档",
+    siteTitle: "SuperUiPlus基础组件文档",
     outline: 3,
     search: {
       provider: "local"
@@ -72,14 +73,10 @@ export default defineConfig({
         text: "安装指南",
         link: "/guide/"
       },
-      { text: "基础组件", link: "/components/header/index.md" },
+      { text: "基础组件", link: "/components/layout/index.md" },
       {
         text: "GitHub地址",
         link: "https://github.com/Laity-c/super-ui-plus"
-      },
-      {
-        text: "Gitee码云地址",
-        link: "https://gitee.com/wocwin/t-ui-plus"
       },
       {
         text: `v${pkg.version}`,
@@ -118,7 +115,11 @@ export default defineConfig({
         {
           text: "常用组件",
           items: [
+            { text: "布局组件", link: "/components/layout/index.md" },
             { text: "头部组件", link: "/components/header/index.md" },
+            { text: "表单布局组件", link: "/components/formGrid/index.md" },
+            { text: "查询表单组件", link: "/components/searchForm/index.md" },
+            { text: "超级表格组件", link: "/components/proTable/index.md" },
           ]
         },
       ]
@@ -136,5 +137,14 @@ export default defineConfig({
            md.use(containerPreview)
            md.use(componentPreview)
         }
-  }
+  },
+  vite: {
+    plugins: [vueJsx()],
+    resolve: {
+      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
+    },
+    build: {
+      chunkSizeWarningLimit: 2000,
+    },
+  },
 })

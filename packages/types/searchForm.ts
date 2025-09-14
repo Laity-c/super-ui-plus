@@ -52,13 +52,13 @@ export type SuperFormItemProps = {
   valueType?: string; // 内置验证规则类型
   rules?: any; // 搜索项验证规则
   fieldNames?: FieldNamesProps; // 指定 label && value && children 的 key 值 可以指定el-select他们的labelkey或valueKey
-  options?: EnumProps[]; // 下拉选项数据
-  hideReset?: boolean; // 是否隐藏重置按钮	
+  options?: EnumProps[]; // 下拉选项数据	
   span?: number; // 搜索项所占用的列数，默认为 1 列
   offset?: number; // 搜索字段左侧偏移列数
+  show?: boolean | (() => boolean); // 是否显示
   render?: (scope: SearchRenderScope) => VNode; // 自定义搜索内容渲染（tsx语法）
   slotName?: string; // 自定义搜索内容插槽名称
-  scopedSlots?: any; //组件插槽
+  scopedSlots?: any; //组件自身插槽
   formItemProps?: Partial<FormItemProps>; // 透传 el-form-item 属性
   componentProps?: any; // 透传组件属性
 } & Partial<Record<BreakPoint, Responsive>>;

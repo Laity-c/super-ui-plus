@@ -34,7 +34,7 @@ const getRules = (rules: any = [], item: any = {}) => {
   } else if (item.valueType) {
     return setRules(item.valueType, rules, item.label)
   }
-  return [...rules, { index: 1 }]
+  return [...rules]
 }
 
 // --- 定义主组件 ---
@@ -67,6 +67,10 @@ export default defineComponent({
       type: Object as PropType<{ pageSize?: number; pageNum?: number }>,
       default: () => ({}),
     },
+    align: {
+      type: String,
+      default: 'center',
+    },
     // 如果 TableColumnProps 中还有其他属性，也请在这里添加
   },
   setup(props, { slots }) {
@@ -81,7 +85,7 @@ export default defineComponent({
             ElTableColumn,
             {
               ...item,
-              align: item.align ?? 'center',
+              align: item.align ?? props.align,
               showOverflowTooltip: item.showOverflowTooltip ?? item.prop !== 'operation',
             },
             {

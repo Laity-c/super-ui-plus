@@ -48,6 +48,7 @@ export interface ColumnProps<T extends DefaultRow = DefaultRow>
   sumFilter?: (value: any, param: SummaryMethodProps) => string // 自定义合计内容
   sumDataPrefix?: string // 合计数据前缀
   _children?: ColumnProps<T>[]; // 多级表头
+  align?: string; // 单元格对齐方式
 }
 
 export type ProTableInstance = Omit<InstanceType<typeof SuperProTable>, keyof ProTableProps>;

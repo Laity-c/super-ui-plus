@@ -1,16 +1,16 @@
-# @t-ui-plus/resolver (暂不支持)
-[![@t-ui-plus/resolver version badge](https://img.shields.io/npm/v/@t-ui-plus/resolver.svg?style=flat-square)](https://www.npmjs.org/package/@t-ui-plus/resolver)
+# @t-ui-plus/resolver (暂不支持, 还未发布)
+[![@super-ui-plus/resolver version badge](https://img.shields.io/npm/v/@super-ui-plus/resolver.svg?style=flat-square)](https://www.npmjs.org/package/@super-ui-plus/resolver)
 
 ## 简介
 
-`@t-ui-plus/resolver` 是[t-ui-plus](https://t-ui-plus.com/)为 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 提供的官方解析器，可以按需自动导入`t-ui-plus`的组件及其样式文件。
+`@super-ui-plus/resolver` 是[super-ui-plus](https://super-ui-plus.com/)为 [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) 提供的官方解析器，可以按需自动导入`t-ui-plus`的组件及其样式文件。
 
 ##
 
 - 安装
 
   ```sh
-  pnpm i @t-ui-plus/resolver
+  pnpm i @super-ui-plus/resolver
   ```
 
 - 配置
@@ -20,7 +20,7 @@
   import { defineConfig } from 'vite'
   import Components from 'unplugin-vue-components/vite'
 
-  import { TuiPlusResolver } from '@t-ui-plus/resolver'
+  import { TuiPlusResolver } from '@super-ui-plus/resolver'
 
   export default defineConfig({
     // ...

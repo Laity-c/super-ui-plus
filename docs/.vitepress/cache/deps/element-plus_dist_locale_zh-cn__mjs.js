@@ -1,6 +1,6 @@
 import "./chunk-5WRI5ZAA.js";
 
-// node_modules/.pnpm/element-plus@2.11.1_vue@3.5.20_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
+// node_modules/.pnpm/element-plus@2.11.2_vue@3.5.21_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
 var zhCn = {
   name: "zh-cn",
   el: {
@@ -149,7 +149,8 @@ var zhCn = {
     tour: {
       next: "下一步",
       previous: "上一步",
-      finish: "结束导览"
+      finish: "结束导览",
+      close: "关闭此对话框"
     },
     tree: {
       emptyText: "暂无数据"
@@ -185,6 +186,6 @@ export {
 /*! Bundled license information:
 
 element-plus/dist/locale/zh-cn.mjs:
-  (*! Element Plus v2.11.1 *)
+  (*! Element Plus v2.11.2 *)
 */
 //# sourceMappingURL=element-plus_dist_locale_zh-cn__mjs.js.map

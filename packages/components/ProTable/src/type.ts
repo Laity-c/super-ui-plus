@@ -22,6 +22,13 @@ export interface TableColumnProps {
   pageable?: Pageable // 分页信息
 }
 
+export interface SpanMethodProps {
+  row: any;
+  column: TableColumnCtx<any>;
+  rowIndex: number;
+  columnIndex: number;
+}
+
 export interface ProTableProps {
   columns: ColumnProps[] // 列配置项  ==> 必传
   data?: any[] // 静态 table data 数据，若存在则不会使用 requestApi 返回的 data ==> 非必传
@@ -39,6 +46,11 @@ export interface ProTableProps {
   sumText?: string // 自定义合计行文本
   sumNaNText?: string // 当数据为非数字时，该字段用于代替合计行显示的值
   ifDblclick?: boolean // 是否开启双击单元格编辑
+  align?: string // 单元格对齐方式
+  height?: string | number // 表格高度
+  ifContinuousMultiple?: boolean // 是否开启连续多选
+  autoScroll?: boolean // 分页自动滚动到首行
+  spanMethod?: (row: SpanMethodProps) => number[] | { rowspan: number, colspan: number } // 行列合并方法
   showSearch?: boolean // 是否显示搜索模块
   field?: SuperFormItemProps[] // 搜索配置列
 }

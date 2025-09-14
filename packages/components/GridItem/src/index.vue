@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isShow" :style="style">
+  <div v-if="isShow && show" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<GridItemProps>(), {
   md: undefined,
   lg: undefined,
   xl: undefined,
+  show: true,
 })
 
 const attrs = useAttrs() as { index: string }
