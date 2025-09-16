@@ -138,6 +138,7 @@ import Sortable from 'sortablejs'
 import { useTable } from '../../../hooks/useTable'
 import { useSelection } from '../../../hooks/useSelection'
 import { getPrefixCls, generateUUID } from '../../../utils'
+import { useClipboard } from '@vueuse/core'
 
 import { ElTable, ElMessage } from 'element-plus'
 import { Refresh, Operation, Search, DCaret } from '@element-plus/icons-vue'
@@ -404,11 +405,21 @@ const handleDoubleClick = (row: any, column: TableColumnCtx, cell: HTMLTableCell
 }
 
 // 点击其他单元格退出编辑状态
+const { copy, isSupported } = useClipboard()
 const handleClickOutside = async (
   row: any,
   _column: TableColumnCtx,
   cell: HTMLTableCellElement,
 ) => {
+  // 添加单元复制功能
+  const columnConfig = columnsMap.value[_column.property]
+  // 列配置项中指定了 copyable 属性，并且当前环境支持 clipboard
+  if (columnConfig.copyable && isSupported) {
+    copy(row[_column.property])
+    ElMessage.success('复制成功')
+  }
+
+  // 添加单元格退出编辑功能
   if (!props.ifDblclick) return
   // 当前编辑状态的行通过了所有验证才能被关闭
   await tableFormRef.value?.validate((isValid: boolean) => {

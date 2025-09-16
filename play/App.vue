@@ -379,6 +379,7 @@ Array.from({ length: 100 }).forEach((_, index) => {
     email: '<EMAIL>',
     address: '北京',
     tag: 2,
+    sex: index % 2 === 0 ? 1 : 2,
     number1: 1,
     number2: 2,
     _edit: false,
@@ -389,9 +390,17 @@ Array.from({ length: 100 }).forEach((_, index) => {
 const columns2 = reactive<ColumnProps<any>[]>([
   { type: 'radio', label: '单选', width: 80 },
   { prop: '$index', label: '序号', width: 80 },
-  { prop: 'idCard', label: '身份证号' },
+  { prop: 'idCard', label: '身份证号', copyable: true },
   { prop: 'email', label: '邮箱' },
-  { prop: 'address', label: '居住地址' },
+  {
+    prop: 'sex',
+    label: '性别',
+    enum: [
+      { label: '男', value: 1 },
+      { label: '女', value: 2 },
+    ],
+  },
+  { prop: 'address', label: '居住地址', copyable: true },
   { prop: 'date', label: '创建时间', format: 'date' },
   {
     prop: 'tag',

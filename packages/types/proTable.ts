@@ -41,7 +41,7 @@ export interface ColumnProps<T extends DefaultRow = DefaultRow>
   valueType?: string; // 内置验证规则类型
   formItemProps?: Partial<FormItemProps>; // 透传 el-form-item 属性
   el?: SearchType; // 组件名称
-  enum?: EnumProps[] | Ref<EnumProps[]> | ((params?: any) => Promise<any>); // 枚举字典
+  enum?: EnumProps[] | Ref<EnumProps[]>; // 枚举字典
   headerRender?: (scope: HeaderRenderScope<T>) => VNode; // 自定义表头内容渲染（tsx语法）
   render?: (scope: RenderScope<T>) => VNode | string; // 自定义单元格内容渲染（tsx语法）
   format?: ((value: any) => string) | string; // 内置格式化方式
@@ -49,6 +49,7 @@ export interface ColumnProps<T extends DefaultRow = DefaultRow>
   sumDataPrefix?: string // 合计数据前缀
   _children?: ColumnProps<T>[]; // 多级表头
   align?: string; // 单元格对齐方式
+  copyable?: boolean; // 是否开启复制功能
 }
 
 export type ProTableInstance = Omit<InstanceType<typeof SuperProTable>, keyof ProTableProps>;

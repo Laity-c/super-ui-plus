@@ -1,14 +1,18 @@
 <script lang="tsx">
 // 注意：这里不再有 `setup` 关键字，但保留 `lang="tsx"` 仍然可以写 TSX
-import { defineComponent, h, Fragment, type PropType } from 'vue' // 导入 defineComponent, h, Fragment
+import { defineComponent, h, Fragment, type PropType, ref } from 'vue' // 导入 defineComponent, h, Fragment
 
 // 假设 Element Plus 组件需要显式导入
 // 根据您的实际情况调整这些导入，如果按需导入插件处理了，则可能不需要
-import { ElTableColumn, ElFormItem, ElTag } from 'element-plus'
+import { ElTableColumn, ElFormItem, ElTag, ElPopover, ElButton } from 'element-plus'
+// import { DocumentCopy, Check } from '@element-plus/icons-vue'
+// import { useClipboard } from '@vueuse/core'
 
-import { formatValue, isFunction, setRules } from '../../../../utils'
+import { formatValue, isFunction, setRules, handleDict } from '../../../../utils'
 import SearchFormItem from '../../../FormGrid/components/SearchFormItem.vue'
 import type { ColumnProps, RenderScope, HeaderRenderScope } from '../../../../types/proTable'
+
+// const { copy, isSupported } = useClipboard()
 
 // --- 辅助函数：这些函数在组件内部或外部定义都可以 ---
 
@@ -21,7 +25,51 @@ const renderCellData = (item: ColumnProps, scope: RenderScope<any>) => {
     const pageNum = scope.props.pageable?.pageNum ?? 1
     return (pageNum - 1) * pageSize + scope.$index + 1
   }
-  return formatValue(scope.row[item.prop!], item.format)
+
+  let value = scope.row[item.prop!]
+
+  // 处理枚举值
+  if (item.enum!) {
+    value = handleDict(item.enum, scope.row[item.prop!])
+  }
+
+  // 显示复制按钮(因为el-table有too-tip功能，复制按钮无法添加到后面，放弃该功能，使用单击复制实现)
+  // isSupported判断当前环境是否支持clipboard
+  // if (item.copyable && isSupported.value) {
+  //   const isClipboard = ref(false)
+  //   const timeoutId = ref<any>(null)
+
+  //   return h(Fragment, null, [
+  //     h('span', null, formatValue(value, item.format)),
+  //     h(
+  //       ElPopover,
+  //       { placement: 'top', effect: 'dark', content: '复制', width: '50px' },
+  //       {
+  //         reference: () =>
+  //           h(ElButton, {
+  //             class: 'copyable',
+  //             type: 'text',
+  //             icon: isClipboard.value ? Check : DocumentCopy,
+  //             onClick: () => {
+  //               isClipboard.value = true
+  //               copy(formatValue(value, item.format))
+  //               if (timeoutId.value) {
+  //                 clearTimeout(timeoutId.value)
+  //               }
+
+  //               timeoutId.value = setTimeout(() => {
+  //                 isClipboard.value = false
+  //               }, 2000)
+  //             },
+  //           }),
+  //       },
+  //     ),
+  //   ])
+  // }
+
+  // 以上为保留代码
+
+  return formatValue(value, item.format)
 }
 
 // 获取表单验证规则
@@ -153,3 +201,9 @@ export default defineComponent({
   },
 })
 </script>
+
+<style scoped lang="scss">
+.copyable {
+  margin-left: 6px;
+}
+</style>

@@ -1,5 +1,7 @@
 import { regexp, message } from "./regExp";
 import dayjs from "dayjs";
+import { type Ref, unref } from "vue"
+import type { EnumProps } from "../types"
 
 // 设置组件前缀
 export const getPrefixCls = (scope?: string) => {
@@ -65,7 +67,7 @@ export function generateUUID() {
 }
 
 /**
- * @description 处理 ProTable 值为数组 || 无数据
+ * @description 处理 ProTable 值为数组 || 无数据 || 格式化数据
  * @param {*} callValue 需要处理的值
  * @returns {String}
  * */
@@ -106,6 +108,18 @@ export function formatValue(callValue: any, format?: ((value: any) => string) | 
 
 
   return callValue ?? "--";
+}
+
+/**
+ * @description 处理 ProTable 值为枚举或字典
+ * @param {Array} dist 字典/枚举
+ * @param {String} callValue 值
+ * @returns {String} 处理后的值
+ */
+
+export function handleDict(dist: EnumProps[] | Ref<EnumProps[]>, callValue: string | number) { 
+  const list = unref(dist);
+  return list.find(item => item.value === callValue)?.label ?? "";
 }
 
 /**
