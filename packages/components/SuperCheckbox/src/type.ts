@@ -3,7 +3,7 @@ export interface SuperCheckboxProps {
     type?: 'checkbox' | 'button';
     size?: 'small' | 'default' | 'large';
     border?: boolean;
-    options:  any[];
+    options:  Array<any>;
     labelKey?: string; // 自定义label字段属性名
     valueKey?: string; // 自定义value字段属性名
     prefix?: boolean | string | ((item: any) => string); // 是否使用前缀
@@ -12,5 +12,5 @@ export interface SuperCheckboxProps {
     exclude?: Array<string | number>; // 排除的选项
     hasCheckAll?: boolean; // 是否显示全选
     valueKeys?: { valueKey: string; labelKey: string }; // 选中项的值类型配置
-    exclusion?: number | string | { value: string; exclusion: string} | Array<{ value: string; exclusion: string}>[]; // 是否为排除模式
+    exclusion?: number | string | { value: string; exclusion: string} | Array<{ value: string; exclusion: string}>[]; // 选项互斥
 }

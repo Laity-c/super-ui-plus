@@ -117,6 +117,10 @@ export default defineConfig({
           items: [
             { text: "布局组件", link: "/components/layout/index.md" },
             { text: "头部组件", link: "/components/header/index.md" },
+            { text: "Radio组件", link: "/components/radio/index.md" },
+            { text: "CheckBox组件", link: "/components/checkbox/index.md" },
+            { text: "Select组件", link: "/components/select/index.md" },
+            { text: "SelectTable组件", link: "/components/selectTable/index.md" },
             { text: "表单布局组件", link: "/components/formGrid/index.md" },
             { text: "查询表单组件", link: "/components/searchForm/index.md" },
             { text: "超级表格组件", link: "/components/proTable/index.md" },

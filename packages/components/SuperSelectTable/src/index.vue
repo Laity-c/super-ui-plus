@@ -180,6 +180,16 @@ watch(
   { immediate: true },
 )
 
+watch(
+  () => superProTableRef?.value?.element?.data,
+  val => {
+    if (val?.length) {
+      setTableDataSelection()
+    }
+  },
+  { immediate: true },
+)
+
 // 多选时触发
 const selectionChange = (value: SelectItem[]) => {
   if (isSettingSelection.value) return // 正在设置选中

@@ -6,12 +6,8 @@ export interface SuperSelectTableProps {
     valueKey?: string; // 自定义value字段属性名
     multiple?: boolean; // 是否多选
     selectWidth?: string; // 选择框宽度
-    filterable?: boolean; // 是否可搜索
-    remote?: boolean; // 是否远程搜索
-    remoteMethod?: (query: string) => void; // 远程搜索方法
     isRadio?: boolean; // 是否显示单选框
     isKeyup?: boolean; // 是否开启键盘上下键选择(仅在 isRadio 为 true 时生效)
-    // valueKeys?: { valueKey: string; labelKey: string }; // 选中项的值类型配置
 
     // 以下为 pro-table 属性
     tableWidth?: string; // 表格宽度

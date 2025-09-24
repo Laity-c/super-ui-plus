@@ -5,7 +5,7 @@ export interface SuperSelectProps{
     labelKey?: string; // 自定义label字段属性名
     valueKey?: string; // 自定义value字段属性名
     disabled?: boolean | ((item: any) => boolean); // 是否禁用
-    filterable?: true, // 是否可搜索
+    filterable?: boolean, // 是否可搜索
     width?: string // 组件宽度
     multiple?: boolean; // 是否多选
     hasCheckAll?: boolean; // 是否显示全选

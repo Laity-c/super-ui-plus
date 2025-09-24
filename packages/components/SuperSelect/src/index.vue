@@ -10,8 +10,10 @@
       clearable: true,
       filterable: filterable,
       multiple: multiple,
+      vableKey: valueKey,
       ...$attrs,
     }"
+    :disabled="typeof disabled === 'function' ? false : disabled"
     @change="handleSelectChange"
     @input="handlesSelectInput"
   >
@@ -92,10 +94,17 @@ watch(
 const handleCheckAll = (val: CheckboxValueType) => {
   indeterminate.value = false
   if (val) {
-    selectedValue.value = props.options.map(_ => _.value)
+    if (props.valueIsObject) {
+      selectedValue.value = props.options.slice()
+    } else {
+      selectedValue.value = props.options.map(item => item[props.valueKey])
+    }
   } else {
     selectedValue.value = []
   }
+
+  emits('change', selectedValue.value)
+  emits('update:modelValue', selectedValue.value)
 }
 
 const handleSelectChange = (value: any) => {
