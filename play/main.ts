@@ -7,8 +7,8 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 import SuperUi from '../packages/super-ui-plus'
 // import SuperUi2 from '../dist/super-ui-plus'
-import '../dist/super-ui-plus/index.css'
-// import "../packages/theme-chalk/src/index.scss"
+// import '../dist/super-ui-plus/index.css'
+import "../packages/theme-chalk/src/index.scss"
 
 const app = createApp(App)
 

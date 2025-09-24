@@ -47,6 +47,7 @@
     <el-form ref="tableForm" :model="processTableData">
       <el-table
         ref="tableRef"
+        v-loading="loading"
         v-bind="$attrs"
         :id="uuid"
         :data="processTableData"
@@ -56,9 +57,11 @@
         :summary-method="getSummaries"
         :height="height"
         :span-method="spanMethod"
+        :highlightCurrentRow="highlightCurrentRow"
         @selection-change="selectionChange"
         @cell-dblclick="handleDoubleClick"
         @cell-click="handleClickOutside"
+        @row-click="handleRowClick"
       >
         <!-- 默认插槽 -->
         <slot />
@@ -77,7 +80,12 @@
                 <slot v-else :name="item.type" v-bind="scope" />
               </template>
               <!-- radio -->
-              <el-radio v-if="item.type == 'radio'" v-model="radio" :label="scope.row[rowKey]">
+              <el-radio
+                v-if="item.type == 'radio'"
+                v-model="radio"
+                :label="scope.row[rowKey]"
+                @change="handleRadioChange(scope.row)"
+              >
                 <i></i>
               </el-radio>
               <!-- sort -->
@@ -113,6 +121,7 @@
       <Pagination
         v-if="pagination"
         :pageable="pageable"
+        :layout="layout"
         :handle-size-change="handleSizeChange"
         :handle-current-change="handleCurrentChange"
       />
@@ -169,7 +178,19 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   align: 'center',
   ifContinuousMultiple: true,
   autoScroll: true,
+  layout: 'total, sizes, prev, pager, next, jumper',
 })
+
+// 定义 emit 事件
+const emit = defineEmits<{
+  (e: 'search'): void
+  (e: 'reset'): void
+  (e: 'dragSort', value: any): void
+  (e: 'radioChange', row: any): void
+  (e: 'rowClick', row: any): void
+  (e: 'selectionChange', value: any): void
+  (e: 'pageableDataChange', value: any): void
+}>()
 
 // 获取样式前缀
 const prefixCls: string = getPrefixCls('table')
@@ -193,9 +214,20 @@ const showToolButton = (key: 'refresh' | 'setting' | 'search') => {
 
 // 单选值
 const radio = ref<any>('')
+// 设置单选值
+const handleSetRadio = (val: any) => {
+  radio.value = val
+}
+// 单选值改变
+const handleRadioChange = (val: any) => {
+  emit('radioChange', val)
+}
 
 // 表格多选 Hooks
-const { selectionChange, selectedList, selectedListIds, isSelected } = useSelection(props.rowKey)
+const { selectionChange, selectedList, selectedListIds, isSelected } = useSelection(
+  props.rowKey,
+  emit,
+)
 
 // 表格操作 Hooks
 const {
@@ -208,12 +240,14 @@ const {
   reset,
   handleSizeChange,
   handleCurrentChange,
+  loading,
 } = useTable(
   props.requestApi,
   props.initParam,
   props.pagination,
   props.dataCallback,
   props.requestError,
+  emit,
 )
 
 // 清空选中数据列表
@@ -299,13 +333,6 @@ const colSetting = initColumns!.value.filter(item => {
   return !columnTypes.includes(type!) && prop !== 'operation' && isSetting
 })
 const openColSetting = () => colRef.value.openColSetting()
-
-// 定义 emit 事件
-const emit = defineEmits<{
-  (e: 'search'): void
-  (e: 'reset'): void
-  (e: 'dragSort', value: any): void
-}>()
 
 // 点击搜索表单搜索按钮时触发
 const _search = () => {
@@ -553,6 +580,12 @@ const validateTableForm = async (rowIndex?: number) => {
   })
 }
 
+// 点击行事件
+const handleRowClick = (row: any) => {
+  if (row[props.rowKey]) radio.value = row[props.rowKey]
+  emit('rowClick', row)
+}
+
 // 暴露给父组件的参数和方法 (外部需要什么，都可以从这里暴露出去)
 defineExpose({
   element: tableRef,
@@ -573,5 +606,6 @@ defineExpose({
   handleCurrentChange,
   clearSelection,
   validateTableForm,
+  handleSetRadio,
 })
 </script>

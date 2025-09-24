@@ -131,3 +131,15 @@ export function handleDict(dist: EnumProps[] | Ref<EnumProps[]>, callValue: stri
 export const isFunction = (fn: any) => {
   return typeof fn === "function";
 };
+
+export function include(options: any[], _include: any[] = [], key = "") {
+  return options.filter(function(item) {    
+    return _include.indexOf(item[key]) !== -1;
+  });
+}
+
+export function exclude(options: any[], _exclude: any[] = [], key = "") {
+  return options.filter(function(item) {
+    return _exclude.indexOf(item[key]) === -1;
+  });
+}

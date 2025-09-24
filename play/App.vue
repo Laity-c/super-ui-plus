@@ -4,6 +4,10 @@ import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-
 import { reactive, ref, watch, computed, useTemplateRef, h, resolveComponent } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import { ElInput, ElMessage } from 'element-plus'
+import SuperRadio from './components/superRadio.vue'
+import SuperCheckbox from './components/superCheckbox.vue'
+import SuperSelect from './components/superSelect.vue'
+import SuperSelectTable from './components/superSelectTable.vue'
 // import { SuperHeader, SuperGrid, SuperGridItem } from '../dist/super-ui-plus'
 // const res = ({ searchParam }) => {
 //   return <div>1212</div>
@@ -742,6 +746,26 @@ const treeData = reactive<any[]>(generateTreeData())
             <el-button type="danger" plain @click="handleClick(scope)">批量删除用户</el-button>
           </template>
         </SuperProTable>
+      </div>
+
+      <div class="demo-item">
+        <h2>SuperRadio 组件演示</h2>
+        <SuperRadio />
+      </div>
+
+      <div class="demo-item">
+        <h2>SuperCheckbox 组件演示</h2>
+        <SuperCheckbox />
+      </div>
+
+      <div class="demo-item">
+        <h2>SuperSelect 组件演示</h2>
+        <SuperSelect />
+      </div>
+
+      <div class="demo-item">
+        <h2>SuperSelectTable 组件演示</h2>
+        <SuperSelectTable />
       </div>
     </section>
   </div>

@@ -13,7 +13,8 @@ export const useTable = (
   initParam: object = {},
   isPageable: boolean = true,
   dataCallBack?: (data: any) => any,
-  requestError?: (error: any) => void
+  requestError?: (error: any) => void,
+  emit?: any
 ) => {
   const state = reactive<Table.StateProps>({
     // 表格数据
@@ -32,7 +33,9 @@ export const useTable = (
     // 初始化默认的查询参数
     searchInitParam: {},
     // 总参数(包含分页和查询参数)
-    totalParam: {}
+    totalParam: {},
+    // 加载状态
+    loading: false,
   });
 
   /**
@@ -57,16 +60,19 @@ export const useTable = (
   const getTableList = async () => {    
     if (!api) return;
     try {
+      state.loading = true;
       // 先把初始化参数和分页参数放到总参数里面
       let { data } = await api({ ...initParam, ...isPageable ? pageParam.value : {}, ...state.totalParam });      
       dataCallBack && (data = dataCallBack(data));
       state.tableData = isPageable ? data.list : data;
       // 解构后台返回的分页数据 (如果有分页更新分页信息)
       if (isPageable) {
-        state.pageable.total = data.total;
+        state.pageable.total = data.total;        
       }
     } catch (error) {
       requestError && requestError(error);
+    } finally {
+      state.loading = false;
     }
   };
 
@@ -115,10 +121,11 @@ export const useTable = (
    * @param {Number} val 当前条数
    * @return void
    * */
-  const handleSizeChange = (val: number) => {
+  const handleSizeChange = async (val: number) => {
     state.pageable.pageNum = 1;
     state.pageable.pageSize = val;
-    getTableList();
+    await getTableList();
+    emit('pageableDataChange')
   };
 
   /**
@@ -126,9 +133,10 @@ export const useTable = (
    * @param {Number} val 当前页
    * @return void
    * */
-  const handleCurrentChange = (val: number) => {
+  const handleCurrentChange = async (val: number) => {
     state.pageable.pageNum = val;
-    getTableList();
+    await getTableList();
+    emit('pageableDataChange')
   };
 
   return {

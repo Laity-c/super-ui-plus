@@ -1,0 +1,11 @@
+@use 'config.scss' as *;
+$checkbox: '#{$namespace}-checkbox';
+
+.#{$checkbox} {
+  display: flex;
+  align-items: center;
+
+  &-check-all {
+    margin-right: 30px !important;
+  }
+}

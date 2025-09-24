@@ -6,7 +6,7 @@
     :page-size="pageable.pageSize"
     :page-sizes="[10, 25, 50, 100]"
     :total="pageable.total"
-    layout="total, sizes, prev, pager, next, jumper"
+    :layout="layout"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
   ></el-pagination>
@@ -15,5 +15,7 @@
 <script setup lang="ts" name="Pagination">
 import type { PaginationProps } from '../type'
 
-defineProps<PaginationProps>()
+withDefaults(defineProps<PaginationProps>(), {
+  layout: 'total, sizes, prev, pager, next, jumper',
+})
 </script>

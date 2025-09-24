@@ -82,7 +82,7 @@ const handleSearch = async () => {
 }
 
 // 创建一个防抖搜索函数
-const onSearch = useDebounceFn(handleSearch, 300)
+const onSearch = useDebounceFn(handleSearch, 1000)
 
 // 监听页面 initParam 改化，重新获取表格数据
 watch(
