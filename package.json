@@ -1,6 +1,6 @@
 {
   "name": "super-ui-plus",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "type": "module",
   "description": "Vue3 中基于Element-plus二次封装基础组件文档",
   "author": "Your Name",

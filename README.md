@@ -28,7 +28,7 @@ pnpm add super-ui-plus
 ```typescript
 import { createApp } from 'vue'
 import SuperUIPlus from 'super-ui-plus'
-import '@super-ui-plus/dist/style.css'
+import 'super-ui-plus/theme-chalk/index.css'
 
 const app = createApp(App)
 app.use(SuperUIPlus)
@@ -53,13 +53,11 @@ pnpm type-check
 # 代码检查
 pnpm lint
 
-# 运行测试
-pnpm test
 ```
 
 ## 文档
 
-详细文档请查看 [packages/README.md](./packages/README.md)
+详细文档请查看 [packages/README.md](https://laity-c.github.io/super-ui-plus/)
 
 ## 许可证
 

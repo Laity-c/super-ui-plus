@@ -1,6 +1,6 @@
 {
   "name": "@super-ui-plus/eslint-config",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "eslint config of t-ui-plus",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
