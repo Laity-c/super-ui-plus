@@ -1,4 +1,4 @@
 import SelectTable from './src/index.vue'
 export * from './src/type'
 
-export const SuperSelectTable = SelectTable
+export const SuperSelectTable: typeof SelectTable = SelectTable
