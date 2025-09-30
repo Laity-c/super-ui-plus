@@ -1,5 +1,13 @@
 <template>
+  <div v-if="preview">
+    {{
+      field.format && typeof field.format === 'function'
+        ? field.format(_searchParam[field.name], _searchParam)
+        : _searchParam[field.name]
+    }}
+  </div>
   <component
+    v-else
     :is="field?.render ?? field.el"
     v-bind="{ ...props.field.componentProps, searchParam: _searchParam, ...placeholder }"
     v-model.trim="_searchParam[field.name]"
