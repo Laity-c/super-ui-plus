@@ -61,4 +61,5 @@ export type SuperFormItemProps = {
   scopedSlots?: any; //组件自身插槽
   formItemProps?: Partial<FormItemProps>; // 透传 el-form-item 属性
   componentProps?: any; // 透传组件属性
+  format?: ((value: any, obj: any) => string) | string; // 内置格式化方式
 } & Partial<Record<BreakPoint, Responsive>>;

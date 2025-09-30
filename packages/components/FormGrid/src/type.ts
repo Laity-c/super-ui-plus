@@ -6,9 +6,11 @@ export type FormGridProps = {
   searchCol?: number | Record<BreakPoint, number>
   collapsed?: boolean // 展开/收起状态
   ifCardStyle?: boolean // 是否使用 card 样式
+  preview?: boolean// 预览模式
 }
 
 export type SearchFormItemProps = {
   field: SuperFormItemProps
   model: { [key: string]: any }
+  preview?: boolean// 预览模式
 }

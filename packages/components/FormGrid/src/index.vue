@@ -32,7 +32,7 @@
                 <slot :name="item.slotName"></slot>
               </template>
               <template v-else>
-                <SearchFormItem :field="item" :model="model"></SearchFormItem>
+                <SearchFormItem :field="item" :model="model" :preview="preview"></SearchFormItem>
               </template>
             </ElFormItem>
           </template>
@@ -74,6 +74,7 @@ const props = withDefaults(defineProps<FormGridProps>(), {
   searchCol: () => ({ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }),
   collapsed: () => false,
   ifCardStyle: () => true,
+  preview: () => false,
 })
 
 // 搜索表单ref

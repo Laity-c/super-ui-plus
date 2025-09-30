@@ -191,6 +191,54 @@ const form = reactive({
   maxAge: '',
 })
 
+const preview = ref(false)
+
+const fieldPreview = [
+  {
+    label: '姓名',
+    name: 'name',
+    el: 'ElInput',
+    span: 1,
+  },
+  {
+    label: '开始时间',
+    name: 'start',
+    el: 'ElDatePicker',
+    span: 1,
+    format: (value: string) => {
+      return '时间戳 ' + new Date(value).getTime()
+    },
+  },
+  {
+    label: '结束时间',
+    name: 'end',
+    el: 'ElDatePicker',
+    span: 1,
+    format: (value: string) => {
+      return '时间戳 ' + new Date(value).getTime()
+    },
+  },
+  {
+    label: '性别',
+    name: 'sex',
+    el: 'SuperSelect',
+    options: [
+      { label: '男', value: '1' },
+      { label: '女', value: '2' },
+    ],
+    format: (value: string) => {
+      return value === '1' ? '男' : '女'
+    },
+    span: 1,
+  },
+]
+const formPreview = reactive({
+  name: '张三',
+  start: new Date(),
+  end: new Date('2023-05-01'),
+  sex: '2',
+})
+
 const handleClick = async (scope: any, type?: string) => {
   if (type === 'edit') {
     scope.row._edit = true
@@ -626,6 +674,8 @@ const treeData = reactive<any[]>(generateTreeData())
 
       <div class="demo-item">
         <h2>SuperFormGrid 组件演示</h2>
+
+        <h2>SuperFormGrid 组件基本使用</h2>
         <SuperFormGrid :field="field" :model="form">
           <template #name6>
             <ElInput v-model="form.name6" placeholder="使用插槽自定义内容" clearable />
@@ -653,6 +703,16 @@ const treeData = reactive<any[]>(generateTreeData())
             </SuperGrid>
           </template>
         </SuperFormGrid>
+
+        <h2>SuperFormGrid 预览状态</h2>
+        <el-button type="primary" plain @click="preview = !preview">
+          {{ preview ? '预览' : '编辑' }}
+        </el-button>
+        <SuperFormGrid
+          :field="fieldPreview"
+          :model="formPreview"
+          :preview="preview"
+        ></SuperFormGrid>
       </div>
 
       <div class="demo-item">
