@@ -1,6 +1,6 @@
 import "./chunk-5WRI5ZAA.js";
 
-// node_modules/.pnpm/element-plus@2.11.2_vue@3.5.21_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
+// node_modules/.pnpm/element-plus@2.11.5_vue@3.5.22_typescript@5.8.3_/node_modules/element-plus/dist/locale/zh-cn.mjs
 var zhCn = {
   name: "zh-cn",
   el: {
@@ -12,7 +12,10 @@ var zhCn = {
       clear: "清空",
       defaultLabel: "颜色选择器",
       description: "当前颜色 {color}，按 Enter 键选择新颜色",
-      alphaLabel: "选择透明度的值"
+      alphaLabel: "选择透明度的值",
+      alphaDescription: "透明度 {alpha}, 当前颜色 {color}",
+      hueLabel: "选择色相值",
+      hueDescription: "色相 {hue}, 当前颜色 {color}"
     },
     datepicker: {
       now: "此刻",
@@ -90,11 +93,11 @@ var zhCn = {
       noData: "无数据",
       placeholder: "请选择"
     },
-    dropdown: {
-      toggleDropdown: "切换下拉选项"
-    },
     mention: {
       loading: "加载中"
+    },
+    dropdown: {
+      toggleDropdown: "切换下拉选项"
     },
     cascader: {
       noMatch: "无匹配数据",
@@ -186,6 +189,6 @@ export {
 /*! Bundled license information:
 
 element-plus/dist/locale/zh-cn.mjs:
-  (*! Element Plus v2.11.2 *)
+  (*! Element Plus v2.11.5 *)
 */
 //# sourceMappingURL=element-plus_dist_locale_zh-cn__mjs.js.map

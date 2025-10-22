@@ -231,12 +231,69 @@ const fieldPreview = [
     },
     span: 1,
   },
+  {
+    label: '人员',
+    name: 'userId',
+    el: 'SuperSelectTable',
+    componentProps: {
+      valueKey: 'id',
+      labelKey: 'name',
+      columns: [
+        { prop: '$index', label: '序号', width: 80 },
+        { prop: 'idCard', label: '身份证号', copyable: true },
+        { prop: 'name', label: '姓名' },
+        { prop: 'email', label: '邮箱' },
+      ],
+      data: [
+        { id: '1', name: '张三1', idCard: '110101199001011234', email: '<EMAIL>' },
+        { id: '2', name: '张三2', idCard: '110101199001011234', email: '<EMAIL>' },
+        { id: '3', name: '张三3', idCard: '110101199001011234', email: '<EMAIL>' },
+        { id: '4', name: '张三4', idCard: '110101199001011234', email: '<EMAIL>' },
+        { id: '5', name: '张三5', idCard: '110101199001011234', email: '<EMAIL>' },
+      ],
+    },
+    options: [
+      { label: '男', value: '1' },
+      { label: '女', value: '2' },
+    ],
+    format: (value: string) => {
+      return value === '1' ? '男' : '女'
+    },
+    span: 1,
+  },
+  {
+    label: '单选框',
+    name: 'radio',
+    el: 'SuperRadio',
+    options: [
+      { label: '男', value: '1' },
+      { label: '女', value: '2' },
+    ],
+    format: (value: string) => {
+      return value === '1' ? '男' : '女'
+    },
+    span: 1,
+  },
+  {
+    label: '多选框',
+    name: 'checkbox',
+    el: 'SuperCheckbox',
+    options: [
+      { label: '男', value: '1' },
+      { label: '女', value: '2' },
+    ],
+    format: (value: string) => {
+      return value === '1' ? '男' : '女'
+    },
+    span: 1,
+  },
 ]
 const formPreview = reactive({
   name: '张三',
   start: new Date(),
   end: new Date('2023-05-01'),
   sex: '2',
+  checkbox: [],
 })
 
 const handleClick = async (scope: any, type?: string) => {
@@ -708,6 +765,7 @@ const treeData = reactive<any[]>(generateTreeData())
         <el-button type="primary" plain @click="preview = !preview">
           {{ preview ? '预览' : '编辑' }}
         </el-button>
+        <div>表单数据：{{ formPreview }}</div>
         <SuperFormGrid
           :field="fieldPreview"
           :model="formPreview"

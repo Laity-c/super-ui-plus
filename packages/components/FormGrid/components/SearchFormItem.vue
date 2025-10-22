@@ -11,8 +11,18 @@
     :is="field?.render ?? field.el"
     v-bind="{ ...props.field.componentProps, searchParam: _searchParam, ...placeholder }"
     v-model.trim="_searchParam[field.name]"
-    :data="field.el === 'ElTreeSelect' ? columnEnum : []"
-    :options="['ElCascader', 'ElSelectV2'].includes(field.el!) ? columnEnum : []"
+    :data="
+      field.el === 'ElTreeSelect'
+        ? columnEnum
+        : props.field.componentProps?.data
+          ? props.field.componentProps?.data
+          : []
+    "
+    :options="
+      ['ElCascader', 'ElSelectV2', 'SuperSelect', 'SuperRadio', 'SuperCheckbox'].includes(field.el!)
+        ? columnEnum
+        : []
+    "
   >
     <!-- 组件内插槽 -->
     <template v-for="(value, slot) in field?.scopedSlots" #[slot] :key="slot">
@@ -23,7 +33,11 @@
       <span>{{ data[fieldNames.label] }}</span>
     </template>
     <template
-      v-if="['ElSelect', 'ElCheckboxGroup', 'ElRadioGroup'].find(ctype => ctype === field?.el)"
+      v-if="
+        ['ElSelect', 'ElCheckboxGroup', 'ElRadioGroup', 'SuperSelect'].find(
+          ctype => ctype === field?.el,
+        )
+      "
     >
       <component
         :is="sublevelDropdownName[field.el!]"
@@ -80,5 +94,6 @@ const sublevelDropdownName: Record<string, string> = {
   ElSelect: 'el-option',
   ElCheckboxGroup: 'el-checkbox',
   ElRadioGroup: 'el-radio',
+  SuperSelect: 'el-option',
 }
 </script>

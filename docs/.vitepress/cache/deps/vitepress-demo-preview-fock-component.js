@@ -23,10 +23,10 @@ import {
   watch,
   withCtx,
   withDirectives
-} from "./chunk-TZW5YDFY.js";
+} from "./chunk-IFIAULI3.js";
 import "./chunk-5WRI5ZAA.js";
 
-// node_modules/.pnpm/vitepress-demo-preview-fock_96d0a7a928a33865494f0cb4e3ac63ad/node_modules/vitepress-demo-preview-fock-component/dist/preview-component.js
+// node_modules/.pnpm/vitepress-demo-preview-fock_a40c04bde4a9ba463a1e442064508abe/node_modules/vitepress-demo-preview-fock-component/dist/preview-component.js
 var B = (t, n) => {
   const e = t.__vccOpts || t;
   for (const [i, r] of n)
